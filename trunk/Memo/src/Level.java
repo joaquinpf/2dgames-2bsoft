@@ -1,32 +1,19 @@
 
 
+import com.golden.gamedev.GameEngine;
+import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.PlayField;
+
+import java.awt.Graphics2D;
 import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Level implements Observer{
+public class Level extends GameObject implements Observer{
 
-	/**
-	 * @uml.property  name="partialScore"
-	 */
-	private int partialScore = 0;
-	/**
-	 * Getter of the property <tt>partialScore</tt>
-	 * @return  Returns the partialScore.
-	 * @uml.property  name="partialScore"
-	 */
-	public int getPartialScore() {
-		return partialScore;
-	}
-
-	/**
-	 * Setter of the property <tt>partialScore</tt>
-	 * @param partialScore  The partialScore to set.
-	 * @uml.property  name="partialScore"
-	 */
-	public void setPartialScore(int partialScore) {
-		this.partialScore = partialScore;
+	public Level(GameEngine parent) {
+		super(parent);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -96,11 +83,6 @@ public class Level implements Observer{
 	 */
 	public void setPlayfield(PlayField playfield) {
 		this.playfield = playfield;
-	}
-
-	/**
-	 */
-	public void update(){
 	}
 
 	public void addCard(Card newCard){
@@ -242,6 +224,48 @@ public class Level implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void initResources() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics2D arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(long arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @uml.property  name="gameplay"
+	 * @uml.associationEnd  inverse="level:Gameplay"
+	 */
+	private Gameplay gameplay;
+
+	/**
+	 * Getter of the property <tt>gameplay</tt>
+	 * @return  Returns the gameplay.
+	 * @uml.property  name="gameplay"
+	 */
+	public Gameplay getGameplay() {
+		return gameplay;
+	}
+
+	/**
+	 * Setter of the property <tt>gameplay</tt>
+	 * @param gameplay  The gameplay to set.
+	 * @uml.property  name="gameplay"
+	 */
+	public void setGameplay(Gameplay gameplay) {
+		this.gameplay = gameplay;
 	}
 
 }

@@ -5,25 +5,7 @@ import com.golden.gamedev.GameObject;
 
 
 
-public class Gameplay extends GameObject {
-
-	@Override
-	public void initResources() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void render(Graphics2D arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(long arg0) {
-		// TODO Auto-generated method stub
-
-	}
+public class Gameplay {
 
 	/** 
 	 * @uml.property name="levelGenerator"
@@ -49,41 +31,6 @@ public class Gameplay extends GameObject {
 		this.levelGenerator = levelGenerator;
 	}
 
-	/** 
-	 * @uml.property name="level"
-	 * @uml.associationEnd inverse="gameplay:Level"
-	 */
-	private Level level;
-
-	/** 
-	 * Getter of the property <tt>level</tt>
-	 * @return  Returns the level.
-	 * @uml.property  name="level"
-	 */
-	public Level getLevel() {
-		return level;
-	}
-
-	/** 
-	 * Setter of the property <tt>level</tt>
-	 * @param level  The level to set.
-	 * @uml.property  name="level"
-	 */
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
-
-
-	/** 
-	 * @param parent
-	 */
-	public Gameplay(GameEngine parent){
-
-		super(parent);
-		// TODO Auto-generated constructor stub
-	}
-
 	/**
 	 * @uml.property  name="globalScore"
 	 */
@@ -105,6 +52,71 @@ public class Gameplay extends GameObject {
 	 */
 	public void setGlobalScore(int globalScore) {
 		this.globalScore = globalScore;
+	}
+
+
+	/**
+	 */
+	public GameObject getNextLevel(){
+		return null;
+	}
+
+	/**
+	 */
+	public Gameplay(GameEngine _parent){
+	}
+
+	/**
+	 * @uml.property  name="parent"
+	 */
+	private GameEngine parent;
+
+	/**
+	 * Getter of the property <tt>parent</tt>
+	 * @return  Returns the parent.
+	 * @uml.property  name="parent"
+	 */
+	public GameEngine getParent() {
+		return parent;
+	}
+
+	/**
+	 * Setter of the property <tt>parent</tt>
+	 * @param parent  The parent to set.
+	 * @uml.property  name="parent"
+	 */
+	public void setParent(GameEngine parent) {
+		this.parent = parent;
+	}
+
+
+	/**
+	 */
+	public void addPoints(int points){
+	}
+
+	/**
+	 * @uml.property  name="level"
+	 * @uml.associationEnd  inverse="gameplay:Level"
+	 */
+	private Level level;
+
+	/**
+	 * Getter of the property <tt>level</tt>
+	 * @return  Returns the level.
+	 * @uml.property  name="level"
+	 */
+	public Level getLevel() {
+		return level;
+	}
+
+	/**
+	 * Setter of the property <tt>level</tt>
+	 * @param level  The level to set.
+	 * @uml.property  name="level"
+	 */
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 
 }
