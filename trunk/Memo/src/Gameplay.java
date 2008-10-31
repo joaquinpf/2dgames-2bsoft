@@ -73,38 +73,38 @@ public class Gameplay extends GameObject {
 		this.level = level;
 	}
 
-		
-		
-		/** 
-		 * @param parent
-		 */
-		public Gameplay(GameEngine parent){
-		
-				super(parent);
-				// TODO Auto-generated constructor stub
-			 }
 
-		/**
-		 * @uml.property  name="globalScore"
-		 */
-		private int globalScore;
 
-		/**
-		 * Getter of the property <tt>globalScore</tt>
-		 * @return  Returns the globalScore.
-		 * @uml.property  name="globalScore"
-		 */
-		public int getGlobalScore() {
-			return globalScore;
-		}
+	/** 
+	 * @param parent
+	 */
+	public Gameplay(GameEngine parent){
 
-		/**
-		 * Setter of the property <tt>globalScore</tt>
-		 * @param globalScore  The globalScore to set.
-		 * @uml.property  name="globalScore"
-		 */
-		public void setGlobalScore(int globalScore) {
-			this.globalScore = globalScore;
-		}
+		super(parent);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @uml.property  name="globalScore"
+	 */
+	private int globalScore;
+
+	/**
+	 * Getter of the property <tt>globalScore</tt>
+	 * @return  Returns the globalScore.
+	 * @uml.property  name="globalScore"
+	 */
+	public int getGlobalScore() {
+		return globalScore;
+	}
+
+	/**
+	 * Setter of the property <tt>globalScore</tt>
+	 * @param globalScore  The globalScore to set.
+	 * @uml.property  name="globalScore"
+	 */
+	public void setGlobalScore(int globalScore) {
+		this.globalScore = globalScore;
+	}
 
 }

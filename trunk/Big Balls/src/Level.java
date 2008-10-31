@@ -137,13 +137,6 @@ public class Level implements Observer {
 
 	/**
 	 */
-	public boolean isFinished(){
-		return false;	
-	}
-
-
-	/**
-	 */
 	public void update(){
 	}
 

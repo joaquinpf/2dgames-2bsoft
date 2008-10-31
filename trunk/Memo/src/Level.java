@@ -100,13 +100,6 @@ public class Level implements Observer{
 
 	/**
 	 */
-	public boolean isFinished(){
-		return false;	
-	}
-
-
-	/**
-	 */
 	public void update(){
 	}
 
@@ -139,14 +132,14 @@ public class Level implements Observer{
 	/**
 	 * @uml.property  name="table" multiplicity="(0 -1)" dimension="2"
 	 */
-	private boolean[][] tables;
+	private boolean[][] table;
 	/**
 	 * Getter of the property <tt>table</tt>
 	 * @return  Returns the tables.
 	 * @uml.property  name="table"
 	 */
 	public boolean[][] getTable() {
-		return tables;
+		return table;
 	}
 
 	/**
@@ -154,8 +147,8 @@ public class Level implements Observer{
 	 * @param table  The tables to set.
 	 * @uml.property  name="table"
 	 */
-	public void setTable(boolean[][] table) {
-		tables = table;
+	public void setTable(boolean[][] _table) {
+		table = _table;
 	}
 
 	/**
@@ -178,29 +171,6 @@ public class Level implements Observer{
 	 */
 	public void setReamainingCards(int reamainingCards) {
 		this.reamainingCards = reamainingCards;
-	}
-
-	/**
-	 * @uml.property  name="card"
-	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="level:Card"
-	 */
-	private Collection card;
-	/**
-	 * Getter of the property <tt>card</tt>
-	 * @return  Returns the card.
-	 * @uml.property  name="card"
-	 */
-	public Collection getCard() {
-		return card;
-	}
-
-	/**
-	 * Setter of the property <tt>card</tt>
-	 * @param card  The card to set.
-	 * @uml.property  name="card"
-	 */
-	public void setCard(Collection card) {
-		this.card = card;
 	}
 
 	/**

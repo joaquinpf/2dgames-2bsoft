@@ -28,7 +28,7 @@ public class LevelGenerator {
 
 	/**
 	 */
-	public void LevelGenerator(String _route){
+	public LevelGenerator(String _route){
 	}
 
 
