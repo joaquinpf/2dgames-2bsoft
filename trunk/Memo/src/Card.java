@@ -62,10 +62,10 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 		this.turned = turned;
 	}
 
-		
-		/**
-		 */
-		public void turnCard(){
-		}
+
+	/**
+	 */
+	public void turnCard(){
+	}
 
 }

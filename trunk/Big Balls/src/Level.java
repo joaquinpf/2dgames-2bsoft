@@ -14,52 +14,6 @@ import java.util.Collection;
 public class Level implements Observer {
 
 	/**
-	 * @uml.property  name="totalTime"
-	 */
-	private int totalTime;
-
-	/**
-	 * Getter of the property <tt>totalTime</tt>
-	 * @return  Returns the totalTime.
-	 * @uml.property  name="totalTime"
-	 */
-	public int getTotalTime() {
-		return totalTime;
-	}
-
-	/**
-	 * Setter of the property <tt>totalTime</tt>
-	 * @param totalTime  The totalTime to set.
-	 * @uml.property  name="totalTime"
-	 */
-	public void setTotalTime(int totalTime) {
-		this.totalTime = totalTime;
-	}
-
-	/**
-	 * @uml.property  name="remainingTime"
-	 */
-	private int remainingTime;
-
-	/**
-	 * Getter of the property <tt>remainingTime</tt>
-	 * @return  Returns the remainingTime.
-	 * @uml.property  name="remainingTime"
-	 */
-	public int getRemainingTime() {
-		return remainingTime;
-	}
-
-	/**
-	 * Setter of the property <tt>remainingTime</tt>
-	 * @param remainingTime  The remainingTime to set.
-	 * @uml.property  name="remainingTime"
-	 */
-	public void setRemainingTime(int remainingTime) {
-		this.remainingTime = remainingTime;
-	}
-
-	/**
 	 * @uml.property  name="levelComplete"
 	 */
 	private boolean levelComplete = false;

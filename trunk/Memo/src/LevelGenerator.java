@@ -25,17 +25,17 @@ public class LevelGenerator {
 		this.configRoute = configRoute;
 	}
 
-		
-		/**
-		 */
-		public void LevelGenerator(String _route){
-		}
 
-			
-			/**
-			 */
-			public Level generateLevel(int levelNumber){
-				return null;
-			}
+	/**
+	 */
+	public void LevelGenerator(String _route){
+	}
+
+
+	/**
+	 */
+	public Level generateLevel(int levelNumber){
+		return null;
+	}
 
 }

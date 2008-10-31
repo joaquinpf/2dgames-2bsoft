@@ -50,29 +50,29 @@ public class Clock extends Observable {
 		this.totalTime = totalTime;
 	}
 
-		
-		/**
-		 */
-		public boolean isFinished(){
-			return false;	
-		}
 
-			
-			/**
-			 */
-			public void start(){
-			}
+	/**
+	 */
+	public boolean isFinished(){
+		return false;	
+	}
 
-				
-				/**
-				 */
-				public void stop(){
-				}
 
-					
-					/**
-					 */
-					private void run(){
-					}
+	/**
+	 */
+	public void start(){
+	}
+
+
+	/**
+	 */
+	public void stop(){
+	}
+
+
+	/**
+	 */
+	private void run(){
+	}
 
 }

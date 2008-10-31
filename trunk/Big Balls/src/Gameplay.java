@@ -68,27 +68,22 @@ public class Gameplay extends GameObject {
 		this.lives = lives;
 	}
 
-	/**
-	 * @uml.property  name="GlobalScore"
-	 */
-	private int globalScore = 0;
-
-	/**
+	/** 
 	 * Getter of the property <tt>GlobalScore</tt>
 	 * @return  Returns the globalScore.
-	 * @uml.property  name="GlobalScore"
+	 * @uml.property  name="globalScore"
 	 */
 	public int getGlobalScore() {
-		return globalScore;
+		return score;
 	}
 
-	/**
+	/** 
 	 * Setter of the property <tt>GlobalScore</tt>
 	 * @param GlobalScore  The globalScore to set.
-	 * @uml.property  name="GlobalScore"
+	 * @uml.property  name="globalScore"
 	 */
 	public void setGlobalScore(int globalScore) {
-		this.globalScore = globalScore;
+		score = globalScore;
 	}
 
 	/**
@@ -161,5 +156,10 @@ public class Gameplay extends GameObject {
 	public void setLevelGenerator(LevelGenerator levelGenerator) {
 		this.levelGenerator = levelGenerator;
 	}
+
+	/**
+	 * @uml.property  name="globalScore"
+	 */
+	private int score = 0;
 
 }

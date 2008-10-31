@@ -84,4 +84,27 @@ public class Gameplay extends GameObject {
 				// TODO Auto-generated constructor stub
 			 }
 
+		/**
+		 * @uml.property  name="globalScore"
+		 */
+		private int globalScore;
+
+		/**
+		 * Getter of the property <tt>globalScore</tt>
+		 * @return  Returns the globalScore.
+		 * @uml.property  name="globalScore"
+		 */
+		public int getGlobalScore() {
+			return globalScore;
+		}
+
+		/**
+		 * Setter of the property <tt>globalScore</tt>
+		 * @param globalScore  The globalScore to set.
+		 * @uml.property  name="globalScore"
+		 */
+		public void setGlobalScore(int globalScore) {
+			this.globalScore = globalScore;
+		}
+
 }
