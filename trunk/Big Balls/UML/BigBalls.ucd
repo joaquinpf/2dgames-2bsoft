@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="BigBalls" size="1034,2942" id="" metadata="uml2-1.0" initialized="true" scrolledX="-63" scrolledY="620" tag="1000" key="32303037303533312D31303030204269672042616C6C732F4B6972657461">
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1" name="Level" location="435,670" size="171,211" id="/Level" runTimeClassModel="update(Ljava.util.Observable;Ljava.lang.Object;),levelNumber,clock,PartialScore,levelComplete,addBall(LBall;),update(),orderedBalls,playfield">
-    <children xsi:type="editmodel:CompartmentEditModel" size="148,108">
-      <children xsi:type="editmodel:AttributeEditModel" name="PartialScore" id="/Level#PartialScore"/>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="BigBalls" size="1034,2942" id="" metadata="uml2-1.0" initialized="true" scrolledX="-63" scrolledY="495" tag="1000" key="32303037303533312D31303030204269672042616C6C732F4B6972657461">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="Level" location="446,675" size="171,265" id="/Level" runTimeClassModel="update(Ljava.util.Observable;Ljava.lang.Object;),initResources(),Level(Lcom.golden.gamedev.GameEngine;),levelNumber,clock,update(J),levelComplete,update(),addBall(LBall;),orderedBalls,render(Ljava.awt.Graphics2D;),playfield">
+    <children xsi:type="editmodel:CompartmentEditModel" size="148,90">
       <children xsi:type="editmodel:AttributeEditModel" name="levelComplete" id="/Level#levelComplete"/>
       <children xsi:type="editmodel:AttributeEditModel" name="levelNumber" id="/Level#levelNumber"/>
       <children xsi:type="editmodel:AttributeEditModel" name="orderedBalls" location="21,80" id="/Level#orderedBalls"/>
       <children xsi:type="editmodel:AttributeEditModel" name="playfield" id="/Level#playfield"/>
       <children xsi:type="editmodel:AttributeEditModel" name="clock" id="/Level#clock"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="65,54">
+    <children xsi:type="editmodel:CompartmentEditModel" size="96,126">
       <children xsi:type="editmodel:MethodEditModel" name="addBall" id="/Level#addBall(LBall;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="update" id="/Level#update()"/>
       <children xsi:type="editmodel:MethodEditModel" name="update" id="/Level#update(Ljava.util.Observable;Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="render" id="/Level#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="/Level#update(J)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/Level#initResources()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Level" location="8,259" id="/Level#Level(Lcom.golden.gamedev.GameEngine;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Ball@ball+/Level@level" source="//@children.0" target="//@children.3" targetEnd="//@children.0/@sourceConnections.0/@children.1" label="//@children.0/@sourceConnections.0/@children.2" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="level" location="171,201" id="/Ball@ball+/Level@level|/Level#level" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="level" location="171,255" id="/Ball@ball+/Level@level|/Level#level" attachSource="true"/>
       <children xsi:type="editmodel:AssociationEndEditModel" name="ball" location="10,0" id="/Ball@ball+/Level@level|/Ball#ball" multiplicityLabel="//@children.0/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.1/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - ball" location="767,957" size="26,14" anchorKind="LastPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="*" location="749,957" size="4,14" anchorKind="LastPart"/>
@@ -24,26 +27,31 @@
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="java.util/Observer&lt;-/Level" source="//@children.0" target="//@children.14" targetEnd="//@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="85,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="74,0" attachSource="true"/>
       <children xsi:type="editmodel:AssociationEndEditModel" location="49,95"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="com.golden.gamedev/GameObject&lt;-/Level" source="//@children.0" target="//@children.4" targetEnd="//@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,132" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="200,597"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="LevelGenerator" location="464,1230" size="141,103" id="/LevelGenerator" runTimeClassModel="LevelGenerator(Ljava.lang.String;),configRoute,generateLevel(I)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="111,18">
+  <children xsi:type="editmodel:ClassEditModel" name="LevelGenerator" location="464,1230" size="141,121" id="/LevelGenerator" runTimeClassModel="LevelGenerator(Ljava.lang.String;),configRoute,currentLevel,generateLevel(Lcom.golden.gamedev.GameEngine;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="111,36">
       <children xsi:type="editmodel:AttributeEditModel" name="configRoute" id="/LevelGenerator#configRoute"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="currentLevel" id="/LevelGenerator#currentLevel"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="105,36">
       <children xsi:type="editmodel:MethodEditModel" name="LevelGenerator" id="/LevelGenerator#LevelGenerator(Ljava.lang.String;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="generateLevel" id="/LevelGenerator#generateLevel(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="generateLevel" id="/LevelGenerator#generateLevel(Lcom.golden.gamedev.GameEngine;)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/LevelGenerator@levelGenerator+/Gameplay@gameplay" source="//@children.1" target="//@children.5" targetEnd="//@children.1/@sourceConnections.0/@children.1" label="//@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="levelGenerator" location="0,51" id="/LevelGenerator@levelGenerator+/Gameplay@gameplay|/LevelGenerator#levelGenerator" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - levelGenerator" location="376,1260" size="81,14" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="439,1288" size="18,14" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="levelGenerator" location="69,0" id="/LevelGenerator@levelGenerator+/Gameplay@gameplay|/LevelGenerator#levelGenerator" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - levelGenerator" location="540,1209" size="81,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="508,1209" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="gameplay" location="135,111" id="/LevelGenerator@levelGenerator+/Gameplay@gameplay|/Gameplay#gameplay"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="gameplay" location="69,175" id="/LevelGenerator@levelGenerator+/Gameplay@gameplay|/Gameplay#gameplay"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:IndicationEditModel" autoLocated="true" source="//@children.1" target="//@children.11" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
@@ -52,7 +60,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="Sprite" location="735,1365" size="221,1557" id="com.golden.gamedev.object/Sprite" runTimeClassModel="setActive(Z),moveTo(JDDD),horizontalSpeed,getCenterY(),update(J),moveY(D),bounce,getVerticalVelocity(),setImmutable(Z),setLocation(DD),setHorizontalSpeed(D),getHeight(),height,setX(D),setFixedposition(Z),verticalSpeed,setY(D),addHorizontalSpeed(JDD),getHorizontalSpeed(),getDistance(Lcom.golden.gamedev.object.Sprite;),setOnground(Z),width,getID(),Sprite(Ljava.awt.image.BufferedImage;),image,getOldY(),addVerticalSpeed(JDD),defaultCollisionShape,setBounce(D),Sprite(DD),isImmutable(),setBackground(Lcom.golden.gamedev.object.Background;),isOnScreen(),setID(I),setDataID(Ljava.lang.Object;),isActive(),active,fixedposition,getImage(),oldY,oldX,isOnScreen(IIII),setVerticalSpeed(D),dataID,moveX(D),getFixedposition(),getHorizontalVelocity(),correctWind(D),render(Ljava.awt.Graphics2D;),onground,forceX(D),getOldX(),setVerticalVelocity(D),getVerticalSpeed(),forceY(D),correctGravity(D),setSpeed(DD),move(DD),render(Ljava.awt.Graphics2D;II),Sprite(),immutable,getWidth(),getOnground(),Sprite(Ljava.awt.image.BufferedImage;DD),setImage(Ljava.awt.image.BufferedImage;),setHorizontalVelocity(D),layer,setMovement(DD),getDataID(),getScreenY(),getX(),getBounce(),getLayer(),setLayer(I),background,getDefaultCollisionShape(),getY(),getScreenX(),getBackground(),updateMovement(J),y,getCenterX(),x">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="Sprite" location="735,1365" size="221,1557" id="com.golden.gamedev.object/Sprite" runTimeClassModel="setActive(Z),moveTo(JDDD),horizontalSpeed,getCenterY(),update(J),moveY(D),bounce,getVerticalVelocity(),setImmutable(Z),setLocation(DD),getHeight(),height,setHorizontalSpeed(D),setX(D),setFixedposition(Z),verticalSpeed,setY(D),addHorizontalSpeed(JDD),getHorizontalSpeed(),getDistance(Lcom.golden.gamedev.object.Sprite;),setOnground(Z),width,getID(),Sprite(Ljava.awt.image.BufferedImage;),image,getOldY(),defaultCollisionShape,addVerticalSpeed(JDD),setBounce(D),Sprite(DD),isImmutable(),setBackground(Lcom.golden.gamedev.object.Background;),isOnScreen(),setDataID(Ljava.lang.Object;),isActive(),setID(I),active,fixedposition,getImage(),oldY,oldX,isOnScreen(IIII),dataID,setVerticalSpeed(D),moveX(D),getHorizontalVelocity(),getFixedposition(),correctWind(D),render(Ljava.awt.Graphics2D;),onground,forceX(D),getOldX(),setVerticalVelocity(D),getVerticalSpeed(),correctGravity(D),forceY(D),setSpeed(DD),render(Ljava.awt.Graphics2D;II),move(DD),Sprite(),immutable,getWidth(),getOnground(),Sprite(Ljava.awt.image.BufferedImage;DD),setImage(Ljava.awt.image.BufferedImage;),layer,setHorizontalVelocity(D),setMovement(DD),getDataID(),getScreenY(),getX(),getBounce(),getLayer(),getDefaultCollisionShape(),background,setLayer(I),getY(),getBackground(),getScreenX(),updateMovement(J),y,x,getCenterX()">
     <children xsi:type="editmodel:CompartmentEditModel" size="198,324">
       <children xsi:type="editmodel:AttributeEditModel" name="active" id="com.golden.gamedev.object/Sprite#active"/>
       <children xsi:type="editmodel:AttributeEditModel" name="background" id="com.golden.gamedev.object/Sprite#background"/>
@@ -143,7 +151,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="Ball" location="750,978" size="129,193" id="/Ball" runTimeClassModel="drawString(Ljava.lang.String;Ljava.awt.image.BufferedImage;),rezise(Ljava.awt.image.BufferedImage;D),Ball(ILjava.lang.String;Ljava.awt.image.BufferedImage;D),description,value,spinVelocity,update(J),rotate(I)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="Ball" location="750,978" size="129,193" id="/Ball" runTimeClassModel="rezise(Ljava.awt.image.BufferedImage;D),drawString(Ljava.lang.String;Ljava.awt.image.BufferedImage;),Ball(ILjava.lang.String;Ljava.awt.image.BufferedImage;D),description,value,spinVelocity,update(J),rotate(I)">
     <children xsi:type="editmodel:CompartmentEditModel" size="106,54">
       <children xsi:type="editmodel:AttributeEditModel" name="description" location="10,24" id="/Ball#description"/>
       <children xsi:type="editmodel:AttributeEditModel" name="spinVelocity" id="/Ball#spinVelocity"/>
@@ -163,7 +171,7 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0 //@children.12/@sourceConnections.0 //@children.13/@sourceConnections.0" name="GameObject" location="91,210" size="200,909" id="com.golden.gamedev/GameObject" runTimeClassModel="keyPressed(I),fontManager,update(J),checkPosMouse(Lcom.golden.gamedev.object.Sprite;Z),getFPS(),render(Ljava.awt.Graphics2D;),GameObject(Lcom.golden.gamedev.GameEngine;),setFPS(I),getImages(Ljava.lang.String;IIZII),grabEngines(),hideCursor(),getHeight(),bsTimer,getRandom(II),playSound(Ljava.lang.String;),click(),takeScreenShot(Ljava.io.File;),bsMusic,getMouseX(),keyDown(I),getWidth(),getImages(Ljava.lang.String;IILjava.lang.String;I),bsInput,bsIO,setMaskColor(Ljava.awt.Color;),playMusic(Ljava.lang.String;),showCursor(),bsSound,drawFPS(Ljava.awt.Graphics2D;II),getImages(Ljava.lang.String;II),start(),parent,takeScreenShot(),getImage(Ljava.lang.String;Z),getCurrentFPS(),rightClick(),getImages(Ljava.lang.String;IIII),getMouseY(),getImage(Ljava.lang.String;),finish(),finish,initResources(),bsLoader,getImages(Ljava.lang.String;IIZLjava.lang.String;I),bsGraphics,checkPosMouse(IIII),getImages(Ljava.lang.String;IIZ)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.0 //@children.13/@sourceConnections.0 //@children.0/@sourceConnections.2" name="GameObject" location="91,210" size="200,909" id="com.golden.gamedev/GameObject" runTimeClassModel="keyPressed(I),fontManager,checkPosMouse(Lcom.golden.gamedev.object.Sprite;Z),getFPS(),update(J),render(Ljava.awt.Graphics2D;),GameObject(Lcom.golden.gamedev.GameEngine;),getImages(Ljava.lang.String;IIZII),setFPS(I),grabEngines(),hideCursor(),getHeight(),bsTimer,getRandom(II),playSound(Ljava.lang.String;),click(),takeScreenShot(Ljava.io.File;),bsMusic,getMouseX(),getWidth(),keyDown(I),getImages(Ljava.lang.String;IILjava.lang.String;I),bsInput,bsIO,setMaskColor(Ljava.awt.Color;),playMusic(Ljava.lang.String;),bsSound,showCursor(),drawFPS(Ljava.awt.Graphics2D;II),getImages(Ljava.lang.String;II),start(),parent,takeScreenShot(),getImage(Ljava.lang.String;Z),getCurrentFPS(),rightClick(),getImages(Ljava.lang.String;IIII),getMouseY(),getImage(Ljava.lang.String;),finish(),finish,initResources(),bsLoader,getImages(Ljava.lang.String;IIZLjava.lang.String;I),bsGraphics,checkPosMouse(IIII),getImages(Ljava.lang.String;IIZ)">
     <children xsi:type="editmodel:CompartmentEditModel" size="177,180">
       <children xsi:type="editmodel:AttributeEditModel" name="bsGraphics" id="com.golden.gamedev/GameObject#bsGraphics"/>
       <children xsi:type="editmodel:AttributeEditModel" name="bsIO" id="com.golden.gamedev/GameObject#bsIO"/>
@@ -218,28 +226,27 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="Gameplay" location="123,1170" size="135,175" id="/Gameplay" runTimeClassModel="globalScore,initResources(),Gameplay(Lcom.golden.gamedev.GameEngine;),lives,currentLevel,update(J),render(Ljava.awt.Graphics2D;)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="112,54">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="Gameplay" location="464,1014" size="139,175" id="/Gameplay" runTimeClassModel="globalScore,getNextLevel(),addPoints(I),Gameplay(Lcom.golden.gamedev.GameEngine;),lives,currentLevel,parent">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,72">
       <children xsi:type="editmodel:AttributeEditModel" name="currentLevel" id="/Gameplay#currentLevel"/>
       <children xsi:type="editmodel:AttributeEditModel" name="lives" id="/Gameplay#lives"/>
       <children xsi:type="editmodel:AttributeEditModel" name="globalScore" id="/Gameplay#globalScore"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="parent" id="/Gameplay#parent"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="96,72">
+    <children xsi:type="editmodel:CompartmentEditModel" size="93,54">
       <children xsi:type="editmodel:MethodEditModel" name="Gameplay" id="/Gameplay#Gameplay(Lcom.golden.gamedev.GameEngine;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/Gameplay#initResources()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="render" id="/Gameplay#render(Ljava.awt.Graphics2D;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/Gameplay#update(J)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNextLevel" id="/Gameplay#getNextLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPoints" id="/Gameplay#addPoints(I)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="com.golden.gamedev/GameObject&lt;-/Gameplay" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="67,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="99,909"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Level@level+/Gameplay@gameplay" source="//@children.5" target="//@children.0" targetEnd="//@children.5/@sourceConnections.1/@children.1" label="//@children.5/@sourceConnections.1/@children.2" sourceEnd="//@children.5/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="gameplay" location="135,10" id="/Level@level+/Gameplay@gameplay|/Gameplay#gameplay" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="level" location="10,211" id="/Level@level+/Gameplay@gameplay|/Level#level" multiplicityLabel="//@children.5/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.1/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - level" location="452,888" size="32,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="420,888" size="18,14" anchorKind="LastPart"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Level@level+/Gameplay@gameplay" source="//@children.5" target="//@children.0" targetEnd="//@children.5/@sourceConnections.0/@children.1" label="//@children.5/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="gameplay" location="69,0" id="/Level@level+/Gameplay@gameplay|/Gameplay#gameplay" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.0/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - gameplay" location="540,993" size="56,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="508,993" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="level" location="87,265" id="/Level@level+/Gameplay@gameplay|/Level#level" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="- level" location="540,947" size="29,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="508,947" size="18,14" anchorKind="LastPart"/>
       </children>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
@@ -355,7 +362,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Clock" location="315,369" size="127,157" id="/Clock" runTimeClassModel="isFinished(),stop(),run(),start(),remainingTime,totalTime">
+  <children xsi:type="editmodel:ClassEditModel" name="Clock" location="309,345" size="127,157" id="/Clock" runTimeClassModel="isFinished(),stop(),run(),start(),remainingTime,totalTime">
     <children xsi:type="editmodel:CompartmentEditModel" size="104,36">
       <children xsi:type="editmodel:AttributeEditModel" name="remainingTime" id="/Clock#remainingTime"/>
       <children xsi:type="editmodel:AttributeEditModel" name="totalTime" id="/Clock#totalTime"/>
@@ -368,12 +375,12 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="java.util/Observable&lt;-/Clock" source="//@children.15" target="//@children.16" targetEnd="//@children.15/@sourceConnections.0/@children.1" sourceEnd="//@children.15/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="120,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="63,0" attachSource="true"/>
       <children xsi:type="editmodel:AssociationEndEditModel" location="71,243"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0" name="Observable" location="295,60" size="134,243" id="java.util/Observable" runTimeClassModel="hasChanged(),countObservers(),Observable(),setChanged(),addObserver(Ljava.util.Observer;),deleteObservers(),notifyObservers(),clearChanged(),deleteObserver(Ljava.util.Observer;),notifyObservers(Ljava.lang.Object;)">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0" name="Observable" location="295,60" size="134,243" id="java.util/Observable" runTimeClassModel="hasChanged(),countObservers(),Observable(),setChanged(),notifyObservers(),deleteObservers(),addObserver(Ljava.util.Observer;),deleteObserver(Ljava.util.Observer;),clearChanged(),notifyObservers(Ljava.lang.Object;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="111,180">
       <children xsi:type="editmodel:MethodEditModel" name="Observable" id="java.util/Observable#Observable()"/>

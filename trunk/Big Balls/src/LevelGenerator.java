@@ -1,3 +1,5 @@
+import com.golden.gamedev.GameEngine;
+
 /**
  * 
  */
@@ -6,7 +8,7 @@
 public class LevelGenerator {
 
 
-	public Level generateLevel(int levelNumber){
+	public Level generateLevel(GameEngine parent){
 
 		return null;
 	}
@@ -38,6 +40,29 @@ public class LevelGenerator {
 	/**
 	 */
 	public LevelGenerator(String route){
+	}
+
+	/**
+	 * @uml.property  name="currentLevel"
+	 */
+	private int currentLevel = 0;
+
+	/**
+	 * Getter of the property <tt>currentLevel</tt>
+	 * @return  Returns the currentLevel.
+	 * @uml.property  name="currentLevel"
+	 */
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+
+	/**
+	 * Setter of the property <tt>currentLevel</tt>
+	 * @param currentLevel  The currentLevel to set.
+	 * @uml.property  name="currentLevel"
+	 */
+	public void setCurrentLevel(int currentLevel) {
+		this.currentLevel = currentLevel;
 	}
 
 }

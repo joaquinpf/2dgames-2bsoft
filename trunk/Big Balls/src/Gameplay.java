@@ -1,5 +1,3 @@
-import java.awt.Graphics2D;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 
@@ -8,42 +6,15 @@ import com.golden.gamedev.GameObject;
  */
 
 
-public class Gameplay extends GameObject {
+public class Gameplay {
 
 	/**
 	 * @param parent
 	 */
-	public Gameplay(GameEngine parent) {
-		super(parent);
+	public Gameplay(GameEngine _parent) {
 		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see com.golden.gamedev.GameObject#initResources()
-	 */
-	@Override
-	public void initResources() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
-	 */
-	@Override
-	public void render(Graphics2D arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see com.golden.gamedev.GameObject#update(long)
-	 */
-	@Override
-	public void update(long arg0) {
-		// TODO Auto-generated method stub
-
-	}
 
 	/**
 	 * @uml.property  name="lives"
@@ -161,5 +132,42 @@ public class Gameplay extends GameObject {
 	 * @uml.property  name="globalScore"
 	 */
 	private int score = 0;
+
+		
+		/**
+		 */
+		public GameObject getNextLevel(){
+			return null;
+		}
+
+
+		/**
+		 * @uml.property  name="parent"
+		 */
+		private GameEngine parent;
+
+		/**
+		 * Getter of the property <tt>parent</tt>
+		 * @return  Returns the parent.
+		 * @uml.property  name="parent"
+		 */
+		public GameEngine getParent() {
+			return parent;
+		}
+
+		/**
+		 * Setter of the property <tt>parent</tt>
+		 * @param parent  The parent to set.
+		 * @uml.property  name="parent"
+		 */
+		public void setParent(GameEngine parent) {
+			this.parent = parent;
+		}
+
+			
+			/**
+			 */
+			public void addPoints(int points){
+			}
 
 }

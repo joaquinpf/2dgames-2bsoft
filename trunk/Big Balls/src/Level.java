@@ -1,7 +1,10 @@
 
 
+import com.golden.gamedev.GameEngine;
+import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.PlayField;
 
+import java.awt.Graphics2D;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -11,7 +14,15 @@ import java.util.Collection;
  */
 
 
-public class Level implements Observer {
+public class Level extends GameObject implements Observer {
+
+	/**
+	 * @param parent
+	 */
+	public Level(GameEngine parent) {
+		super(parent);
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @uml.property  name="levelComplete"
@@ -34,29 +45,6 @@ public class Level implements Observer {
 	 */
 	public void setLevelComplete(boolean levelComplete) {
 		this.levelComplete = levelComplete;
-	}
-
-	/**
-	 * @uml.property  name="PartialScore"
-	 */
-	private int partialScore;
-
-	/**
-	 * Getter of the property <tt>PartialScore</tt>
-	 * @return  Returns the partialScore.
-	 * @uml.property  name="PartialScore"
-	 */
-	public int getPartialScore() {
-		return partialScore;
-	}
-
-	/**
-	 * Setter of the property <tt>PartialScore</tt>
-	 * @param PartialScore  The partialScore to set.
-	 * @uml.property  name="PartialScore"
-	 */
-	public void setPartialScore(int partialScore) {
-		this.partialScore = partialScore;
 	}
 
 	/**
@@ -193,6 +181,57 @@ public class Level implements Observer {
 	 */
 	public void setClock(Clock clock) {
 		this.clock = clock;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.golden.gamedev.GameObject#initResources()
+	 */
+	@Override
+	public void initResources() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
+	 */
+	@Override
+	public void render(Graphics2D arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.golden.gamedev.GameObject#update(long)
+	 */
+	@Override
+	public void update(long arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @uml.property  name="gameplay"
+	 * @uml.associationEnd  inverse="level:Gameplay"
+	 */
+	private Gameplay gameplay;
+
+	/**
+	 * Getter of the property <tt>gameplay</tt>
+	 * @return  Returns the gameplay.
+	 * @uml.property  name="gameplay"
+	 */
+	public Gameplay getGameplay() {
+		return gameplay;
+	}
+
+	/**
+	 * Setter of the property <tt>gameplay</tt>
+	 * @param gameplay  The gameplay to set.
+	 * @uml.property  name="gameplay"
+	 */
+	public void setGameplay(Gameplay gameplay) {
+		this.gameplay = gameplay;
 	}
 
 }
