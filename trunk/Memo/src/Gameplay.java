@@ -56,14 +56,21 @@ public class Gameplay {
 
 
 	/**
+	 * Pasa al proximo nivel
+	 * @return  Returns the GameObject.
+	 * @uml.property  name="levelGenerator"
 	 */
 	public GameObject getNextLevel(){
-		return null;
+		return this.levelGenerator.generateLevel(this.getParent());
+	
 	}
 
 	/**
 	 */
 	public Gameplay(GameEngine _parent){
+		//Poner la ruta
+	//	 LevelGenerator levelGenerator = new LevelGenerator(String_route);
+		
 	}
 
 	/**
@@ -91,8 +98,12 @@ public class Gameplay {
 
 
 	/**
+	 * Suma los puntos obtenidos al puntaje global
+	 * @uml.property  name="globalScore"
 	 */
 	public void addPoints(int points){
+		this.globalScore = this.globalScore + points;
+		
 	}
 
 	/**
