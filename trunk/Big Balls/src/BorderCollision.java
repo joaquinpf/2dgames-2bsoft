@@ -1,20 +1,50 @@
 import com.golden.gamedev.object.Sprite;
-import com.golden.gamedev.object.collision.BasicCollisionGroup;
+import com.golden.gamedev.object.collision.CollisionBounds;
+import com.golden.gamedev.object.Background;
 
 /**
- * 
+ * Clase que controla la colisión entre los sprites y el borde de la ventana.
  */
+public class BorderCollision extends CollisionBounds {
+     /**
+      * Variable para contener una instnacia local del background del juego.
+      */
+    private Background background;
 
+    /**
+     * Constructor de la clase.
+     * @param b : se pasa el componente Background del juego
+     */
+    public BorderCollision(final Background b) {
+        super(b);
+        this.background = b;
+    }
 
-public class BorderCollision extends BasicCollisionGroup {
-
-	/* (non-Javadoc)
-	 * @see com.golden.gamedev.object.collision.BasicCollisionGroup#collided(com.golden.gamedev.object.Sprite, com.golden.gamedev.object.Sprite)
-	 */
-	@Override
-	public void collided(Sprite arg0, Sprite arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
+    /**
+     * Método para calcular la nueva velocidad de los sprites cuando estos
+     * colisionan contra el borde.
+     * Si el sprite choca contra el borde superior o el inferior invierte
+     * su velocidad vertical.
+     * Si el sprite choca contra el borde izquierdo o el derecho invierte
+     * su velocidad horizontal.
+     * Se utilizan los métodos forceX y forceY para evitar situaciones en las 
+     * que la bola se va de la pantalla.
+     *  @param s1 : sprite que colisiona contra el borde de la ventana del juego
+     */
+    @Override
+    public final void collided(final Sprite s1) {
+        if (isCollisionSide(CollisionBounds.LEFT_COLLISION)) {
+            s1.setHorizontalSpeed(-s1.getHorizontalSpeed());
+            s1.forceX(1);
+        } else if (isCollisionSide(CollisionBounds.RIGHT_COLLISION)) {
+            s1.setHorizontalSpeed(-s1.getHorizontalSpeed());
+            s1.forceX(background.getWidth() - s1.getWidth());
+        } else if (isCollisionSide(CollisionBounds.BOTTOM_COLLISION)) {
+            s1.setVerticalSpeed(-s1.getVerticalSpeed());
+            s1.forceY(background.getHeight() - s1.getHeight());
+        } else {
+            s1.setVerticalSpeed(-s1.getVerticalSpeed());
+            s1.forceY(1);
+        }
+    }
 }
