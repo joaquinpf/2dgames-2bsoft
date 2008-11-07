@@ -13,8 +13,8 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	 */
 	private String value = "";
 
-public Card(){
-		
+	public Card(){
+
 	}
 	/**
 	 * Getter of the property <tt>value</tt>
@@ -40,9 +40,8 @@ public Card(){
 	 * @uml.property  name="value"
 	 */	
 	public int compareTo(Card o) {
-		// TODO Auto-generated method stub
-		if(o.value==this.getValue())
-		return 0;
+		if (o.value == this.getValue())
+			return 0;
 	return 1;
 	}
 
@@ -78,21 +77,16 @@ public Card(){
 		this.turned = this.isTurned();
 		if (this.turned)
 		{
-			//add 1 to next image
 			int nextFrame = getFrame() + 1;
-		
-			//image index will always be lower than ROTATION_IMAGES
 			nextFrame = nextFrame % (getFinishAnimationFrame() + 1);
 			setFrame(nextFrame);
 		}
 		else
 		{
 			int nextFrame = getFrame() - 1;
-			//image index will neve be lower than zero
 			if (nextFrame < 0)
 			{
-				//Le puse 10 pero seria el total de frames.
-				nextFrame = 10 + (nextFrame % (getFinishAnimationFrame() + 1));
+				nextFrame = 7 + (nextFrame % (getFinishAnimationFrame() + 1));
 				setFrame(nextFrame);
 			}
 	    }
@@ -101,13 +95,14 @@ public Card(){
 	/**
 	 * Duplica las cartas
 	 * @return  Returns the Card.
-	 * @uml.property  name="turned"
-	 * @uml.property  name="value"
 	 */
-	public Card clone(){
+	public Card clone() {
 		Card a = new Card();
 		a.setValue(this.getValue());
 		a.setTurned(this.isTurned());
+	    a.setDirection(this.getDirection());
+	    a.setImages(this.getImages());
+	    a.setStatus(this.getStatus());
 		return a;
 	}
 	
