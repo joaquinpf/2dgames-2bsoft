@@ -103,6 +103,7 @@ public class Gameplay {
 	 */
 	public void addPoints(int points){
 		this.globalScore = this.globalScore + points;
+		this.setGlobalScore(globalScore);
 		
 	}
 
