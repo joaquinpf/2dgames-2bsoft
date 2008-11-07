@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT levels ((level+))>
+<!ATTLIST levels
+	count CDATA #REQUIRED
+>
+<!ELEMENT level EMPTY>
+<!ATTLIST level
+	id CDATA #REQUIRED
+	background CDATA #REQUIRED
+	balls CDATA #REQUIRED
+	max CDATA #REQUIRED
+	min CDATA #REQUIRED
+	points CDATA #REQUIRED
+	time CDATA #REQUIRED
+>
+<!ELEMENT game ((name, config))>
+<!ELEMENT config ((levels, balls))>
+<!ELEMENT balls ((ball+))>
+<!ELEMENT ball EMPTY>
+<!ATTLIST ball
+	image CDATA #REQUIRED
+>
