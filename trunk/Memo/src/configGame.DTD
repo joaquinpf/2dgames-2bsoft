@@ -1,0 +1,21 @@
+<!ELEMENT game (name?,config?)?>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT config (levels?,cards?)>
+<!ELEMENT levels (level+)>	
+<!ATTLIST levels count CDATA #REQUIRED>
+<!ELEMENT level EMPTY>	
+<!ATTLIST level ID CDATA #REQUIRED>
+<!ATTLIST level time CDATA #REQUIRED>
+<!ATTLIST level pairs CDATA #REQUIRED>
+<!ATTLIST level background CDATA #REQUIRED>
+<!ELEMENT cards (card+)>	
+<!ATTLIST cards count CDATA #REQUIRED>
+<!ELEMENT card EMPTY>	
+<!ATTLIST card value CDATA #REQUIRED>
+<!ATTLIST card image CDATA #REQUIRED> 
+
+
+
+
+      
+

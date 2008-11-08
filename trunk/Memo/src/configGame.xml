@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE game SYSTEM "configGame.DTD">
+<game>
+  <name> Memo </name>
+  <config>
+      <levels count="10">
+			<level ID="1" time="20" pairs="2" background="Resources/images/background.jpg"/>
+			<level ID="2" time="20" pairs="3" background="Resources/images/background.jpg"/>
+			<level ID="3" time="20" pairs="4" background="Resources/images/background.jpg"/>
+			<level ID="4" time="25" pairs="5" background="Resources/images/background.jpg"/>
+			<level ID="5" time="25" pairs="6" background="Resources/images/background.jpg"/>
+			<level ID="6" time="25" pairs="7" background="Resources/images/background.jpg"/>
+			<level ID="7" time="25" pairs="8" background="Resources/images/background.jpg"/>
+			<level ID="8" time="30" pairs="9" background="Resources/images/background.jpg"/>
+			<level ID="9" time="30" pairs="10" background="Resources/images/background.jpg"/>
+			<level ID="10" time="30" pairs="11" background="Resources/images/background.jpg"/>
+		</levels>
+		<cards count="12">
+			<card value="1" image="Resources/images/card_atom.jpg"/>
+			<card value="2" image="Resources/images/card_back.jpg"/>
+			<card value="3" image="Resources/images/card_cd.jpg"/>
+			<card value="4" image="Resources/images/card_dog.jpg"/>
+			<card value="5" image="Resources/images/card_drop.jpg"/>
+			<card value="6" image="Resources/images/card_flip.jpg"/>
+			<card value="7" image="Resources/images/card_keyb.jpg"/>
+			<card value="8" image="Resources/images/card_mouse.jpg"/>
+			<card value="9" image="Resources/images/card_network.jpg"/>
+			<card value="10" image="Resources/images/card_rabbit.jpg"/>
+			<card value="11" image="Resources/images/card_radia.jpg"/>
+		</cards>
+</config>
+</game>
