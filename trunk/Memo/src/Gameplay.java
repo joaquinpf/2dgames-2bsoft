@@ -68,9 +68,8 @@ public class Gameplay {
 	/**
 	 */
 	public Gameplay(GameEngine _parent){
-		//Poner la ruta
-	//	 LevelGenerator levelGenerator = new LevelGenerator(String_route);
-		
+		this.parent = _parent;
+		LevelGenerator levelGenerator = new LevelGenerator("Resources/configGame.xml");
 	}
 
 	/**
