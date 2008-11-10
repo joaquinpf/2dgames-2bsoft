@@ -1,4 +1,10 @@
+
+
 import com.golden.gamedev.object.Sprite;
+
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 /**
@@ -82,32 +88,59 @@ public class Ball extends Sprite {
 	 */
 	@Override
 	public void update(long elapsedTime) {
+		acumulatedRotation = acumulatedRotation + spinVelocity * elapsedTime / 100;
+		
 		super.update(elapsedTime);
 	}
 
+	public void render(Graphics2D g, int x, int y) {		
+		// aplicar la rotacion acumulada y setear la Image del Sprite //
+		this.setImage(rotate(acumulatedRotation, ballImageCopy));		
+		
+		super.render(g, x, y);
+	}
 			
+	
+	BufferedImage ballImageCopy;
+	double acumulatedRotation;
+	
 	/**
 	 */
-	public void rotate(int degrees){
+	public Ball(int value, String text, BufferedImage ballImage, double sizePercentage){ 
+		super();
+		
+		/* crear copia de la imagen ya escalada */
+		ballImageCopy = resize(ballImage, sizePercentage);
+		
+		// le seteo el texto luego (para que no quede distorsionado) //
+		this.drawString(text, ballImageCopy);		
+		
+		this.value = value;
+		this.description = text;
+	}
+	
+	private BufferedImage rotate(double angle, BufferedImage image){
+		AffineTransform tx = new AffineTransform();
+		tx.rotate(3.1419 / 180 * angle, image.getWidth() / 2, image.getHeight() / 2);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+	
+		return op.filter(image, null);
 	}
 	
 	/**
 	 */
-	public Ball(int value, String text, BufferedImage ballImage, double sizePercentage){
+	private BufferedImage resize(BufferedImage image, double sizePercentage){
+		AffineTransform tx = new AffineTransform();
+		tx.scale(sizePercentage, sizePercentage);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		return op.filter(image, null);
 	}
-
-		
-	/**
-	 */
-	private BufferedImage rezise(BufferedImage image, double sizePercentage){
-		return null;
-	}
-
 			
 	/**
 	 */
-	private BufferedImage drawString(String text, BufferedImage image){
-		return null;
+	private void drawString(String text, BufferedImage image){
+		Graphics2D g2d = image.createGraphics();
+		g2d.drawString(text, image.getWidth() / 2, image.getHeight() / 2);
+		g2d.dispose();
 	}
-
 }

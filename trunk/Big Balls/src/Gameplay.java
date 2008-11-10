@@ -12,7 +12,7 @@ public class Gameplay {
 	 * @param parent
 	 */
 	public Gameplay(GameEngine _parent) {
-		// TODO Auto-generated constructor stub
+		this.parent = _parent;
 	}
 
 
@@ -134,40 +134,41 @@ public class Gameplay {
 	private int score = 0;
 
 		
-		/**
-		 */
-		public GameObject getNextLevel(){
-			return null;
-		}
+	/**
+	 */
+	public GameObject getNextLevel(){
+		return levelGenerator.generateLevel(parent);
+	}
 
 
-		/**
-		 * @uml.property  name="parent"
-		 */
-		private GameEngine parent;
+	/**
+	 * @uml.property  name="parent"
+	 */
+	private GameEngine parent;
 
-		/**
-		 * Getter of the property <tt>parent</tt>
-		 * @return  Returns the parent.
-		 * @uml.property  name="parent"
-		 */
-		public GameEngine getParent() {
-			return parent;
-		}
+	/**
+	 * Getter of the property <tt>parent</tt>
+	 * @return  Returns the parent.
+	 * @uml.property  name="parent"
+	 */
+	public GameEngine getParent() {
+		return parent;
+	}
 
-		/**
-		 * Setter of the property <tt>parent</tt>
-		 * @param parent  The parent to set.
-		 * @uml.property  name="parent"
-		 */
-		public void setParent(GameEngine parent) {
-			this.parent = parent;
-		}
+	/**
+	 * Setter of the property <tt>parent</tt>
+	 * @param parent  The parent to set.
+	 * @uml.property  name="parent"
+	 */
+	public void setParent(GameEngine parent) {
+		this.parent = parent;
+	}
 
-			
-			/**
-			 */
-			public void addPoints(int points){
-			}
+		
+	/**
+	*/
+	public void addPoints(int points){
+		score = score + points;
+	}
 
 }
