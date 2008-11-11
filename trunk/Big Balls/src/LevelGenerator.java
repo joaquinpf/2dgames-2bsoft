@@ -1,4 +1,4 @@
-/**Classname LevelGenerator.
+	/**Classname LevelGenerator.
  *
  * Version information 1.0
  * 
@@ -27,10 +27,6 @@ import com.golden.gamedev.GameEngine;
  * pasado como parametro al constructor de la clase.
  */
 public class LevelGenerator {
-	/**Contiene todos los niveles del juego.
-	 */
-	private List<Level> listLevels;
-	
 	/**Ruta del archivo de configuracion. 
 	 */
 	private String configRoute = "";
@@ -39,11 +35,19 @@ public class LevelGenerator {
 	 */
 	private int currentLevel = 0;
 
+	/**Documento parseado que contiene las configuraciones de los niveles.
+	 */
+	private Document dom;
+	
+	/**Contiene los elementos del documento de configuracion.
+	 */
+	private Element docEle;
 
 	/**Constructor de la clase.
 	 * @param route Especifica la direccion del archivo de configuracion a ser
 	 * utilizado.
 	 */
+
 	public LevelGenerator(final String route) {
 		this.configRoute = route;
 		loadLevels(route);
@@ -55,11 +59,8 @@ public class LevelGenerator {
 	 * @return  Level Retorna el proximo nivel del juego.
 	 */
 	public final Level generateLevel(final GameEngine parent) {
-		if (currentLevel < listLevels.size()) {
-			currentLevel++;
-			return listLevels.get(currentLevel - 1);
-		}
-		return null;
+		currentLevel++;
+		return getLevel(currentLevel - 1);
 	}
 
 	/**Retorna la ruta del archivo de configuracion.
@@ -130,8 +131,7 @@ public class LevelGenerator {
 				try {
 					image = ImageIO.read(new File(
 							elementBall.getAttribute("image")));
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 		        ball = new Ball(value, "Ball " + i, image, sizePercentage);
@@ -143,12 +143,10 @@ public class LevelGenerator {
 	
     /**Construye los diferentes niveles del juego especificado en el documento
      * de configuracion.
-     * @param dom Documento parseado que contiene las configuraciones
-     * de los diferentes niveles.
+     * @param level Numero de nivel a retornar.
      * @return List Retorna una lista con los niveles ya configurados.
      */
-	private List<Level> getLevels(final Document dom) {
-        Element docEle;
+	private Level getLevel(final int level) {
         Element elementLevel;
 		NodeList nlLevel;
 		NodeList nlBalls;
@@ -160,37 +158,39 @@ public class LevelGenerator {
 		String time;
 		String background;  //PASARLE ESTE VALOR A ALGUN OBJETO QUE HAGA ALGO!!
 		List<Ball> listBalls;
-		List<Level> levels; 
+		Level levelReturn; 
 		Clock clock;
 		
-		docEle = dom.getDocumentElement();
 		nlLevel = docEle.getElementsByTagName("level");
 		nlBalls = docEle.getElementsByTagName("ball");
-		Level level = null;
-		levels = new ArrayList<Level>();
+		levelReturn = null;
 		if (nlLevel != null && nlLevel.getLength() > 0) {
             for (int i = 0; i < nlLevel.getLength(); i++) {
                 elementLevel = (Element) nlLevel.item(i);
 		        id = Integer.parseInt(elementLevel.getAttribute("id"));
-		        time = elementLevel.getAttribute("time");
-				points = Integer.parseInt(elementLevel.getAttribute("points"));
-				balls = Integer.parseInt(elementLevel.getAttribute("balls"));
-				min = Integer.parseInt(elementLevel.getAttribute("min"));
-				max = Integer.parseInt(elementLevel.getAttribute("max"));
-				background = elementLevel.getAttribute("background");
-				clock = new Clock();
-				clock.setTotalTime(time);
-				listBalls = getBalls(nlBalls, balls, min, max);
-		        level = new Level(null);
-				level.setLevelNumber(id);
-				level.setClock(clock);
-		        for (int j = 0; j < listBalls.size(); j++) {
-		        	level.addBall(listBalls.get(j));
-		        }		
-                levels.add(level);
+		        if (id == level) {
+			        time = elementLevel.getAttribute("time");
+					points = Integer.parseInt(
+							elementLevel.getAttribute("points"));
+					balls = Integer.parseInt(
+							elementLevel.getAttribute("balls"));
+					min = Integer.parseInt(elementLevel.getAttribute("min"));
+					max = Integer.parseInt(elementLevel.getAttribute("max"));
+					background = elementLevel.getAttribute("background");
+					clock = new Clock();
+					clock.setTotalTime(time);
+					listBalls = getBalls(nlBalls, balls, min, max);
+			        levelReturn = new Level(null);
+					levelReturn.setLevelNumber(id);
+					levelReturn.setClock(clock);
+					CompareBall comp = new CompareBall();
+					for (int j = 0; j < listBalls.size(); j++) {
+			        	levelReturn.addBall(listBalls.get(j), comp);
+			        }		
+		        }
             }
         }
-		return levels;
+		return levelReturn;
 	}
 
 	/**Realiza la llamada al metodo que parsea el documento xml de
@@ -200,9 +200,8 @@ public class LevelGenerator {
 	 * utilizado.
 	 */
 	private void loadLevels(final String route) {
-		Document dom;
 		dom = openDocument(route);
-		listLevels = getLevels(dom);
+		docEle = dom.getDocumentElement();
 	}
 
 	/**Devuelve el nivel de juego en el que se encuentra actualmente.
