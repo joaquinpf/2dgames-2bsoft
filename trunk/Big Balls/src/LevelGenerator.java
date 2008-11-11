@@ -60,7 +60,7 @@ public class LevelGenerator {
 	 */
 	public final Level generateLevel(final GameEngine parent) {
 		currentLevel++;
-		return getLevel(currentLevel - 1);
+		return getLevel(currentLevel - 1, parent);
 	}
 
 	/**Retorna la ruta del archivo de configuracion.
@@ -146,7 +146,7 @@ public class LevelGenerator {
      * @param level Numero de nivel a retornar.
      * @return List Retorna una lista con los niveles ya configurados.
      */
-	private Level getLevel(final int level) {
+	private Level getLevel(final int level, GameEngine parent) {
         Element elementLevel;
 		NodeList nlLevel;
 		NodeList nlBalls;
@@ -156,7 +156,7 @@ public class LevelGenerator {
 		int min;
 		int max;
 		String time;
-		String background;  //PASARLE ESTE VALOR A ALGUN OBJETO QUE HAGA ALGO!!
+		String background;
 		List<Ball> listBalls;
 		Level levelReturn; 
 		Clock clock;
@@ -180,9 +180,10 @@ public class LevelGenerator {
 					clock = new Clock();
 					clock.setTotalTime(time);
 					listBalls = getBalls(nlBalls, balls, min, max);
-			        levelReturn = new Level(null);
+			        levelReturn = new Level(parent);
 					levelReturn.setLevelNumber(id);
 					levelReturn.setClock(clock);
+					levelReturn.setBackground(background);
 					CompareBall comp = new CompareBall();
 					for (int j = 0; j < listBalls.size(); j++) {
 			        	levelReturn.addBall(listBalls.get(j), comp);

@@ -24,14 +24,6 @@ import java.util.Vector;
 public class Level extends GameObject implements Observer {
 
 	/**
-	 * @param parent
-	 */
-	public Level(GameEngine parent) {
-		super(parent);
-		this.orderedBalls = new Vector<Ball>();
-	}
-
-	/**
 	 * @uml.property name="levelComplete"
 	 */
 	private boolean levelComplete = false;
@@ -47,61 +39,9 @@ public class Level extends GameObject implements Observer {
 	private Vector<Ball> orderedBalls;
 
 	/**
-	 * Getter of the property <tt>orderedBalls</tt>.
-	 * 
-	 * @return Returns the orderedBalls.
-	 * @uml.property name="orderedBalls"
-	 */
-	public Vector<Ball> getOrderedBalls() {
-		return orderedBalls;
-	}
-
-	/**
 	 * @uml.property name="levelNumber"
 	 */
 	private static int levelNumber;
-
-	/**
-	 * Getter of the property <tt>levelNumber</tt>.
-	 * 
-	 * @return Returns the levelNumber.
-	 * @uml.property name="levelNumber"
-	 */
-	public int getLevelNumber() {
-		return levelNumber;
-	}
-
-	/**
-	 * Setter of the property <tt>levelNumber</tt>.
-	 * 
-	 * @param levelNumber
-	 *            The levelNumber to set.
-	 * @uml.property name="levelNumber"
-	 */
-	public void setLevelNumber(int levelNumber) {
-		this.levelNumber = levelNumber;
-	}
-
-	/**
-	 * Se seleciono ordenar el Vector orderedBalls empleando la interfaz
-	 * Comparator, ya que de esta manera se puede extender la forma de
-	 * realizar dicho ordenamiento.
-	 */
-	public void addBall(Ball newBall, Comparator c) {
-		orderedBalls.add(newBall);
-		Collections.sort(orderedBalls, c);
-	}
-
-	/**
-	 * @param o
-	 *            .
-	 * @param arg
-	 *            Cuando recibe el evento de que sucedio un cambio da por
-	 *            finalizado el juego
-	 */
-	public void update(Observable o, Object arg) {
-		this.finish(); // Cuando expira el tiempo finalizar el nivel
-	}
 
 	/**
 	 * Timer para controlar el tiempo de la partida.
@@ -146,17 +86,40 @@ public class Level extends GameObject implements Observer {
 	private GameFont font;
 
 	/**
+	 * @param parent
+	 */
+	public Level(GameEngine parent) {
+		super(parent);
+		this.orderedBalls = new Vector<Ball>();
+	}
+	
+	/**
+	 * Se seleciono ordenar el Vector orderedBalls empleando la interfaz
+	 * Comparator, ya que de esta manera se puede extender la forma de
+	 * realizar dicho ordenamiento.
+	 */
+	public void addBall(Ball newBall, Comparator c) {
+		orderedBalls.add(newBall);
+		Collections.sort(orderedBalls, c);
+	}
+
+	/**
+	 * @param o
+	 *            .
+	 * @param arg
+	 *            Cuando recibe el evento de que sucedio un cambio da por
+	 *            finalizado el juego
+	 */
+	public void update(Observable o, Object arg) {
+		this.finish(); // Cuando expira el tiempo finalizar el nivel
+	}
+
+	/**
 	 * Metodo de inicializacion de las variables involucradas.
 	 */
 	public void initResources() {
 		this.pos = 0;
-		this.clock = new Clock();
-		this.clock.setTotalTime("200");
-		this.clock.start();
-		this.clock.addObserver(this);
 		this.playfield = new PlayField();
-		background = new ImageBackground(getImage("resources/background.jpg"),
-				640, 480);
 		playfield.setBackground(background);
 		this.BALLGROUP = new SpriteGroup("balls");
 		this.BALLGROUP = new SpriteGroup("BACKGROUND");
@@ -168,13 +131,17 @@ public class Level extends GameObject implements Observer {
 			this.BALLGROUP.add(ball);
 		}
 		bordercollision = new BorderCollision(this.background);
+		ballcollision = new BallCollision();
 		this.playfield.addCollisionGroup(this.BALLGROUP, this.BACKGROUND,
 				this.bordercollision);
+		this.playfield.addCollisionGroup(this.BALLGROUP, this.BALLGROUP, this.ballcollision);
 
 		font = fontManager.getFont(getImages("resources/font.png", 20, 3),
 				" !            .,0123" + "456789:   -? ABCDEFG"
 				+ "HIJKLMNOPQRSTUVWXYZ ");
 
+		this.clock.addObserver(this);
+		this.clock.start();
 	}
 
 	/**
@@ -214,6 +181,48 @@ public class Level extends GameObject implements Observer {
 	 */
 	public void setClock(Clock clock) {
 		this.clock = clock;
+	}
+	
+	/**
+	 * Getter of the property <tt>orderedBalls</tt>.
+	 * 
+	 * @return Returns the orderedBalls.
+	 * @uml.property name="orderedBalls"
+	 */
+	public Vector<Ball> getOrderedBalls() {
+		return orderedBalls;
+	}
 
+	/**
+	 * Getter of the property <tt>levelNumber</tt>.
+	 * 
+	 * @return Returns the levelNumber.
+	 * @uml.property name="levelNumber"
+	 */
+	public int getLevelNumber() {
+		return levelNumber;
+	}
+
+	/**
+	 * Setter of the property <tt>levelNumber</tt>.
+	 * 
+	 * @param levelNumber
+	 *            The levelNumber to set.
+	 * @uml.property name="levelNumber"
+	 */
+	public void setLevelNumber(int levelNumber) {
+		this.levelNumber = levelNumber;
+	}
+	
+	/**
+	 * Setter of the property <tt>background</tt>.
+	 * 
+	 * @param backgroundRoute
+	 *            La ruta al fondo a setear
+	 * @uml.property name="backgroundRoute"
+	 */
+	public void setBackground(String backgroundRoute) {
+		this.background = new ImageBackground(getImage(backgroundRoute), 
+				640, 480);
 	}
 }
