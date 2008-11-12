@@ -7,6 +7,7 @@ import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -86,10 +87,21 @@ public class Level extends GameObject implements Observer {
 	private GameFont font;
 
 	/**
+	 * Para trabajar con el GameEngine ahorrando demasiados castings.
+	 */
+	private BigBalls engine;
+	
+	/**
+	 * Para trabajar con el GameEngine ahorrando demasiados castings.
+	 */
+	private int possiblePoints = 0;
+	
+	/**
 	 * @param parent
 	 */
 	public Level(GameEngine parent) {
 		super(parent);
+		this.engine = (BigBalls) parent;
 		this.orderedBalls = new Vector<Ball>();
 	}
 	
@@ -111,7 +123,11 @@ public class Level extends GameObject implements Observer {
 	 *            finalizado el juego
 	 */
 	public void update(Observable o, Object arg) {
-		this.finish(); // Cuando expira el tiempo finalizar el nivel
+		if (this.clock.getRemainingTime() == 0) {
+			//Pierde el nivel
+			this.loseLevel();
+		}
+		//TODO Actualizar reloj
 	}
 
 	/**
@@ -134,7 +150,8 @@ public class Level extends GameObject implements Observer {
 		ballcollision = new BallCollision();
 		this.playfield.addCollisionGroup(this.BALLGROUP, this.BACKGROUND,
 				this.bordercollision);
-		this.playfield.addCollisionGroup(this.BALLGROUP, this.BALLGROUP, this.ballcollision);
+		this.playfield.addCollisionGroup(this.BALLGROUP, this.BALLGROUP, 
+				this.ballcollision);
 
 		font = fontManager.getFont(getImages("resources/font.png", 20, 3),
 				" !            .,0123" + "456789:   -? ABCDEFG"
@@ -169,18 +186,28 @@ public class Level extends GameObject implements Observer {
 						.getValue()) {
 					ballsel.setActive(false);
 					this.pos++;
+					if (this.pos == this.orderedBalls.size()) {
+						this.winLevel();
+					}
 				} else {
-					this.finish();
+					//Pierde el nivel
+					this.loseLevel();
 				}
 			}
 		}
+	    if (keyDown(KeyEvent.VK_ESCAPE)) {
+			//Si presiona ESC vuelve al menu
+	    	this.engine.nextGameID = BigBalls.OPTION_MENU;
+		    this.finish();
+	    }		
 	}
 
 	/**
-	 * @param clock2
+	 * Setea el reloj del nivel.
+	 * @param newClock el reloj a setear
 	 */
-	public void setClock(Clock clock) {
-		this.clock = clock;
+	public final void setClock(final Clock newClock) {
+		this.clock = newClock;
 	}
 	
 	/**
@@ -189,7 +216,7 @@ public class Level extends GameObject implements Observer {
 	 * @return Returns the orderedBalls.
 	 * @uml.property name="orderedBalls"
 	 */
-	public Vector<Ball> getOrderedBalls() {
+	public final Vector<Ball> getOrderedBalls() {
 		return orderedBalls;
 	}
 
@@ -199,19 +226,19 @@ public class Level extends GameObject implements Observer {
 	 * @return Returns the levelNumber.
 	 * @uml.property name="levelNumber"
 	 */
-	public int getLevelNumber() {
+	public final int getLevelNumber() {
 		return levelNumber;
 	}
 
 	/**
 	 * Setter of the property <tt>levelNumber</tt>.
 	 * 
-	 * @param levelNumber
+	 * @param newLevelNumber
 	 *            The levelNumber to set.
 	 * @uml.property name="levelNumber"
 	 */
-	public void setLevelNumber(int levelNumber) {
-		this.levelNumber = levelNumber;
+	public final void setLevelNumber(final int newLevelNumber) {
+		levelNumber = newLevelNumber;
 	}
 	
 	/**
@@ -224,5 +251,64 @@ public class Level extends GameObject implements Observer {
 	public void setBackground(String backgroundRoute) {
 		this.background = new ImageBackground(getImage(backgroundRoute), 
 				640, 480);
+	}
+	
+	/**
+	 * Termina el nivel habiendo perdido.
+	 * Decrementa una vida y basandose en las restantes, setea el proximo 
+	 * estado como OPTION_MENU u OPTION_PLAY si le queda al menos una.
+	 */
+	public final void loseLevel() {
+		this.engine.decreaseLives();
+		if (this.engine.getLives() == 0) {
+			//Si no le quedan vidas, se vuelve al menu
+			this.engine.nextGameID = BigBalls.OPTION_MENU;
+		}
+		else {
+			//Si le quedan vidas, sigue jugando
+			this.engine.nextGameID = BigBalls.OPTION_PLAY;
+		}
+		this.finish();
+	}
+	
+	/**
+	 * Termina el nivel habiendo ganado.
+	 * Setea el proximo estado como OPTION_PLAY.
+	 */
+	public final void winLevel() {
+		this.engine.addPoints(this.generateScore());
+		this.engine.setCurrentLevel(levelNumber + 1);
+		this.engine.nextGameID = BigBalls.OPTION_PLAY;
+		this.finish();
+	}
+	
+	/**
+	 * Getter of the property <tt>possiblePoints</tt>.
+	 * 
+	 * @return Returns the possiblePoints.
+	 * @uml.property name="possiblePoints"
+	 */
+	public final int getPossiblePoints() {
+		return possiblePoints;
+	}
+
+	/**
+	 * Setter of the property <tt>possiblePoints</tt>.
+	 * 
+	 * @param newPossiblePoints
+	 *            The possiblePoints to set.
+	 * @uml.property name="possiblePoints"
+	 */
+	public final void setPossiblePoints(final int newPossiblePoints) {
+		possiblePoints = newPossiblePoints;
+	}
+	
+	/**
+	 * Genera el puntaje obtenido en el nivel.
+	 * 
+	 * @return puntaje obtenido en el nivel
+	 */
+	public final int generateScore() {
+		return this.possiblePoints * this.clock.getRemainingTime();
 	}
 }

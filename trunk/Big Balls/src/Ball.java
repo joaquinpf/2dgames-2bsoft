@@ -20,21 +20,21 @@ public class Ball extends Sprite {
 	private int value;
 
 	/**
-	 * Getter of the property <tt>value</tt>
+	 * Getter of the property <tt>value</tt>.
 	 * @return  Returns the value.
 	 * @uml.property  name="value"
 	 */
-	public int getValue() {
+	public final int getValue() {
 		return value;
 	}
 
 	/**
-	 * Setter of the property <tt>value</tt>
-	 * @param value  The value to set.
+	 * Setter of the property <tt>value</tt>.
+	 * @param newValue  The value to set.
 	 * @uml.property  name="value"
 	 */
-	public void setValue(int value) {
-		this.value = value;
+	public final void setValue(final int newValue) {
+		this.value = newValue;
 	}
 
 	/**
@@ -43,21 +43,21 @@ public class Ball extends Sprite {
 	private String description = "";
 
 	/**
-	 * Getter of the property <tt>description</tt>
+	 * Getter of the property <tt>description</tt>.
 	 * @return  Returns the description.
 	 * @uml.property  name="description"
 	 */
-	public String getDescription() {
+	public final String getDescription() {
 		return description;
 	}
 
 	/**
-	 * Setter of the property <tt>description</tt>
-	 * @param description  The description to set.
+	 * Setter of the property <tt>description</tt>.
+	 * @param newDescription  The description to set.
 	 * @uml.property  name="description"
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public final void setDescription(final String newDescription) {
+		this.description = newDescription;
 	}
 
 	/**
@@ -66,21 +66,21 @@ public class Ball extends Sprite {
 	private int spinVelocity;
 
 	/**
-	 * Getter of the property <tt>spinVelocity</tt>
+	 * Getter of the property <tt>spinVelocity</tt>.
 	 * @return  Returns the spinVelocity.
 	 * @uml.property  name="spinVelocity"
 	 */
-	public int getSpinVelocity() {
+	public final int getSpinVelocity() {
 		return spinVelocity;
 	}
 
 	/**
-	 * Setter of the property <tt>spinVelocity</tt>
-	 * @param spinVelocity  The spinVelocity to set.
+	 * Setter of the property <tt>spinVelocity</tt>.
+	 * @param newSpinVelocity  The spinVelocity to set.
 	 * @uml.property  name="spinVelocity"
 	 */
-	public void setSpinVelocity(int spinVelocity) {
-		this.spinVelocity = spinVelocity;
+	public final void setSpinVelocity(final int newSpinVelocity) {
+		this.spinVelocity = newSpinVelocity;
 	}
 
 		
@@ -89,7 +89,6 @@ public class Ball extends Sprite {
 	@Override
 	public void update(long elapsedTime) {
 		acumulatedRotation = acumulatedRotation + spinVelocity * elapsedTime / 100;
-		
 		super.update(elapsedTime);
 	}
 

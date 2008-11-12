@@ -31,10 +31,6 @@ public class LevelGenerator {
 	 */
 	private String configRoute = "";
 
-	/**Nivel actual en juego.
-	 */
-	private int currentLevel = 0;
-
 	/**Documento parseado que contiene las configuraciones de los niveles.
 	 */
 	private Document dom;
@@ -58,9 +54,8 @@ public class LevelGenerator {
 	 * @param parent The parent gameengine
 	 * @return  Level Retorna el proximo nivel del juego.
 	 */
-	public final Level generateLevel(final GameEngine parent) {
-		currentLevel++;
-		return getLevel(currentLevel - 1, parent);
+	public final Level generateLevel(final GameEngine parent,final int level) {
+		return getLevel(level, parent);
 	}
 
 	/**Retorna la ruta del archivo de configuracion.
@@ -146,7 +141,7 @@ public class LevelGenerator {
      * @param level Numero de nivel a retornar.
      * @return List Retorna una lista con los niveles ya configurados.
      */
-	private Level getLevel(final int level, GameEngine parent) {
+	private Level getLevel(final int level, final GameEngine parent) {
         Element elementLevel;
 		NodeList nlLevel;
 		NodeList nlBalls;
@@ -184,6 +179,7 @@ public class LevelGenerator {
 					levelReturn.setLevelNumber(id);
 					levelReturn.setClock(clock);
 					levelReturn.setBackground(background);
+					levelReturn.setPossiblePoints(points);
 					CompareBall comp = new CompareBall();
 					for (int j = 0; j < listBalls.size(); j++) {
 			        	levelReturn.addBall(listBalls.get(j), comp);
@@ -203,20 +199,6 @@ public class LevelGenerator {
 	private void loadLevels(final String route) {
 		dom = openDocument(route);
 		docEle = dom.getDocumentElement();
-	}
-
-	/**Devuelve el nivel de juego en el que se encuentra actualmente.
-	 * @return  Retorna el nivel de juego actual.
-	 */
-	public final int getCurrentLevel() {
-		return currentLevel;
-	}
-
-	/**Setea el nivel de juego actual.
-	 * @param currentLev  Valor del nivel de juego a setear.
-	 */
-	public final void setCurrentLevel(final int currentLev) {
-		this.currentLevel = currentLev;
 	}
 
 }

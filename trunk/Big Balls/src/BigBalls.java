@@ -13,11 +13,9 @@ import com.golden.gamedev.GameObject;
  */
 public class BigBalls extends GameEngine {
 		
-	/**
-	 * objeto que irá devolviendo los diferentes niveles del juego.
+	/**Nivel actual en juego.
 	 */
-	private Gameplay manager = new Gameplay(this);
-	
+	private int currentLevel = 1;
 	/**
 	 * Constante que representa la opcion de ir al menu.
 	 */
@@ -34,7 +32,19 @@ public class BigBalls extends GameEngine {
 	 * Contante que representa la opción de salir del juego.
 	 */
 	public static final int OPTION_EXIT = 3;
-	
+	/**
+	 * Maneja la cantidad de vidas que tiene el usuario.
+	 */
+	private int lives;
+	/**
+	 * Instancia del levelGenerator apuntando al archivo de configuracion.
+	 */	
+	private LevelGenerator levelGenerator = 
+		new LevelGenerator("resources/config.xml");
+	/**
+	 * Puntaje obtenido por el usuario.
+	 */
+	private int score = 0;
 	
 	
 	/**
@@ -46,8 +56,21 @@ public class BigBalls extends GameEngine {
 	 */
 	public final GameObject getGame(final int gameID) {
 		switch (gameID) {
-			case OPTION_MENU: return new Menu(this);
-			case OPTION_PLAY:	return manager.getNextLevel();
+			case OPTION_MENU: 
+			{
+				this.setCurrentLevel(1);
+				return new Menu(this);
+			}
+			case OPTION_PLAY: 
+			{
+				Level l = this.levelGenerator.generateLevel(this, currentLevel);
+				if (l != null) {
+					return l;
+				} 
+				else {
+					return this.getGame(OPTION_MENU);
+				}
+			}
 			case OPTION_SCORES: return new HighScores(this);
 			default: return null;
 		}
@@ -63,4 +86,67 @@ public class BigBalls extends GameEngine {
 				   GameLoader.ScreenMode.Window);
 		game.start();
     }
+	
+	/** 
+	 * Getter of the property <tt>lives</tt>.
+	 * @return  Returns the lives.
+	 * @uml.property  name="lives"
+	 */
+	public final int getLives() {
+		return lives;
+	}
+
+	/** 
+	 * Setter of the property <tt>lives</tt>.
+	 * @param newlives  The lives to set.
+	 * @uml.property  name="lives"
+	 */
+	public final void setLives(final int newlives) {
+		this.lives = newlives;
+	}
+	
+	/** 
+	 * Decrementa en 1 la cantidad de vidas en <tt>lives</tt>.
+	 */
+	public final void decreaseLives() {
+		this.lives--;
+	}
+	
+	/** 
+	 * Obtiene el puntaje global.
+	 * @return score puntaje global hasta el momento
+	 */
+	public final int getGlobalScore() {
+		return score;
+	}
+
+	/** 
+	 * Setter of the property <tt>GlobalScore</tt>.
+	 * @param globalScore  The globalScore to set.
+	 * @uml.property  name="globalScore"
+	 */
+	public final void setGlobalScore(final int globalScore) {
+		score = globalScore;
+	}
+		
+	/**
+	 * Suma el puntaje pasado en points al puntaje global.
+	 * @param points El puntaje que se desea sumar
+	*/
+	public final void addPoints(final int points) {
+		this.score = this.score + points;
+	}
+	/**Devuelve el nivel de juego en el que se encuentra actualmente.
+	 * @return  Retorna el nivel de juego actual.
+	 */
+	public final int getCurrentLevel() {
+		return currentLevel;
+	}
+
+	/**Setea el nivel de juego actual.
+	 * @param currentLev  Valor del nivel de juego a setear.
+	 */
+	public final void setCurrentLevel(final int currentLev) {
+		this.currentLevel = currentLev;
+	}
 }

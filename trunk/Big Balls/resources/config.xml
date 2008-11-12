@@ -24,7 +24,3 @@
 		</balls>
 	</config>
 </game>
-
-
-<level id="1" time="20" points="50" background="Resources/background.png"/> 
-balls="3" min="0" max="20" 
