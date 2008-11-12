@@ -15,6 +15,10 @@ import java.awt.image.BufferedImage;
 public class Ball extends Sprite {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3447645079012315490L;
+	/**
 	 * @uml.property  name="value"
 	 */
 	private int value;
@@ -99,9 +103,13 @@ public class Ball extends Sprite {
 		super.render(g, x, y);
 	}
 			
+	/**
+	 */
+	private BufferedImage ballImageCopy;
 	
-	BufferedImage ballImageCopy;
-	double acumulatedRotation;
+	/**
+	 */
+	private double acumulatedRotation;
 	
 	/**
 	 */
@@ -131,13 +139,16 @@ public class Ball extends Sprite {
 	private BufferedImage resize(BufferedImage image, double sizePercentage){
 		AffineTransform tx = new AffineTransform();
 		tx.scale(sizePercentage, sizePercentage);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		AffineTransformOp op = 
+			new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 		return op.filter(image, null);
 	}
 			
 	/**
+	 * @param text El texto a dibujar en la imagen
+	 * @param image La imagen sobre la que se dibuja
 	 */
-	private void drawString(String text, BufferedImage image){
+	private void drawString(final String text, final BufferedImage image) {
 		Graphics2D g2d = image.createGraphics();
 		g2d.drawString(text, image.getWidth() / 2, image.getHeight() / 2);
 		g2d.dispose();

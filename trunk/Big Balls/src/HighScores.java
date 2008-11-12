@@ -3,8 +3,6 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-import sun.font.FontManager;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
@@ -41,7 +39,7 @@ public class HighScores extends GameObject {
 	
 	
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * @see com.golden.gamedev.GameObject#initResources()
 	 */
 	@Override
@@ -105,6 +103,7 @@ public class HighScores extends GameObject {
 
 	/**
 	 * @see com.golden.gamedev.GameObject#update(long)
+	 * @param elapsedTime tiempo transcurrido desde el ultimo update
 	 */
 	@Override
 	public final void update(final long elapsedTime) {

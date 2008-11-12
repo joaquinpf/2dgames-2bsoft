@@ -25,11 +25,6 @@ import java.util.Vector;
 public class Level extends GameObject implements Observer {
 
 	/**
-	 * @uml.property name="levelComplete"
-	 */
-	private boolean levelComplete = false;
-
-	/**
 	 * @uml.property name="playfield"
 	 */
 	private PlayField playfield;
@@ -42,7 +37,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * @uml.property name="levelNumber"
 	 */
-	private static int levelNumber;
+	private int levelNumber;
 
 	/**
 	 * Timer para controlar el tiempo de la partida.
@@ -69,12 +64,12 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Variable empleada para agrupar las pelotas.
 	 */
-	private SpriteGroup BALLGROUP;
+	private SpriteGroup ballGroup;
 
 	/**
 	 * 
 	 */
-	private SpriteGroup BACKGROUND;
+	private SpriteGroup backgroundGroup;
 
 	/**
 	 * 
@@ -97,9 +92,9 @@ public class Level extends GameObject implements Observer {
 	private int possiblePoints = 0;
 	
 	/**
-	 * @param parent
+	 * @param parent El GameEngine padre del Level
 	 */
-	public Level(GameEngine parent) {
+	public Level(final GameEngine parent) {
 		super(parent);
 		this.engine = (BigBalls) parent;
 		this.orderedBalls = new Vector<Ball>();
@@ -109,8 +104,10 @@ public class Level extends GameObject implements Observer {
 	 * Se seleciono ordenar el Vector orderedBalls empleando la interfaz
 	 * Comparator, ya que de esta manera se puede extender la forma de
 	 * realizar dicho ordenamiento.
+	 * @param newBall La nueva pelota a agregar
+	 * @param c El comparador por el cual se ordenan las pelotas
 	 */
-	public void addBall(Ball newBall, Comparator c) {
+	public final void addBall(final Ball newBall, final Comparator<Ball> c) {
 		orderedBalls.add(newBall);
 		Collections.sort(orderedBalls, c);
 	}
@@ -122,7 +119,7 @@ public class Level extends GameObject implements Observer {
 	 *            Cuando recibe el evento de que sucedio un cambio da por
 	 *            finalizado el juego
 	 */
-	public void update(Observable o, Object arg) {
+	public final void update(final Observable o, final Object arg) {
 		if (this.clock.getRemainingTime() == 0) {
 			//Pierde el nivel
 			this.loseLevel();
@@ -133,24 +130,24 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Metodo de inicializacion de las variables involucradas.
 	 */
-	public void initResources() {
+	public final void initResources() {
 		this.pos = 0;
 		this.playfield = new PlayField();
 		playfield.setBackground(background);
-		this.BALLGROUP = new SpriteGroup("balls");
-		this.BALLGROUP = new SpriteGroup("BACKGROUND");
-		this.playfield.addGroup(this.BALLGROUP);
+		this.ballGroup = new SpriteGroup("balls");
+		this.backgroundGroup = new SpriteGroup("BACKGROUND");
 		for (Enumeration<Ball> e = this.orderedBalls.elements(); e
 		.hasMoreElements();) {
 			Ball ball = e.nextElement();
 			this.playfield.add(ball);
-			this.BALLGROUP.add(ball);
+			this.ballGroup.add(ball);
 		}
+		this.playfield.addGroup(this.ballGroup);
 		bordercollision = new BorderCollision(this.background);
 		ballcollision = new BallCollision();
-		this.playfield.addCollisionGroup(this.BALLGROUP, this.BACKGROUND,
+		this.playfield.addCollisionGroup(this.ballGroup, this.backgroundGroup,
 				this.bordercollision);
-		this.playfield.addCollisionGroup(this.BALLGROUP, this.BALLGROUP, 
+		this.playfield.addCollisionGroup(this.ballGroup, this.ballGroup, 
 				this.ballcollision);
 
 		font = fontManager.getFont(getImages("resources/font.png", 20, 3),
@@ -165,7 +162,7 @@ public class Level extends GameObject implements Observer {
 	 * @param g
 	 *            Renderiza el juego en la pantalla.
 	 */
-	public void render(Graphics2D g) {
+	public final void render(final Graphics2D g) {
 		playfield.render(g);
 		font.drawString(g,
 				"LEVEL :" + new Integer(this.levelNumber).toString(), 10, 10);
@@ -175,9 +172,10 @@ public class Level extends GameObject implements Observer {
 	 * Actualiza las variables del juego. Controla ls pelotas que va
 	 * seleccionando el jugador, en caso de equivaocarse da por finalizado el
 	 * juego.
+	 * @param elapsedTime Tiempo transcurrido desde el ultimo update
 	 */
 
-	public void update(long elapsedTime) {
+	public final void update(final long elapsedTime) {
 		playfield.update(elapsedTime);
 		if (click()) {
 			Ball ballsel = (Ball) this.checkPosMouse(this.playfield, true);
@@ -248,7 +246,7 @@ public class Level extends GameObject implements Observer {
 	 *            La ruta al fondo a setear
 	 * @uml.property name="backgroundRoute"
 	 */
-	public void setBackground(String backgroundRoute) {
+	public final void setBackground(final String backgroundRoute) {
 		this.background = new ImageBackground(getImage(backgroundRoute), 
 				640, 480);
 	}
@@ -263,8 +261,7 @@ public class Level extends GameObject implements Observer {
 		if (this.engine.getLives() == 0) {
 			//Si no le quedan vidas, se vuelve al menu
 			this.engine.nextGameID = BigBalls.OPTION_MENU;
-		}
-		else {
+		} else {
 			//Si le quedan vidas, sigue jugando
 			this.engine.nextGameID = BigBalls.OPTION_PLAY;
 		}

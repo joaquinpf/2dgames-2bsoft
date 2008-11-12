@@ -52,9 +52,10 @@ public class LevelGenerator {
 	/**Retorna el proximo nivel e incrementa en uno currentLevel.
 	 * En caso de haber sido el ultimo nivel del juego retorna null.
 	 * @param parent The parent gameengine
+	 * @param level El nro de nivel a construir
 	 * @return  Level Retorna el proximo nivel del juego.
 	 */
-	public final Level generateLevel(final GameEngine parent,final int level) {
+	public final Level generateLevel(final GameEngine parent, final int level) {
 		return getLevel(level, parent);
 	}
 
@@ -139,6 +140,7 @@ public class LevelGenerator {
     /**Construye los diferentes niveles del juego especificado en el documento
      * de configuracion.
      * @param level Numero de nivel a retornar.
+     * @param parent El GameEngine padre del Level a construir
      * @return List Retorna una lista con los niveles ya configurados.
      */
 	private Level getLevel(final int level, final GameEngine parent) {

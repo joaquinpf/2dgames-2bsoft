@@ -6,7 +6,7 @@ import java.util.Comparator;
  * prdenamiento.
  * 
  */
-public class CompareBall  implements Comparator {
+public class CompareBall  implements Comparator<Ball> {
 
 /**
  * 
@@ -20,9 +20,8 @@ public class CompareBall  implements Comparator {
 	 * @param o2 Segundo objeto a comparar
 	 * @return resultado de la comparacion
 	 */
-	public final int compare(final Object o1, final Object o2) {
-		return new Integer(((Ball) o1).getValue()).
-		compareTo(new Integer(((Ball) o2).getValue()));
+	public final int compare(final Ball o1, final Ball o2) {
+		return new Integer(o1.getValue()).compareTo(new Integer(o2.getValue()));
 	}
 
 }
