@@ -5,11 +5,9 @@ import java.awt.image.BufferedImage;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
-import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.background.ColorBackground;
 
 /**

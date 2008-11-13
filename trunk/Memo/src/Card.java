@@ -4,6 +4,11 @@ import com.golden.gamedev.object.sprite.AdvanceSprite;
 
 public class Card extends AdvanceSprite implements Comparable<Card> {
 
+	public static final int LEFT = 1, RIGHT = 0;
+
+	public static final int[][] animation = new int[][] { { 0, 1, 2, 3, 4}, // right animation
+														{ 4, 3, 2, 1, 0 } }; // left animation
+
 	/**
 	 * 
 	 */
@@ -14,7 +19,9 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	private String value = "";
 
 	public Card(){
-
+		setDirection(RIGHT);
+		setLoopAnim(false);
+		getAnimationTimer().setDelay(100);
 	}
 	/**
 	 * Getter of the property <tt>value</tt>
@@ -40,9 +47,10 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	 * @uml.property  name="value"
 	 */	
 	public int compareTo(Card o) {
-		if (o.value == this.getValue())
+		if (o.getValue() == this.value)
 			return 0;
-	return 1;
+		else
+			return 1;
 	}
 
 	/**
@@ -73,25 +81,21 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	 * Da vuelta la imagen de la carta
 	 * @uml.property  name="turned"
 	 */
-	public void turnCard(){
-		this.turned = this.isTurned();
-		if (this.turned)
-		{
-			int nextFrame = getFrame() + 1;
-			nextFrame = nextFrame % (getFinishAnimationFrame() + 1);
-			setFrame(nextFrame);
+	public void turnCard() {
+		this.turned = !this.turned;
+		this.setAnimate(true);
+		if (this.turned) {
+			this.setDirection(LEFT);
+		} else {
+			this.setDirection(RIGHT);
 		}
-		else
-		{
-			int nextFrame = getFrame() - 1;
-			if (nextFrame < 0)
-			{
-				nextFrame = 7 + (nextFrame % (getFinishAnimationFrame() + 1));
-				setFrame(nextFrame);
-			}
-	    }
-	setAnimate(true);
 	}
+
+	protected void animationChanged(int oldStat, int oldDir, int status,
+			int direction) {
+		setAnimationFrame(animation[direction]);
+	}
+	
 	/**
 	 * Duplica las cartas
 	 * @return  Returns the Card.

@@ -10,25 +10,24 @@
 */
 
 // GTGE
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Transparency;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Observable;
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
+import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
+import com.golden.gamedev.util.ImageUtil;
 import com.golden.gamedev.util.Utility;
-
-// JFC
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-
-// JAVA
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * 
@@ -36,8 +35,18 @@ import java.util.Observer;
  * @version 1.0
  * 
  */
-public class Level extends GameObject implements Observer {
+public class Level extends GameObject {
 
+	/**
+	 * Puntos que se suman al descubrir un par.
+	 */
+	private static int pointsPerPair = 20;
+	
+	/**
+	*  Cantidad de puntos que puede obtener el jugaror por terminar el nivel.
+	*/
+	private static int pointsPerLevel = 1000;
+	
 	/**
 	 * Coordenada X de la primer carta en la pantalla.
 	 */
@@ -75,14 +84,7 @@ public class Level extends GameObject implements Observer {
 	 */
 	private int heightCard = 0;
 	
-	
-	/** Indica si el nivel ha finalizado.
-	 * 
-	 * @uml.property  name="levelComplete"
-	 */
-	private boolean levelComplete = false;
-	
-	
+		
 	/** Nro. de nivel.
 	 * 
 	 * @uml.property  name="levelNumber"
@@ -146,15 +148,7 @@ public class Level extends GameObject implements Observer {
 	 * 
 	 * @uml.property  name="clock"
 	 */
-	private Clock clock = null;
-	
-
-	/**
-	 * Matriz que indica que posiciones del tablero estan libres y cuales no.
-	 *  
-	 * @uml.property  name="table" multiplicity="(0 -1)" dimension="2"
-	 */
-	private boolean[][] table = null;
+	private AnimatedSprite clock = null;
 	
 
 	/**
@@ -174,17 +168,7 @@ public class Level extends GameObject implements Observer {
 	 */
 	private int col = 0;
 	
-	
-	/**
-	 * Controlador del juego Memo. Administra los niveles del juego
-	 * y los puntos.
-	 * 
-	 * @uml.property  name="gameplay"
-	 * @uml.associationEnd  inverse="level:Gameplay"
-	 */
-	private Gameplay gameplay = null;
-	
-	
+
 	/**
 	 * Variable booleana que indica si el nivel ya está inicializado.
 	 */
@@ -206,7 +190,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Timer para mostrar las dos cartas destapadas en pantalla  (3 segundos).
 	 */
-	private Timer timerSecondCard = new Timer(1000);
+	private Timer timerSecondCard = new Timer(800);
 	
 	
 	/**
@@ -249,7 +233,6 @@ public class Level extends GameObject implements Observer {
 	public Level(GameEngine parent) {
 		
 		super(parent);
-		clock = new Clock();
 		mGroupCards = new SpriteGroup("Grupo de cartas");
 	}
 
@@ -264,16 +247,6 @@ public class Level extends GameObject implements Observer {
 	public boolean isLevelComplete() {
 		return (this.remainingCards == 0);
 	}
-
-
-	/** Setea la variable levelComplete.
-	 * 
-	 * @param levelComplete  The levelComplete to set.
-	 * @uml.property  name="levelComplete"
-	 */
-	/*public void setLevelComplete(boolean levelComplete) {
-		this.levelComplete = levelComplete;
-	}*/
 
 
 	/** Retorna el nro de nivel.
@@ -353,29 +326,6 @@ public class Level extends GameObject implements Observer {
 		this.tableSize = tableSize;
 	}
 
-
-	/**
-	 * Retorna la matriz table.
-	 * 
-	 * @return  Returns the tables.
-	 * @uml.property  name="table"
-	 */
-	/*public boolean[][] getTable() {
-		return this.table;
-	}*/
-
-
-	/**
-	 * Setea la matriz de estados del tablero.
-	 * 
-	 * @param xTable  The tables to set.
-	 * @uml.property  name="table"
-	 */
-	/*public void setTable(boolean[][] xTable) {
-		this.table = xTable;
-	}*/
-
-
 	/**
 	 * Retorna el nro. de cartas que faltan descubrir.
 	 * 
@@ -442,28 +392,6 @@ public class Level extends GameObject implements Observer {
 
 
 	/**
-	 * Retorna el reloj del nivel.
-	 * 
-	 * @return  Returns the clock.
-	 * @uml.property  name="clock"
-	 */
-	public Clock getClock() {
-		return clock;
-	}
-
-
-	/**
-	 * Setea el reloj del nivel.
-	 * 
-	 * @param clock  The clock to set.
-	 * @uml.property  name="clock"
-	 */
-	public void setClock(Clock clock) {
-		this.clock = clock;
-	}
-
-
-	/**
 	 * @param o
 	 * @param arg
 	 */
@@ -521,7 +449,6 @@ public class Level extends GameObject implements Observer {
 				
 		mFont = fontManager.getFont(
 				getImage("Resources/images/BitmapFont.png"));
-		
 		playfield = new PlayField(mBackground);
 		playfield.addGroup(mGroupCards);
 		
@@ -546,10 +473,14 @@ public class Level extends GameObject implements Observer {
 		// Inicialmente es igual a la cantidad de cartas que posee el nivel.
 		this.remainingCards = this.tableSize;
 		
-		// Seteo la duracion del nivel (en segundos). 
-		clock.setRemainingTime(this.getRemainingTimeLevel());
 		
-	    this.timerStartLevel.setActive(true);
+		clock =new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/clock.png"), 12, 1,Transparency.TRANSLUCENT));
+		clock.setLoopAnim(true);
+		clock.getAnimationTimer().setDelay(200);
+		clock.setLocation(425, 470);
+		playfield.add(clock);
+
+		this.timerStartLevel.setActive(true);
 	}
 	
 	/** 
@@ -688,24 +619,23 @@ public class Level extends GameObject implements Observer {
 	public void render(Graphics2D g) {
 		this.playfield.render(g);
 		
-		mFont.drawString(g, "TIEMPO: " 
-				+ String.valueOf(this.getRemainingTimeLevel()), 450, 460);
+		mFont.drawString(g,String.valueOf(this.getRemainingTimeLevel()), 462, 515);
 		
  		mFont.drawString(g, "NIVEL: " 
- 				+ String.valueOf(this.getLevelNumber()), 450, 480);
+ 				+ String.valueOf(this.getLevelNumber()), 530, 480);
  		
  		mFont.drawString(g, "PUNTOS: " 
- 				+ String.valueOf(0), 450, 500); 
- 		//gameplay.getGlobalScore()), 450, 500);
+ 				+ ((Memo)parent).getGlobalScore(), 530, 500);
  		
- 		mFont.drawString(g, "CARTAS FALTANTES: " 
- 				+ String.valueOf(this.getRemainingCards()), 450, 520);
+ 		mFont.drawString(g, "FALTAN " 
+ 				+ String.valueOf(this.getRemainingCards()
+ 				+ " CARTAS"), 530, 520);
  		
- 		mFont.drawString(g, "NRO. DE ACIERTOS: " 
- 				+ String.valueOf(this.mSuccess), 450, 540);
+ 		mFont.drawString(g, "ACIERTOS: " 
+ 				+ String.valueOf(this.mSuccess), 530, 540);
  		
- 		mFont.drawString(g, "NRO. DE DESACIERTOS: " 
- 				+ String.valueOf(this.mFails), 450, 560);
+ 		mFont.drawString(g, "ERRORES: " 
+ 				+ String.valueOf(this.mFails), 530, 560);
 	}
 
 	
@@ -727,6 +657,7 @@ public class Level extends GameObject implements Observer {
 			
 			// Inicio el timer que me actualiza el clock.
 			timerClock.setActive(true);
+			clock.setAnimate(true);
 		}
 		
 		// Si transcurrio 1 seg. de timer del clock del nivel. 
@@ -769,10 +700,14 @@ public class Level extends GameObject implements Observer {
 						} else {
 							
 							// Seleccionó la segunda carta.
-							secondCard = vSelectedCard;
-							secondCard.turnCard();
-							timerSecondCard.setActive(true);
-							mWaitCards = true;
+							if (!((this.firstCard.getScreenX() == vSelectedCard.getScreenX())
+									&& (this.firstCard.getScreenY() == vSelectedCard.getScreenY())))
+							{
+								secondCard = vSelectedCard;
+								secondCard.turnCard();
+								timerSecondCard.setActive(true);
+								mWaitCards = true;
+							}
 						}  
 					}							    
 				}	
@@ -781,8 +716,8 @@ public class Level extends GameObject implements Observer {
 				if ((!mWaitCards) && (firstCard != null)
 						&& (secondCard != null)) {
 					// verifico si selecciono un par.
-					checkCards();				
-				}						
+					checkCards();
+				}					
 				
 			} else if (timerSecondCard.action(elapsedTime)) {
 				mWaitCards = false;
@@ -793,20 +728,28 @@ public class Level extends GameObject implements Observer {
 		    	
 			    finishLevel();
 		    }		
-		    
-			if ((!mWaitCards) && ((remainingCards == 0)
-					|| (this.getRemainingTimeLevel() == 0))) {
-				
+		    if (this.getRemainingTimeLevel() == 0) {
+		    	finishLevel();
+		    }
+			if ((!mWaitCards) && (remainingCards == 0)) {
 				//this.clock.stop();
-				finishLevel();
+				winLevel();
 			}	    
 		}
 	}
 	
 	private void finishLevel() {
+		parent.nextGameID=Memo.MENU_MENU;
 		finish();
 	}
 
+	private void winLevel() {
+		((Memo)parent).addPoints(this.pointsPerLevel*this.mRemainingTimeLevel);
+		
+		parent.nextGameID=Memo.MENU_PLAY;
+		finish();
+		
+	}
 	/**
 	 * Verifica si las dos cartas seleccionadas forman un par igual.
 	 * Si son iguales incremento la cantidad de aciertos en uno,
@@ -842,9 +785,12 @@ public class Level extends GameObject implements Observer {
 			
 			// Incremento el nro de aciertos de pares de cartas descubiertos.
 			mSuccess++;
+			((Memo)parent).addPoints(this.pointsPerPair);
 			
 		} else {
 			// Incremento el nro de desaciertos de pares de cartas descubiertos.
+			firstCard.turnCard();
+			secondCard.turnCard();
 			mFails++;
 		}
 		
@@ -882,29 +828,7 @@ public class Level extends GameObject implements Observer {
 	 * en caso contario.
 	 */
 	public boolean isLevelFinished() {
-		return ((remainingCards == 0) || (this.clock.getRemainingTime() == 0));
-	}
-	
-
-	/** 
-	 * Retorna el controlador del juego Memo.
-	 * 
-	 * @return  Retorna el gameplay.
-	 * @uml.property  name="gameplay"
-	 */
-	public Gameplay getGameplay() {
-		return this.gameplay;
-	}
-
-
-	/**
-	 * Setea el GamePlay del juego.
-	 * 
-	 * @param gameplay  El gameplay a setear.
-	 * @uml.property  name="gameplay"
-	 */
-	public void setGameplay(Gameplay gameplay) {
-		this.gameplay = gameplay;
+		return ((remainingCards == 0) || (this.mRemainingTimeLevel == 0));
 	}
 	
 
