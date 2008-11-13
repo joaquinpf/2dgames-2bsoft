@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -32,7 +31,7 @@ public class Configurator {
 
 	/**
 	 */
-	public HashSet<String> getDicctionary(String lenguage) {
+	public Dictionary getDicctionary(String lenguage) {
 		return null;
 	}
 

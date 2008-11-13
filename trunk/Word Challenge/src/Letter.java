@@ -33,6 +33,7 @@ public class Letter extends Sprite {
 	}
 
 	/**
+	 * Muestra el valor de la ficha.
 		 */
 	public void turnVisible() {
 	}

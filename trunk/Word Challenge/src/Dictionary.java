@@ -78,4 +78,16 @@ public class Dictionary {
 		return null;
 	}
 
+		
+	/**
+	*/
+	public Dictionary(HashSet wordlist){
+	}
+
+		
+		/**
+		 */
+		public void addWord(String newWord){
+		}
+
 }
