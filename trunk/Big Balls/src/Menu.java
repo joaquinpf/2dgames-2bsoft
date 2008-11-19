@@ -22,6 +22,19 @@ import com.golden.gamedev.object.background.ImageBackground;
  */
 
 public class Menu extends GameObject {
+	
+	/**
+	 * Fuente a utilizar sobre la pelota.
+	 * @uml.property  name="ttfFont"
+	 */
+	private String ttfFont = "Arial";
+	
+	/**
+	 * Tamaño de la fuente de la pelota.
+	 * @uml.property  name="fontSize"
+	 */
+	private int fontSize = 50;
+	
 	/**
 	 * distancia de separacion entre cada opción del menu.	
 	 */
@@ -91,7 +104,7 @@ public class Menu extends GameObject {
 	 *         false en caso contrario.
 	 */
 	private boolean mouseInMenu() {
-		return checkPosMouse(posXmenu, posYmenu, posXmenu + 193, 
+		return checkPosMouse(posXmenu, posYmenu - fontSize , posXmenu + 193, 
 				             posYmenu + ANCHO_LINE_MENU * 3);
 	}
 	
@@ -157,16 +170,16 @@ public class Menu extends GameObject {
 					finish();
 				}
 			}
-			if (getMouseY() < posYmenu + ANCHO_LINE_MENU) {
+			if (getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU) {
 				option = BigBalls.OPTION_PLAY; 
 				pointer.setLocation(posXpointer, posYpointer);
 			}
-			if (getMouseY() > posYmenu + ANCHO_LINE_MENU 
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU 
 				&& getMouseY() < posYmenu + ANCHO_LINE_MENU * 2) {
 				option = BigBalls.OPTION_SCORES;
 				pointer.setLocation(posXpointer, posYpointer + ANCHO_LINE_MENU);
 			}
-			if (getMouseY() > posYmenu + ANCHO_LINE_MENU * 2) {
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU * 2) {
 				option = BigBalls.OPTION_EXIT;
 				pointer.setLocation(posXpointer, 
 						            posYpointer + ANCHO_LINE_MENU * 2);
@@ -190,7 +203,7 @@ public class Menu extends GameObject {
 				getImage("resources/images/menubackground.png"), 800, 600);
 		
 		//Fuente a utilizar
-		internalFont = fontManager.getFont(new Font("Arial", Font.BOLD, 50));
+		internalFont = fontManager.getFont(new Font(ttfFont, Font.BOLD, fontSize));
 		fontManager.getFont(getImages("resources/images/font.png",
 								   FONT_GRID_WIDTH, FONT_GRID_HEIGHT));
 		
@@ -203,7 +216,8 @@ public class Menu extends GameObject {
 		pointer.setAnimationTimer(new Timer(200));
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
-		
+	
+		this.showCursor();
 	}
 
 	/**
@@ -221,13 +235,13 @@ public class Menu extends GameObject {
 			// draw selected rectangle
 			g.setColor(new Color(52, 71, 66));
 			g.fillRect(posXmenu - 8,
-					   (posYmenu + line - 45),
+					   (posYmenu + line - fontSize +5 ),
 					   internalFont.getWidth(text) + 16,
 					   internalFont.getHeight() + 3);
 		}
 
 		//Escribe el texto en pantalla con antialias.
-		Font font = new Font("Arial", Font.BOLD, 50);
+		Font font = new Font(ttfFont, Font.BOLD, fontSize);
 		g.setFont(font);	
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        RenderingHints.VALUE_ANTIALIAS_ON);

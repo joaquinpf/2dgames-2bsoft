@@ -89,18 +89,6 @@ public class BigBalls extends GameEngine {
 			default: return null;
 		}
 	}
-
-	/**
-	 * Método main que inicia el juego.
-	 * @param args el argumento del metodo main.
-	 */
-	public static void main(final String[] args) {
-
-		GameLoader game = new GameLoader();
-		game.setup(new BigBalls(), new Dimension(800, 600),
-				   GameLoader.ScreenMode.Window);
-		game.start();
-    }
 	
 	/** 
 	 * Getter of the property <tt>lives</tt>.
@@ -165,4 +153,16 @@ public class BigBalls extends GameEngine {
 	public final void setCurrentLevel(final int currentLev) {
 		this.currentLevel = currentLev;
 	}
+
+	/**
+	 * Método main que inicia el juego.
+	 * @param args el argumento del metodo main.
+	 */
+	public static void main(final String[] args) {
+
+		GameLoader game = new GameLoader();
+		game.setup(new BigBalls(), new Dimension(800, 600),
+				   GameLoader.ScreenMode.Window);
+		game.start();
+    }
 }
