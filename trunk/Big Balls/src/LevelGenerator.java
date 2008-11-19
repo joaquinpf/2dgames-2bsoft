@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,7 +40,11 @@ public class LevelGenerator {
 	/**Contiene los elementos del documento de configuracion.
 	 */
 	private Element docEle;
-
+	
+	/**Genera numeros o booleans aleatorios.
+	 */
+	private Random random = new Random();
+	
 	/**Constructor de la clase.
 	 * @param route Especifica la direccion del archivo de configuracion a ser
 	 * utilizado.
@@ -119,19 +125,47 @@ public class LevelGenerator {
 		listBalls = new ArrayList<Ball>();
 		image = null;
 		ball = null;
+		
+		boolean drawChar = random.nextBoolean();
+		
 		if (nlBall != null && nlBall.getLength() > 0) {
             for (int i = 0; i < cant; i++) {
-            	elementBall = (Element) nlBall.item(i % nlBall.getLength());
-				sizePercentage = Math.random() * 0.6 + 0.4;
-				value = (int) Math.random() * (max - min) + min;
+            	            	
+				int randomBall = (int) (Math.random() * nlBall.getLength());
+            	elementBall = (Element) nlBall.item(randomBall % nlBall.getLength());
+				
 				try {
 					image = ImageIO.read(new File(
 							elementBall.getAttribute("image")));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		        ball = new Ball(value, "Ball " + i, image, sizePercentage);
-                listBalls.add(ball);
+				
+				sizePercentage = Math.random() * 0.6 + 0.4;
+				
+				if (drawChar){
+					value = (int) (random.nextDouble() * (90 - 65) + 65);
+					value = Math.abs(value);
+					String v = new String();
+					v += (char) value;
+					ball = new Ball(value, v, image, sizePercentage);			        
+				} else {
+					value = (int) (random.nextDouble() * (max - min) + min);
+					ball = new Ball(value, Integer.toString(value), image, sizePercentage);
+				}
+		        ball.setImageUsed(elementBall.getAttribute("image"));
+		        
+		        //Randomiza la velocidad horizontal y vertical del sprite
+		        double speedx = (Math.random() - 0.5) * 0.1;
+		        double speedy = (Math.random() - 0.5) * 0.1;
+		        ball.setHorizontalSpeed(speedx);
+		        ball.setVerticalSpeed(speedy);
+		        
+		        //Randomiza la velocidad de rotacion del sprite
+		        int rotation = (int) ((Math.random() - 0.5) * 50);
+		        ball.setSpinVelocity(rotation);
+		        
+		        listBalls.add(ball);
 			}
 		}
         return listBalls;
@@ -148,7 +182,7 @@ public class LevelGenerator {
 		NodeList nlLevel;
 		NodeList nlBalls;
         int id;
-		int points;  //FALTA PASARLE ESTE VALOR A ALGUN OBJETO QUE HAGA ALGO!!!
+		int points; 
 		int balls;
 		int min;
 		int max;
@@ -176,6 +210,8 @@ public class LevelGenerator {
 					background = elementLevel.getAttribute("background");
 					clock = new Clock();
 					clock.setTotalTime(time);
+					//Tiempo en segundos, debe pasarse a milisegundos
+					clock.setRemainingTime(Integer.parseInt(time));
 					listBalls = getBalls(nlBalls, balls, min, max);
 			        levelReturn = new Level(parent);
 					levelReturn.setLevelNumber(id);

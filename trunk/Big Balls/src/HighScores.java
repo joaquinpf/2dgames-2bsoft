@@ -45,9 +45,9 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		background = new ColorBackground(Color.BLUE);
-		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
+		font = fontManager.getFont(getImages("resources/images/font.png",
 								   8, 12));
-		titleHighScores = getImage("resources/images/titlePuntajes1.gif");
+		//titleHighScores = getImage("resources/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 	

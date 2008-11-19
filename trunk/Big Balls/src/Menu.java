@@ -1,6 +1,11 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.event.KeyEvent;
+import java.awt.font.GlyphVector;
 import java.awt.image.BufferedImage;
 
 
@@ -12,6 +17,7 @@ import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.background.ImageBackground;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
@@ -21,7 +27,7 @@ public class Menu extends GameObject {
 	/**
 	 * distancia de separacion entre cada opción del menu.	
 	 */
-	private static final int ANCHO_LINE_MENU = 36;
+	private static final int ANCHO_LINE_MENU = 60;
 	/**
 	 * Imagene que contiene el título del menu.
 	 */
@@ -42,6 +48,7 @@ public class Menu extends GameObject {
 	 * Manejador de fuente del menu.
 	 */
 	private GameFont font;
+	private GameFont internalFont;
 	/**
 	 * variable que representa la opcion seleccionada.
 	 */
@@ -62,6 +69,15 @@ public class Menu extends GameObject {
 	 * Contiene la posicion inicial en la coordenada Y del puntero.
 	 */
 	private int posYpointer; 
+	/**
+	 * Largo de la grilla de fuente.
+	 */
+	private static final int FONT_GRID_HEIGHT = 12;
+	
+	/**
+	 * Ancho de la grilla de fuente.
+	 */
+	private static final int FONT_GRID_WIDTH = 8;	
 	
 //////////////////////////////////////////////////////////////////	
 
@@ -160,17 +176,18 @@ public class Menu extends GameObject {
 	 */
 	@Override
 	public final void initResources() {
-		posXmenu = getWidth() / 2 - 45;
-		posYmenu = getHeight() / 2 + 50;
-		posXpointer = posXmenu - 55;
-		posYpointer = posYmenu - 10;
-		titleMenu = getImage("resources/images/titleMenu1.gif", false);
-		background = new ColorBackground(Color.BLACK);
+		posXmenu = getWidth() / 2 - 40;
+		posYmenu = getHeight() / 2;
+		posXpointer = posXmenu - 460;
+		posYpointer = posYmenu - 30;
+		background = new ImageBackground(getImage("resources/images/menubackground.png"), 
+				800, 600);
 		pointer = new AnimatedSprite(getImages(
-									"resources/images/pointerMenu.png", 4, 4),
+									"resources/images/pointerMenu.png", 1, 1),
 									posXpointer, posYpointer);
-		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
-								   8, 12));
+		internalFont = fontManager.getFont(new Font("Arial",Font.BOLD,50));
+		font = fontManager.getFont(getImages("resources/images/font.png",
+								   FONT_GRID_WIDTH, FONT_GRID_HEIGHT));
 		pointer.setAnimate(true);
 		pointer.setLoopAnim(true);
 		pointer.setAnimationTimer(new Timer(200));
@@ -192,14 +209,21 @@ public class Menu extends GameObject {
 					    final boolean selected) {
 		if (selected) {
 			// draw selected rectangle
-			g.setColor(Color.ORANGE);
-			g.fillRect(posXmenu - 1,
-					   (posYmenu + line) + 4,
-					   font.getWidth(text) + 2,
-					   font.getHeight() + 2);
+			
+			g.setColor(new Color(52,71,66));
+			g.fillRect(posXmenu - 8,
+					   (posYmenu + line - 45),
+					   internalFont.getWidth(text) + 16,
+					   internalFont.getHeight()+3);
 		}
-		font.drawString(g, text, GameFont.LEFT, posXmenu , posXmenu + line,
-				        getWidth());
+
+		Font font = new Font("Arial",Font.BOLD,50);
+		g.setFont(font);	
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.white);
+		
+		g.drawString(text,posXmenu , posYmenu + line );
 	}
 
 	
@@ -215,7 +239,6 @@ public class Menu extends GameObject {
 				(option == BigBalls.OPTION_SCORES));
 		drawText(g, "Salir", ANCHO_LINE_MENU * 2, 
 				(option == BigBalls.OPTION_EXIT));
-		g.drawImage(titleMenu, getWidth() / 2 - 130, 20, null);
 	}
 	
 	/**

@@ -35,7 +35,7 @@ public class BigBalls extends GameEngine {
 	/**
 	 * Maneja la cantidad de vidas que tiene el usuario.
 	 */
-	private int lives;
+	private int lives = 3;
 	/**
 	 * Instancia del levelGenerator apuntando al archivo de configuracion.
 	 */	
@@ -46,6 +46,10 @@ public class BigBalls extends GameEngine {
 	 */
 	private int score = 0;
 	
+	public BigBalls() {
+		super();
+		//this.distribute=true;
+	}
 	
 	/**
 	 * Dependiendo del Id recibido enviará a las diferentes
@@ -59,6 +63,8 @@ public class BigBalls extends GameEngine {
 			case OPTION_MENU: 
 			{
 				this.setCurrentLevel(1);
+				this.setLives(3);
+				this.setGlobalScore(0);
 				return new Menu(this);
 			}
 			case OPTION_PLAY: 
@@ -81,6 +87,7 @@ public class BigBalls extends GameEngine {
 	 * @param args el argumento del metodo main.
 	 */
 	public static void main(final String[] args) {
+
 		GameLoader game = new GameLoader();
 		game.setup(new BigBalls(), new Dimension(800, 600),
 				   GameLoader.ScreenMode.Window);

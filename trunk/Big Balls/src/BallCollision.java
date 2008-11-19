@@ -11,6 +11,7 @@ public class BallCollision extends BasicCollisionGroup {
 
     /**Constructor de la clase.*/
     public BallCollision() {
+    	this.pixelPerfectCollision=true;
     }
 
     /**

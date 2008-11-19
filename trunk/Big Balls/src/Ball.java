@@ -2,7 +2,11 @@
 
 import com.golden.gamedev.object.Sprite;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -23,6 +27,16 @@ public class Ball extends Sprite {
 	 */
 	private int value;
 
+	/**
+	 * @uml.property  name="ttfFont"
+	 */
+	private String ttfFont = "Arial";
+	
+	/**
+	 * @uml.property  name="fontSize"
+	 */
+	private int fontSize = 36;
+	
 	/**
 	 * Getter of the property <tt>value</tt>.
 	 * @return  Returns the value.
@@ -62,6 +76,29 @@ public class Ball extends Sprite {
 	 */
 	public final void setDescription(final String newDescription) {
 		this.description = newDescription;
+	}
+	
+	/**
+	 * @uml.property  name="imageUsed"
+	 */
+	private String imageUsed = "";
+
+	/**
+	 * Getter of the property <tt>imageUsed</tt>.
+	 * @return  Returns the imageUsed.
+	 * @uml.property  name="imageUsed"
+	 */
+	public final String getImageUsed() {
+		return imageUsed;
+	}
+
+	/**
+	 * Setter of the property <tt>imageUsed</tt>.
+	 * @param newImageUsed  The imageUsed to set.
+	 * @uml.property  name="imageUsed"
+	 */
+	public final void setImageUsed(final String newImageUsed) {
+		this.imageUsed = newImageUsed;
 	}
 
 	/**
@@ -118,6 +155,7 @@ public class Ball extends Sprite {
 		
 		/* crear copia de la imagen ya escalada */
 		ballImageCopy = resize(ballImage, sizePercentage);
+		this.setImage(ballImage);
 		
 		// le seteo el texto luego (para que no quede distorsionado) //
 		this.drawString(text, ballImageCopy);		
@@ -150,7 +188,19 @@ public class Ball extends Sprite {
 	 */
 	private void drawString(final String text, final BufferedImage image) {
 		Graphics2D g2d = image.createGraphics();
-		g2d.drawString(text, image.getWidth() / 2, image.getHeight() / 2);
+
+		//Setea el color y la fuente
+		g2d.setColor(Color.black);
+		g2d.setFont(new Font(ttfFont, Font.PLAIN, fontSize));
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
+		//Obtiene el ancho del texto a imprimir para poder corregir
+		//la posicion en pantalla
+		FontMetrics fm = g2d.getFontMetrics();
+		int textWidth = fm.stringWidth(text);
+		
+		g2d.drawString(text, (image.getWidth() / 2) - (textWidth/2), 
+				(image.getHeight() / 2) + 12);
 		g2d.dispose();
 	}
 }
