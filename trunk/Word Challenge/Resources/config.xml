@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE game SYSTEM "config.dtd">
+<game>
+	<name>Word Challenge</name>
+	<config>
+		<starttime>60</starttime>
+		<background>Resources/images/background.png</background>
+		<matches>
+			<match amount="3" points="20" bonusTime="0"/>
+			<match amount="4" points="40" bonusTime="4"/>
+			<match amount="5" points="50" bonusTime="7"/>
+			<match amount="6" points="70" bonusTime="10"/>
+		</matches>
+		<languages>
+			<language name="spanish" dictionary="Resources/dic/spanish-words.dic" flag="Resources/images/spanish.png"/>
+		</languages>
+	</config>
+</game>
