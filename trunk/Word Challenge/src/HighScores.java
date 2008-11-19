@@ -12,6 +12,8 @@ import com.golden.gamedev.object.background.ColorBackground;
 
 /**
  * Esta clase muestra la pantalla de puntajes del juego.
+ * 
+ * @author Damian Achaga
  */
 
 

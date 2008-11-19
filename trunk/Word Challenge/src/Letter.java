@@ -1,10 +1,12 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import com.golden.gamedev.object.Sprite;
-import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
  * 
@@ -13,52 +15,69 @@ import com.sun.xml.internal.ws.util.StringUtils;
 public class Letter extends Sprite {
 
 	/**
-	 * valor de la ficha
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Fuente a utilizar sobre la pelota.
+	 * @uml.property  name="ttfFont"
+	 */
+	private String ttfFont = "Arial";
+	
+	/**
+	 * Tamaño de la fuente de la pelota.
+	 * @uml.property  name="fontSize"
+	 */
+	private int fontSize = 36;
+	
+	/**
+	 * valor de la ficha.
 	 */
 	private char value;
 	
 	/**
-	 * estado de la ficha (visible/no visible)
+	 * estado de la ficha (visible/no visible).
 	 */
 	private boolean isVisible;
 	
 	/**
-	 * representacion grafica de la ficha
+	 * representacion grafica de la ficha.
 	 */
 	private BufferedImage letterImageCopy;
 	
 	/**
 	 * Constructor.
 	 * 
-	 * @param letterImage imagen de la ficha
+	 * @param letImage imagen de la ficha
 	 * @param sizePercentage proporcion
 	 */
-	public Letter(BufferedImage letterImage, double sizePercentage){ 
+	public Letter(final BufferedImage letImage, final double sizePercentage) { 
 		super();
 		
-		letterImageCopy = resize(letterImage, sizePercentage);
+		fontSize *= sizePercentage; 
+		letterImageCopy = resize(letImage, sizePercentage);
 		isVisible = false;
 	}
 
 	/**
-	 * Getter of the property <tt>value</tt>
+	 * Getter of the property <tt>value</tt>.
 	 * 
 	 * @return Returns the value.
 	 * @uml.property name="value"
 	 */
-	public char getValue() {
+	public final char getValue() {
 		return value;
 	}
 
 	/**
-	 * Setter of the property <tt>value</tt>
+	 * Setter of the property <tt>value</tt>.
 	 * 
-	 * @param value
-	 *            The value to set.
+	 * @param newValue The value to set.
 	 * @uml.property name="value"
 	 */
-	public void setValue(char value) {
-		this.value = value;
+	public final void setValue(final char newValue) {
+		this.value = newValue;
 	}
 
 	/**
@@ -66,7 +85,7 @@ public class Letter extends Sprite {
 	 * 
 	 * @return isVisible state
 	 */
-	public boolean isVisible() {
+	public final boolean isVisible() {
 		return isVisible;
 	}
 	
@@ -77,10 +96,10 @@ public class Letter extends Sprite {
 	 * (que solo sea posible alterar el valor 
 	 * de isVisible utilizando e metodo turnVisible).
 	 * 
-	 * @param isVisible boolean
+	 * @param newIsVisible boolean
 	 */
-	public void setVisible(boolean isVisible) {
-		this.isVisible = isVisible;
+	public final void setVisible(final boolean newIsVisible) {
+		this.isVisible = newIsVisible;
 	}
 
 	/**
@@ -91,11 +110,10 @@ public class Letter extends Sprite {
 	 * Si isVisible = true, ocultara el valor e invertira isVisible.
 	 * 
 	 */
-	public void turnVisible() {
-		if (!isVisible){
+	public final void turnVisible() {
+		if (!isVisible) {
 			this.drawString(String.valueOf(value), letterImageCopy);
-		}
-		else{
+		} else {
 			this.drawString(" ", letterImageCopy);
 		}
 		isVisible = !isVisible; 
@@ -107,7 +125,9 @@ public class Letter extends Sprite {
 	 * @param sizePercentage proporcion
 	 * @return la imagen redimensionada
 	 */
-	private BufferedImage resize(final BufferedImage image, final double sizePercentage) {
+	private BufferedImage resize(final BufferedImage image, 
+			final double sizePercentage) {
+		
 		AffineTransform tx = new AffineTransform();
 		tx.scale(sizePercentage, sizePercentage);
 		AffineTransformOp op = 
@@ -122,6 +142,13 @@ public class Letter extends Sprite {
 	 */
 	private void drawString(final String val, final BufferedImage image) {
 		Graphics2D g2d = image.createGraphics();
+
+		//Setea el color y la fuente
+		g2d.setColor(Color.black);
+		g2d.setFont(new Font(ttfFont, Font.PLAIN, fontSize));
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		g2d.drawString(val, image.getWidth() / 2, image.getHeight() / 2);
 		g2d.dispose();
 	}

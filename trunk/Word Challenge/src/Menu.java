@@ -14,6 +14,8 @@ import com.golden.gamedev.object.background.ColorBackground;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
+ * 
+ * @author Damian Achaga
  */
 
 public class Menu extends GameObject {
@@ -190,6 +192,8 @@ public class Menu extends GameObject {
 		pointer.setAnimationTimer(new Timer(200));
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
+		
+		this.showCursor();
 		
 	}
 

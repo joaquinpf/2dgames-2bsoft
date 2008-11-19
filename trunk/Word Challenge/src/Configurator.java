@@ -32,6 +32,8 @@ import org.xml.sax.SAXException;
  * la misma.
  * Las palabras de los diferentes idiomas se leen de un archivo .DIC
  * especificado en el XML de configuracion.
+ * 
+ * @author Marcos Steimbach
  */
 
 public class Configurator {

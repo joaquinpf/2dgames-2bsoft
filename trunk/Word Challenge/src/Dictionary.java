@@ -6,6 +6,8 @@ import java.util.Random;
 
 /**
  *Clase representando el diccionario de la aplicación.
+ *
+ * @author Marcos Lede
  */
 
 public class Dictionary {
@@ -52,9 +54,9 @@ public class Dictionary {
      */
     private void initWordList(final HashSet < String > wordlist) {
         this.words = wordlist;
-        sixLetteredWord = new ArrayList < String > ();
-        unusedSixLetteredWord = new ArrayList < String > ();
-        Iterator iter = wordlist.iterator();
+        sixLetteredWord = new ArrayList <String>();
+        unusedSixLetteredWord = new ArrayList <String>();
+        Iterator<String> iter = wordlist.iterator();
         while (iter.hasNext()) {
             String word;
             word = (String) iter.next();
@@ -95,7 +97,7 @@ public class Dictionary {
      */
     public final String getSixLetters() {
         Random random = new Random();
-        ArrayList < Integer > indexes = new ArrayList < Integer > ();
+        ArrayList < Integer > indexes = new ArrayList<Integer>();
 
         //Si todas las palabras de seis letras ya fueron utilizadas,
         //se vuelven a reponer todas las existentes
@@ -253,8 +255,8 @@ public class Dictionary {
      * @return wordList : lista de palabras encontradas
      */
     public final ArrayList < String > getPossibleWords(final String letters) {
-        ArrayList < String > lettersGroup = new ArrayList < String > ();
-        ArrayList < String > wordList = new ArrayList < String > ();
+        ArrayList < String > lettersGroup = new ArrayList <String>();
+        ArrayList < String > wordList = new ArrayList <String>();
         //Se sleccionan todos los posibles subgrupos de letras para
         //posteriormenete permutarlos y evaluar la existencia de palabras.
         //Los subgrupos se van agregando en el ArrayList 'lettersGroup'

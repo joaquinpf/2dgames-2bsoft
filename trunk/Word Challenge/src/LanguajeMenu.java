@@ -17,6 +17,8 @@ import com.golden.gamedev.object.background.ColorBackground;
 /**
  * Esta clase muestra la pantalla que permite 
  * seleccionar el idioma del juego.
+ * 
+ * @author Damian Achaga
  */
 public class LanguajeMenu extends GameObject {
 	

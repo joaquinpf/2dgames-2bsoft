@@ -1,19 +1,40 @@
+import java.awt.Dimension;
+
 import com.golden.gamedev.GameEngine;
+import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
 
 /**
- * 
+ * Esta clase maneja las transiciones entre los estados del juego.
+ *  
+ * @author Joaquín Pérez Fuentes
  */
 public class WordChallenge extends GameEngine {
-
-	/* (non-Javadoc)
-	 * @see com.golden.gamedev.GameEngine#getGame(int)
+	
+	/**
+	 * Constante que representa la opcion de ir al menu.
 	 */
-	@Override
-	public GameObject getGame(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public static final int  OPTION_MENU = 0;
+	
+	/**
+	 * Constante que representa la opción de jugar y pasar niveles.
+	 */
+	public static final int OPTION_PLAY = 1;
+	
+	/**
+	 * Constante que representa la opcion de ver la pantalla de puntajes.
+	 */
+	public static final int OPTION_IDIOMAS = 2;
+	
+	/**
+	 * Constante que representa la opcion de ver la pantalla de puntajes.
+	 */
+	public static final int OPTION_SCORES = 3;
+	
+	/**
+	 * Contante que representa la opción de salir del juego.
+	 */
+	public static final int OPTION_EXIT = 4;
 
 	/**
 	 * @uml.property  name="config"
@@ -21,45 +42,9 @@ public class WordChallenge extends GameEngine {
 	private Configurator config;
 
 	/**
-	 * Getter of the property <tt>config</tt>
-	 * @return  Returns the config.
-	 * @uml.property  name="config"
-	 */
-	public Configurator getConfig() {
-		return config;
-	}
-
-	/**
-	 * Setter of the property <tt>config</tt>
-	 * @param config  The config to set.
-	 * @uml.property  name="config"
-	 */
-	public void setConfig(Configurator config) {
-		this.config = config;
-	}
-
-	/**
 	 * @uml.property  name="selectedLanguage"
 	 */
-	private String selectedLanguage = "";
-
-	/**
-	 * Getter of the property <tt>selectedLanguage</tt>
-	 * @return  Returns the selectedLanguage.
-	 * @uml.property  name="selectedLanguage"
-	 */
-	public String getSelectedLanguage() {
-		return selectedLanguage;
-	}
-
-	/**
-	 * Setter of the property <tt>selectedLanguage</tt>
-	 * @param selectedLanguage  The selectedLanguage to set.
-	 * @uml.property  name="selectedLanguage"
-	 */
-	public void setSelectedLanguage(String selectedLanguage) {
-		this.selectedLanguage = selectedLanguage;
-	}
+	private String selectedLanguage = "spanish";
 
 	/**
 	 * @uml.property  name="kapeluz"
@@ -68,45 +53,156 @@ public class WordChallenge extends GameEngine {
 	private Dictionary kapeluz;
 
 	/**
-	 * Getter of the property <tt>kapeluz</tt>
-	 * @return  Returns the kapeluz.
-	 * @uml.property  name="kapeluz"
-	 */
-	public Dictionary getKapeluz() {
-		return kapeluz;
-	}
-
-	/**
-	 * Setter of the property <tt>kapeluz</tt>
-	 * @param kapeluz  The kapeluz to set.
-	 * @uml.property  name="kapeluz"
-	 */
-	public void setKapeluz(Dictionary kapeluz) {
-		this.kapeluz = kapeluz;
-	}
-
-	/**
 	 * @uml.property  name="clock"
 	 * @uml.associationEnd  inverse="wordChallenge:Clock"
 	 */
 	private Clock clock;
 
 	/**
-	 * Getter of the property <tt>clock</tt>
+	 * @uml.property  name="score"
+	 */
+	private int score = 0;
+	
+	/**
+	 * Constructor de la aplicación.
+	 */
+	public WordChallenge() {
+		super();
+		//config = new Configurator("/Resources/config.xml");
+		//kapeluz = config.getDicctionary(selectedLanguage);
+		//this.distribute = true;
+	}
+	
+	/**
+	 * Dependiendo del Id recibido enviará a las diferentes
+	 *  pantallas del juego o a los diferentes niveles.
+	 *  @param gameID id que identifica la pantalla a mostrar.
+	 *  @return el objeto que representa la pantalla correcta.
+	 *  @Override
+	 */
+	@Override
+	public final GameObject getGame(final int gameID) {
+		switch (gameID) {
+		case OPTION_MENU: 
+		{
+			this.setScore(0);
+			return new Menu(this);
+		} case OPTION_PLAY: {
+			String letters = kapeluz.getSixLetters();
+			return new Level(this, letters, kapeluz.getPossibleWords(letters));
+		}
+		case OPTION_IDIOMAS: return new LanguajeMenu(this);
+		case OPTION_SCORES: return new HighScores(this);
+		default: return null;
+		}
+	}
+
+	/**
+	 * Getter of the property <tt>config</tt>.
+	 * @return  Returns the config.
+	 * @uml.property  name="config"
+	 */
+	public final Configurator getConfig() {
+		return config;
+	}
+
+	/**
+	 * Setter of the property <tt>config</tt>.
+	 * @param newConfig  The config to set.
+	 * @uml.property  name="config"
+	 */
+	public final void setConfig(final Configurator newConfig) {
+		this.config = newConfig;
+	}
+
+	/**
+	 * Getter of the property <tt>selectedLanguage</tt>.
+	 * @return  Returns the selectedLanguage.
+	 * @uml.property  name="selectedLanguage"
+	 */
+	public final String getSelectedLanguage() {
+		return selectedLanguage;
+	}
+
+	/**
+	 * Setter of the property <tt>selectedLanguage</tt>.
+	 * @param newSelectedLanguage  The selectedLanguage to set.
+	 * @uml.property  name="selectedLanguage"
+	 */
+	public final void setSelectedLanguage(final String newSelectedLanguage) {
+		this.selectedLanguage = newSelectedLanguage;
+	}
+
+	/**
+	 * Getter of the property <tt>kapeluz</tt>.
+	 * @return  Returns the kapeluz.
+	 * @uml.property  name="kapeluz"
+	 */
+	public final Dictionary getKapeluz() {
+		return kapeluz;
+	}
+
+	/**
+	 * Setter of the property <tt>kapeluz</tt>.
+	 * @param newKapeluz  The kapeluz to set.
+	 * @uml.property  name="kapeluz"
+	 */
+	public final void setKapeluz(final Dictionary newKapeluz) {
+		this.kapeluz = newKapeluz;
+	}
+
+	/**
+	 * Getter of the property <tt>clock</tt>.
 	 * @return  Returns the clock.
 	 * @uml.property  name="clock"
 	 */
-	public Clock getClock() {
+	public final Clock getClock() {
 		return clock;
 	}
 
 	/**
-	 * Setter of the property <tt>clock</tt>
-	 * @param clock  The clock to set.
+	 * Setter of the property <tt>clock</tt>.
+	 * @param newClock  The clock to set.
 	 * @uml.property  name="clock"
 	 */
-	public void setClock(Clock clock) {
-		this.clock = clock;
+	public final void setClock(final Clock newClock) {
+		this.clock = newClock;
 	}
 
+	/** 
+	 * Obtiene el puntaje.
+	 * @return score puntaje hasta el momento
+	 */
+	public final int getScore() {
+		return score;
+	}
+
+	/** 
+	 * Setter of the property <tt>score</tt>.
+	 * @param newScore  The score to set.
+	 * @uml.property  name="score"
+	 */
+	public final void setScore(final int newScore) {
+		score = newScore;
+	}
+		
+	/**
+	 * Suma el puntaje pasado en points al puntaje global.
+	 * @param points El puntaje que se desea sumar
+	*/
+	public final void addPoints(final int points) {
+		this.score += points;
+	}
+
+	/**
+	 * Método main que inicia el juego.
+	 * @param args el argumento del metodo main.
+	 */
+	public static void main(final String[] args) {
+
+		GameLoader game = new GameLoader();
+		game.setup(new WordChallenge(), new Dimension(800, 600),
+				   GameLoader.ScreenMode.Window);
+		game.start();
+    }
 }
