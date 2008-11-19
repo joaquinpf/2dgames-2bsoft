@@ -1,11 +1,8 @@
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Shape;
 import java.awt.event.KeyEvent;
-import java.awt.font.GlyphVector;
 import java.awt.image.BufferedImage;
 
 
@@ -16,11 +13,12 @@ import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Timer;
-import com.golden.gamedev.object.background.ColorBackground;
 import com.golden.gamedev.object.background.ImageBackground;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
+ * 
+ * @author Damian Achaga y Joaquín Pérez Fuentes
  */
 
 public class Menu extends GameObject {
@@ -28,47 +26,52 @@ public class Menu extends GameObject {
 	 * distancia de separacion entre cada opción del menu.	
 	 */
 	private static final int ANCHO_LINE_MENU = 60;
-	/**
-	 * Imagene que contiene el título del menu.
-	 */
-	private BufferedImage titleMenu;
+	
 	/**
 	 * Background del menu.
 	 */
 	private Background background;
+	
 	/**
 	 * Puntero animado que señala la opcion elegida.
 	 */
 	private AnimatedSprite pointer;
+	
 	/**
 	 * Playfield del menu.
 	 */
 	private PlayField pfMenu = new PlayField();
+	
 	/**
 	 * Manejador de fuente del menu.
 	 */
-	private GameFont font;
 	private GameFont internalFont;
+	
 	/**
 	 * variable que representa la opcion seleccionada.
 	 */
 	private int option = 1;
+	
 	/**
 	 * contiene la posición en la coordenada X del menu.
 	 */
 	private int posXmenu;
+	
 	/**
 	 * contiene la posición en la coordenada Y del menu.
 	 */
 	private int posYmenu;
+	
 	/**
 	 * Contiene la posicion inicial en la coordenada X del puntero.
 	 */
 	private int posXpointer;
+	
 	/**
 	 * Contiene la posicion inicial en la coordenada Y del puntero.
 	 */
 	private int posYpointer; 
+	
 	/**
 	 * Largo de la grilla de fuente.
 	 */
@@ -132,7 +135,7 @@ public class Menu extends GameObject {
 			finish();
 		break;
 		default : ;
-	}
+		}
 	}
 	
 	/**
@@ -176,18 +179,25 @@ public class Menu extends GameObject {
 	 */
 	@Override
 	public final void initResources() {
+		//Seteo de posiciones
 		posXmenu = getWidth() / 2 - 40;
 		posYmenu = getHeight() / 2;
 		posXpointer = posXmenu - 460;
 		posYpointer = posYmenu - 30;
-		background = new ImageBackground(getImage("resources/images/menubackground.png"), 
-				800, 600);
-		pointer = new AnimatedSprite(getImages(
-									"resources/images/pointerMenu.png", 1, 1),
-									posXpointer, posYpointer);
-		internalFont = fontManager.getFont(new Font("Arial",Font.BOLD,50));
-		font = fontManager.getFont(getImages("resources/images/font.png",
+		
+		//Fondo
+		background = new ImageBackground(
+				getImage("resources/images/menubackground.png"), 800, 600);
+		
+		//Fuente a utilizar
+		internalFont = fontManager.getFont(new Font("Arial", Font.BOLD, 50));
+		fontManager.getFont(getImages("resources/images/font.png",
 								   FONT_GRID_WIDTH, FONT_GRID_HEIGHT));
+		
+		//El puntero a utilizar
+		pointer = new AnimatedSprite(getImages(
+				"resources/images/pointerMenu.png", 1, 1),
+				posXpointer, posYpointer);
 		pointer.setAnimate(true);
 		pointer.setLoopAnim(true);
 		pointer.setAnimationTimer(new Timer(200));
@@ -209,25 +219,27 @@ public class Menu extends GameObject {
 					    final boolean selected) {
 		if (selected) {
 			// draw selected rectangle
-			
-			g.setColor(new Color(52,71,66));
+			g.setColor(new Color(52, 71, 66));
 			g.fillRect(posXmenu - 8,
 					   (posYmenu + line - 45),
 					   internalFont.getWidth(text) + 16,
-					   internalFont.getHeight()+3);
+					   internalFont.getHeight() + 3);
 		}
 
-		Font font = new Font("Arial",Font.BOLD,50);
+		//Escribe el texto en pantalla con antialias.
+		Font font = new Font("Arial", Font.BOLD, 50);
 		g.setFont(font);	
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.white);
 		
-		g.drawString(text,posXmenu , posYmenu + line );
+		g.drawString(text, posXmenu, posYmenu + line);
 	}
 
 	
 	/**
+	 * Dibuja la escena. Override de GTGE.
+	 * @param g El objeto grafico sobre el cual se dibuja
 	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
 	 */
 	@Override
@@ -242,6 +254,7 @@ public class Menu extends GameObject {
 	}
 	
 	/**
+	 * @param elapsedTime Tiempo transcurrido desde el ultimo update
 	 * @see com.golden.gamedev.GameObject#update(long)
 	 */
 	@Override
@@ -250,7 +263,6 @@ public class Menu extends GameObject {
 		manejoTeclado();
 		manejoMouse();
 	}
-
 		
 	/**
 	 * 

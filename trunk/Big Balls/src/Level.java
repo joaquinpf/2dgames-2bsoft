@@ -9,11 +9,9 @@ import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.background.ImageBackground;
 import com.golden.gamedev.object.sprite.AdvanceSprite;
-import com.golden.gamedev.object.sprite.VolatileSprite;
 import com.golden.gamedev.util.ImageUtil;
 
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Transparency;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -23,34 +21,40 @@ import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
 import java.util.Vector;
 
 /**
  * @uml.dependency supplier="Ball"
  */
 /**
- * @author M&M
+ * Maneja un nivel del juego.
  * 
+ * @author Mariano Camarzana y Joaquín Pérez Fuentes
  */
 public class Level extends GameObject implements Observer {
 
 	/**
+	 * El playfield del nivel.
 	 * @uml.property name="playfield"
 	 */
 	private PlayField playfield;
 
 	/**
+	 * Vector de pelotas en orden para verificar la finalizacion
+	 * del nivel.
 	 * @uml.property name="orderedBalls"
 	 */
 	private Vector<Ball> orderedBalls;
 
 	/**
+	 * Numero del presente nivel.
 	 * @uml.property name="levelNumber"
 	 */
 	private int levelNumber;
 	
 	/**
+	 * Timer para utilizar al final del nivel. Se debe frenar
+	 * la escena para que no sea tan brusco el cambio.
 	 * @uml.property name="timerEndLevel"
 	 */
 	private Timer timerEndLevel;
@@ -96,7 +100,7 @@ public class Level extends GameObject implements Observer {
 	private SpriteGroup backgroundGroup;
 
 	/**
-	 * 
+	 * Fondo del nivel.
 	 */
 	private Background background;
 
@@ -136,6 +140,7 @@ public class Level extends GameObject implements Observer {
 	private int holeColumnJump = 80;
 	
 	/**
+	 * Constructor del nivel.
 	 * @param parent El GameEngine padre del Level
 	 */
 	public Level(final GameEngine parent) {
@@ -145,6 +150,7 @@ public class Level extends GameObject implements Observer {
 	}
 	
 	/**
+	 * Agrega una pelota al nivel.
 	 * Se seleciono ordenar el Vector orderedBalls empleando la interfaz
 	 * Comparator, ya que de esta manera se puede extender la forma de
 	 * realizar dicho ordenamiento.
@@ -157,11 +163,10 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * @param o
-	 *            .
-	 * @param arg
-	 *            Cuando recibe el evento de que sucedio un cambio da por
-	 *            finalizado el juego
+	 * Cuando recibe el evento de que sucedio un cambio da por
+	 * finalizado el juego.
+	 * @param o o
+	 * @param arg arg 
 	 */
 	public final void update(final Observable o, final Object arg) {
 		if (this.clock.getRemainingTime() == 0) {
@@ -178,6 +183,8 @@ public class Level extends GameObject implements Observer {
 		this.playfield = new PlayField();
 		playfield.setBackground(this.background);
 		this.backgroundGroup = new SpriteGroup("BACKGROUND");
+		
+		//Agrega las pelotas al grupo correspondiente
 		this.ballGroup = new SpriteGroup("balls");
 		for (Enumeration<Ball> e = this.orderedBalls.elements(); e
 		.hasMoreElements();) {
@@ -186,10 +193,13 @@ public class Level extends GameObject implements Observer {
 			this.ballGroup.add(ball);
 		}
 		playfield.addGroup(ballGroup);
+		
+		//Genera la mascara para colisiones contra el borde.
 		Background collMask = 
 			new ImageBackground(getImage("resources/images/collmask.png"), 
 				800, 441);
-		//TODO Mejorar magicidad
+
+		//Manejo de colisiones
 		bordercollision = new BorderCollision(collMask);
 		ballcollision = new BallCollision();
 		this.playfield.addCollisionGroup(this.ballGroup, this.backgroundGroup,
@@ -197,43 +207,63 @@ public class Level extends GameObject implements Observer {
 		this.playfield.addCollisionGroup(this.ballGroup, this.ballGroup, 
 				this.ballcollision);
 		
-		font = fontManager.getFont(getImages("resources/images/font.png", 20, 3),
+		//Fuente a utilizar
+		this.font = fontManager.getFont(getImages("resources/images/font.png", 20, 3),
 				" !            .,0123" + "456789:   -? ABCDEFG"
 				+ "HIJKLMNOPQRSTUVWXYZ ");
+
+		//Setea la posicion de las pelotas
+		setPositionBalls();
 		
-		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/clock.png"), 12, 1,Transparency.TRANSLUCENT));
+		//Genera los huecos para las pelotas
+		generateHoles();
+		
+		//Inicializacion del reloj
+		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/clock.png"), 12, 1, Transparency.TRANSLUCENT));
 		clockSprite.setLoopAnim(true);
 		clockSprite.getAnimationTimer().setDelay(200);
 		clockSprite.setLocation(425, 470);
 		playfield.add(clockSprite);
 		clockSprite.setActive(true);
-
 		this.clock.addObserver(this);
 		this.clock.start();
 		clockSprite.setAnimate(true);
 		
+		//Inicializacion del Timer de fin de nivel
 		timerEndLevel = new Timer(3000);
 		timerEndLevel.setActive(false);
 		
-		setPositionBalls();
-		generateHoles();
+		//Muestra el cursor, necesario cuando el juego es distributable
+		this.showCursor();
 	}
 
-	private ArrayList<Ball> shuffle(SpriteGroup balls) {
+	/**
+	 * Desordena aleatoriamente un grupo de sprites y devuelve 
+	 * el resultado en un ArrayList.
+	 * @param balls SpriteGroup a desordenar
+	 * @return ArrayList desordenado de sprites
+	 */
+	private ArrayList<Ball> shuffle(final SpriteGroup balls) {
 		ArrayList<Ball> shuffledBalls = new ArrayList<Ball>();
-		for (int i=0; i<balls.getSize(); i++) {
-			shuffledBalls.add((Ball)balls.getSprites()[i]);
+		for (int i = 0; i < balls.getSize(); i++) {
+			shuffledBalls.add((Ball) balls.getSprites()[i]);
 		}
 		Collections.shuffle(shuffledBalls);
 		return shuffledBalls;
 	}
 	
+	/**
+	 * Genera y setea las posiciones de las pelotas en pantalla.
+	 * Tiene en cuenta el ancho total de las pelotas para generar
+	 * dinamicamente sus posiciones e intentar evitar superposición
+	 * al inicio
+	 */
 	private void setPositionBalls() {
 		
 		ArrayList<Ball> balls = shuffle(ballGroup);
 		
 		//Calcula el ancho combinado de todas las pelotas
-		double combinedWidth=0;
+		double combinedWidth = 0;
 		for (int i = 0; i < balls.size(); i++) {
 			Ball aBall =  balls.get(i);
 			combinedWidth += aBall.getWidth();
@@ -243,11 +273,13 @@ public class Level extends GameObject implements Observer {
 		double spacing = (800 - combinedWidth) / (ballGroup.getSize() + 1);
 		
 		double xposition = 0;
-		for (int i = 0; i < balls.size() ; i++) {
+		for (int i = 0; i < balls.size(); i++) {
+			
 			//Aumenta el espaciado
 			xposition += spacing;
 			Ball aBall =  balls.get(i);
 			aBall.setLocation(xposition, 200);
+			
 			//Aumenta en el ancho de la pelota actual luego de colocarla. 
 			//Esto es asi porque GTGE toma el inicio de la imagen desde la 
 			//izquierda
@@ -255,10 +287,15 @@ public class Level extends GameObject implements Observer {
 		}	
 	}
 	
+	/**
+	 * Genera y setea los huecos correspondientes a cada pelota del
+	 * presente nivel. Estos seran ocupados por las pelotas si se
+	 * avanza en el juego.
+	 */
 	private void generateHoles() {
-		for(int i=0; i<orderedBalls.size();i++){
+		for (int i = 0; i < orderedBalls.size(); i++) {
 			Sprite a;
-			if(i<5){
+			if (i < 5) {
 				a = new Sprite(getImage("resources/images/agujero.png"), 
 						holeGridStartX + holeColumnJump * i, holeGridStartY);
 			
@@ -271,49 +308,61 @@ public class Level extends GameObject implements Observer {
 		}
 	}
 	
-	private void fillHole(Ball ballSel){
+	/**
+	 * Llena un hueco con una pelota dada.
+	 * @param ballSel la pelota a colocar en el siguiente hueco
+	 */
+	private void fillHole(final Ball ballSel) {
 		int correctionFactor = 2;
 		BufferedImage hole = getImage("resources/images/agujero.png");
 		BufferedImage b = getImage(ballSel.getImageUsed());
-		Ball a = new Ball(ballSel.getValue(),ballSel.getDescription(),b,0.37);
+		Ball a = new Ball(ballSel.getValue(), ballSel.getDescription(), b, 0.37);
 		
-		if(this.pos<5){
-			a.setLocation(holeGridStartX + holeColumnJump * (this.pos % 5) + 
-					correctionFactor, holeGridStartY + correctionFactor);
+		if (this.pos < 5) {
+			a.setLocation(holeGridStartX + holeColumnJump * (this.pos % 5) 
+					+ correctionFactor, holeGridStartY + correctionFactor);
 		} else {
-			a.setLocation(holeGridStartX + holeColumnJump * (this.pos % 5) + 
-					correctionFactor, holeGridStartY + holeRowJump + 
-					correctionFactor);
+			a.setLocation(holeGridStartX + holeColumnJump * (this.pos % 5) 
+					+ correctionFactor, holeGridStartY + holeRowJump 
+					+ correctionFactor);
 		}
 		playfield.add(a);
 	}
 	
 	/**
-	 * @param g
-	 *            Renderiza el juego en la pantalla.
+	 * Renderiza el juego en la pantalla.
+	 * @param g El objeto grafico sobre el cual se dibuja
+	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
 	 */
+	
 	public final void render(final Graphics2D g) {
 		playfield.render(g);
-		font.drawString(g,
-				"LEVEL :" + new Integer(this.levelNumber).toString(), 10, 10);		
+		
+		//Renderiza el nro de nivel
+		font.drawString(g, "LEVEL :" + new Integer(this.levelNumber).toString(), 10, 10);		
 				
+		//Renderiza el timer (numerico)
 		int textWidth = 
 			font.getWidth(String.valueOf(this.clock.getRemainingTime()));
+		font.drawString(g, String.valueOf(this.clock.getRemainingTime()), 
+				475 - (textWidth / 2), 511);
 		
-		font.drawString(g, String.valueOf(this.clock.getRemainingTime()), 475 - (textWidth/2), 511);
-		
+		//Renderiza el nro de nivel
 		font.drawString(g, "NIVEL: " 
  				+ String.valueOf(this.getLevelNumber()), 530, 480);
  		
+		//Renderiza el puntaje total obtenido hasta el momento
 		font.drawString(g, "PUNTOS: " 
- 				+ ((BigBalls)parent).getGlobalScore(), 530, 500);
+ 				+ ((BigBalls) parent).getGlobalScore(), 530, 500);
  		
+		//Renderiza la cantidad de pelotas faltantes
 		font.drawString(g, "FALTAN " 
  				+ String.valueOf(this.getRemainingBalls()
  				+ " PELOTAS"), 530, 520);
  		
+		//Renderiza las vidas
 		font.drawString(g, "VIDAS: " 
- 				+ String.valueOf(((BigBalls)parent).getLives()), 530, 540);
+ 				+ String.valueOf(((BigBalls) parent).getLives()), 530, 540);
 				
 	}
 
@@ -322,10 +371,13 @@ public class Level extends GameObject implements Observer {
 	 * seleccionando el jugador, en caso de equivaocarse da por finalizado el
 	 * juego.
 	 * @param elapsedTime Tiempo transcurrido desde el ultimo update
+	 * @see com.golden.gamedev.GameObject#update(long)
 	 */
-
+	@Override
 	public final void update(final long elapsedTime) {
 		playfield.update(elapsedTime);
+		
+		//Logica del juego
 		if (click()) {
 			Ball ballsel = (Ball) this.checkPosMouse(this.ballGroup, true);
 			if (ballsel != null) {
@@ -343,13 +395,15 @@ public class Level extends GameObject implements Observer {
 				}
 			}
 		}
+		
+		//Si presiona ESC vuelve al menu
 	    if (keyDown(KeyEvent.VK_ESCAPE)) {
-			//Si presiona ESC vuelve al menu
 	    	this.engine.nextGameID = BigBalls.OPTION_MENU;
 		    this.finish();
 	    }		
-	    if (timerEndLevel.action(elapsedTime)){
-	    	
+	    
+	    //Fin del nivel
+	    if (timerEndLevel.action(elapsedTime)) {
 			this.finish();
 	    }
 	}
@@ -443,10 +497,10 @@ public class Level extends GameObject implements Observer {
 	 * Genera la animacion de fin de nivel, habiendo ganado.
 	 */
 	public final void generateWinAnimation() {
-		AdvanceSprite win = new AdvanceSprite(ImageUtil.getImages
-				(this.bsIO.getURL("Resources/images/tick.png"), 6, 1,
+		AdvanceSprite win = new AdvanceSprite(ImageUtil.getImages(
+				this.bsIO.getURL("Resources/images/tick.png"), 6, 1,
 				Transparency.TRANSLUCENT));
-		win.setAnimationFrame(new int[]{0,1,2,3,4,5});
+		win.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		win.getAnimationTimer().setDelay(100);
 		win.setLocation(250, 100);
 		win.setLoopAnim(false);
@@ -458,10 +512,10 @@ public class Level extends GameObject implements Observer {
 	 * Genera la animacion de fin de nivel, habiendo ganado.
 	 */
 	public final void generateLoseAnimation() {
-		AdvanceSprite lose = new AdvanceSprite(ImageUtil.getImages
-				(this.bsIO.getURL("Resources/images/fail.png"), 6, 1,
+		AdvanceSprite lose = new AdvanceSprite(ImageUtil.getImages(
+				this.bsIO.getURL("Resources/images/fail.png"), 6, 1,
 				Transparency.TRANSLUCENT));
-		lose.setAnimationFrame(new int[]{0,1,2,3,4,5});
+		lose.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		lose.getAnimationTimer().setDelay(100);
 		lose.setLocation(250, 100);
 		lose.setLoopAnim(false);

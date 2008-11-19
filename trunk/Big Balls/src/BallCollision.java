@@ -1,17 +1,23 @@
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.BasicCollisionGroup;
 
-/**Clase para manejar la colisión entre dos sprites en movimiento.*/
+/**
+ * Clase para manejar la colisión entre dos sprites en movimiento.
+ * 
+ * @author Marcos Lede
+ */
+
 public class BallCollision extends BasicCollisionGroup {
 
     /**Constante para evitar la penetración entre sprites, y el subsecuente
      * disparo de 'Iterative failure-- too close'.
+     * @uml.property  name="ERROR_CORRECTOR"
      */
     private static final double ERROR_CORRECTOR = 1.0;
 
     /**Constructor de la clase.*/
     public BallCollision() {
-    	this.pixelPerfectCollision=true;
+    	this.pixelPerfectCollision = true;
     }
 
     /**

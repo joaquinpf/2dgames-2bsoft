@@ -11,9 +11,10 @@ import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.background.ColorBackground;
 
 /**
+ * Pantalla de puntajes del juego.
  * 
+ * @author Damian Achaga
  */
-
 
 public class HighScores extends GameObject {
 
@@ -26,16 +27,16 @@ public class HighScores extends GameObject {
 	 * Background de la pantalla.
 	 */
 	private Background background;
+	
 	/**
 	 * manegador de la fuente que se utilizará para mostrar los puntajes.
 	 */
 	private GameFont font;
+	
 	/**
 	 * Imagen que contiene el título de la pantalla.
 	 */
 	private BufferedImage titleHighScores;
-	
-	
 	
 	
 	/**
@@ -84,6 +85,8 @@ public class HighScores extends GameObject {
 		//}
 	}
 	/**
+	 * Dibuja la escena. Override de GTGE.
+	 * @param g El objeto grafico sobre el cual se dibuja
 	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
 	 */
 	@Override

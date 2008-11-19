@@ -1,5 +1,4 @@
 
-
 import java.awt.Dimension;
 
 import com.golden.gamedev.GameEngine;
@@ -7,48 +6,59 @@ import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
 
 
-
 /** 
- * Esta clase maneja el juego.
+ * Esta clase maneja las transiciones entre los estados del juego.
+ * 
+ * @author Damian Achaga
  */
 public class BigBalls extends GameEngine {
 		
 	/**Nivel actual en juego.
 	 */
 	private int currentLevel = 1;
+	
 	/**
 	 * Constante que representa la opcion de ir al menu.
 	 */
 	public static final int  OPTION_MENU = 0;
+	
 	/**
 	 * Constante que representa la opción de jugar y pasar niveles.
 	 */
 	public static final int OPTION_PLAY = 1;
+	
 	/**
 	 * Constante que representa la opcion de ver la pantalla de puntajes.
 	 */
 	public static final int OPTION_SCORES = 2;
+	
 	/**
 	 * Contante que representa la opción de salir del juego.
 	 */
 	public static final int OPTION_EXIT = 3;
+	
 	/**
 	 * Maneja la cantidad de vidas que tiene el usuario.
 	 */
 	private int lives = 3;
+	
 	/**
 	 * Instancia del levelGenerator apuntando al archivo de configuracion.
 	 */	
 	private LevelGenerator levelGenerator = 
 		new LevelGenerator("resources/config.xml");
+	
 	/**
 	 * Puntaje obtenido por el usuario.
 	 */
 	private int score = 0;
 	
+	/**
+	 * Constructor de la clase.
+	 */
 	public BigBalls() {
 		super();
-		//this.distribute=true;
+		this.distribute = true;
 	}
 	
 	/**
@@ -66,14 +76,12 @@ public class BigBalls extends GameEngine {
 				this.setLives(3);
 				this.setGlobalScore(0);
 				return new Menu(this);
-			}
-			case OPTION_PLAY: 
+			} case OPTION_PLAY: 
 			{
 				Level l = this.levelGenerator.generateLevel(this, currentLevel);
 				if (l != null) {
 					return l;
-				} 
-				else {
+				} else {
 					return this.getGame(OPTION_MENU);
 				}
 			}
@@ -143,6 +151,7 @@ public class BigBalls extends GameEngine {
 	public final void addPoints(final int points) {
 		this.score = this.score + points;
 	}
+	
 	/**Devuelve el nivel de juego en el que se encuentra actualmente.
 	 * @return  Retorna el nivel de juego actual.
 	 */

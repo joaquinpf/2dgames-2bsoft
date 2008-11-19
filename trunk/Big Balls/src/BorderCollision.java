@@ -4,10 +4,13 @@ import com.golden.gamedev.object.Background;
 
 /**
  * Clase que controla la colisión entre los sprites y el borde de la ventana.
+ * 
+ * @author Marcos Lede
  */
 public class BorderCollision extends CollisionBounds {
      /**
       * Variable para contener una instnacia local del background del juego.
+      * @uml.property  name="background"
       */
     private Background background;
 

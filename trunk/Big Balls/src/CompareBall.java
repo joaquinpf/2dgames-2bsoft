@@ -5,14 +5,9 @@ import java.util.Comparator;
  * Me provee soporte para realizar la comparacion para el posterior
  * prdenamiento.
  * 
+ * @author Mariano Camarzana
  */
 public class CompareBall  implements Comparator<Ball> {
-
-/**
- * 
- */
-	public CompareBall() {
-	}
 
 	/**
 	 * Compara por el valor del objeto en forma ascendente.

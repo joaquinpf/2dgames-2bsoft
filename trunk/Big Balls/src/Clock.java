@@ -33,10 +33,17 @@ public class Clock extends Observable {
 	private int remainingTime;
 	
 	/**
+	 * Tiempo total del clock.
+	 * 
+	 * @uml.property  name="totalTime"
+	 */
+	private String totalTime = "";
+	
+	/**
 	 * Timer privado que nos permite contar un segundo.
 	 */
 	private Timer timer = new Timer(1000, new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+	    public void actionPerformed(final ActionEvent e) {
 	    	run();
 	     }
 	});
@@ -80,13 +87,6 @@ public class Clock extends Observable {
 		this.remainingTime = newRemainingTime;
 	}
 
-	// TotalTime no sabemos para que sirve.
-	
-	/**
-	 * @uml.property  name="totalTime"
-	 */
-	private String totalTime = "";
-
 	/**
 	 * Getter of the property <tt>totalTime</tt>.
 	 * @return  Returns the totalTime.
@@ -103,9 +103,7 @@ public class Clock extends Observable {
 	 */
 	public final void setTotalTime(final String newTotalTime) {
 		this.totalTime = newTotalTime;
-		
 	}
-
 
 	/**
 	 * Este método indica si ya transcurrió el tiempo.
@@ -117,7 +115,6 @@ public class Clock extends Observable {
 		return (remainingTime == 0);	
 	}
 
-
 	/**
 	 * Método que inicia la ejecución del clock.
 	 */
@@ -125,12 +122,11 @@ public class Clock extends Observable {
 		timer.start();
 	}
 
-
 	/**
 	 * Detiene el clock.
 	 */
 	public final void stop() {
 		timer.stop();
 	}
-
+	
 }

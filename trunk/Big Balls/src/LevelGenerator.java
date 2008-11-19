@@ -1,4 +1,4 @@
-	/**Classname LevelGenerator.
+ /**Classname LevelGenerator.
  *
  * Version information 1.0
  * 
@@ -27,6 +27,8 @@ import com.golden.gamedev.GameEngine;
 /**Esta clase se ocupa de cargar la configuracion de cada nivel del juego.
  * Las configuraciones de los diferentes niveles se leen de un archivo XML
  * pasado como parametro al constructor de la clase.
+ * 
+ * @author Marcos Steimbach y Joaquín Pérez Fuentes
  */
 public class LevelGenerator {
 	/**Ruta del archivo de configuracion. 
@@ -143,17 +145,23 @@ public class LevelGenerator {
 				
 				sizePercentage = Math.random() * 0.6 + 0.4;
 				
-				if (drawChar){
+				if (drawChar) {
+					//Si el nivel es de texto, se debe randomizar entre
+					//el 65 y 90, A-Z en ascii.
 					value = (int) (random.nextDouble() * (90 - 65) + 65);
 					value = Math.abs(value);
 					String v = new String();
 					v += (char) value;
 					ball = new Ball(value, v, image, sizePercentage);			        
 				} else {
+					//Si el nivel es numerico, se utilizan los limites
+					//normalmente.
 					value = (int) (random.nextDouble() * (max - min) + min);
 					ball = new Ball(value, Integer.toString(value), image, sizePercentage);
 				}
-		        ball.setImageUsed(elementBall.getAttribute("image"));
+				
+		        //Setea la imagen utilizada en la pelota
+				ball.setImageUsed(elementBall.getAttribute("image"));
 		        
 		        //Randomiza la velocidad horizontal y vertical del sprite
 		        double speedx = (Math.random() - 0.5) * 0.1;
@@ -165,6 +173,7 @@ public class LevelGenerator {
 		        int rotation = (int) ((Math.random() - 0.5) * 50);
 		        ball.setSpinVelocity(rotation);
 		        
+		        //Agrega la pelota
 		        listBalls.add(ball);
 			}
 		}
@@ -210,7 +219,6 @@ public class LevelGenerator {
 					background = elementLevel.getAttribute("background");
 					clock = new Clock();
 					clock.setTotalTime(time);
-					//Tiempo en segundos, debe pasarse a milisegundos
 					clock.setRemainingTime(Integer.parseInt(time));
 					listBalls = getBalls(nlBalls, balls, min, max);
 			        levelReturn = new Level(parent);
