@@ -13,6 +13,8 @@
 	name CDATA #REQUIRED
 	dictionary CDATA #REQUIRED
 	flag CDATA #REQUIRED
+	sprite CDATA #REQUIRED
+	selsprite CDATA #REQUIRED
 >
 <!ELEMENT game ((name, config))>
 <!ELEMENT config ((starttime, background, matches, languages))>

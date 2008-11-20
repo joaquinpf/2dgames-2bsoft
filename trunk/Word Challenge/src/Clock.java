@@ -33,10 +33,17 @@ public class Clock extends Observable {
 	private int remainingTime;
 	
 	/**
+	 * Tiempo total del clock.
+	 * 
+	 * @uml.property  name="totalTime"
+	 */
+	private String totalTime = "";
+	
+	/**
 	 * Timer privado que nos permite contar un segundo.
 	 */
 	private Timer timer = new Timer(1000, new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+	    public void actionPerformed(final ActionEvent e) {
 	    	run();
 	     }
 	});
@@ -66,46 +73,37 @@ public class Clock extends Observable {
 	 * @return  Returns the remainingTime.
 	 * @uml.property  name="remainingTime"
 	 */
-	public int getRemainingTime() {
+	public final int getRemainingTime() {
 		return remainingTime;
 	}
 
 	/**
 	 * Setea el valor de la variable remainingTime.
 	 * 
-	 * @param remainingTime  The remainingTime to set.
+	 * @param newRemainingTime  The remainingTime to set.
 	 * @uml.property  name="remainingTime"
 	 */
-	public void setRemainingTime(int remainingTime) {		
-		this.remainingTime = remainingTime;
+	public final void setRemainingTime(final int newRemainingTime) {		
+		this.remainingTime = newRemainingTime;
 	}
 
-	// TotalTime no sabemos para que sirve.
-	
 	/**
-	 * @uml.property  name="totalTime"
-	 */
-	private String totalTime = "";
-
-	/**
-	 * Getter of the property <tt>totalTime</tt>
+	 * Getter of the property <tt>totalTime</tt>.
 	 * @return  Returns the totalTime.
 	 * @uml.property  name="totalTime"
 	 */
-	public String getTotalTime() {
+	public final String getTotalTime() {
 		return totalTime;
 	}
 
 	/**
-	 * Setter of the property <tt>totalTime</tt>
-	 * @param totalTime  The totalTime to set.
+	 * Setter of the property <tt>totalTime</tt>.
+	 * @param newTotalTime  The totalTime to set.
 	 * @uml.property  name="totalTime"
 	 */
-	public void setTotalTime(String totalTime) {
-		this.totalTime = totalTime;
-		
+	public final void setTotalTime(final String newTotalTime) {
+		this.totalTime = newTotalTime;
 	}
-
 
 	/**
 	 * Este método indica si ya transcurrió el tiempo.
@@ -113,24 +111,22 @@ public class Clock extends Observable {
 	 * @return true si ya transcurrió el tiempo, 
 	 *         false en caso contrario
 	 */
-	public boolean isFinished() {
+	public final boolean isFinished() {
 		return (remainingTime == 0);	
 	}
-
 
 	/**
 	 * Método que inicia la ejecución del clock.
 	 */
-	public void start() {
+	public final void start() {
 		timer.start();
 	}
-
 
 	/**
 	 * Detiene el clock.
 	 */
-	public void stop() {
+	public final void stop() {
 		timer.stop();
 	}
-
+	
 }

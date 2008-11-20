@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Hashtable;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -99,25 +99,29 @@ public class Configurator {
 
 
 	/**Retorna una lista con todos los lenguajes soportados.
-	 * @return List Lista de Strings con los lenguajes soportados.
+	 * @return ArrayList Lista de Strings con los lenguajes soportados.
 	 */
-	public final List<String> getLenguages() {
+	public final ArrayList<Hashtable<String, String>> getLanguages() {
 		NodeList nlLanguages;
 		Element elementLanguage;
-		List<String> listLanguages;
+		ArrayList<Hashtable<String, String>> listLanguages;
 		
 		nlLanguages = docEle.getElementsByTagName("language");
-		listLanguages = new ArrayList<String>();
+		listLanguages = new ArrayList<Hashtable<String, String>>();
 		if (nlLanguages != null && nlLanguages.getLength() > 0) {
             for (int i = 0; i < nlLanguages.getLength(); i++) {
             	elementLanguage = (Element) nlLanguages.item(i);
-                listLanguages.add(new String(elementLanguage.getAttribute(
-                		"name")));
+            	Hashtable<String, String> aux = new Hashtable<String, String>();
+            	aux.put("name", elementLanguage.getAttribute("name"));
+            	aux.put("flag", elementLanguage.getAttribute("flag"));
+            	aux.put("sprite", elementLanguage.getAttribute("sprite"));
+            	aux.put("selsprite", elementLanguage.getAttribute("selsprite"));
+            	listLanguages.add(aux);
 			}
 		}
         return listLanguages;
-	}
-
+	}	
+	
 	/**
 	 * @param language Especifica el lenguaje del cual se debera retornar el
 	 * path correspondiente.

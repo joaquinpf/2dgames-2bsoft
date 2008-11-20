@@ -1,10 +1,18 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+
+import sun.java2d.pipe.DrawImage;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
@@ -12,6 +20,7 @@ import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.background.ImageBackground;
 
 
 /**
@@ -20,12 +29,24 @@ import com.golden.gamedev.object.background.ColorBackground;
  * 
  * @author Damian Achaga
  */
-public class LanguajeMenu extends GameObject {
+public class LanguageMenu extends GameObject {
+
+	/**
+	 * Fuente a utilizar sobre la pelota.
+	 * @uml.property  name="ttfFont"
+	 */
+	private String ttfFont = "resources/images/wcfont.ttf";
+	
+	/**
+	 * Tamaño de la fuente de la pelota.
+	 * @uml.property  name="fontSize"
+	 */
+	private int fontSize = 55;
 	
 	/**
 	 * distancia de separacion entre cada opción del menu.	
 	 */
-	private static final int ANCHO_LINE_MENU = 36;
+	private static final int ANCHO_LINE_MENU = 60;
 	/**
 	 * Imagen que contiene el título del menu.
 	 */
@@ -63,7 +84,8 @@ public class LanguajeMenu extends GameObject {
 	/**
 	 * Contendrá la lista de idiomas que reconoce el juego.
 	 */
-	private List<String> idiomas;
+	ArrayList<Hashtable<String, String>> idiomas;
+	
 	/**
 	 * Contiene la cantidad de idiomas a elejir.
 	 */
@@ -77,7 +99,7 @@ public class LanguajeMenu extends GameObject {
 	 *         false en caso contrario.
 	 */
 	private boolean mouseInMenu() {
-		return checkPosMouse(posXmenu, posYmenu, posXmenu + 193, 
+		return checkPosMouse(posXmenu, posYmenu - fontSize, posXmenu + 193, 
 				             posYmenu + ANCHO_LINE_MENU * idiomas.size());
 	}
 	
@@ -87,7 +109,7 @@ public class LanguajeMenu extends GameObject {
 	private void manejoMouse() {
 		if (mouseInMenu()) {	
 			if (click()) {
-				String lengSelected = idiomas.get(option);
+				String lengSelected = idiomas.get(option).get("name");
 				Dictionary d = parent.getConfig().getDicctionary(lengSelected);
 				parent.setKapeluz(d);
 				parent.setSelectedLanguage(lengSelected);
@@ -95,8 +117,9 @@ public class LanguajeMenu extends GameObject {
 				finish();
 			}	
 			for (int i = cantOpciones; i > 0; i--) {
-				if (getMouseY() < posYmenu + ANCHO_LINE_MENU * i
-					&& getMouseY() > posYmenu + ANCHO_LINE_MENU * (i - 1)) {
+				if (getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU * i
+					&& getMouseY() > posYmenu - fontSize 
+					+ ANCHO_LINE_MENU * (i - 1)) {
 					option = i - 1; 
 				}
 			}
@@ -109,7 +132,7 @@ public class LanguajeMenu extends GameObject {
 	private void manejoTeclado() {
 		switch (bsInput.getKeyPressed()) {
 		case KeyEvent.VK_ENTER :
-			String lengSelected = idiomas.get(option);
+			String lengSelected = idiomas.get(option).get("name");
 			Dictionary d = parent.getConfig().getDicctionary(lengSelected);
 			parent.setKapeluz(d);
 			parent.setSelectedLanguage(lengSelected);
@@ -139,25 +162,31 @@ public class LanguajeMenu extends GameObject {
 	 *		 permite obtener el diccionario para el lenguaje correspondiente 
 	 *       y setear el lenguaje elejido en el juego. 
 	 */
-	public LanguajeMenu(final GameEngine parent) {
-		super(parent);
-		this.parent = (WordChallenge) parent;
-		this.idiomas = this.parent.getConfig().getLenguages();
-		idiomas = new ArrayList<String>();
+	public LanguageMenu(final GameEngine newParent) {
+		super(newParent);
+		this.parent = (WordChallenge) newParent;
+		this.idiomas = this.parent.getLanguages();
+		int i = 0;
+		String name = this.parent.getSelectedLanguage();
+		String auxName = "";
+		while (!name.equals(auxName)) {
+			auxName = idiomas.get(i).get("name");
+			i++;
+		}
+		this.option = --i;
 	}
 	/**
 	 * @see com.golden.gamedev.GameObject#initResources()
 	 */
 	@Override
 	public final void initResources() {
-		posXmenu = getWidth() / 2 - 45;
+		posXmenu = getWidth() / 2 - 65;
 		posYmenu = getHeight() / 2 - 50;
-		titleMenu = getImage("resources/images/titleIdiomas1.gif");
-		background = new ColorBackground(Color.GRAY);
+		background = new ImageBackground(getImage("resources/images/MenuIdiomas.png"));
 		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
 				   8, 12));
-		pfMenu.setBackground(background);
 		cantOpciones = idiomas.size();
+		pfMenu.setBackground(background);
 	}
 	
 	/**
@@ -165,21 +194,42 @@ public class LanguajeMenu extends GameObject {
 	 * en caso de que la opcion este seleccionada.
 	 * @param g parametro que necesita el manejador de fuente
 	 *          para escribir en pantalla.
-	 * @param text texto que debe ser escrito.
 	 * @param line lugar en que la opcion debe ser escrita.
 	 * @param selected indica si la opcion esta seleccionada o no.
+	 * @param flag bandera a ser dibujada.
+	 * @param sprite imagen que representa el nombre del idioma
+	 * @param selsprite imagen que representa el nombre del idioma seleccionado
 	 */
 	
-	final void drawText(final Graphics2D g, final String text, final int line,
-		    			final boolean selected) {
+	final void drawLine(final Graphics2D g, final int line,	
+			final boolean selected, final String flag, final String sprite,
+			final String selsprite) {
+		
+		BufferedImage bflag = getImage(flag);
 		if (selected) {
-			// draw selected rectangle
-			g.setColor(Color.blue);
-						g.fillRect(posXmenu - 1, (posYmenu + line), 
-						font.getWidth(text) + 2, font.getHeight() + 2);
+			BufferedImage bselsprite = getImage(selsprite);
+			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20, posYmenu + line - ANCHO_LINE_MENU,null);
+			g.drawImage(bselsprite, posXmenu , posYmenu + line - ANCHO_LINE_MENU, null);
 		}
-		font.drawString(g, text, GameFont.LEFT, posXmenu , posYmenu + line,
-						getWidth());
+		else{
+			BufferedImage bsprite = getImage(sprite);
+			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20, posYmenu + line - ANCHO_LINE_MENU,null);
+			g.drawImage(bsprite, posXmenu , posYmenu + line - ANCHO_LINE_MENU, null);
+		}
+		/*Color c = new Color(251,216,121);
+		g.setColor(c);
+		Font auxFont;
+		try {
+			auxFont = Font.createFont(Font.TRUETYPE_FONT, 
+					new File(ttfFont)).deriveFont((float) fontSize);
+		} catch (Exception e) {
+			auxFont = new Font("Arian", Font.PLAIN, fontSize);
+		}
+		
+
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setFont(auxFont);*/
 	}
 	
 	/**
@@ -190,12 +240,12 @@ public class LanguajeMenu extends GameObject {
 		pfMenu.render(g);
 		g.drawImage(titleMenu, getWidth() / 2 - 220, 20, null);
 		int line = 0;
-		int i = 0;
-		for (Iterator <String> e = idiomas.iterator(); e.hasNext();) {
-			String element = e.next();
-			drawText(g, element, line, (option == i));
+		for (int i = 0; i < idiomas.size(); i++) {
+			String flag = idiomas.get(i).get("flag");
+			String sprite = idiomas.get(i).get("sprite");
+			String selsprite = idiomas.get(i).get("selsprite");
+			drawLine(g, line, (option == i), flag, sprite, selsprite);
 			line = line + ANCHO_LINE_MENU;
-			i++;
 			
 		}
 	}

@@ -12,7 +12,12 @@
 			<match amount="6" points="70" bonusTime="10"/>
 		</matches>
 		<languages>
-			<language name="spanish" dictionary="Resources/dic/spanish-words.dic" flag="Resources/images/spanish.png"/>
+			<language name="spanish" dictionary="Resources/dic/spanish-words.dic" flag="Resources/images/spanish.png" 
+			sprite="Resources/images/spanishlangns.png" selsprite="Resources/images/spanishlang.png"/>
+			<language name="english" dictionary="Resources/dic/english-words.dic" flag="Resources/images/english.png" 
+			sprite="Resources/images/englishlangns.png" selsprite="Resources/images/englishlang.png"/>
+			<language name="portuguese" dictionary="Resources/dic/portuguese-words.dic" flag="Resources/images/portuguese.png" 
+			sprite="Resources/images/portugueselangns.png" selsprite="Resources/images/portugueselang.png"/>
 		</languages>
 	</config>
 </game>

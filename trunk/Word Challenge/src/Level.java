@@ -48,7 +48,7 @@ public class Level extends GameObject implements Observer {
 
 	/**
 	 */
-	public boolean isFinished(){
+	public boolean isFinished() {
 		return false;	
 	}
 

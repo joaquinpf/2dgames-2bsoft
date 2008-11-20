@@ -1,32 +1,37 @@
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
-import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.Timer;
-import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.Sprite;
+import com.golden.gamedev.object.background.ImageBackground;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
  * 
- * @author Damian Achaga
+ * @author Damian Achaga y Joaquín Pérez Fuentes
  */
 
 public class Menu extends GameObject {
+	
+	/**
+	 * Fuente a utilizar sobre la pelota.
+	 * @uml.property  name="ttfFont"
+	 */
+	private String ttfFont = "resources/images/wcfont.ttf";
+	
+	/**
+	 * Tamaño de la fuente de la pelota.
+	 * @uml.property  name="fontSize"
+	 */
+	private int fontSize = 50;
+	
 	/**
 	 * distancia de separacion entre cada opción del menu.	
 	 */
-	private static final int ANCHO_LINE_MENU = 36;
-	/**
-	 * Imagen que contiene el título del menu.
-	 */
-	private BufferedImage titleMenu;
+	private static final int ANCHO_LINE_MENU = 60;
 	/**
 	 * Background del menu.
 	 */
@@ -34,7 +39,7 @@ public class Menu extends GameObject {
 	/**
 	 * Puntero animado que señala la opcion elegida.
 	 */
-	private AnimatedSprite pointer;
+	private Sprite pointer;
 	/**
 	 * Playfield del menu.
 	 */
@@ -73,7 +78,7 @@ public class Menu extends GameObject {
 	 *         false en caso contrario.
 	 */
 	private boolean mouseInMenu() {
-		return checkPosMouse(posXmenu, posYmenu, posXmenu + 193, 
+		return checkPosMouse(posXmenu, posYmenu - fontSize, posXmenu + 193, 
 				             posYmenu + ANCHO_LINE_MENU * 4);
 	}
 	
@@ -147,23 +152,23 @@ public class Menu extends GameObject {
 					finish();
 				}
 			}
-			if (getMouseY() < posYmenu + ANCHO_LINE_MENU) {
+			if (getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU) {
 				option = WordChallenge.OPTION_PLAY; 
 				pointer.setLocation(posXpointer, posYpointer);
 			}
-			if (getMouseY() > posYmenu + ANCHO_LINE_MENU 
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU 
 				&& getMouseY() < posYmenu + ANCHO_LINE_MENU * 2) {
 				option = WordChallenge.OPTION_SCORES;
 				pointer.setLocation(posXpointer, posYpointer + ANCHO_LINE_MENU);
 			}
-			if (getMouseY() > posYmenu + ANCHO_LINE_MENU * 2 
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU * 2 
 					&& getMouseY() < posYmenu + ANCHO_LINE_MENU * 3) {
 					option = WordChallenge.OPTION_IDIOMAS;
 					pointer.setLocation(posXpointer, posYpointer 
 							            + ANCHO_LINE_MENU * 2);
 				}
 			
-			if (getMouseY() > posYmenu + ANCHO_LINE_MENU * 3) {
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU * 3) {
 				option = WordChallenge.OPTION_EXIT;
 				pointer.setLocation(posXpointer, 
 						            posYpointer + ANCHO_LINE_MENU * 3);
@@ -176,20 +181,17 @@ public class Menu extends GameObject {
 	 */
 	@Override
 	public final void initResources() {
-		posXmenu = getWidth() / 2 - 45;
-		posYmenu = getHeight() / 2 + 50;
-		posXpointer = posXmenu - 40;
-		posYpointer = posYmenu;
-		titleMenu = getImage("resources/images/titleMenu1.gif");
-		background = new ColorBackground(Color.RED);
-		pointer = new AnimatedSprite(getImages(
-									"resources/images/pointerMenu.png", 3, 1),
-									posXpointer, posYpointer);
-		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
-								   8, 12));
-		pointer.setAnimate(true);
-		pointer.setLoopAnim(true);
-		pointer.setAnimationTimer(new Timer(200));
+		posXmenu = getWidth() / 2 - 10;
+		posYmenu = getHeight() / 2 - 30;
+		posXpointer = posXmenu - 360;
+		posYpointer = posYmenu - 90;
+		background = new ImageBackground(getImage("resources/images/menu.png"));
+		
+		pointer =  new Sprite(getImage("Resources/images/pointer.png"));
+		pointer.setLocation(posXpointer, posYpointer);
+		
+		fontManager.getFont(getImages("resources/images/fontMenu.png", 8, 12));
+		
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
 		
@@ -209,15 +211,13 @@ public class Menu extends GameObject {
 	final void drawText(final Graphics2D g, final String text, final int line,
 					    final boolean selected) {
 		if (selected) {
-			// draw selected rectangle
-			g.setColor(Color.GRAY);
-			g.fillRect(posXmenu - 1,
-					   (posYmenu + line) + 4,
-					   font.getWidth(text) + 3,
-					   font.getHeight() + 3);
+			g.drawImage(getImage("resources/images/" + text  + ".png"),
+					posXmenu, posYmenu + line - 36, null);
+			
+		} else {
+			g.drawImage(getImage("resources/images/" + text  + "ns.png"),
+					posXmenu, posYmenu + line - 36, null);
 		}
-		font.drawString(g, text, GameFont.LEFT, posXmenu , posXmenu + line,
-				        getWidth());
 	}
 
 	
@@ -234,7 +234,6 @@ public class Menu extends GameObject {
 				(option == WordChallenge.OPTION_IDIOMAS));
 		drawText(g, "Salir", ANCHO_LINE_MENU * 3, 
 				(option == WordChallenge.OPTION_EXIT));
-		g.drawImage(titleMenu, getWidth() / 2 - 200, 20, null);
 	}
 	
 	/**
@@ -246,7 +245,6 @@ public class Menu extends GameObject {
 		manejoTeclado();
 		manejoMouse();
 	}
-
 		
 	/**
 	 * 

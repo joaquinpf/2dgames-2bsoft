@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
@@ -20,16 +22,16 @@ public class WordChallenge extends GameEngine {
 	 * Constante que representa la opción de jugar y pasar niveles.
 	 */
 	public static final int OPTION_PLAY = 1;
+
+	/**
+	 * Constante que representa la opcion de ver la pantalla de puntajes.
+	 */
+	public static final int OPTION_SCORES = 2;
 	
 	/**
 	 * Constante que representa la opcion de ver la pantalla de puntajes.
 	 */
-	public static final int OPTION_IDIOMAS = 2;
-	
-	/**
-	 * Constante que representa la opcion de ver la pantalla de puntajes.
-	 */
-	public static final int OPTION_SCORES = 3;
+	public static final int OPTION_IDIOMAS = 3;
 	
 	/**
 	 * Contante que representa la opción de salir del juego.
@@ -45,7 +47,7 @@ public class WordChallenge extends GameEngine {
 	 * @uml.property  name="selectedLanguage"
 	 */
 	private String selectedLanguage = "spanish";
-
+	
 	/**
 	 * @uml.property  name="kapeluz"
 	 * @uml.associationEnd  inverse="wordChallenge:Dictionary"
@@ -68,8 +70,8 @@ public class WordChallenge extends GameEngine {
 	 */
 	public WordChallenge() {
 		super();
-		//config = new Configurator("/Resources/config.xml");
-		//kapeluz = config.getDicctionary(selectedLanguage);
+		config = new Configurator("resources/config.xml");
+		kapeluz = config.getDicctionary(selectedLanguage);
 		//this.distribute = true;
 	}
 	
@@ -89,9 +91,10 @@ public class WordChallenge extends GameEngine {
 			return new Menu(this);
 		} case OPTION_PLAY: {
 			String letters = kapeluz.getSixLetters();
+			ArrayList<String> a = kapeluz.getPossibleWords(letters);
 			return new Level(this, letters, kapeluz.getPossibleWords(letters));
 		}
-		case OPTION_IDIOMAS: return new LanguajeMenu(this);
+		case OPTION_IDIOMAS: return new LanguageMenu(this);
 		case OPTION_SCORES: return new HighScores(this);
 		default: return null;
 		}
@@ -130,6 +133,7 @@ public class WordChallenge extends GameEngine {
 	 * @uml.property  name="selectedLanguage"
 	 */
 	public final void setSelectedLanguage(final String newSelectedLanguage) {
+		setKapeluz(this.config.getDicctionary(newSelectedLanguage));
 		this.selectedLanguage = newSelectedLanguage;
 	}
 
@@ -194,6 +198,14 @@ public class WordChallenge extends GameEngine {
 		this.score += points;
 	}
 
+	/** 
+	 * Obtiene los lenguajes disponibles.
+	 * @return lenguajes disponibles
+	 */
+	public final ArrayList<Hashtable<String, String>> getLanguages() {
+		return config.getLanguages();
+	}
+		
 	/**
 	 * Método main que inicia el juego.
 	 * @param args el argumento del metodo main.
