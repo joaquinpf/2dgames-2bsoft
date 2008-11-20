@@ -8,6 +8,7 @@ import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.background.ImageBackground;
+import com.golden.gamedev.object.collision.CollisionBounds;
 import com.golden.gamedev.object.sprite.AdvanceSprite;
 import com.golden.gamedev.util.ImageUtil;
 
@@ -18,9 +19,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Enumeration;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 import java.util.Vector;
 
 /**
@@ -32,7 +33,7 @@ import java.util.Vector;
  * @author Mariano Camarzana y Joaquín Pérez Fuentes
  */
 public class Level extends GameObject implements Observer {
-
+	
 	/**
 	 * El playfield del nivel.
 	 * @uml.property name="playfield"
@@ -81,13 +82,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 *Empleado para manejar las colisiones entre las pelotas (sprites).
 	 */
-	private BallCollision ballcollision;
-
-	/**
-	 * Empleado para manejar las colisiones de los sprites y los limites de la
-	 * pantalla.
-	 */
-	private BorderCollision bordercollision;
+	private ArrayList<SpriteGroup> ballCollision;
 
 	/**
 	 * Variable empleada para agrupar las pelotas.
@@ -147,6 +142,7 @@ public class Level extends GameObject implements Observer {
 		super(parent);
 		this.engine = (BigBalls) parent;
 		this.orderedBalls = new Vector<Ball>();
+		ballCollision = new ArrayList<SpriteGroup>();
 	}
 	
 	/**
@@ -185,27 +181,37 @@ public class Level extends GameObject implements Observer {
 		this.backgroundGroup = new SpriteGroup("BACKGROUND");
 		
 		//Agrega las pelotas al grupo correspondiente
-		this.ballGroup = new SpriteGroup("balls");
-		for (Enumeration<Ball> e = this.orderedBalls.elements(); e
-		.hasMoreElements();) {
-			Ball ball = e.nextElement();
-			this.playfield.add(ball);
-			this.ballGroup.add(ball);
+		this.ballGroup = new SpriteGroup("BALLS");
+		for (int i=0; i<orderedBalls.size(); i++) {
+			//Ball ball = e.nextElement();
+			ballCollision.add(playfield.addGroup(new SpriteGroup("Ball" + i)));
+			ballCollision.get(i).add(orderedBalls.get(i));
+			playfield.add(orderedBalls.get(i));
+			this.ballGroup.add(orderedBalls.get(i));
 		}
-		playfield.addGroup(ballGroup);
 		
 		//Genera la mascara para colisiones contra el borde.
 		Background collMask = 
 			new ImageBackground(getImage("resources/images/collmask.png"), 
 				800, 441);
-
+	
 		//Manejo de colisiones
-		bordercollision = new BorderCollision(collMask);
-		ballcollision = new BallCollision();
-		this.playfield.addCollisionGroup(this.ballGroup, this.backgroundGroup,
-				this.bordercollision);
-		this.playfield.addCollisionGroup(this.ballGroup, this.ballGroup, 
-				this.ballcollision);
+		for (int i = 0; i < orderedBalls.size(); i++) {
+			playfield.addCollisionGroup(ballCollision.get(i), 
+					backgroundGroup, new BorderCollision(collMask));
+		}
+		
+		int aux = 0;
+		Random rand = new Random();
+		while (aux < orderedBalls.size() - 1)	{
+			for (int i = aux + 1; i < orderedBalls.size(); i++) {
+				if (rand.nextBoolean()) {
+					playfield.addCollisionGroup(ballCollision.get(aux), 
+							ballCollision.get(i), new BallCollision());
+				}
+			}
+			aux++;
+		}
 		
 		//Fuente a utilizar
 		this.font = fontManager.getFont(getImages("resources/images/font.png", 20, 3),
@@ -273,17 +279,19 @@ public class Level extends GameObject implements Observer {
 		double spacing = (800 - combinedWidth) / (ballGroup.getSize() + 1);
 		
 		double xposition = 0;
+		double yposition = 50;
 		for (int i = 0; i < balls.size(); i++) {
 			
 			//Aumenta el espaciado
 			xposition += spacing;
 			Ball aBall =  balls.get(i);
-			aBall.setLocation(xposition, 200);
+			aBall.setLocation(xposition, yposition % 350);
 			
 			//Aumenta en el ancho de la pelota actual luego de colocarla. 
 			//Esto es asi porque GTGE toma el inicio de la imagen desde la 
 			//izquierda
 			xposition += aBall.getWidth();
+			yposition += aBall.getWidth();
 		}	
 	}
 	
@@ -295,13 +303,15 @@ public class Level extends GameObject implements Observer {
 	private void generateHoles() {
 		for (int i = 0; i < orderedBalls.size(); i++) {
 			Sprite a;
+			BufferedImage b = ImageUtil.getImage(
+						bsIO.getURL("resources/images/agujero.png"),
+						Transparency.TRANSLUCENT);
 			if (i < 5) {
-				a = new Sprite(getImage("resources/images/agujero.png"), 
-						holeGridStartX + holeColumnJump * i, holeGridStartY);
+				a = new Sprite(b, holeGridStartX + holeColumnJump * i, 
+						holeGridStartY);
 			
 			} else {
-				a = new Sprite(getImage("resources/images/agujero.png"), 
-						holeGridStartX + holeColumnJump * (i % 5), 
+				a = new Sprite(b, holeGridStartX + holeColumnJump * (i % 5), 
 						holeGridStartY + holeRowJump);
 			}
 			playfield.add(a);
@@ -336,11 +346,10 @@ public class Level extends GameObject implements Observer {
 	 */
 	
 	public final void render(final Graphics2D g) {
-		playfield.render(g);
 		
-		//Renderiza el nro de nivel
-		font.drawString(g, "LEVEL :" + new Integer(this.levelNumber).toString(), 10, 10);		
-				
+		playfield.render(g);
+
+		
 		//Renderiza el timer (numerico)
 		int textWidth = 
 			font.getWidth(String.valueOf(this.clock.getRemainingTime()));
@@ -363,7 +372,7 @@ public class Level extends GameObject implements Observer {
 		//Renderiza las vidas
 		font.drawString(g, "VIDAS: " 
  				+ String.valueOf(((BigBalls) parent).getLives()), 530, 540);
-				
+		
 	}
 
 	/**
@@ -376,9 +385,8 @@ public class Level extends GameObject implements Observer {
 	@Override
 	public final void update(final long elapsedTime) {
 		playfield.update(elapsedTime);
-		
 		//Logica del juego
-		if (click()) {
+		if ((click()) && (!timerEndLevel.isActive())) {
 			Ball ballsel = (Ball) this.checkPosMouse(this.ballGroup, true);
 			if (ballsel != null) {
 				if (ballsel.getValue() == this.orderedBalls.elementAt(pos)

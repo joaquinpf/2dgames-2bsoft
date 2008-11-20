@@ -143,7 +143,7 @@ public class LevelGenerator {
 					e.printStackTrace();
 				}
 				
-				sizePercentage = Math.random() * 0.6 + 0.4;
+				sizePercentage = Math.random() * 0.7 + 0.3;
 				
 				if (drawChar) {
 					//Si el nivel es de texto, se debe randomizar entre
@@ -170,7 +170,7 @@ public class LevelGenerator {
 		        ball.setVerticalSpeed(speedy);
 		        
 		        //Randomiza la velocidad de rotacion del sprite
-		        int rotation = (int) ((Math.random() - 0.5) * 50);
+		        int rotation = (int) ((Math.random() - 0.5) * 30);
 		        ball.setSpinVelocity(rotation);
 		        
 		        //Agrega la pelota

@@ -211,9 +211,6 @@ public class Menu extends GameObject {
 		pointer = new AnimatedSprite(getImages(
 				"resources/images/pointerMenu.png", 1, 1),
 				posXpointer, posYpointer);
-		pointer.setAnimate(true);
-		pointer.setLoopAnim(true);
-		pointer.setAnimationTimer(new Timer(200));
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
 	
@@ -235,7 +232,7 @@ public class Menu extends GameObject {
 			// draw selected rectangle
 			g.setColor(new Color(52, 71, 66));
 			g.fillRect(posXmenu - 8,
-					   (posYmenu + line - fontSize +5 ),
+					   (posYmenu + line - fontSize + 5) ,
 					   internalFont.getWidth(text) + 16,
 					   internalFont.getHeight() + 3);
 		}
