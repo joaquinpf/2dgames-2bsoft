@@ -12,7 +12,7 @@ import com.golden.gamedev.GameObject;
  */
 public class Memo extends GameEngine {
 
-	private LevelGenerator levelGenerator = new LevelGenerator("Resources/configGame.xml");
+	private LevelGenerator levelGenerator = new LevelGenerator("resources/configGame.xml");
 
 	/**
 	 * Opcion menu.

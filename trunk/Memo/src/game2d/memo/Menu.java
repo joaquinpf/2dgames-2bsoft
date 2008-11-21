@@ -28,9 +28,9 @@ public class Menu extends GameObject {
 	 */
 	private static final int FIRST_LINE_MENU = 200;
 	
-	private static final String menuMoveSound = "Resources/sounds/menuMove.wav";
+	private static final String menuMoveSound = "resources/sounds/menuMove.wav";
 	
-	private static final String menuSelectSound = "Resources/sounds/menuSelect.wav";
+	private static final String menuSelectSound = "resources/sounds/menuSelect.wav";
 	
 	
 	/**
@@ -160,11 +160,11 @@ public class Menu extends GameObject {
 			
 		//Fondo
 		background = new ImageBackground(
-				getImage("Resources/images/menubackground.png"), 800, 600);
+				getImage("resources/images/menubackground.png"), 800, 600);
 		
 		//Fuente a utilizar
 		internalFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("Resources/images/ravie.ttf"), Font.PLAIN, 50));
+				this.bsIO.getURL("resources/images/ravie.ttf"), Font.PLAIN, 50));
 	
 		pfMenu.setBackground(background);	
 	}

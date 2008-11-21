@@ -24,6 +24,7 @@ import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.font.SystemFont;
@@ -138,11 +139,19 @@ public class Level extends GameObject {
 	private Card firstCard = null;
 	
 
-	/** Contiene la segunda carta seleccionada por el usuario.
+	/** 
+	 * Contiene la segunda carta seleccionada por el usuario.
 	 * 
 	 * @uml.property  name="secondCard"
 	 */
 	private Card secondCard = null;
+	
+	/** 
+	 * Representa al boton de salida.
+	 * 
+	 * @uml.property  name="buttonExit"
+	 */
+	private Sprite buttonExit = null;
 	
 
 	/**
@@ -409,8 +418,8 @@ public class Level extends GameObject {
 		
 		for (int i = 2; i <= 5; i++) {
 			if ((this.tableSize % i) == 0) {
-				int aux = Math.abs((this.tableSize / i)-i);
-				if (aux<=difer){
+				int aux = Math.abs((this.tableSize / i) - i);
+				if (aux < difer) {
 					col = this.tableSize / i;
 					row = i;
 					difer = aux;
@@ -440,15 +449,18 @@ public class Level extends GameObject {
 		
 		setMaskColor(Color.BLACK); // Makes sprite background transparent.
 		bigFont = new SystemFont(FontUtil.createTrueTypeFont(
-			this.bsIO.getURL("Resources/images/ravie.ttf"), Font.PLAIN, 40));
+			this.bsIO.getURL("resources/images/ravie.ttf"), Font.PLAIN, 40));
 		
 		mFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("Resources/images/ravie.ttf"), Font.PLAIN, 24));
+				this.bsIO.getURL("resources/images/ravie.ttf"), Font.PLAIN, 24));
 			
 
 		playfield = new PlayField(mBackground);
+		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO.getURL(
+				"resources/images/exit.png"), Transparency.TRANSLUCENT), 768, 0);
+
 		playfield.addGroup(mGroupCards);
-		
+		playfield.add(buttonExit);
 		// Seteo la cantidad de cartas que posee el nivel.
 		this.tableSize = mGroupCards.getSize();
 		
@@ -461,7 +473,13 @@ public class Level extends GameObject {
 		
 		// Inicializo las dos matrices con los tamaños definidos anteriormente.
 		mCards = new Card[row][col];
-		//table = new boolean [row][col];
+	
+		positionScreenX = 105;
+		positionScreenY = 15;
+		float r = (float) row / 2;
+		float c = (float) col / 2;
+		positionScreenX = (int) (positionScreenX + (242 - (r * heightCard)));
+		positionScreenY = (int) (positionScreenY + (385 - (c * widthCard)));
 		
 		// Ubico las cartas en el tablero y escenario.
 		setPositionCards();
@@ -472,7 +490,7 @@ public class Level extends GameObject {
 		
 		
 		clock = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL(
-				"Resources/images/clock.png"), 12, 1,
+				"resources/images/clock.png"), 12, 1,
 				Transparency.TRANSLUCENT));
 		clock.setLoopAnim(true);
 		clock.getAnimationTimer().setDelay(200);
@@ -595,7 +613,7 @@ public class Level extends GameObject {
 		// Si la carta se ubica en la posicion (0, 0) del tablero
 		if ((xPositionTable.x == 0) && (xPositionTable.y == 0)) {
 			
-			vPositionScreen.setLocation( positionScreenY,positionScreenX);
+			vPositionScreen.setLocation(positionScreenY,positionScreenX);
 			
 		} else {
 			
@@ -681,7 +699,11 @@ public class Level extends GameObject {
 			// Reinicio el clock para que nuevamente cuente 1 seg.
 			timerClock.refresh();
 		}
-			
+		if (click())
+		{
+			if (checkPosMouse(buttonExit, true))
+				finishLevel();
+		}
 		// Si está inicializado el nivel.
 		if (mInitializedNivel) {
 			
@@ -704,7 +726,7 @@ public class Level extends GameObject {
 
 							firstCard = vSelectedCard;
 							firstCard.turnCard();
-							playSound("Resources/sounds/flip.wav");
+							playSound("resources/sounds/flip.wav");
 
 						} else {
 							
@@ -715,7 +737,7 @@ public class Level extends GameObject {
 							{
 								secondCard = vSelectedCard;
 								secondCard.turnCard();
-								playSound("Resources/sounds/flip.wav");
+								playSound("resources/sounds/flip.wav");
 								timerSecondCard.setActive(true);
 								mWaitCards = true;
 							}
@@ -788,7 +810,6 @@ public class Level extends GameObject {
 			
 			// Elimino la carta del tablero.
 			this.mCards[vPos.x][vPos.y] = null;			
-			//this.table[vPos.x][vPos.y] = false;
 
 			// Obtengo la posicion de la carta en el tablero
 			// en funcion de su posicion en el escenario del nivel.
@@ -796,19 +817,18 @@ public class Level extends GameObject {
 			
 			// Elimino la carta del tablero.
 			this.mCards[vPos.x][vPos.y] = null;
-			//this.table[vPos.x][vPos.y] = false;
 			
 			// Incremento el nro de aciertos de pares de cartas descubiertos.
 			
 			mSuccess++;
 			((Memo)parent).addPoints(Level.pointsPerPair);
 			
-			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/tick.png"), 6, 1,Transparency.TRANSLUCENT),300,150);
+			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(this.bsIO.getURL("resources/images/tick.png"), 6, 1,Transparency.TRANSLUCENT),300,150);
 			winSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 			winSprite.getAnimationTimer().setDelay(100);
 			winSprite.setAnimate(true);
 			playfield.add(winSprite);
-			playSound("Resources/sounds/winCard.wav");
+			playSound("resources/sounds/winCard.wav");
 			
 		} else {
 			// Incremento el nro de desaciertos de pares de cartas descubiertos.
@@ -817,13 +837,13 @@ public class Level extends GameObject {
 			mFails++;
 
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
-					this.bsIO.getURL("Resources/images/fail.png"), 6, 1,
+					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
 					Transparency.TRANSLUCENT),300,150);
 			failSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 			failSprite.getAnimationTimer().setDelay(100);
 			failSprite.setAnimate(true);
 			playfield.add(failSprite);
-			playSound("Resources/sounds/flip.wav");
+			playSound("resources/sounds/flip.wav");
 		}
 		
 		firstCard = null;				
@@ -841,11 +861,11 @@ public class Level extends GameObject {
 	private Point getPositionOnTable(Card xCard) {
 		
 		// Nro. de fila. 
-		int vX = (int) (xCard.getX() - positionScreenX) 
+		int vY = (int) (xCard.getX() - positionScreenY) 
 					/ (widthCard + separationCol);
 		
 		// Nro. de columna.
-		int vY = (int) (xCard.getY() - positionScreenY) 
+		int vX = (int) (xCard.getY() - positionScreenX) 
 		           / (heightCard + separationRow);
 		
 		return new Point(vX, vY);		
