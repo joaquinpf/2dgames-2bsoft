@@ -1,3 +1,4 @@
+package game2d.memo;
 /*
 * Classname Level.java
 *
@@ -11,13 +12,12 @@
 
 // GTGE
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.Observable;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.AnimatedSprite;
@@ -26,13 +26,16 @@ import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
+import com.golden.gamedev.object.font.SystemFont;
+import com.golden.gamedev.object.sprite.VolatileSprite;
+import com.golden.gamedev.util.FontUtil;
 import com.golden.gamedev.util.ImageUtil;
 import com.golden.gamedev.util.Utility;
 
 /**
  * 
- * @author Luis Soldavini y Pablo Melchior
- * @version 1.0
+ * @author Luis Soldavini, Pablo Melchior y Carlos Mirabella
+ * @version 2.0
  * 
  */
 public class Level extends GameObject {
@@ -45,18 +48,18 @@ public class Level extends GameObject {
 	/**
 	*  Cantidad de puntos que puede obtener el jugaror por terminar el nivel.
 	*/
-	private static int pointsPerLevel = 1000;
+	private static int pointsPerLevel = 100;
 	
 	/**
 	 * Coordenada X de la primer carta en la pantalla.
 	 */
-	private static int positionScreenX = 20;
+	private static int positionScreenX = 15;
 
 	
 	/**
 	 * Coordenada Y de la primer carta en la pantalla.
 	 */
-	private static int positionScreenY = 20;
+	private static int positionScreenY = 105;
 	
 	
 	/**
@@ -150,7 +153,6 @@ public class Level extends GameObject {
 	 */
 	private AnimatedSprite clock = null;
 	
-
 	/**
 	 * Tablero (matriz) que posee las cartas del nivel.
 	 */
@@ -221,8 +223,13 @@ public class Level extends GameObject {
 	/**
 	 * Fuente que se utiliza para mostrar texto en la pantalla del nivel. 
 	 */
-	private GameFont mFont = null;
+	private SystemFont mFont = null;
 	
+	/**
+	 * Fuente que se utiliza para mostrar texto en la pantalla del nivel. 
+	 */
+	private SystemFont bigFont = null;
+		
 	
 	/** 
 	 * Constructor del Nivel.
@@ -230,7 +237,7 @@ public class Level extends GameObject {
 	 * 
 	 * @param parent  Instancia del Juego (Memo.java).
 	 */	
-	public Level(GameEngine parent) {
+	public Level(final GameEngine parent) {
 		
 		super(parent);
 		mGroupCards = new SpriteGroup("Grupo de cartas");
@@ -244,7 +251,7 @@ public class Level extends GameObject {
 	 * @return  Returns the levelComplete.
 	 * @uml.property  name="levelComplete"
 	 */
-	public boolean isLevelComplete() {
+	public final boolean isLevelComplete() {
 		return (this.remainingCards == 0);
 	}
 
@@ -254,7 +261,7 @@ public class Level extends GameObject {
 	 * @return  Returns the levelNumber.
 	 * @uml.property  name="levelNumber"
 	 */
-	public int getLevelNumber() {
+	public final int getLevelNumber() {
 		return levelNumber;
 	}
 
@@ -264,7 +271,7 @@ public class Level extends GameObject {
 	 * @param levelNumber  nro. de nivel a setear.
 	 * @uml.property  name="levelNumber"
 	 */
-	public void setLevelNumber(int levelNumber) {
+	public final void setLevelNumber(int levelNumber) {
 		this.levelNumber = levelNumber;
 	}
 
@@ -275,7 +282,7 @@ public class Level extends GameObject {
 	 * @return  Returns the playfield.
 	 * @uml.property  name="playfield"
 	 */
-	public PlayField getPlayfield() {
+	public final PlayField getPlayfield() {
 		return playfield;
 	}
 
@@ -286,7 +293,7 @@ public class Level extends GameObject {
 	 * @param playfield  The playfield to set.
 	 * @uml.property  name="playfield"
 	 */
-	public void setPlayfield(PlayField playfield) {
+	public final void setPlayfield(PlayField playfield) {
 		this.playfield = playfield;
 	}
 
@@ -389,17 +396,6 @@ public class Level extends GameObject {
 	public void setSecondCard(Card secondCard) {
 		this.secondCard = secondCard;
 	}
-
-
-	/**
-	 * @param o
-	 * @param arg
-	 */
-	public void update(Observable o, Object arg) {
-
-		// TODO no es necesario implementarlo si se usa el clock
-		// de GTGE.
-	}
 	
 
 	/**
@@ -409,22 +405,19 @@ public class Level extends GameObject {
 	 */
 	private void calculateRowAndCol() {
 		
-		ArrayList<Point> vDimensions = new ArrayList<Point>(); 
+		int difer = Integer.MAX_VALUE;
 		
-		// Determino los divisores de tablesize y los guardo en el arreglo.
-		for (int i = 2; i <= (this.tableSize / 2); i++) {
+		for (int i = 2; i <= 5; i++) {
 			if ((this.tableSize % i) == 0) {
-				vDimensions.add(new Point(i, this.tableSize / i));
+				int aux = Math.abs((this.tableSize / i)-i);
+				if (aux<=difer){
+					col = this.tableSize / i;
+					row = i;
+					difer = aux;
+				}
 			}
 		}
-		
-		// Obtengo una configuracion de filas y columnas aleatoriamente.
-		int vPos = Utility.getRandom(0, vDimensions.size() - 1);
-		
-		row = vDimensions.get(vPos).x;
-		col = vDimensions.get(vPos).y;
 	}
-
 
 	/**
 	 * Metodo Hook del GTGE definido en GameObject como abstracto. 
@@ -446,9 +439,13 @@ public class Level extends GameObject {
 		showCursor();
 		
 		setMaskColor(Color.BLACK); // Makes sprite background transparent.
-				
-		mFont = fontManager.getFont(
-				getImage("Resources/images/BitmapFont.png"));
+		bigFont = new SystemFont(FontUtil.createTrueTypeFont(
+			this.bsIO.getURL("Resources/images/ravie.ttf"), Font.PLAIN, 40));
+		
+		mFont = new SystemFont(FontUtil.createTrueTypeFont(
+				this.bsIO.getURL("Resources/images/ravie.ttf"), Font.PLAIN, 24));
+			
+
 		playfield = new PlayField(mBackground);
 		playfield.addGroup(mGroupCards);
 		
@@ -474,10 +471,12 @@ public class Level extends GameObject {
 		this.remainingCards = this.tableSize;
 		
 		
-		clock =new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/clock.png"), 12, 1,Transparency.TRANSLUCENT));
+		clock = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL(
+				"Resources/images/clock.png"), 12, 1,
+				Transparency.TRANSLUCENT));
 		clock.setLoopAnim(true);
 		clock.getAnimationTimer().setDelay(200);
-		clock.setLocation(425, 470);
+		clock.setLocation(10,10);
 		playfield.add(clock);
 
 		this.timerStartLevel.setActive(true);
@@ -618,24 +617,33 @@ public class Level extends GameObject {
 	@Override
 	public void render(Graphics2D g) {
 		this.playfield.render(g);
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		mFont.drawString(g,String.valueOf(this.getRemainingTimeLevel()), 462, 515);
+		mFont.setColor(Color.WHITE);
+		mFont.drawString(g, String.valueOf(this.getRemainingTimeLevel()),
+				GameFont.CENTER, 10, 35, 100);
 		
- 		mFont.drawString(g, "NIVEL: " 
- 				+ String.valueOf(this.getLevelNumber()), 530, 480);
+		
+		bigFont.setColor(new Color(239, 231, 123));
+		bigFont.drawString(g,"Nivel", GameFont.CENTER, 125, 0, 100); 
+		bigFont.drawString(g,String.valueOf(this.getLevelNumber()), GameFont.CENTER, 125, 50, 100);
+		
  		
- 		mFont.drawString(g, "PUNTOS: " 
- 				+ ((Memo)parent).getGlobalScore(), 530, 500);
- 		
- 		mFont.drawString(g, "FALTAN " 
+		bigFont.setColor(new Color(142, 239, 123));
+		bigFont.drawString(g, "Puntos", GameFont.CENTER, 550, 0,240);
+		bigFont.drawString(g, String.valueOf(((Memo) parent).getGlobalScore())
+				,GameFont.CENTER, 550, 50, 240);
+
+ 		mFont.drawString(g, "Faltan " 
  				+ String.valueOf(this.getRemainingCards()
- 				+ " CARTAS"), 530, 520);
+ 				+ " Cartas"), GameFont.CENTER, 300, 10, 200);
  		
- 		mFont.drawString(g, "ACIERTOS: " 
- 				+ String.valueOf(this.mSuccess), 530, 540);
+ 		mFont.drawString(g, "Aciertos: " 
+ 				+ String.valueOf(this.mSuccess), GameFont.CENTER, 300, 40, 200);
  		
- 		mFont.drawString(g, "ERRORES: " 
- 				+ String.valueOf(this.mFails), 530, 560);
+ 		mFont.drawString(g, "Errores: " 
+ 				+ String.valueOf(this.mFails), GameFont.CENTER, 300, 70, 200);
 	}
 
 	
@@ -696,15 +704,18 @@ public class Level extends GameObject {
 
 							firstCard = vSelectedCard;
 							firstCard.turnCard();
+							playSound("Resources/sounds/flip.wav");
 
 						} else {
 							
 							// Seleccionó la segunda carta.
 							if (!((this.firstCard.getScreenX() == vSelectedCard.getScreenX())
-									&& (this.firstCard.getScreenY() == vSelectedCard.getScreenY())))
+									&& (this.firstCard.getScreenY() == vSelectedCard.getScreenY()))
+									&& this.secondCard == null)
 							{
 								secondCard = vSelectedCard;
 								secondCard.turnCard();
+								playSound("Resources/sounds/flip.wav");
 								timerSecondCard.setActive(true);
 								mWaitCards = true;
 							}
@@ -719,8 +730,10 @@ public class Level extends GameObject {
 					checkCards();
 				}					
 				
-			} else if (timerSecondCard.action(elapsedTime)) {
-				mWaitCards = false;
+			} else { 
+				if (timerSecondCard.action(elapsedTime)) {
+					mWaitCards = false;
+				}
 			}
 			
 			// Si desea abandonar el nivel.
@@ -738,15 +751,17 @@ public class Level extends GameObject {
 		}
 	}
 	
+	
 	private void finishLevel() {
-		parent.nextGameID=Memo.MENU_MENU;
+		parent.nextGameID = Memo.MENU_MENU;
 		finish();
 	}
 
 	private void winLevel() {
-		((Memo)parent).addPoints(this.pointsPerLevel*this.mRemainingTimeLevel);
+		((Memo) parent).addPoints(Level.pointsPerLevel 
+				- this.mFails + this.mSuccess + this.mRemainingTimeLevel);
 		
-		parent.nextGameID=Memo.MENU_PLAY;
+		parent.nextGameID = Memo.MENU_PLAY;
 		finish();
 		
 	}
@@ -784,14 +799,31 @@ public class Level extends GameObject {
 			//this.table[vPos.x][vPos.y] = false;
 			
 			// Incremento el nro de aciertos de pares de cartas descubiertos.
+			
 			mSuccess++;
-			((Memo)parent).addPoints(this.pointsPerPair);
+			((Memo)parent).addPoints(Level.pointsPerPair);
+			
+			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/tick.png"), 6, 1,Transparency.TRANSLUCENT),300,150);
+			winSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
+			winSprite.getAnimationTimer().setDelay(100);
+			winSprite.setAnimate(true);
+			playfield.add(winSprite);
+			playSound("Resources/sounds/winCard.wav");
 			
 		} else {
 			// Incremento el nro de desaciertos de pares de cartas descubiertos.
 			firstCard.turnCard();
 			secondCard.turnCard();
 			mFails++;
+
+			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
+					this.bsIO.getURL("Resources/images/fail.png"), 6, 1,
+					Transparency.TRANSLUCENT),300,150);
+			failSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
+			failSprite.getAnimationTimer().setDelay(100);
+			failSprite.setAnimate(true);
+			playfield.add(failSprite);
+			playSound("Resources/sounds/flip.wav");
 		}
 		
 		firstCard = null;				

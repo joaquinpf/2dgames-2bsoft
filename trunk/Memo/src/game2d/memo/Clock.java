@@ -1,3 +1,4 @@
+package game2d.memo;
 /*
 * Classname Clock.java
 *

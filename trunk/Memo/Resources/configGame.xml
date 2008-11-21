@@ -4,7 +4,7 @@
   <name> Memo </name>
   <config>
       <levels count="10">
-			<level ID="1" time="60" pairs="2" background="Resources/images/background.jpg"/>
+			<level ID="1" time="20" pairs="2" background="Resources/images/background.jpg"/>
 			<level ID="2" time="60" pairs="3" background="Resources/images/background.jpg"/>
 			<level ID="3" time="60" pairs="4" background="Resources/images/background.jpg"/>
 			<level ID="4" time="60" pairs="5" background="Resources/images/background.jpg"/>
@@ -15,7 +15,7 @@
 			<level ID="9" time="100" pairs="10" background="Resources/images/background.jpg"/>
 			<level ID="10" time="100" pairs="11" background="Resources/images/background.jpg"/>
 		</levels>
-		<cards count="12">
+		<cards count="15">
 			<card value="1" image="Resources/images/card_atom.png"/>
 			<card value="2" image="Resources/images/card_radia.png"/>
 			<card value="3" image="Resources/images/card_cd.png"/>
@@ -27,6 +27,13 @@
 			<card value="9" image="Resources/images/card_network.png"/>
 			<card value="10" image="Resources/images/card_rabbit.png"/>
 			<card value="11" image="Resources/images/card_radia.png"/>
+			<card value="12" image="Resources/images/card_radia.png"/>
+			<card value="13" image="Resources/images/card_radia.png"/>
+			<card value="14" image="Resources/images/card_radia.png"/>
+			<card value="15" image="Resources/images/card_radia.png"/>
+			<card value="16" image="Resources/images/card_radia.png"/>
+			<card value="17" image="Resources/images/card_radia.png"/>
+			<card value="18" image="Resources/images/card_radia.png"/>
 		</cards>
 	</config>
 </game>

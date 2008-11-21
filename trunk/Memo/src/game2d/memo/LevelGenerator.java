@@ -1,3 +1,4 @@
+package game2d.memo;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,6 +19,8 @@ import com.golden.gamedev.util.ImageUtil;
 
 /**
  * Clase encargada de la administración de los niveles del juego.
+ * 
+ * @author Carlos Mirabella
  */
 public class LevelGenerator {
 
@@ -88,7 +91,7 @@ public class LevelGenerator {
 		SAXBuilder builder = new SAXBuilder(true);
 			
         try {
-	        Document doc = builder.build(new File(this.getConfigRoute()));
+	        Document doc = builder.build(parent.bsIO.getFile(this.getConfigRoute()));
 	        Element root = doc.getRootElement();  
 		    List child = root.getChildren();
 		    List childrensConfig = ((Element) child.get(1)).getChildren();                        
@@ -106,7 +109,7 @@ public class LevelGenerator {
   		          level.setLevelNumber(levelNumber);
   		      }
 		    }
-		    for (int i = 1; i <= cantidadPares; i++) {
+		    for (int i = 0; i < cantidadPares; i++) {
 		    	 Element tagCard = (Element) childrensCards.get(i);
 		    	 Card card = new Card();
 		    	 card.setValue(tagCard.getAttribute("value").getValue());

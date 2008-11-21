@@ -1,3 +1,4 @@
+package game2d.memo;
 import java.awt.Dimension;
 
 import com.golden.gamedev.GameEngine;

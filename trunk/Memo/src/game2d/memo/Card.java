@@ -1,6 +1,11 @@
+package game2d.memo;
 import com.golden.gamedev.object.sprite.AdvanceSprite;
 
-
+/**
+ * 
+ * @author Carlos Mirabella
+ *
+ */
 
 public class Card extends AdvanceSprite implements Comparable<Card> {
 
