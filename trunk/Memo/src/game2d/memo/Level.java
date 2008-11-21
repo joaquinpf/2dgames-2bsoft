@@ -53,13 +53,13 @@ public class Level extends GameObject {
 	/**
 	 * Coordenada X de la primer carta en la pantalla.
 	 */
-	private static int positionScreenX = 15;
+	private static int positionScreenX = 105;
 
 	
 	/**
 	 * Coordenada Y de la primer carta en la pantalla.
 	 */
-	private static int positionScreenY = 105;
+	private static int positionScreenY = 15;
 	
 	
 	/**
@@ -460,7 +460,7 @@ public class Level extends GameObject {
 		heightCard = mGroupCards.getSprites()[0].getHeight();
 		
 		// Inicializo las dos matrices con los tamaños definidos anteriormente.
-		mCards = new Card [row][col];
+		mCards = new Card[row][col];
 		//table = new boolean [row][col];
 		
 		// Ubico las cartas en el tablero y escenario.
@@ -595,13 +595,13 @@ public class Level extends GameObject {
 		// Si la carta se ubica en la posicion (0, 0) del tablero
 		if ((xPositionTable.x == 0) && (xPositionTable.y == 0)) {
 			
-			vPositionScreen.setLocation(positionScreenX, positionScreenY);
+			vPositionScreen.setLocation( positionScreenY,positionScreenX);
 			
 		} else {
 			
-			vPositionScreen.setLocation(positionScreenX
-					+ (xPositionTable.x * width),
-					 positionScreenY + (xPositionTable.y * heigh));
+			vPositionScreen.setLocation(positionScreenY + (xPositionTable.y * width)
+					,positionScreenX
+					+ (xPositionTable.x * heigh));
 		}
 		
 		return vPositionScreen;
