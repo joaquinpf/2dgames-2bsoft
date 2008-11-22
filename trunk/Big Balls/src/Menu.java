@@ -1,19 +1,17 @@
-import java.awt.Color;
-import java.awt.Font;
+
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.Transparency;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
-import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.Timer;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ImageBackground;
+import com.golden.gamedev.util.ImageUtil;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
@@ -22,23 +20,17 @@ import com.golden.gamedev.object.background.ImageBackground;
  */
 
 public class Menu extends GameObject {
-	
-	/**
-	 * Fuente a utilizar sobre la pelota.
-	 * @uml.property  name="ttfFont"
-	 */
-	private String ttfFont = "Arial";
-	
+		
 	/**
 	 * Tamaño de la fuente de la pelota.
 	 * @uml.property  name="fontSize"
 	 */
-	private int fontSize = 50;
+	private int fontSize = 60;
 	
 	/**
 	 * distancia de separacion entre cada opción del menu.	
 	 */
-	private static final int ANCHO_LINE_MENU = 60;
+	private static final int ANCHO_LINE_MENU = 65;
 	
 	/**
 	 * Background del menu.
@@ -48,18 +40,13 @@ public class Menu extends GameObject {
 	/**
 	 * Puntero animado que señala la opcion elegida.
 	 */
-	private AnimatedSprite pointer;
+	private Sprite pointer;
 	
 	/**
 	 * Playfield del menu.
 	 */
 	private PlayField pfMenu = new PlayField();
-	
-	/**
-	 * Manejador de fuente del menu.
-	 */
-	private GameFont internalFont;
-	
+		
 	/**
 	 * variable que representa la opcion seleccionada.
 	 */
@@ -84,16 +71,18 @@ public class Menu extends GameObject {
 	 * Contiene la posicion inicial en la coordenada Y del puntero.
 	 */
 	private int posYpointer; 
+		
+	/**
+	 * Sonido de movimiento en el menu.
+	 */
+	private static final String MENU_MOVE_SOUND = 
+		"resources/sounds/menumove.wav";
 	
 	/**
-	 * Largo de la grilla de fuente.
+	 * Sonido de seleccion en el menu.
 	 */
-	private static final int FONT_GRID_HEIGHT = 12;
-	
-	/**
-	 * Ancho de la grilla de fuente.
-	 */
-	private static final int FONT_GRID_WIDTH = 8;	
+	private static final String MENU_SELECT_SOUND = 
+		"resources/sounds/menuselect.wav";
 	
 //////////////////////////////////////////////////////////////////	
 
@@ -116,19 +105,23 @@ public class Menu extends GameObject {
 		case KeyEvent.VK_ENTER :
 			if (option == BigBalls.OPTION_PLAY) {
 				parent.nextGameID = BigBalls.OPTION_PLAY;
+				playSound(MENU_SELECT_SOUND);
 				finish();
 			}
 			if (option == BigBalls.OPTION_SCORES) {
 				parent.nextGameID = BigBalls.OPTION_SCORES;
+				playSound(MENU_SELECT_SOUND);
 				finish();
 			}
 			if (option == BigBalls.OPTION_EXIT) {
 				// end
+				playSound(MENU_SELECT_SOUND);
 				finish();
 			}
 		break;
 		case KeyEvent.VK_UP :
 			option--;
+			playSound(MENU_MOVE_SOUND);
 			pointer.setLocation(posXpointer, pointer.getY() - ANCHO_LINE_MENU);
 			if (option < BigBalls.OPTION_PLAY) {
 				option = BigBalls.OPTION_EXIT;
@@ -138,6 +131,7 @@ public class Menu extends GameObject {
 		break;
 		case KeyEvent.VK_DOWN :
 			option++;
+			playSound(MENU_MOVE_SOUND);
 			pointer.setLocation(posXpointer, pointer.getY() + ANCHO_LINE_MENU);
 			if (option > BigBalls.OPTION_EXIT) {
 				option = BigBalls.OPTION_PLAY;
@@ -145,9 +139,10 @@ public class Menu extends GameObject {
 			}
 		break;
 		case KeyEvent.VK_ESCAPE :
+			playSound(MENU_MOVE_SOUND);
 			finish();
 		break;
-		default : ;
+		default :
 		}
 	}
 	
@@ -159,27 +154,36 @@ public class Menu extends GameObject {
 			if (click()) {
 				if (option == BigBalls.OPTION_PLAY) {
 					parent.nextGameID = BigBalls.OPTION_PLAY;
+					playSound(MENU_SELECT_SOUND);
 					finish();
 				}
 				if (option == BigBalls.OPTION_SCORES) {
 					parent.nextGameID = BigBalls.OPTION_SCORES;
+					playSound(MENU_SELECT_SOUND);
 					finish();
 				}
 				if (option == BigBalls.OPTION_EXIT) {
 					// end
+					playSound(MENU_SELECT_SOUND);
 					finish();
 				}
 			}
-			if (getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU) {
+			if (getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU
+					&& option != BigBalls.OPTION_PLAY) {
 				option = BigBalls.OPTION_PLAY; 
 				pointer.setLocation(posXpointer, posYpointer);
+				playSound(MENU_MOVE_SOUND);
 			}
 			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU 
-				&& getMouseY() < posYmenu + ANCHO_LINE_MENU * 2) {
+				&& getMouseY() < posYmenu - fontSize + ANCHO_LINE_MENU * 2
+				&& option != BigBalls.OPTION_SCORES) {
 				option = BigBalls.OPTION_SCORES;
 				pointer.setLocation(posXpointer, posYpointer + ANCHO_LINE_MENU);
+				playSound(MENU_MOVE_SOUND);
 			}
-			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU * 2) {
+			if (getMouseY() > posYmenu - fontSize + ANCHO_LINE_MENU * 2
+					&& option != BigBalls.OPTION_EXIT) {
+				playSound(MENU_MOVE_SOUND);
 				option = BigBalls.OPTION_EXIT;
 				pointer.setLocation(posXpointer, 
 						            posYpointer + ANCHO_LINE_MENU * 2);
@@ -194,25 +198,22 @@ public class Menu extends GameObject {
 	public final void initResources() {
 		//Seteo de posiciones
 		posXmenu = getWidth() / 2 - 40;
-		posYmenu = getHeight() / 2;
-		posXpointer = posXmenu - 460;
-		posYpointer = posYmenu - 30;
+		posYmenu = getHeight() / 2 - 20;
+		posXpointer = posXmenu - 330;
+		posYpointer = posYmenu - 70;
 		
 		//Fondo
 		background = new ImageBackground(
-				getImage("resources/images/menubackground.png"), 800, 600);
-		
-		//Fuente a utilizar
-		internalFont = fontManager.getFont(new Font(ttfFont, Font.BOLD, fontSize));
-		fontManager.getFont(getImages("resources/images/font.png",
-								   FONT_GRID_WIDTH, FONT_GRID_HEIGHT));
+				getImage("resources/images/menu.png"), 800, 600);
 		
 		//El puntero a utilizar
-		pointer = new AnimatedSprite(getImages(
-				"resources/images/pointerMenu.png", 1, 1),
-				posXpointer, posYpointer);
+		BufferedImage b = ImageUtil.getImage(
+				bsIO.getURL("resources/images/pointerv2.png"),
+				Transparency.TRANSLUCENT);
+		pointer = new Sprite(b);
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
+		pointer.setLocation(posXpointer, posYpointer);
 	
 		this.showCursor();
 	}
@@ -229,22 +230,13 @@ public class Menu extends GameObject {
 	final void drawText(final Graphics2D g, final String text, final int line,
 					    final boolean selected) {
 		if (selected) {
-			// draw selected rectangle
-			g.setColor(new Color(52, 71, 66));
-			g.fillRect(posXmenu - 8,
-					   (posYmenu + line - fontSize + 5) ,
-					   internalFont.getWidth(text) + 16,
-					   internalFont.getHeight() + 3);
+			g.drawImage(getImage("resources/images/" + text  + ".png"),
+					posXmenu, posYmenu + line - 36, null);
+			
+		} else {
+			g.drawImage(getImage("resources/images/" + text  + "ns.png"),
+					posXmenu, posYmenu + line - 36, null);
 		}
-
-		//Escribe el texto en pantalla con antialias.
-		Font font = new Font(ttfFont, Font.BOLD, fontSize);
-		g.setFont(font);	
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-		        RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setColor(Color.white);
-		
-		g.drawString(text, posXmenu, posYmenu + line);
 	}
 
 	
@@ -257,10 +249,10 @@ public class Menu extends GameObject {
 	public final void render(final Graphics2D g) {
 		//g.drawImage(mainMenu,0,0,null);
 		pfMenu.render(g);
-		drawText(g, "Jugar", 0, (option == BigBalls.OPTION_PLAY));
-		drawText(g, "Puntuaciones", ANCHO_LINE_MENU, 
+		drawText(g, "jugar", 0, (option == BigBalls.OPTION_PLAY));
+		drawText(g, "puntuaciones", ANCHO_LINE_MENU, 
 				(option == BigBalls.OPTION_SCORES));
-		drawText(g, "Salir", ANCHO_LINE_MENU * 2, 
+		drawText(g, "salir", ANCHO_LINE_MENU * 2, 
 				(option == BigBalls.OPTION_EXIT));
 	}
 	

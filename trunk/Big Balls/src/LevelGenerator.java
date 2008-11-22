@@ -7,6 +7,7 @@
  * Copyright notice
  */
 
+import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +23,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import com.golden.gamedev.GameEngine;
+import com.golden.gamedev.util.ImageUtil;
 
 /**Esta clase se ocupa de cargar la configuracion de cada nivel del juego.
  * Las configuraciones de los diferentes niveles se leen de un archivo XML
@@ -115,7 +116,8 @@ public class LevelGenerator {
 	 * @return List Retorna una lista con la cantidad de pelotas
 	 * especificadas en el parametro cant.
 	 */
-    private List<Ball> getBalls(final NodeList nlBall, final int cant, 
+    @SuppressWarnings("deprecation")
+	private List<Ball> getBalls(final NodeList nlBall, final int cant, 
     		final int min, final int max) {
 		double sizePercentage;
 		int value;
@@ -137,13 +139,13 @@ public class LevelGenerator {
             	elementBall = (Element) nlBall.item(randomBall % nlBall.getLength());
 				
 				try {
-					image = ImageIO.read(new File(
-							elementBall.getAttribute("image")));
+					File f = new File(elementBall.getAttribute("image"));
+					image = ImageUtil.getImage(f.toURL(), Transparency.TRANSLUCENT);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				
-				sizePercentage = Math.random() * 0.7 + 0.3;
+				sizePercentage = Math.random() * 0.72 + 0.3;
 				
 				if (drawChar) {
 					//Si el nivel es de texto, se debe randomizar entre
@@ -170,7 +172,8 @@ public class LevelGenerator {
 		        ball.setVerticalSpeed(speedy);
 		        
 		        //Randomiza la velocidad de rotacion del sprite
-		        int rotation = (int) ((Math.random() - 0.5) * 30);
+		        int rotation = (int) (((Math.random() - 0.5) + 0.1) * 30);
+		        
 		        ball.setSpinVelocity(rotation);
 		        
 		        //Agrega la pelota

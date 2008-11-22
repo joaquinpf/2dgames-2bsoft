@@ -1,25 +1,13 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-
-import sun.java2d.pipe.DrawImage;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.background.ColorBackground;
 import com.golden.gamedev.object.background.ImageBackground;
 
 

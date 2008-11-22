@@ -1,15 +1,18 @@
 
 
 import com.golden.gamedev.object.Sprite;
+import com.golden.gamedev.util.ImageUtil;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.text.AttributedString;
 
 /**
  * Esta clase modela el funcionamiento de una pelota.
@@ -125,12 +128,14 @@ public class Ball extends Sprite {
 	 */
 	private BufferedImage rotate(final double angle, 
 			final BufferedImage image) {
+		 
+		return ImageUtil.rotate(image, (int) angle);
 		
-		AffineTransform tx = new AffineTransform();
-		tx.rotate(Math.PI / 180 * angle, image.getWidth() / 2, image.getHeight() / 2);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		//AffineTransform tx = new AffineTransform();
+		//tx.rotate(Math.PI / 180 * angle, image.getWidth() / 2, image.getHeight() / 2);
+		//AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 	
-		return op.filter(image, null);
+		//return op.filter(image, null);
 	}
 	
 	/**
@@ -143,11 +148,13 @@ public class Ball extends Sprite {
 	private BufferedImage resize(final BufferedImage image, 
 			final double sizePercentage) {
 		
-		AffineTransform tx = new AffineTransform();
+		return ImageUtil.resize(image, (int) (image.getWidth() * sizePercentage), 
+				(int) (image.getHeight() * sizePercentage));
+		/*AffineTransform tx = new AffineTransform();
 		tx.scale(sizePercentage, sizePercentage);
 		AffineTransformOp op = 
 			new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-		return op.filter(image, null);
+		return op.filter(image, null);*/
 	}
 			
 	/**
@@ -160,17 +167,27 @@ public class Ball extends Sprite {
 		Graphics2D g2d = image.createGraphics();
 
 		//Setea el color y la fuente
+		Font font = new Font(ttfFont, Font.PLAIN, fontSize);
 		g2d.setColor(Color.black);
-		g2d.setFont(new Font(ttfFont, Font.PLAIN, fontSize));
+		g2d.setFont(font);
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        RenderingHints.VALUE_ANTIALIAS_ON);
 		
+	    AttributedString as = new AttributedString(text);
+	    as.addAttribute(TextAttribute.FONT, font);
+	    
+	    //Subrayar si es un 9, 6, W o M
+	    if(text.equals("9") || text.equals("6") || text.equals("W") 
+	    		|| text.equals("M")) {
+	    	as.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+	    }
+	    
 		//Obtiene el ancho del texto a imprimir para poder corregir
 		//la posicion en pantalla
 		FontMetrics fm = g2d.getFontMetrics();
 		int textWidth = fm.stringWidth(text);
 		
-		g2d.drawString(text, (image.getWidth() / 2) - (textWidth / 2), 
+		g2d.drawString(as.getIterator(), (image.getWidth() / 2) - (textWidth / 2), 
 				(image.getHeight() / 2) + 12);
 		g2d.dispose();
 	}
@@ -246,5 +263,4 @@ public class Ball extends Sprite {
 	public final void setSpinVelocity(final int newSpinVelocity) {
 		this.spinVelocity = newSpinVelocity;
 	}
-
 }

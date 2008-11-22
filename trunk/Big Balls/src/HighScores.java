@@ -8,7 +8,7 @@ import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.background.ImageBackground;
 
 /**
  * Pantalla de puntajes del juego.
@@ -45,7 +45,8 @@ public class HighScores extends GameObject {
 	 */
 	@Override
 	public final void initResources() {
-		background = new ColorBackground(Color.BLUE);
+		background = new ImageBackground(
+				getImage("resources/images/menupuntuaciones.png"), 800, 600);
 		font = fontManager.getFont(getImages("resources/images/font.png",
 								   8, 12));
 		//titleHighScores = getImage("resources/images/titlePuntajes1.gif");
@@ -81,7 +82,7 @@ public class HighScores extends GameObject {
 			                   + font.getWidth("puntos"); 
 			
 			font.drawString(g, "Nombre" + lineaPunteada(longitud) + "puntos",
-					        getWidth() / 2 - 200, getHeight() / 2 - 100 + line);
+					        getWidth() / 2 - 260, getHeight() / 2 - 100 + line);
 		//}
 	}
 	/**
@@ -95,13 +96,6 @@ public class HighScores extends GameObject {
 		pfHighScores.render(g);
 		
 		listarPuntos(g);
-		
-		g.setColor(Color.BLACK);
-		g.drawString("Presione ENTER o haga click con el Mouse "
-				    + "para volver al menu", getWidth() / 2 - 180,
-				    getHeight() - 8);
-		g.drawImage(titleHighScores, getWidth() / 2 - 250, 20, null);
-
 	}
 
 	/**

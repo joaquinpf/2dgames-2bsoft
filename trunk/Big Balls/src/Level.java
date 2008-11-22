@@ -2,17 +2,20 @@ import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.Timer;
 import com.golden.gamedev.object.background.ImageBackground;
-import com.golden.gamedev.object.collision.CollisionBounds;
+import com.golden.gamedev.object.font.SystemFont;
 import com.golden.gamedev.object.sprite.AdvanceSprite;
+import com.golden.gamedev.util.FontUtil;
 import com.golden.gamedev.util.ImageUtil;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -102,7 +105,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Para realizar los mensajes por pantalla.
 	 */
-	private GameFont font;
+	private SystemFont font;
 
 	/**
 	 * Para trabajar con el GameEngine ahorrando demasiados castings.
@@ -117,22 +120,32 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Componente X del inicio de la grilla de agujeros.
 	 */
-	private int holeGridStartX = 8;
+	private int holeGridStartX = 14;
 	
 	/**
 	 * Componente Y del inicio de la grilla de agujeros.
 	 */
-	private int holeGridStartY = 442;
+	private int holeGridStartY = 450;
 	
 	/**
 	 * Pixeles de salto entre fila y fila de agujeros.
 	 */
-	private int holeRowJump = 75;
+	private int holeRowJump = 68;
 	
 	/**
 	 * Pixeles de salto entre fila y fila de agujeros.
 	 */
-	private int holeColumnJump = 80;
+	private int holeColumnJump = 78;
+	
+	/**
+	 * Ruta a la imagen del agujero.
+	 */
+	private String holeImage = "resources/images/agujerov3.png";
+	
+	/**
+	 * Sprite para el icono salir.
+	 */
+	private Sprite salir;
 	
 	/**
 	 * Constructor del nivel.
@@ -165,6 +178,7 @@ public class Level extends GameObject implements Observer {
 	 * @param arg arg 
 	 */
 	public final void update(final Observable o, final Object arg) {
+		playSound("resources/sounds/clocktick.wav");
 		if (this.clock.getRemainingTime() == 0) {
 			//Pierde el nivel
 			this.loseLevel();
@@ -182,7 +196,7 @@ public class Level extends GameObject implements Observer {
 		
 		//Agrega las pelotas al grupo correspondiente
 		this.ballGroup = new SpriteGroup("BALLS");
-		for (int i=0; i<orderedBalls.size(); i++) {
+		for (int i = 0; i < orderedBalls.size(); i++) {
 			//Ball ball = e.nextElement();
 			ballCollision.add(playfield.addGroup(new SpriteGroup("Ball" + i)));
 			ballCollision.get(i).add(orderedBalls.get(i));
@@ -194,7 +208,7 @@ public class Level extends GameObject implements Observer {
 		Background collMask = 
 			new ImageBackground(getImage("resources/images/collmask.png"), 
 				800, 441);
-	
+		
 		//Manejo de colisiones
 		for (int i = 0; i < orderedBalls.size(); i++) {
 			playfield.addCollisionGroup(ballCollision.get(i), 
@@ -214,9 +228,8 @@ public class Level extends GameObject implements Observer {
 		}
 		
 		//Fuente a utilizar
-		this.font = fontManager.getFont(getImages("resources/images/font.png", 20, 3),
-				" !            .,0123" + "456789:   -? ABCDEFG"
-				+ "HIJKLMNOPQRSTUVWXYZ ");
+		font = new SystemFont(FontUtil.createTrueTypeFont(
+				this.bsIO.getURL("resources/images/MaroonedOnMarsBB.ttf"), Font.BOLD, 40f));
 
 		//Setea la posicion de las pelotas
 		setPositionBalls();
@@ -224,10 +237,17 @@ public class Level extends GameObject implements Observer {
 		//Genera los huecos para las pelotas
 		generateHoles();
 		
+		//Boton salir
+		salir = new Sprite(ImageUtil.getImage(
+				bsIO.getURL("resources/images/ingamesalir.png"), 
+				Transparency.TRANSLUCENT));
+		salir.setLocation(750, 5);
+		playfield.add(salir);
+		
 		//Inicializacion del reloj
-		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("Resources/images/clock.png"), 12, 1, Transparency.TRANSLUCENT));
+		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("resources/images/clock.png"), 7, 1, Transparency.TRANSLUCENT));
+		clockSprite.getAnimationTimer().setDelay(142);
 		clockSprite.setLoopAnim(true);
-		clockSprite.getAnimationTimer().setDelay(200);
 		clockSprite.setLocation(425, 470);
 		playfield.add(clockSprite);
 		clockSprite.setActive(true);
@@ -304,8 +324,7 @@ public class Level extends GameObject implements Observer {
 		for (int i = 0; i < orderedBalls.size(); i++) {
 			Sprite a;
 			BufferedImage b = ImageUtil.getImage(
-						bsIO.getURL("resources/images/agujero.png"),
-						Transparency.TRANSLUCENT);
+						bsIO.getURL(holeImage),	Transparency.TRANSLUCENT);
 			if (i < 5) {
 				a = new Sprite(b, holeGridStartX + holeColumnJump * i, 
 						holeGridStartY);
@@ -324,9 +343,9 @@ public class Level extends GameObject implements Observer {
 	 */
 	private void fillHole(final Ball ballSel) {
 		int correctionFactor = 2;
-		BufferedImage hole = getImage("resources/images/agujero.png");
-		BufferedImage b = getImage(ballSel.getImageUsed());
-		Ball a = new Ball(ballSel.getValue(), ballSel.getDescription(), b, 0.37);
+		BufferedImage b = ImageUtil.getImage(
+				bsIO.getURL(ballSel.getImageUsed()),Transparency.TRANSLUCENT);
+		Ball a = new Ball(ballSel.getValue(), ballSel.getDescription(), b, 0.335);
 		
 		if (this.pos < 5) {
 			a.setLocation(holeGridStartX + holeColumnJump * (this.pos % 5) 
@@ -349,29 +368,33 @@ public class Level extends GameObject implements Observer {
 		
 		playfield.render(g);
 
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		        RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		//Renderiza el timer (numerico)
+		g.setColor(Color.white);
 		int textWidth = 
 			font.getWidth(String.valueOf(this.clock.getRemainingTime()));
 		font.drawString(g, String.valueOf(this.clock.getRemainingTime()), 
-				475 - (textWidth / 2), 511);
-		
+				474 - (textWidth / 2), 500);
+
+		g.setColor(new Color(50, 49, 47));
 		//Renderiza el nro de nivel
 		font.drawString(g, "NIVEL: " 
- 				+ String.valueOf(this.getLevelNumber()), 530, 480);
+ 				+ String.valueOf(this.getLevelNumber()), 535, 455);
  		
 		//Renderiza el puntaje total obtenido hasta el momento
 		font.drawString(g, "PUNTOS: " 
- 				+ ((BigBalls) parent).getGlobalScore(), 530, 500);
+ 				+ ((BigBalls) parent).getGlobalScore(), 535, 485);
  		
 		//Renderiza la cantidad de pelotas faltantes
 		font.drawString(g, "FALTAN " 
  				+ String.valueOf(this.getRemainingBalls()
- 				+ " PELOTAS"), 530, 520);
+ 				+ " PELOTAS"), 535, 515);
  		
 		//Renderiza las vidas
 		font.drawString(g, "VIDAS: " 
- 				+ String.valueOf(((BigBalls) parent).getLives()), 530, 540);
+ 				+ String.valueOf(((BigBalls) parent).getLives()), 535, 545);
 		
 	}
 
@@ -392,6 +415,7 @@ public class Level extends GameObject implements Observer {
 				if (ballsel.getValue() == this.orderedBalls.elementAt(pos)
 						.getValue()) {
 					ballsel.setActive(false);
+					playSound("resources/sounds/winball.wav");
 					fillHole(ballsel);
 					this.pos++;
 					if (this.pos == this.orderedBalls.size()) {
@@ -403,10 +427,18 @@ public class Level extends GameObject implements Observer {
 				}
 			}
 		}
+
+		//Si presiona la imagen salir vuelve al menu
+		if ((click()) && (checkPosMouse(salir, true))) {
+	    	this.engine.nextGameID = BigBalls.OPTION_MENU;
+	    	clock.deleteObserver(this);
+		    this.finish();
+		}
 		
 		//Si presiona ESC vuelve al menu
 	    if (keyDown(KeyEvent.VK_ESCAPE)) {
 	    	this.engine.nextGameID = BigBalls.OPTION_MENU;
+	    	clock.deleteObserver(this);
 		    this.finish();
 	    }		
 	    
@@ -505,14 +537,18 @@ public class Level extends GameObject implements Observer {
 	 * Genera la animacion de fin de nivel, habiendo ganado.
 	 */
 	public final void generateWinAnimation() {
+		Sprite overlay = new Sprite(ImageUtil.getImage(
+				this.bsIO.getURL("resources/images/overlay.png"),
+				Transparency.TRANSLUCENT));
 		AdvanceSprite win = new AdvanceSprite(ImageUtil.getImages(
-				this.bsIO.getURL("Resources/images/tick.png"), 6, 1,
+				this.bsIO.getURL("resources/images/tick.png"), 6, 1,
 				Transparency.TRANSLUCENT));
 		win.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		win.getAnimationTimer().setDelay(100);
 		win.setLocation(250, 100);
 		win.setLoopAnim(false);
 		win.setAnimate(true);
+		playfield.add(overlay);
 		playfield.add(win);
 	}
 	
@@ -520,14 +556,18 @@ public class Level extends GameObject implements Observer {
 	 * Genera la animacion de fin de nivel, habiendo ganado.
 	 */
 	public final void generateLoseAnimation() {
+		Sprite overlay = new Sprite(ImageUtil.getImage(
+				this.bsIO.getURL("resources/images/overlay.png"),
+				Transparency.TRANSLUCENT));
 		AdvanceSprite lose = new AdvanceSprite(ImageUtil.getImages(
-				this.bsIO.getURL("Resources/images/fail.png"), 6, 1,
+				this.bsIO.getURL("resources/images/fail.png"), 6, 1,
 				Transparency.TRANSLUCENT));
 		lose.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		lose.getAnimationTimer().setDelay(100);
 		lose.setLocation(250, 100);
 		lose.setLoopAnim(false);
 		lose.setAnimate(true);
+		playfield.add(overlay);
 		playfield.add(lose);
 	}
 	
