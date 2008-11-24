@@ -177,8 +177,7 @@ public class Ball extends Sprite {
 	    as.addAttribute(TextAttribute.FONT, font);
 	    
 	    //Subrayar si es un 9, 6, W o M
-	    if(text.equals("9") || text.equals("6") || text.equals("W") 
-	    		|| text.equals("M")) {
+	    if(doUnderline(text)) {
 	    	as.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 	    }
 	    
@@ -190,6 +189,14 @@ public class Ball extends Sprite {
 		g2d.drawString(as.getIterator(), (image.getWidth() / 2) - (textWidth / 2), 
 				(image.getHeight() / 2) + 12);
 		g2d.dispose();
+	}
+	
+	private boolean doUnderline (String text) {
+		if(text.equals("9") || text.equals("6") || text.equals("66") 
+	    		|| text.equals("99") || text.equals("W") || text.equals("M")){
+			return true;
+		}
+		return false;
 	}
 	
 	/**

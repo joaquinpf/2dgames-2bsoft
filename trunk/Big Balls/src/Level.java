@@ -407,7 +407,13 @@ public class Level extends GameObject implements Observer {
 	 */
 	@Override
 	public final void update(final long elapsedTime) {
-		playfield.update(elapsedTime);
+		playfield.update(elapsedTime);		
+		
+		//Si presiona la imagen salir vuelve al menu
+		if (click() && timerEndLevel.isActive()) {
+		    this.finish();
+		}
+		
 		//Logica del juego
 		if ((click()) && (!timerEndLevel.isActive())) {
 			Ball ballsel = (Ball) this.checkPosMouse(this.ballGroup, true);
