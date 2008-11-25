@@ -13,6 +13,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+
 import javax.swing.Timer;
 
 /**
@@ -33,17 +34,20 @@ public class Clock extends Observable {
 	private int remainingTime;
 	
 	/**
-	 * Tiempo total del clock.
-	 * 
 	 * @uml.property  name="totalTime"
 	 */
-	private String totalTime = "";
+	private int totalTime;
+	
+	public Clock(int time) {
+		this.setTotalTime(time);
+	}
+	
 	
 	/**
 	 * Timer privado que nos permite contar un segundo.
 	 */
 	private Timer timer = new Timer(1000, new ActionListener() {
-	    public void actionPerformed(final ActionEvent e) {
+	    public void actionPerformed(ActionEvent e) {
 	    	run();
 	     }
 	});
@@ -73,37 +77,44 @@ public class Clock extends Observable {
 	 * @return  Returns the remainingTime.
 	 * @uml.property  name="remainingTime"
 	 */
-	public final int getRemainingTime() {
+	public int getRemainingTime() {
 		return remainingTime;
 	}
 
 	/**
 	 * Setea el valor de la variable remainingTime.
 	 * 
-	 * @param newRemainingTime  The remainingTime to set.
+	 * @param remainingTime  The remainingTime to set.
 	 * @uml.property  name="remainingTime"
 	 */
-	public final void setRemainingTime(final int newRemainingTime) {		
-		this.remainingTime = newRemainingTime;
+	public void setRemainingTime(int remainingTime) {		
+		this.remainingTime = remainingTime;
 	}
 
+	// TotalTime no sabemos para que sirve.
+	
+	
+
 	/**
-	 * Getter of the property <tt>totalTime</tt>.
+	 * Getter of the property <tt>totalTime</tt>
 	 * @return  Returns the totalTime.
 	 * @uml.property  name="totalTime"
 	 */
-	public final String getTotalTime() {
+	public int getTotalTime() {
 		return totalTime;
 	}
 
 	/**
-	 * Setter of the property <tt>totalTime</tt>.
-	 * @param newTotalTime  The totalTime to set.
+	 * Setter of the property <tt>totalTime</tt>
+	 * @param totalTime  The totalTime to set.
 	 * @uml.property  name="totalTime"
 	 */
-	public final void setTotalTime(final String newTotalTime) {
-		this.totalTime = newTotalTime;
+	public void setTotalTime(int totalTime) {
+		this.totalTime = totalTime;
+		this.remainingTime = totalTime;
+		
 	}
+
 
 	/**
 	 * Este método indica si ya transcurrió el tiempo.
@@ -111,22 +122,31 @@ public class Clock extends Observable {
 	 * @return true si ya transcurrió el tiempo, 
 	 *         false en caso contrario
 	 */
-	public final boolean isFinished() {
+	public boolean isFinished() {
 		return (remainingTime == 0);	
 	}
+
 
 	/**
 	 * Método que inicia la ejecución del clock.
 	 */
-	public final void start() {
+	public void start() {
 		timer.start();
 	}
 
 	/**
 	 * Detiene el clock.
 	 */
-	public final void stop() {
+	public void stop() {
 		timer.stop();
 	}
-	
+
+	/**
+	 * Agrega mas tiempo.
+	 * @param time Tiempo en segundos paraa adicionar.
+	 */
+	public void addMoreTime(int time)
+	{
+		this.remainingTime += time;
+	}
 }

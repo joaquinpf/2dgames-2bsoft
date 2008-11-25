@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
+import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 /**
  * Esta clase maneja las transiciones entre los estados del juego.
@@ -72,7 +73,8 @@ public class WordChallenge extends GameEngine {
 		super();
 		config = new Configurator("resources/config.xml");
 		kapeluz = config.getDicctionary(selectedLanguage);
-		//this.distribute = true;
+		clock =new Clock(config.getTime());
+		this.distribute = true;
 	}
 	
 	/**
@@ -85,18 +87,30 @@ public class WordChallenge extends GameEngine {
 	@Override
 	public final GameObject getGame(final int gameID) {
 		switch (gameID) {
-		case OPTION_MENU: 
-		{
-			this.setScore(0);
-			return new Menu(this);
-		} case OPTION_PLAY: {
-			String letters = kapeluz.getSixLetters();
-			ArrayList<String> a = kapeluz.getPossibleWords(letters);
-			return new Level(this, letters, kapeluz.getPossibleWords(letters));
-		}
-		case OPTION_IDIOMAS: return new LanguageMenu(this);
-		case OPTION_SCORES: return new HighScores(this);
-		default: return null;
+			case OPTION_MENU: {
+				clock.setTotalTime(config.getTime());
+				this.setScore(0);
+				return new Menu(this);
+			} 
+			case OPTION_PLAY: {
+				
+				Level vLevel = new Level(this, this.clock, this.kapeluz);
+				Score mScore = new Score();
+				mScore.setPoint3Letters(5);
+				mScore.setPoint4Letters(10);
+				mScore.setPoint5Letters(15);
+				mScore.setPoint6Letters(30);
+				mScore.setPointsNewLetters(30);
+				mScore.setTime3Letters(0);
+				mScore.setTime4Letters(5);
+				mScore.setTime5Letters(10);
+				mScore.setTime6Letters(20);
+				vLevel.setScore(mScore);
+				return vLevel;
+			}
+			case OPTION_IDIOMAS: return new LanguageMenu(this);
+			case OPTION_SCORES: return new HighScores(this);
+			default: return null;
 		}
 	}
 
