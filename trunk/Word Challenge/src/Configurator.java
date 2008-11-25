@@ -96,7 +96,24 @@ public class Configurator {
 		}
         return time;
 	}
-
+	
+	/**Devuelve los puntos para pasar a un nuevo set de letras 
+	 * @return int los puntos para pasar de nivel
+	 */
+	private final int getPointsNewLetters() {
+		NodeList nlPointsNewLetters;
+		Element elementTime;
+		int pointsNewLetters;
+		
+		nlPointsNewLetters = docEle.getElementsByTagName("pointsNewLetters");
+		pointsNewLetters = 0;
+		if (nlPointsNewLetters != null && nlPointsNewLetters.getLength() > 0) {
+          	elementTime = (Element) nlPointsNewLetters.item(0);
+          	pointsNewLetters = 
+          		(Integer.valueOf(elementTime.getTextContent())).intValue();
+		}
+        return pointsNewLetters;
+	}
 
 	/**Retorna una lista con todos los lenguajes soportados.
 	 * @return ArrayList Lista de Strings con los lenguajes soportados.
@@ -120,6 +137,32 @@ public class Configurator {
 			}
 		}
         return listLanguages;
+	}	
+	
+	/**Retorna una lista con todos los lenguajes soportados.
+	 * @return ArrayList Lista de Strings con los lenguajes soportados.
+	 */
+	public final Score getScore() {
+		NodeList nlMatches;
+		Element elementMatch;
+		Score score = new Score();
+   
+		nlMatches = docEle.getElementsByTagName("match");
+				
+		if (nlMatches != null && nlMatches.getLength() > 0) {
+            for (int i = 0; i < nlMatches.getLength(); i++) {
+            	elementMatch = (Element) nlMatches.item(i);
+            	int amount = Integer.parseInt(
+            			elementMatch.getAttribute("amount"));
+            	int points = Integer.parseInt(
+            			elementMatch.getAttribute("points"));
+            	int bonusTime = Integer.parseInt(
+            			elementMatch.getAttribute("bonusTime"));
+            	score.addPoints(amount, points, bonusTime);
+			}       
+		}
+		score.setPointsNewLetters(getPointsNewLetters());
+        return score;
 	}	
 	
 	/**

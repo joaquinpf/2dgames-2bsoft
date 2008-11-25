@@ -2,6 +2,7 @@
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT starttime (#PCDATA)>
 <!ELEMENT background (#PCDATA)>
+<!ELEMENT pointsNewLetters (#PCDATA)>
 <!ELEMENT match EMPTY>
 <!ATTLIST match
 	amount CDATA #REQUIRED

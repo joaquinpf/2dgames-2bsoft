@@ -5,6 +5,7 @@
 	<config>
 		<starttime>60</starttime>
 		<background>Resources/images/background.png</background>
+		<pointsNewLetters>30</pointsNewLetters>
 		<matches>
 			<match amount="3" points="20" bonusTime="0"/>
 			<match amount="4" points="40" bonusTime="4"/>

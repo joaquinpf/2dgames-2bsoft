@@ -67,13 +67,20 @@ public class WordChallenge extends GameEngine {
 	private int score = 0;
 	
 	/**
+	 * @uml.property  name="clock"
+	 * @uml.associationEnd  inverse="wordChallenge:Clock"
+	 */
+	private Score scoringTable;
+	
+	/**
 	 * Constructor de la aplicación.
 	 */
 	public WordChallenge() {
 		super();
 		config = new Configurator("resources/config.xml");
 		kapeluz = config.getDicctionary(selectedLanguage);
-		clock =new Clock(config.getTime());
+		clock = new Clock(config.getTime());
+		scoringTable = config.getScore();
 		this.distribute = true;
 	}
 	
@@ -95,17 +102,7 @@ public class WordChallenge extends GameEngine {
 			case OPTION_PLAY: {
 				
 				Level vLevel = new Level(this, this.clock, this.kapeluz);
-				Score mScore = new Score();
-				mScore.setPoint3Letters(5);
-				mScore.setPoint4Letters(10);
-				mScore.setPoint5Letters(15);
-				mScore.setPoint6Letters(30);
-				mScore.setPointsNewLetters(30);
-				mScore.setTime3Letters(0);
-				mScore.setTime4Letters(5);
-				mScore.setTime5Letters(10);
-				mScore.setTime6Letters(20);
-				vLevel.setScore(mScore);
+				vLevel.setScore(scoringTable);
 				return vLevel;
 			}
 			case OPTION_IDIOMAS: return new LanguageMenu(this);
