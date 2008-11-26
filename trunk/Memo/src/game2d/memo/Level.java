@@ -457,7 +457,7 @@ public class Level extends GameObject {
 
 		playfield = new PlayField(mBackground);
 		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO.getURL(
-				"resources/images/exit.png"), Transparency.TRANSLUCENT), 768, 0);
+				"resources/images/ingamesalir.png"), Transparency.TRANSLUCENT), 762, 0);
 
 		playfield.addGroup(mGroupCards);
 		playfield.add(buttonExit);
@@ -649,9 +649,9 @@ public class Level extends GameObject {
 		
  		
 		bigFont.setColor(new Color(142, 239, 123));
-		bigFont.drawString(g, "Puntos", GameFont.CENTER, 550, 0,240);
+		bigFont.drawString(g, "Puntos", GameFont.CENTER, 545, 0, 240);
 		bigFont.drawString(g, String.valueOf(((Memo) parent).getGlobalScore())
-				,GameFont.CENTER, 550, 50, 240);
+				,GameFont.CENTER, 545, 50, 240);
 
  		mFont.drawString(g, "Faltan " 
  				+ String.valueOf(this.getRemainingCards()
