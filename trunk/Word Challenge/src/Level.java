@@ -317,7 +317,7 @@ public class Level extends GameObject implements Observer {
 
 		// Crea el background del nivel.
 		mBackground = new ImageBackground(
-				getImage("resources/images/Background.jpg"));
+				getImage("resources/images/background.jpg"));
 
 		mPlayField = new PlayField(mBackground);
 
@@ -345,11 +345,11 @@ public class Level extends GameObject implements Observer {
 		// Agrega el botón que permite obtener otras seis letras.
 		mButtonNewLetters = new Button(new CommandGetSixLetters(this),
 				ImageUtil.getImage(this.bsIO
-						.getURL("resources/images/newWord.png"),
+						.getURL("resources/images/newword.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-						.getURL("resources/images/newWord.png"),
+						.getURL("resources/images/newword.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-						.getURL("resources/images/newWordDisable.png"),
+						.getURL("resources/images/newwordDisable.png"),
 						Transparency.TRANSLUCENT), 40, 235);
 
 		vButton.setFixedposition(true);
@@ -393,7 +393,7 @@ public class Level extends GameObject implements Observer {
 
 		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO
 				.getURL("resources/images/ingamesalir.png"),
-				Transparency.TRANSLUCENT), 762, 0);
+				Transparency.TRANSLUCENT), 742, 12);
 		mPlayField.add(buttonExit);
 
 		// Obtiene seis letras desde el diccionario y las palabras
@@ -419,7 +419,7 @@ public class Level extends GameObject implements Observer {
 			mGroupBigLetters.add(vLetter);
 
 			Letter smallLetter = new Letter(ImageUtil.getImage(this.bsIO
-					.getURL("resources/images/letraMedia.png"),
+					.getURL("resources/images/letramedia.png"),
 					Transparency.TRANSLUCENT), vSixLetters.charAt(i), 44);
 
 			smallLetter.setLocation(SMALLLETTER_POS_X
@@ -698,7 +698,7 @@ public class Level extends GameObject implements Observer {
 			winSprite.setAnimate(true);
 			this.checkFinalLevel();
 			mPlayField.add(winSprite);
-			playSound("resources/sounds/winCard.wav");
+			playSound("resources/sounds/wincard.wav");
 		} else {
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
 					this.bsIO.getURL("resources/images/fail.png"), 6, 1,

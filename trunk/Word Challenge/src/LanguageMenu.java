@@ -140,6 +140,7 @@ public class LanguageMenu extends GameObject {
 			}
 		break;
 		case KeyEvent.VK_ESCAPE :
+			parent.nextGameID = WordChallenge.OPTION_MENU;			
 			finish();
 		break;
 		default : ;
@@ -170,8 +171,8 @@ public class LanguageMenu extends GameObject {
 	public final void initResources() {
 		posXmenu = getWidth() / 2 - 65;
 		posYmenu = getHeight() / 2 - 50;
-		background = new ImageBackground(getImage("resources/images/MenuIdiomas.png"));
-		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
+		background = new ImageBackground(getImage("resources/images/menuidiomas.png"));
+		font = fontManager.getFont(getImages("resources/images/fontmenu.png",
 				   8, 12));
 		cantOpciones = idiomas.size();
 		pfMenu.setBackground(background);

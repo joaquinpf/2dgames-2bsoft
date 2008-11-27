@@ -187,10 +187,10 @@ public class Menu extends GameObject {
 		posYpointer = posYmenu - 90;
 		background = new ImageBackground(getImage("resources/images/menu.png"));
 		
-		pointer =  new Sprite(getImage("Resources/images/pointer.png"));
+		pointer =  new Sprite(getImage("resources/images/pointer.png"));
 		pointer.setLocation(posXpointer, posYpointer);
 		
-		fontManager.getFont(getImages("resources/images/fontMenu.png", 8, 12));
+		fontManager.getFont(getImages("resources/images/fontmenu.png", 8, 12));
 		
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);

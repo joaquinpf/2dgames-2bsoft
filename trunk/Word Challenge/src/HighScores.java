@@ -8,14 +8,13 @@ import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.background.ImageBackground;
 
 /**
- * Esta clase muestra la pantalla de puntajes del juego.
+ * Pantalla de puntajes del juego.
  * 
  * @author Damian Achaga
  */
-
 
 public class HighScores extends GameObject {
 
@@ -28,16 +27,16 @@ public class HighScores extends GameObject {
 	 * Background de la pantalla.
 	 */
 	private Background background;
+	
 	/**
 	 * manegador de la fuente que se utilizará para mostrar los puntajes.
 	 */
 	private GameFont font;
+	
 	/**
 	 * Imagen que contiene el título de la pantalla.
 	 */
 	private BufferedImage titleHighScores;
-	
-	
 	
 	
 	/**
@@ -46,10 +45,11 @@ public class HighScores extends GameObject {
 	 */
 	@Override
 	public final void initResources() {
-		background = new ColorBackground(Color.WHITE);
-		font = fontManager.getFont(getImages("resources/images/fontMenu.png",
+		background = new ImageBackground(
+				getImage("resources/images/menupuntuaciones.png"), 800, 600);
+		font = fontManager.getFont(getImages("resources/images/fontmenu.png",
 								   8, 12));
-		titleHighScores = getImage("resources/images/titlePuntajes1.gif");
+		//titleHighScores = getImage("resources/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 	
@@ -70,7 +70,7 @@ public class HighScores extends GameObject {
 		return line;
 	}
 	/**
-	 * este método muestra en la pantalla la lista de puntajes del juego.
+	 * este método muestar en la pantalla la lista de puntajes del juego.
 	 * @param g parametro necesario para que 
 	 *          el manejador de fuente dibuje el texto
 	 */
@@ -86,6 +86,8 @@ public class HighScores extends GameObject {
 		//}
 	}
 	/**
+	 * Dibuja la escena. Override de GTGE.
+	 * @param g El objeto grafico sobre el cual se dibuja
 	 * @see com.golden.gamedev.GameObject#render(java.awt.Graphics2D)
 	 */
 	@Override
@@ -94,17 +96,11 @@ public class HighScores extends GameObject {
 		pfHighScores.render(g);
 		
 		listarPuntos(g);
-		
-		g.setColor(Color.BLACK);
-		g.drawString("Presione ENTER o haga click con el Mouse "
-				    + "para volver al menu", getWidth() / 2 - 180,
-				    getHeight() - 8);
-		g.drawImage(titleHighScores, getWidth() / 2 - 250, 20, null);
-
 	}
 
 	/**
 	 * @see com.golden.gamedev.GameObject#update(long)
+	 * @param elapsedTime tiempo transcurrido desde el ultimo update
 	 */
 	@Override
 	public final void update(final long elapsedTime) {
@@ -118,7 +114,7 @@ public class HighScores extends GameObject {
 
 		
 	/**
-	 * @param parent maneja la trancicion hacia la pantalla de menu.
+	 * @param parent objeto que maneja la trancicion hacia la pantalla de menu.
 	 */
 	public HighScores(final GameEngine parent) {
 		super(parent);
