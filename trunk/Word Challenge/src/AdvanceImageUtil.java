@@ -24,7 +24,8 @@ public class AdvanceImageUtil {
 		g2d.setFont(new Font("Arial", Font.BOLD, size));
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        RenderingHints.VALUE_ANTIALIAS_ON);
-		int posX = (image.getWidth() / 2) - (image.getWidth() / 3);
+		int width = g2d.getFontMetrics().charWidth(value);
+		int posX = (image.getWidth() / 2) - (width / 2) - 2;
 		int posY = (image.getHeight() / 2) + (image.getHeight() / 3);
 		g2d.drawString(String.valueOf(value), posX, posY);
 		g2d.dispose();

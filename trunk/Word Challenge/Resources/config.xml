@@ -5,20 +5,18 @@
 	<config>
 		<starttime>60</starttime>
 		<background>Resources/images/background.png</background>
-		<pointsNewLetters>30</pointsNewLetters>
+		<pointsNewLetters>100</pointsNewLetters>
 		<matches>
 			<match amount="3" points="20" bonusTime="0"/>
-			<match amount="4" points="40" bonusTime="4"/>
+			<match amount="4" points="25" bonusTime="4"/>
 			<match amount="5" points="50" bonusTime="7"/>
-			<match amount="6" points="70" bonusTime="10"/>
+			<match amount="6" points="100" bonusTime="10"/>
 		</matches>
 		<languages>
 			<language name="spanish" dictionary="Resources/dic/spanish-words.dic" flag="Resources/images/spanish.png" 
 			sprite="Resources/images/spanishlangns.png" selsprite="Resources/images/spanishlang.png"/>
 			<language name="english" dictionary="Resources/dic/english-words.dic" flag="Resources/images/english.png" 
 			sprite="Resources/images/englishlangns.png" selsprite="Resources/images/englishlang.png"/>
-			<language name="portuguese" dictionary="Resources/dic/portuguese-words.dic" flag="Resources/images/portuguese.png" 
-			sprite="Resources/images/portugueselangns.png" selsprite="Resources/images/portugueselang.png"/>
 		</languages>
 	</config>
 </game>
