@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT starttime (#PCDATA)>
+<!ELEMENT background (#PCDATA)>
+<!ELEMENT pointsNewLetters (#PCDATA)>
+<!ELEMENT match EMPTY>
+<!ATTLIST match
+	amount CDATA #REQUIRED
+	points CDATA #REQUIRED
+	bonusTime CDATA #REQUIRED
+>
+<!ELEMENT language EMPTY>
+<!ATTLIST language
+	name CDATA #REQUIRED
+	dictionary CDATA #REQUIRED
+	flag CDATA #REQUIRED
+	sprite CDATA #REQUIRED
+	selsprite CDATA #REQUIRED
+>
+<!ELEMENT game ((name, config))>
+<!ELEMENT config ((starttime, background, matches, languages))>
+<!ELEMENT languages ((language+))>
+<!ELEMENT matches ((match+))>
