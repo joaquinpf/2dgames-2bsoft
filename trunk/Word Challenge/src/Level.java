@@ -16,6 +16,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,7 +25,7 @@ import java.util.Observer;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
-import com.golden.gamedev.engine.input.AWTInput;
+import com.golden.gamedev.engine.BaseInput;
 import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
@@ -177,6 +178,7 @@ public class Level extends GameObject implements Observer {
 	 */
 	private boolean mWaitSelect = false;
 
+	private boolean mFinishing = false;
 	/**
 	 * Indica si el nivel finalizó porque no hay mas tiempo restante.
 	 */
@@ -273,6 +275,8 @@ public class Level extends GameObject implements Observer {
 	private Button mButtonOk = null;
 	
 	private Button mButtonBack = null;
+	
+	private Button mButtonRandomize = null;
 
 	// ************************************************************************
 	// ***************************** METODOS **********************************
@@ -332,15 +336,15 @@ public class Level extends GameObject implements Observer {
 		mGroupButtons = new SpriteGroup("Group Buttons");
 
 		// Agrega el botón que aleatoriza las letras.
-		Button vButton = new Button(new CommandRandomizeLetters(this),
+		mButtonRandomize = new Button(new CommandRandomizeLetters(this),
 				ImageUtil.getImage(this.bsIO
 						.getURL("resources/images/shuffle.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
 						.getURL("resources/images/shuffle.png"),
 						Transparency.TRANSLUCENT), 620, 235);
 
-		vButton.setFixedposition(true);
-		mGroupButtons.add(vButton);
+		mButtonRandomize.setFixedposition(true);
+		mGroupButtons.add(mButtonRandomize);
 
 		// Agrega el botón que permite obtener otras seis letras.
 		mButtonNewLetters = new Button(new CommandGetSixLetters(this),
@@ -352,7 +356,7 @@ public class Level extends GameObject implements Observer {
 						.getURL("resources/images/newwordDisable.png"),
 						Transparency.TRANSLUCENT), 40, 235);
 
-		vButton.setFixedposition(true);
+		mButtonNewLetters.setFixedposition(true);
 		mGroupButtons.add(mButtonNewLetters);
 
 		// Agrega el botón que permite borrar la última letra
@@ -398,7 +402,7 @@ public class Level extends GameObject implements Observer {
 
 		// Obtiene seis letras desde el diccionario y las palabras
 		// que se pueden formar con las mismas.
-		getNewSixLetters(mDictionary.getPossibleWords(vSixLetters));
+		setLettersOrder(mDictionary.getPossibleWords(vSixLetters));
 
 		this.mTimerStartLevel.setActive(true);
 	}
@@ -408,19 +412,26 @@ public class Level extends GameObject implements Observer {
 	 * escenario.
 	 */
 	private void createSixLetters(String vSixLetters) {
-		// TODO cambiar el path de la imagen y el resize.
 
+		BufferedImage bigBright = ImageUtil.getImage(this.bsIO
+				.getURL("resources/images/letrabright.png"),
+				Transparency.TRANSLUCENT);
+		BufferedImage smallBright = ImageUtil.getImage(this.bsIO
+				.getURL("resources/images/letramediabright.png"),
+				Transparency.TRANSLUCENT);
 		for (int i = 0; i < MAX_LETTERS; i++) {
 
 			Letter vLetter = new Letter(ImageUtil.getImage(this.bsIO
 					.getURL("resources/images/letra.png"),
-					Transparency.TRANSLUCENT), vSixLetters.charAt(i), 88);
+					Transparency.TRANSLUCENT),
+					bigBright, vSixLetters.charAt(i), 88);
 			vLetter.setVisible(false);
 			mGroupBigLetters.add(vLetter);
 
 			Letter smallLetter = new Letter(ImageUtil.getImage(this.bsIO
 					.getURL("resources/images/letramedia.png"),
-					Transparency.TRANSLUCENT), vSixLetters.charAt(i), 44);
+					Transparency.TRANSLUCENT),
+					smallBright, vSixLetters.charAt(i), 44);
 
 			smallLetter.setLocation(SMALLLETTER_POS_X
 					+ ((smallLetter.getWidth() + SMALLDISTANCE_X_LETTERS) * i),
@@ -442,7 +453,7 @@ public class Level extends GameObject implements Observer {
 	 * objeto Word y lo posiciona en la pantalla. Luego lo agrega a la lista
 	 * mPossibleWords.
 	 */
-	public final void getNewSixLetters(ArrayList<String> vPossibleWords) {
+	public final void setLettersOrder(ArrayList<String> vPossibleWords) {
 
 		// ********* POSSIBLE WORDS ***********************
 
@@ -466,10 +477,7 @@ public class Level extends GameObject implements Observer {
 				vColsWord++;
 			}
 
-			// System.out.println("Pos_Start")
-
-			vWord
-					.setPosition(
+			vWord.setPosition(
 							POS_START_COL_WORD
 									+ ((mWidthWord + SEPARATION_HORIZONTAL_WORD) * vColsWord),
 							POS_START_ROW_WORD
@@ -541,15 +549,26 @@ public class Level extends GameObject implements Observer {
 		this.mPlayField.update(elapsedTime);
 
 		// Tiempo que debe transcurrir antes de empezar el nivel.
-		if ((!mInitializedLevel) && (mTimerStartLevel.action(elapsedTime))) {
+		if ((!mInitializedLevel) && (mTimerStartLevel.action(elapsedTime)) 
+				&& !mFinishing) {
 			mInitializedLevel = true;
 
 			this.mClock.start();
 			this.spClock.setAnimate(true);
 		}
+		if (mFinishing) {
+			if (click() || bsInput.getKeyPressed() != BaseInput.NO_KEY) {
+				if (mClock.isFinished()) {
+					goToMenu();
+				} else {
+					goToNextLevel();
+				}
+			}
+		}
 		if (click()) {
-			if (checkPosMouse(buttonExit, true))
-				finishLevel();
+			if (checkPosMouse(buttonExit, true)) {
+				goToMenu();
+			}
 		}
 		// Si transcurrió el tiempo de delay de inicializacion del nivel.
 		if (mInitializedLevel) {
@@ -589,26 +608,53 @@ public class Level extends GameObject implements Observer {
 				manejoTeclado();
 				// Si el usuario presionó "Escape" o finalizó el tiempo del
 				// nivel
-				if ((keyDown(KeyEvent.VK_ESCAPE)) || (mFinished)) {
-					finishLevel();
+				if (keyDown(KeyEvent.VK_ESCAPE)) {
+					goToMenu();
 				}
 			} else if (mTimerSelected.action(elapsedTime)) {
 				mWaitSelect = false;
 			}
 		}
+		
 	}
 
+	public void levelFinishing() {
+		mInitializedLevel = false;
+		mFinishing = true;
+		this.spClock.setAnimate(false);
+		this.mClock.stop();
+		Sprite overlay = new Sprite(ImageUtil.getImage(
+				this.bsIO.getURL("resources/images/overlay.png"),
+				Transparency.TRANSLUCENT));
+		
+		mPlayField.add(overlay);
+		
+		Sprite[] sprites = mGroupSmallLetters.getSprites();
+		for (int i = 0; i < mPossibleWords.size(); i++) {
+			mPossibleWords.get(i).setVisible(true);
+		}
+	}
+	
 	/**
 	 * Utilizado para cuando finaliza el nivel. Ocurre solo en dos situaciones,
 	 * cuando el usuario presiona Escape o cuando finaliza el tiempo.
 	 */
-	private void finishLevel() {
+	private void goToMenu() {
 		this.parent.nextGameID = WordChallenge.OPTION_MENU;
+		finish();
+	}
+	
+	/**
+	 * Utilizado para cuando finaliza el nivel. Ocurre solo en dos situaciones,
+	 * cuando el usuario presiona Escape o cuando finaliza el tiempo.
+	 */
+	private void goToNextLevel() {
+		this.parent.nextGameID = WordChallenge.OPTION_PLAY;
 		finish();
 	}
 
 	private void manejoTeclado() {
-		if (bsInput.getKeyPressed() != bsInput.NO_KEY) {
+		if (bsInput.getKeyPressed() != BaseInput.NO_KEY) {
 			if (bsInput.getKeyPressed() >= KeyEvent.VK_A 
 					&& bsInput.getKeyPressed() <= KeyEvent.VK_Z) {
 				String  key = KeyEvent.getKeyText(bsInput.getKeyPressed());
@@ -630,6 +676,11 @@ public class Level extends GameObject implements Observer {
 			}
 			if (bsInput.getKeyPressed() == KeyEvent.VK_BACK_SPACE) {
 				mButtonBack.click();
+				mTimerSelected.setActive(true);
+				mWaitSelect = true;
+			}
+			if (bsInput.getKeyPressed() == KeyEvent.VK_SPACE) {
+				mButtonRandomize.click();
 				mTimerSelected.setActive(true);
 				mWaitSelect = true;
 			}
@@ -669,11 +720,8 @@ public class Level extends GameObject implements Observer {
 		boolean esta = false;
 		for (int i = 0; i < mPossibleWords.size() && !false; i++) {
 			Word vWord = mPossibleWords.get(i);
+			
 			// Si la palabra todavia no fue descubierta y existe.
-			System.out.println("Palabra actual: " + vWord.getWord() + " "
-					+ vWord.isVisible());
-			System.out.println("Palabra mBuildWord: " + mBuildWord);
-
 			if ((!vWord.isVisible())
 					&& (mBuildWord.equalsIgnoreCase(vWord.getWord()))) {
 
@@ -723,11 +771,8 @@ public class Level extends GameObject implements Observer {
 				esta = false;
 			}
 		}
-		if (esta) {
-			this.mClock.stop();
-			this.parent.nextGameID = WordChallenge.OPTION_PLAY;
-			this.finish();
-		}
+		if (esta)
+			levelFinishing();
 	}
 
 	/**
@@ -749,7 +794,6 @@ public class Level extends GameObject implements Observer {
 
 		for (j = 0; j < this.mGroupSmallLetters.getSize(); j++) {
 			Letter l = (Letter) mGroupSmallLetters.getSprites()[j];
-			System.out.println("AntesLetter: " + l.getValue());
 		}
 
 		for (int i = 0; i < this.mGroupSmallLetters.getSize(); i++) {
@@ -786,7 +830,6 @@ public class Level extends GameObject implements Observer {
 
 		for (j = 0; j < this.mGroupSmallLetters.getSize(); j++) {
 			Letter l = (Letter) mGroupSmallLetters.getSprites()[j];
-			System.out.println("Letter: " + l.getValue());
 		}
 	}
 
@@ -871,8 +914,6 @@ public class Level extends GameObject implements Observer {
 			}
 
 		}
-		System.out.println("mBuildWord = " + mBuildWord);
-
 	}
 
 	/*
@@ -881,7 +922,8 @@ public class Level extends GameObject implements Observer {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable o, Object arg) {
-		mFinished = mClock.isFinished();
+		if (mClock.isFinished() && !mFinishing)
+			levelFinishing();
 	}
 
 	/**

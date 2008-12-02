@@ -4,7 +4,6 @@ import java.awt.Transparency;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;

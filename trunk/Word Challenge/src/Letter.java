@@ -24,10 +24,11 @@ public class Letter extends Sprite {
 	 * @param letImage imagen de la ficha
 	 * @param sizePercentage proporcion
 	 */
-	public Letter(final BufferedImage letImage, final char valor, final int size) { 
+	public Letter(final BufferedImage letImage, final BufferedImage letBright,
+			final char valor, final int size) { 
 		super();
 		this.value = valor;
-		setImage(AdvanceImageUtil.drawString(letImage, size,this.value));
+		setImage(AdvanceImageUtil.drawString(letImage, letBright, size,this.value));
 		this.setImmutable(true);
 		this.setActive(true);
 		

@@ -92,9 +92,7 @@ public class Word extends SpriteGroup {
 			
 			vLetter = new MiniLetter(Io, Iv, mWord.charAt(i));
 			posX = x + (i * (vLetter.getWidth() + SEPARATION_LETTER));
-					
-			System.out.println("Word: " + mWord + ", " + mWord.charAt(i) + " posX " + posX + " posY " + y);
-			
+								
 			vLetter.setLocation(posX, y);
 			this.add(vLetter);
 		}
@@ -130,7 +128,7 @@ public class Word extends SpriteGroup {
 		MiniLetter vLetter;
 		for (int i = 0; i < this.getSize(); i++) {
 			vLetter = (MiniLetter) this.getSprites()[i];
-			vLetter.turnVisible();
+			vLetter.setVisible(xVisible);
 		}
 	}
 

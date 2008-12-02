@@ -16,7 +16,7 @@ public class AdvanceImageUtil {
 	 * @param size tamaño de la fuente
 	 * @param value letra
 	 */
-	public static BufferedImage drawString(final BufferedImage image,final int size, final char value) {
+	public static BufferedImage drawString(final BufferedImage image, final BufferedImage imageBright, final int size, final char value) {
 		Graphics2D g2d = image.createGraphics();
 
 		//Setea el color y la fuente
@@ -28,6 +28,9 @@ public class AdvanceImageUtil {
 		int posX = (image.getWidth() / 2) - (width / 2) - 2;
 		int posY = (image.getHeight() / 2) + (image.getHeight() / 3);
 		g2d.drawString(String.valueOf(value), posX, posY);
+		if (imageBright != null) {
+			g2d.drawImage(imageBright, 0, 0, null);
+		}
 		g2d.dispose();
 		return image;
 	}

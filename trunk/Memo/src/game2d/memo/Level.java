@@ -18,6 +18,7 @@ import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.event.KeyEvent;
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.AnimatedSprite;
@@ -54,7 +55,7 @@ public class Level extends GameObject {
 	/**
 	 * Coordenada X de la primer carta en la pantalla.
 	 */
-	private static int positionScreenX = 105;
+	private static int positionScreenX = 110;
 
 	
 	/**
@@ -474,7 +475,7 @@ public class Level extends GameObject {
 		// Inicializo las dos matrices con los tamaños definidos anteriormente.
 		mCards = new Card[row][col];
 	
-		positionScreenX = 105;
+		positionScreenX = 110;
 		positionScreenY = 15;
 		float r = (float) row / 2;
 		float c = (float) col / 2;
@@ -760,8 +761,7 @@ public class Level extends GameObject {
 			
 			// Si desea abandonar el nivel.
 		    if (keyDown(KeyEvent.VK_ESCAPE)) {
-		    	
-			    finishLevel();
+		    	finishLevel();
 		    }		
 		    if (this.getRemainingTimeLevel() == 0) {
 		    	finishLevel();

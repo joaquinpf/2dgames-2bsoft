@@ -1,5 +1,7 @@
 import java.awt.Graphics2D;
+import java.awt.Transparency;
 import java.awt.event.KeyEvent;
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
@@ -7,6 +9,7 @@ import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ImageBackground;
+import com.golden.gamedev.util.ImageUtil;
 
 /**
  * Este Clase presenta la pantalla de menu del juego.
@@ -187,7 +190,9 @@ public class Menu extends GameObject {
 		posYpointer = posYmenu - 90;
 		background = new ImageBackground(getImage("resources/images/menu.png"));
 		
-		pointer =  new Sprite(getImage("resources/images/pointer.png"));
+		pointer =  new Sprite(ImageUtil.getImage(this.bsIO
+				.getURL("resources/images/pointer.png"),
+				Transparency.TRANSLUCENT));
 		pointer.setLocation(posXpointer, posYpointer);
 		
 		fontManager.getFont(getImages("resources/images/fontmenu.png", 8, 12));
@@ -211,11 +216,15 @@ public class Menu extends GameObject {
 	final void drawText(final Graphics2D g, final String text, final int line,
 					    final boolean selected) {
 		if (selected) {
-			g.drawImage(getImage("resources/images/" + text  + ".png"),
+			g.drawImage(ImageUtil.getImage(this.bsIO
+					.getURL("resources/images/" + text  + ".png"),
+					Transparency.TRANSLUCENT),
 					posXmenu, posYmenu + line - 36, null);
 			
 		} else {
-			g.drawImage(getImage("resources/images/" + text  + "ns.png"),
+			g.drawImage(ImageUtil.getImage(this.bsIO
+					.getURL("resources/images/" + text  + "ns.png"),
+					Transparency.TRANSLUCENT),
 					posXmenu, posYmenu + line - 36, null);
 		}
 	}
@@ -227,6 +236,7 @@ public class Menu extends GameObject {
 	@Override
 	public final void render(final Graphics2D g) {
 		pfMenu.render(g);
+		
 		drawText(g, "Jugar", 0, (option == WordChallenge.OPTION_PLAY));
 		drawText(g, "Puntuaciones", ANCHO_LINE_MENU, 
 				(option == WordChallenge.OPTION_SCORES));

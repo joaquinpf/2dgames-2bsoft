@@ -88,7 +88,6 @@ public class Button extends Sprite {
 		//Si se usa una imagen para mostrar que está disable
 		//entonces cambio la imagen del botón por esa.
 		if (mImageDisabled != null) {
-			System.out.println("Hay imagen disable " + mEnabled);
 			if (mEnabled) {
 				this.setImage(mImageUp);
 			} else {

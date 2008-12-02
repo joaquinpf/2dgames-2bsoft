@@ -34,7 +34,6 @@ public class CommandGetSixLetters extends AbstractCommandLevel {
 	 * @see Level.AbstractCommandLevel#execute()
 	 */
 	public void execute() {
-		this.getLevel().parent.nextGameID = WordChallenge.OPTION_PLAY;
-		this.getLevel().finish();
+		this.getLevel().levelFinishing();
 	}
 } // CommandGetLetters

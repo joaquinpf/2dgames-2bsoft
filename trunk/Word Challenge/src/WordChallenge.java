@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 /**
  * Esta clase maneja las transiciones entre los estados del juego.
@@ -100,7 +99,6 @@ public class WordChallenge extends GameEngine {
 				return new Menu(this);
 			} 
 			case OPTION_PLAY: {
-				
 				Level vLevel = new Level(this, this.clock, this.kapeluz);
 				vLevel.setScore(scoringTable);
 				return vLevel;

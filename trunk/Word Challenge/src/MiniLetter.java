@@ -17,15 +17,15 @@ public class MiniLetter extends Sprite {
 			final BufferedImage imgVisible, final char valor) {
 		super();
 		this.value = valor;
-		this.letterVisible = AdvanceImageUtil.drawString(imgVisible,21,value);
+		this.letterVisible = AdvanceImageUtil.drawString(imgVisible, null, 21,value);
 		this.letterNoVisible = imgNoVisible;
 		this.visible = false;
 		this.setImage(this.letterNoVisible);
 		
 	}
 	
-	public void turnVisible() {
-		this.visible = !this.visible;
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 		if (this.visible) {
 			this.setImage(letterVisible);
 		} else {
@@ -35,4 +35,5 @@ public class MiniLetter extends Sprite {
 	public char getValue() {
 		return this.value;
 	}
+	
 }

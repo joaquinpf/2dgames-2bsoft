@@ -1,17 +1,3 @@
-import com.golden.gamedev.GameEngine;
-import com.golden.gamedev.GameObject;
-import com.golden.gamedev.object.AnimatedSprite;
-import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.PlayField;
-import com.golden.gamedev.object.Sprite;
-import com.golden.gamedev.object.SpriteGroup;
-import com.golden.gamedev.object.Timer;
-import com.golden.gamedev.object.background.ImageBackground;
-import com.golden.gamedev.object.font.SystemFont;
-import com.golden.gamedev.object.sprite.AdvanceSprite;
-import com.golden.gamedev.util.FontUtil;
-import com.golden.gamedev.util.ImageUtil;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -26,6 +12,20 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 import java.util.Vector;
+
+import com.golden.gamedev.GameEngine;
+import com.golden.gamedev.GameObject;
+import com.golden.gamedev.object.AnimatedSprite;
+import com.golden.gamedev.object.Background;
+import com.golden.gamedev.object.PlayField;
+import com.golden.gamedev.object.Sprite;
+import com.golden.gamedev.object.SpriteGroup;
+import com.golden.gamedev.object.Timer;
+import com.golden.gamedev.object.background.ImageBackground;
+import com.golden.gamedev.object.font.SystemFont;
+import com.golden.gamedev.object.sprite.AdvanceSprite;
+import com.golden.gamedev.util.FontUtil;
+import com.golden.gamedev.util.ImageUtil;
 
 /**
  * @uml.dependency supplier="Ball"

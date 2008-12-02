@@ -3,7 +3,7 @@
 <game>
 	<name>Word Challenge</name>
 	<config>
-		<starttime>60</starttime>
+		<starttime>210</starttime>
 		<background>resources/images/background.png</background>
 		<pointsNewLetters>100</pointsNewLetters>
 		<matches>

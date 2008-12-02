@@ -1,14 +1,17 @@
 import java.awt.Graphics2D;
+import java.awt.Transparency;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.background.ImageBackground;
+import com.golden.gamedev.util.ImageUtil;
 
 
 /**
@@ -194,16 +197,25 @@ public class LanguageMenu extends GameObject {
 			final boolean selected, final String flag, final String sprite,
 			final String selsprite) {
 		
-		BufferedImage bflag = getImage(flag);
+		BufferedImage bflag = ImageUtil.getImage(this.bsIO
+				.getURL(flag),
+				Transparency.TRANSLUCENT);
 		if (selected) {
-			BufferedImage bselsprite = getImage(selsprite);
-			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20, posYmenu + line - ANCHO_LINE_MENU,null);
-			g.drawImage(bselsprite, posXmenu , posYmenu + line - ANCHO_LINE_MENU, null);
-		}
-		else{
-			BufferedImage bsprite = getImage(sprite);
-			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20, posYmenu + line - ANCHO_LINE_MENU,null);
-			g.drawImage(bsprite, posXmenu , posYmenu + line - ANCHO_LINE_MENU, null);
+			BufferedImage bselsprite = ImageUtil.getImage(this.bsIO
+					.getURL(selsprite),
+					Transparency.TRANSLUCENT); 
+			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20,
+					posYmenu + line - ANCHO_LINE_MENU, null);
+			g.drawImage(bselsprite, posXmenu ,
+					posYmenu + line - ANCHO_LINE_MENU, null);
+		} else {
+			BufferedImage bsprite = ImageUtil.getImage(this.bsIO
+					.getURL(sprite),
+					Transparency.TRANSLUCENT);
+			g.drawImage(bflag, posXmenu - bflag.getWidth() - 20,
+					posYmenu + line - ANCHO_LINE_MENU, null);
+			g.drawImage(bsprite, posXmenu ,
+					posYmenu + line - ANCHO_LINE_MENU, null);
 		}
 		/*Color c = new Color(251,216,121);
 		g.setColor(c);

@@ -1,6 +1,6 @@
+import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.CollisionBounds;
-import com.golden.gamedev.object.Background;
 
 /**
  * Clase que controla la colisión entre los sprites y el borde de la ventana.
