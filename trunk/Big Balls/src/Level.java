@@ -615,4 +615,310 @@ public class Level extends GameObject implements Observer {
 	public final int getRemainingBalls() {
 		return this.orderedBalls.size() - this.pos;
 	}
+		
+	/**
+	 * Getter of the property <tt>Playfield</tt>.
+	 * @return  Returns the Playfield
+	 * @uml.property  name="Playfield"
+	 */	
+	public final PlayField getPlayfield() {
+		return playfield;	
+	}
+	
+	/**
+	 * Setter of <tt>Playfield</tt>
+	 * @param newPlayfield the new Playfield.
+	 * @uml.property  name="Playfield"
+	 */	
+	public final void setPlayfield(PlayField newPlayfield) {
+		playfield = newPlayfield;
+	}	
+
+	/**
+	 * Setter of <tt>OrderedBalls</tt>
+	 * @param newOrderedBalls the new OrderedBalls.
+	 * @uml.property  name="OrderedBalls"
+	 */		
+	public final void setOrderedBalls(Vector<Ball> newOrderedBalls) {
+		orderedBalls = newOrderedBalls;
+	}	
+	
+	/**
+	 * Getter of the property <tt>TimerEndLevel</tt>.
+	 * @return  Returns the TimerEndLevel
+	 * @uml.property  name="TimerEndLevel"
+	 */	
+	public final Timer getTimerEndLevel() {
+		return timerEndLevel;	
+	}
+	
+	/**
+	 * Setter of <tt>TimerEndLevel</tt>
+	 * @param newTimerEndLevel the new TimerEndLevel
+	 * @uml.property  name="TimerEndLevel"
+	 */	
+	public final void setTimerEndLevel(Timer newTimerEndLevel) {
+		timerEndLevel = newTimerEndLevel;
+	}		
+	
+	/**
+	 * Getter of the property <tt>clockSprite</tt>.
+	 * @return  Returns the clockSprite
+	 * @uml.property  name="clockSprite"
+	 */	
+	public final AnimatedSprite getClockSprite() {
+		return clockSprite;	
+	}
+	
+	/**
+	 * Setter of <tt>clockSprite</tt>
+	 * @param newClockSprite the new clockSprite.
+	 * @uml.property  name="clockSprite"
+	 */	
+	public final void setClockSprite(AnimatedSprite newClockSprite) {
+		clockSprite = newClockSprite;
+	}	
+
+	/**
+	 * Getter of the property <tt>clock</tt>.
+	 * @return  Returns the clock
+	 * @uml.property  name="clock"
+	 */	
+	public final Clock getClock() {
+		return clock;	
+	}	
+	
+	/**
+	 * Getter of the property <tt>pos</tt>.
+	 * @return  Returns the pos
+	 * @uml.property  name="pos"
+	 */	
+	public final int getPos() {
+		return pos;	
+	}
+	
+	/**
+	 * Setter of <tt>pos</tt>
+	 * @param newPos the new pos.
+	 * @uml.property  name="pos"
+	 */	
+	public final void setPos(int newPos) {
+		pos = newPos;
+	}		
+	
+	/**
+	 * Getter of the property <tt>ballCollision</tt>.
+	 * @return  Returns the ballCollision
+	 * @uml.property  name="ballCollision"
+	 */	
+	public final ArrayList<SpriteGroup> getBallCollision() {
+		return ballCollision;	
+	}
+	
+	/**
+	 * Setter of <tt>ballCollision</tt>
+	 * @param newBallCollision the ballCollision.
+	 * @uml.property  name="ballCollision"
+	 */	
+	public final void setBallCollision(ArrayList<SpriteGroup> newBallCollision) {
+		ballCollision = newBallCollision;
+	}
+
+	/**
+	 * Getter of the property <tt>ballGroup</tt>.
+	 * @return  Returns the ballGroup
+	 * @uml.property  name="ballGroup"
+	 */	
+	public final SpriteGroup getBallGroup() {
+		return ballGroup;	
+	}
+	
+	/**
+	 * Setter of <tt>ballGroup</tt>
+	 * @param BallGroup the new ballGroup.
+	 * @uml.property  name="ballGroup"
+	 */	
+	public final void setBallGroup(SpriteGroup newBallGroup) {
+		ballGroup = newBallGroup;
+	}	
+	
+	/**
+	 * Getter of the property <tt>SpriteGroup </tt>.
+	 * @return  Returns the SpriteGroup 
+	 * @uml.property  name="SpriteGroup "
+	 */	
+	public final SpriteGroup getBackgroundGroup() {
+		return backgroundGroup;	
+	}
+	
+	/**
+	 * Setter of <tt>SpriteGroup </tt>
+	 * @param BackgroundGroup the new SpriteGroup.
+	 * @uml.property  name="SpriteGroup "
+	 */	
+	public final void setBackgroundGroup(SpriteGroup newBackgroundGroup) {
+		backgroundGroup = newBackgroundGroup;
+	}		
+	
+	/**
+	 * Getter of the property <tt>background</tt>.
+	 * @return  Returns the background
+	 * @uml.property  name="background"
+	 */	
+	public final Background getBackground() {
+		return background;	
+	}
+	
+	/**
+	 * Setter of <tt>background</tt>
+	 * @param Background the new background.
+	 * @uml.property  name="background"
+	 */	
+	public final void setBackground(Background newBackground) {
+		background = newBackground;
+	}		
+	
+	/**
+	 * Getter of the property <tt>font</tt>.
+	 * @return  Returns the font
+	 * @uml.property  name="font"
+	 */	
+	public final SystemFont getFont() {
+		return font;	
+	}
+	
+	/**
+	 * Setter of <tt>font</tt>
+	 * @param newFont the new font.
+	 * @uml.property  name="font"
+	 */	
+	public final void setFont(SystemFont newFont) {
+		font = newFont;
+	}	
+	
+	/**
+	 * Getter of the property <tt>engine</tt>.
+	 * @return  Returns the engine
+	 * @uml.property  name="engine"
+	 */	
+	public final BigBalls getEngine() {
+		return engine;	
+	}
+	
+	/**
+	 * Setter of <tt>engine</tt>
+	 * @param newEngine the new engine.
+	 * @uml.property  name="engine"
+	 */	
+	public final void setEngine(BigBalls newEngine) {
+		engine = newEngine;
+	}		
+	
+	/**
+	 * Getter of the property <tt>holeGridStartX</tt>.
+	 * @return  Returns the holeGridStartX
+	 * @uml.property  name="holeGridStartX"
+	 */	
+	public final int getHoleGridStartX() {
+		return holeGridStartX;	
+	}
+	
+	/**
+	 * Setter of <tt>holeGridStartX</tt>
+	 * @param newHoleGridStartX the new holeGridStartX.
+	 * @uml.property  name="holeGridStartX"
+	 */	
+	public final void setHoleGridStartX(int newHoleGridStartX) {
+		holeGridStartX = newHoleGridStartX;
+	}		
+
+	/**
+	 * Getter of the property <tt>holeGridStartY</tt>.
+	 * @return  Returns the holeGridStartY
+	 * @uml.property  name="holeGridStartY"
+	 */	
+	public final int getHoleGridStartY() {
+		return holeGridStartY;	
+	}
+	
+	/**
+	 * Setter of <tt>holeGridStartY</tt>
+	 * @param newHoleGridStartY the new holeGridStartY.
+	 * @uml.property  name="holeGridStartY"
+	 */	
+	public final void setHoleGridStartY(int newHoleGridStartY) {
+		holeGridStartY = newHoleGridStartY;
+	}	
+	
+	/**
+	 * Getter of the property <tt>holeRowJump</tt>.
+	 * @return  Returns the holeRowJump
+	 * @uml.property  name="holeRowJump"
+	 */	
+	public final int getHoleRowJump() {
+		return holeRowJump;	
+	}
+	
+	/**
+	 * Setter of <tt>holeRowJump</tt>
+	 * @param newHoleRowJump the new holeRowJump.
+	 * @uml.property  name="holeRowJump"
+	 */	
+	public final void setHoleRowJump(int newHoleRowJump) {
+		holeRowJump = newHoleRowJump;
+	}		
+	
+	/**
+	 * Getter of the property <tt>holeColumnJump</tt>.
+	 * @return  Returns the holeColumnJump
+	 * @uml.property  name="holeColumnJump"
+	 */	
+	public final int getHoleColumnJump() {
+		return holeColumnJump;	
+	}
+	
+	/**
+	 * Setter of <tt>holeColumnJumptt>
+	 * @param newHoleColumnJump the new holeColumnJump.
+	 * @uml.property  name="holeColumnJump"
+	 */	
+	public final void setHoleColumnJump(int newHoleColumnJump) {
+		holeColumnJump = newHoleColumnJump;
+	}	
+
+	/**
+	 * Getter of the property <tt>holeImage</tt>.
+	 * @return  Returns the holeImage
+	 * @uml.property  name="holeImage"
+	 */	
+	public final String getHoleImage() {
+		return holeImage;	
+	}
+	
+	/**
+	 * Setter of <tt>holeImage</tt>
+	 * @param newHoleImage the new holeImage.
+	 * @uml.property  name="holeImage"
+	 */	
+	public final void setHoleImage(String newHoleImage) {
+		holeImage = newHoleImage;
+	}		
+
+	/**
+	 * Getter of the property <tt>v</tt>.
+	 * @return  Returns the salir
+	 * @uml.property  name="salir"
+	 */	
+	public final Sprite getSalir() {
+		return salir;	
+	}
+	
+	/**
+	 * Setter of <tt>salir</tt>
+	 * @param newSalir the new salir.
+	 * @uml.property  name="salir"
+	 */	
+	public final void setSalir(Sprite newSalir) {
+		salir = newSalir;
+	}	
 }

@@ -268,4 +268,76 @@ public class Ball extends Sprite {
 	public final void setSpinVelocity(final int newSpinVelocity) {
 		this.spinVelocity = newSpinVelocity;
 	}
+
+	/**
+	 * Getter of the property <tt>spinVelocity</tt>.
+	 * @return  Returns the ttfFont
+	 * @uml.property  name="ttfFont"
+	 */	
+	public final String getTtfFont() {
+		return ttfFont;	
+	}
+	
+	/**
+	 * Setter of <tt>ttfFont</tt>
+	 * @param newttfFont the new font.
+	 * @uml.property  name="ttfFont"
+	 */	 
+	public final void setTtfFont(String newttfFont) {
+		ttfFont = newttfFont;
+	}
+	
+	/**
+	 * Getter of the property <tt>fontSize</tt>.
+	 * @return  Returns the font size
+	 * @uml.property  name="fontSize"
+	 */	
+	public final int getFontSize() {
+		return fontSize;	
+	}
+	
+	/**
+	 * Setter of <tt>fontSize</tt>
+	 * @param newFontSize the new font size.
+	 * @uml.property  name="fontSize"
+	 */	
+	public final void setFontSize(int newFontSize) {
+		fontSize = newFontSize;
+	}	
+	
+	/**
+	 * Getter of the property <tt>ballImageCopy</tt>.
+	 * @return  Returns the ballImageCopy
+	 * @uml.property  name="ballImageCopy"
+	 */	
+	public final BufferedImage getBallImageCopy() {
+		return ballImageCopy;	
+	}
+	
+	/**
+	 * Setter of <tt>ballImageCopy</tt>
+	 * @param newBallImageCopy the new ballImageCopy
+	 * @uml.property  name="ballImageCopy"
+	 */	
+	public final void setBallImageCopy(BufferedImage newBallImageCopy) {
+		ballImageCopy = newBallImageCopy;
+	}	
+	
+	/**
+	 * Getter of the property <tt>AcumulatedRotation</tt>.
+	 * @return  Returns the AcumulatedRotation
+	 * @uml.property  name="AcumulatedRotation"
+	 */	
+	public final double getAcumulatedRotation() {
+		return acumulatedRotation;	
+	}
+	
+	/**
+	 * Setter of <tt>AcumulatedRotation</tt>
+	 * @param newAcumulatedRotation the new AcumulatedRotation
+	 * @uml.property  name="AcumulatedRotation"
+	 */	
+	public final void setBallImageCopy(double newAcumulatedRotation) {
+		acumulatedRotation = newAcumulatedRotation;
+	}		
 }

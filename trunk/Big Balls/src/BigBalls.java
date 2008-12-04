@@ -165,4 +165,22 @@ public class BigBalls extends GameEngine {
 				   GameLoader.ScreenMode.Window);
 		game.start();
     }
+
+	/**
+	 * Getter of the property <tt>levelGenerator</tt>.
+	 * @return  Returns the levelGenerator
+	 * @uml.property  name="levelGenerator"
+	 */		
+	public final LevelGenerator getLevelGenerator() {
+		return levelGenerator;
+	}
+	
+	/**
+	 * Setter of <tt>levelGenerator</tt>
+	 * @param newLevelGenerator new level generator
+	 * @uml.property  name="levelGenerator"
+	 */		
+	public final void setLevelGenerator(LevelGenerator newlevelGenerator) {
+		levelGenerator = newlevelGenerator;
+	}	
 }
