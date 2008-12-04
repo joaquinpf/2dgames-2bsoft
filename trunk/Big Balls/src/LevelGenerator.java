@@ -31,7 +31,7 @@ import com.golden.gamedev.util.ImageUtil;
  * Las configuraciones de los diferentes niveles se leen de un archivo XML
  * pasado como parametro al constructor de la clase.
  * 
- * @author Marcos Steimbach y Joaquín Pérez Fuentes
+ * @author Marcos Steimbach y Joaquï¿½n Pï¿½rez Fuentes
  */
 public class LevelGenerator {
 	/**Ruta del archivo de configuracion. 
@@ -83,7 +83,7 @@ public class LevelGenerator {
 	public final void setConfigRoute(final String confRoute) {
 		this.configRoute = confRoute;
 	}
-
+	
 	/**Parsea y retorna el documento de configuracion xml pasado como parametro.
 	 * @param route Es la ruta de configuracion de los niveles del juego.
 	 * @return Document Retorna el documento xml parseado.
@@ -250,6 +250,30 @@ public class LevelGenerator {
 	private void loadLevels(final String route) {
 		dom = openDocument(route);
 		docEle = dom.getDocumentElement();
+	}
+
+	public Document getDom() {
+		return dom;
+	}
+
+	public void setDom(Document dom) {
+		this.dom = dom;
+	}
+
+	public Element getDocEle() {
+		return docEle;
+	}
+
+	public void setDocEle(Element docEle) {
+		this.docEle = docEle;
+	}
+
+	public Random getRandom() {
+		return random;
+	}
+
+	public void setRandom(Random random) {
+		this.random = random;
 	}
 
 }

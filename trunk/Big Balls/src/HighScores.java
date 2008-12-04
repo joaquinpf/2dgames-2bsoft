@@ -28,12 +28,12 @@ public class HighScores extends GameObject {
 	private Background background;
 	
 	/**
-	 * manegador de la fuente que se utilizará para mostrar los puntajes.
+	 * manegador de la fuente que se utilizarï¿½ para mostrar los puntajes.
 	 */
 	private GameFont font;
 	
 	/**
-	 * Imagen que contiene el título de la pantalla.
+	 * Imagen que contiene el tï¿½tulo de la pantalla.
 	 */
 	private BufferedImage titleHighScores;
 	
@@ -53,9 +53,9 @@ public class HighScores extends GameObject {
 	}
 	
 	/**
-	 * este método construye un String de linea punteada 
+	 * este mï¿½todo construye un String de linea punteada 
 	 * con la longitud necesaria para mostrar los puntajes.
-	 * @param longPalabras longitud de las palabras que se mostrarán.
+	 * @param longPalabras longitud de las palabras que se mostrarï¿½n.
 	 * @return String con la linea punteada de longitud correcta.
 	 */
 	private String lineaPunteada(final int longPalabras) {
@@ -69,7 +69,7 @@ public class HighScores extends GameObject {
 		return line;
 	}
 	/**
-	 * este método muestar en la pantalla la lista de puntajes del juego.
+	 * este mï¿½todo muestar en la pantalla la lista de puntajes del juego.
 	 * @param g parametro necesario para que 
 	 *          el manejador de fuente dibuje el texto
 	 */
@@ -118,6 +118,38 @@ public class HighScores extends GameObject {
 	public HighScores(final GameEngine parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
+	}
+
+	public PlayField getPfHighScores() {
+		return pfHighScores;
+	}
+
+	public void setPfHighScores(PlayField pfHighScores) {
+		this.pfHighScores = pfHighScores;
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
+	}
+
+	public GameFont getFont() {
+		return font;
+	}
+
+	public void setFont(GameFont font) {
+		this.font = font;
+	}
+
+	public BufferedImage getTitleHighScores() {
+		return titleHighScores;
+	}
+
+	public void setTitleHighScores(BufferedImage titleHighScores) {
+		this.titleHighScores = titleHighScores;
 	}
 
 }

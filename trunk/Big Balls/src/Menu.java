@@ -15,19 +15,19 @@ import com.golden.gamedev.util.ImageUtil;
 /**
  * Este Clase presenta la pantalla de menu del juego.
  * 
- * @author Damian Achaga y Joaquín Pérez Fuentes
+ * @author Damian Achaga y Joaquï¿½n Pï¿½rez Fuentes
  */
 
 public class Menu extends GameObject {
 		
 	/**
-	 * Tamaño de la fuente de la pelota.
+	 * Tamaï¿½o de la fuente de la pelota.
 	 * @uml.property  name="fontSize"
 	 */
 	private int fontSize = 60;
 	
 	/**
-	 * distancia de separacion entre cada opción del menu.	
+	 * distancia de separacion entre cada opciï¿½n del menu.	
 	 */
 	private static final int ANCHO_LINE_MENU = 65;
 	
@@ -37,7 +37,7 @@ public class Menu extends GameObject {
 	private Background background;
 	
 	/**
-	 * Puntero animado que señala la opcion elegida.
+	 * Puntero animado que seï¿½ala la opcion elegida.
 	 */
 	private Sprite pointer;
 	
@@ -52,12 +52,12 @@ public class Menu extends GameObject {
 	private int option = 1;
 	
 	/**
-	 * contiene la posición en la coordenada X del menu.
+	 * contiene la posiciï¿½n en la coordenada X del menu.
 	 */
 	private int posXmenu;
 	
 	/**
-	 * contiene la posición en la coordenada Y del menu.
+	 * contiene la posiciï¿½n en la coordenada Y del menu.
 	 */
 	private int posYmenu;
 	
@@ -97,7 +97,7 @@ public class Menu extends GameObject {
 	}
 	
 	/**
-	 * método que administra los eventos lanzados por teclado.
+	 * mï¿½todo que administra los eventos lanzados por teclado.
 	 */
 	private void manejoTeclado() {
 		switch (bsInput.getKeyPressed()) {
@@ -146,7 +146,7 @@ public class Menu extends GameObject {
 	}
 	
 	/**
-	 * método que administra los eventos lanzados por el mouse. 
+	 * mï¿½todo que administra los eventos lanzados por el mouse. 
 	 */
 	private void manejoMouse() {
 		if (mouseInMenu()) {	
@@ -274,6 +274,78 @@ public class Menu extends GameObject {
 	public Menu(final GameEngine parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getFontSize() {
+		return fontSize;
+	}
+
+	public void setFontSize(int fontSize) {
+		this.fontSize = fontSize;
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
+	}
+
+	public Sprite getPointer() {
+		return pointer;
+	}
+
+	public void setPointer(Sprite pointer) {
+		this.pointer = pointer;
+	}
+
+	public PlayField getPfMenu() {
+		return pfMenu;
+	}
+
+	public void setPfMenu(PlayField pfMenu) {
+		this.pfMenu = pfMenu;
+	}
+
+	public int getOption() {
+		return option;
+	}
+
+	public void setOption(int option) {
+		this.option = option;
+	}
+
+	public int getPosXmenu() {
+		return posXmenu;
+	}
+
+	public void setPosXmenu(int posXmenu) {
+		this.posXmenu = posXmenu;
+	}
+
+	public int getPosYmenu() {
+		return posYmenu;
+	}
+
+	public void setPosYmenu(int posYmenu) {
+		this.posYmenu = posYmenu;
+	}
+
+	public int getPosXpointer() {
+		return posXpointer;
+	}
+
+	public void setPosXpointer(int posXpointer) {
+		this.posXpointer = posXpointer;
+	}
+
+	public int getPosYpointer() {
+		return posYpointer;
+	}
+
+	public void setPosYpointer(int posYpointer) {
+		this.posYpointer = posYpointer;
 	}
 
 }
