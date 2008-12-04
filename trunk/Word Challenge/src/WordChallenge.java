@@ -72,6 +72,16 @@ public class WordChallenge extends GameEngine {
 	private Score scoringTable;
 
 	/**
+	 * @uml.property  name="correctWords"
+	 */
+	private int correctWords = 0;
+	
+	/**
+	 * @uml.property  name="failWords"
+	 */
+	private int failWords = 0;
+	
+	/**
 	 * Constructor de la aplicación.
 	 */
 	public WordChallenge() {
@@ -98,6 +108,8 @@ public class WordChallenge extends GameEngine {
 		case OPTION_MENU: {
 			clock.setTotalTime(config.getTime());
 			this.setScore(0);
+			this.setCorrectWords(0);
+			this.setFailWords(0);
 			return new Menu(this);
 		}
 		case OPTION_PLAY: {
@@ -229,6 +241,56 @@ public class WordChallenge extends GameEngine {
 		this.score += points;
 	}
 
+	/** 
+	 * Obtiene la cantidad de Palabras Correctas ingresadas por el usuario.
+	 * @return correctWords Palabras correctas
+	 */
+	public final int getCorrectWords() {
+		return correctWords;
+	}
+
+	/** 
+	 * Setter of the property <tt>correctWords</tt>.
+	 * @param newCorrectWords  The correctWords to set.
+	 * @uml.property  name="correctWords"
+	 */
+	public final void setCorrectWords(final int newCorrectWords) {
+		correctWords = newCorrectWords;
+	}
+
+	/** 
+	 * Obtiene la cantidad de Palabras Incorrectas ingresadas por el usuario.
+	 * @return correctWords Palabras Incorrectas
+	 */
+	public final int getFailWords() {
+		return failWords;
+	}
+
+	/** 
+	 * Setter of the property <tt>failWords</tt>.
+	 * @param newFailWords  The failWords to set.
+	 * @uml.property  name="newFailWords"
+	 */
+	public final void setFailWords(final int newFailWords) {
+		failWords = newFailWords;
+	}
+	
+	
+	/**
+	 * Incrementa en uno la cantidad de Palabras correctas ingresadas por el usuario.
+	 * 
+	*/
+	public final void incrementCorrectWords() {
+		this.correctWords++;
+	}
+	
+	/**
+	 * Incrementa en uno la cantidad de Palabras Incorrectas ingresadas por el usuario.
+	 * 
+	*/
+	public final void incrementFailWords() {
+		this.failWords++;
+	}
 	/**
 	 * Obtiene los lenguajes disponibles.
 	 * 

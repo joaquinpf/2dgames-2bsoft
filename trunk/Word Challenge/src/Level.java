@@ -381,9 +381,15 @@ public class Level extends GameObject implements Observer {
 		mButtonOk.setFixedposition(true);
 		mGroupButtons.add(mButtonOk);
 
-		// El playField del juego recibe el grupo de Botones.
-		mPlayField.addGroup(mGroupButtons);
 
+		// El playField del juego recibe el grupo de Botones.
+		mPlayField.addGroup(mGroupButtons);		
+
+		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO
+				.getURL("resources/images/ingamesalir.png"),
+				Transparency.TRANSLUCENT), 742, 12);
+		mPlayField.add(buttonExit);
+		
 		mGroupBigLetters = new SpriteGroup("Group Big Six Letters");
 		mGroupSmallLetters = new SpriteGroup("Group Small Six letters");
 
@@ -395,16 +401,12 @@ public class Level extends GameObject implements Observer {
 		mPlayField.addGroup(mGroupBigLetters);
 		mPlayField.addGroup(mGroupSmallLetters);
 
-		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO
-				.getURL("resources/images/ingamesalir.png"),
-				Transparency.TRANSLUCENT), 742, 12);
-		mPlayField.add(buttonExit);
-
 		// Obtiene seis letras desde el diccionario y las palabras
 		// que se pueden formar con las mismas.
 		setLettersOrder(mDictionary.getPossibleWords(vSixLetters));
 
 		this.mTimerStartLevel.setActive(true);
+		mPlayField.getExtraGroup().getScanFrequence().setDelay(3000);
 	}
 
 	/**
@@ -629,7 +631,6 @@ public class Level extends GameObject implements Observer {
 		
 		mPlayField.add(overlay);
 		
-		Sprite[] sprites = mGroupSmallLetters.getSprites();
 		for (int i = 0; i < mPossibleWords.size(); i++) {
 			mPossibleWords.get(i).setVisible(true);
 		}
@@ -700,16 +701,26 @@ public class Level extends GameObject implements Observer {
 		mPlayField.render(g);
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		mFontInfoLevel.setColor(Color.ORANGE);
-		mFontInfoLevel.drawString(g, "Puntaje", GameFont.CENTER, 150, -5, 300);
+		mFontInfoLevel.drawString(g, "Puntaje", GameFont.CENTER, 70, -5, 300);
 		mFontInfoLevel.setColor(new Color(142, 239, 123));
 		mFontInfoLevel.drawString(g, String
 				.valueOf(((WordChallenge) this.parent).getScore()),
-				GameFont.CENTER, 150, 45, 300);
+				GameFont.CENTER, 70, 45, 300);
+		
+		mFontInfoLevel.setColor(new Color(123,164,239));
+		mFontInfoLevel.drawString(g, "Correctas: " +
+				String
+				.valueOf(((WordChallenge)parent).getCorrectWords()), GameFont.CENTER, 400, -5, 200);
+		mFontInfoLevel.drawString(g, "Incorrectas: "+
+				String
+				.valueOf(((WordChallenge)parent).getFailWords()), GameFont.CENTER, 400, 45, 200);
 
-		mFontClock.drawString(g, String.valueOf(mClock.getRemainingTime()),
-				GameFont.CENTER, 10, 40, 100);
-
+		if (!mFinishing) {
+			mFontClock.drawString(g, String.valueOf(mClock.getRemainingTime()),
+					GameFont.CENTER, 10, 40, 100);
+		}
 	}
 
 	/**
@@ -747,6 +758,8 @@ public class Level extends GameObject implements Observer {
 			this.checkFinalLevel();
 			mPlayField.add(winSprite);
 			playSound("resources/sounds/wincard.wav");
+			
+			((WordChallenge)parent).incrementCorrectWords();
 		} else {
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
 					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
@@ -756,6 +769,8 @@ public class Level extends GameObject implements Observer {
 			failSprite.setAnimate(true);
 			mPlayField.add(failSprite);
 			playSound("resources/sounds/flip.wav");
+			
+			((WordChallenge)parent).incrementFailWords();
 		}
 	}
 
@@ -788,13 +803,6 @@ public class Level extends GameObject implements Observer {
 		Letter vLetter;
 		Letter vOtherLetter;
 		int vPosOtherLetter;
-		char auxValue;
-
-		int j;
-
-		for (j = 0; j < this.mGroupSmallLetters.getSize(); j++) {
-			Letter l = (Letter) mGroupSmallLetters.getSprites()[j];
-		}
 
 		for (int i = 0; i < this.mGroupSmallLetters.getSize(); i++) {
 			vLetter = (Letter) this.mGroupSmallLetters.getSprites()[i];
@@ -807,7 +815,8 @@ public class Level extends GameObject implements Observer {
 						.getSize() - 1);
 
 				// Obtengo la letra.
-				vOtherLetter = (Letter) this.mGroupSmallLetters.getSprites()[vPosOtherLetter];
+				vOtherLetter = (Letter) this.mGroupSmallLetters.
+												getSprites()[vPosOtherLetter];
 
 				// Ciclo hasta encontrar una letra que este visible.
 				while (!vOtherLetter.isVisible()) {
@@ -826,10 +835,6 @@ public class Level extends GameObject implements Observer {
 				vLetter.setX(vOtherLetter.getX());
 				vOtherLetter.setX(posX);
 			}
-		}
-
-		for (j = 0; j < this.mGroupSmallLetters.getSize(); j++) {
-			Letter l = (Letter) mGroupSmallLetters.getSprites()[j];
 		}
 	}
 
