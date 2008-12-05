@@ -1230,5 +1230,113 @@ public class Level extends GameObject {
 	public void setCol(int col){
 		this.col=col;
 	}
+
+	/**
+     * Getter of the property <tt>pointsPerPair</tt>.
+     * @return  Returns the pointsPerPair.
+     * @uml.property  name="pointsPerPair"
+     */
+	public static int getPointsPerPair(){
+		return pointsPerPair;
+	}
 	
+	/**
+     * Setter of the property <tt>pointsPerPair</tt>.
+     * @param newValue  The pointsPerPair to set.
+     * @uml.property  name="pointsPerPair"
+     */
+	public static void setPointsPerPair(int xpointsPerPair){
+		pointsPerPair=xpointsPerPair;
+	}
+
+	/**
+     * Getter of the property <tt>pointsPerLevel</tt>.
+     * @return  Returns the pointsPerLevel.
+     * @uml.property  name="pointsPerLevel"
+     */
+	public static int getPointsPerLevel(){
+		return pointsPerLevel;
+	}
+	
+	/**
+     * Setter of the property <tt>pointsPerLevel</tt>.
+     * @param newValue  The pointsPerLevel to set.
+     * @uml.property  name="pointsPerLevel"
+     */
+	public static void setPointsPerLevel(int xpointsPerLevel){
+		pointsPerLevel=xpointsPerLevel;
+	}
+
+	/**
+     * Getter of the property <tt>positionScreenX</tt>.
+     * @return  Returns the positionScreenX.
+     * @uml.property  name="positionScreenX"
+     */
+	public static int getPositionScreenX(){
+		return positionScreenX;
+	}
+
+	/**
+     * Setter of the property <tt>positionScreenX</tt>.
+     * @param newValue  The positionScreenX to set.
+     * @uml.property  name="positionScreenX"
+     */
+	public static void setPositionScreenX(int xpositionScreenX){
+		positionScreenX=xpositionScreenX;
+	}
+
+	/**
+     * Getter of the property <tt>positionScreenY</tt>.
+     * @return  Returns the positionScreenY.
+     * @uml.property  name="positionScreenY"
+     */
+	public static int getPositionScreenY(){
+		return positionScreenY;
+	}
+	
+	/**
+     * Setter of the property <tt>positionScreenY</tt>.
+     * @param newValue  The positionScreenY to set.
+     * @uml.property  name="positionScreenY"
+     */
+	public static void setPositionScreenY(int xpositionScreenY){
+		positionScreenY=xpositionScreenY;
+	}
+
+	/**
+     * Getter of the property <tt>separationRow</tt>.
+     * @return  Returns the separationRow.
+     * @uml.property  name="separationRow"
+     */
+	public static int getSeparationRow(){
+		return separationRow;
+	}
+	
+	/**
+     * Setter of the property <tt>separationRow</tt>.
+     * @param newValue  The separationRow to set.
+     * @uml.property  name="separationRow"
+     */
+	public static void setSeparationRow(int xseparationRow){
+		separationRow=xseparationRow;
+	}
+
+	/**
+     * Getter of the property <tt>separationCol</tt>.
+     * @return  Returns the separationCol.
+     * @uml.property  name="separationCol"
+     */
+	public static int getSeparationCol(){
+		return separationCol;
+	}
+	
+	/**
+     * Setter of the property <tt>separationCol</tt>.
+     * @param newValue  The separationCol to set.
+     * @uml.property  name="separationCol"
+     */
+	public static void setSeparationCol(int xseparationCol){
+		separationCol=xseparationCol;
+	}
+
 }
