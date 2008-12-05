@@ -118,7 +118,13 @@ public class Memo extends GameEngine {
 		this.currentLevel = currentLevel;
 	}
 	
+	public LevelGenerator getLevelGenerator(){
+		return this.levelGenerator;
+	}
 	
+	public void setLevelGenerator(LevelGenerator levelGenerator){
+		this.levelGenerator=levelGenerator;
+	}
 	
 	/**
 	 * Metodo principal.

@@ -233,7 +233,79 @@ public class Menu extends GameObject {
 		manejoMouse();
 		manejoTeclado();
 	}
-		
+	
+	/**
+     * Getter of the property <tt>background</tt>.
+     * @return  Returns the background.
+     * @uml.property  name="background"
+     */
+	public Background getBackground(){
+		return this.background;
+	}
+	
+	/**
+     * Setter of the property <tt>background</tt>.
+     * @param newValue  The background to set.
+     * @uml.property  name="background"
+     */
+	public void setBackground(Background background){
+		this.background=background;
+	}
+	
+	/**
+     * Getter of the property <tt>pfMenu</tt>.
+     * @return  Returns the pfMenu.
+     * @uml.property  name="pfMenu"
+     */
+	public PlayField getPfMenu(){
+		return this.pfMenu;
+	}
+	
+	/**
+     * Setter of the property <tt>pfMenu</tt>.
+     * @param newValue  The pfMenu to set.
+     * @uml.property  name="pfMenu"
+     */
+	public void setPfMenu (PlayField pfMenu){
+		this.pfMenu=pfMenu;
+	}
+	
+	/**
+     * Getter of the property <tt>internalFont</tt>.
+     * @return  Returns the internalFont.
+     * @uml.property  name="internalFont"
+     */
+	public SystemFont getInternalFont(){
+		return this.internalFont;
+	}
+	
+	/**
+     * Setter of the property <tt>internalFont</tt>.
+     * @param newValue  The internalFont to set.
+     * @uml.property  name="internalFont"
+     */
+	public void setInternalFont(SystemFont internalFont){
+		this.internalFont=internalFont;
+	}
+	
+	/**
+     * Getter of the property <tt>option</tt>.
+     * @return  Returns the option.
+     * @uml.property  name="option"
+     */
+	public int getOption(){
+		return this.option;
+	}
+	
+	/**
+     * Setter of the property <tt>option</tt>.
+     * @param newValue  The option to set.
+     * @uml.property  name="option"
+     */
+	public void setOption(int option){
+		this.option=option;
+	}
+	
 	/**
 	 * 
 	 * @param parent objeto que maneja la trancicion hacia las 

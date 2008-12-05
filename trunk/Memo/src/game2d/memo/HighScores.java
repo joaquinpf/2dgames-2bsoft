@@ -102,6 +102,78 @@ public class HighScores extends GameObject {
 	}
 
 	/**
+     * Getter of the property <tt>background</tt>.
+     * @return  Returns the background.
+     * @uml.property  name="background"
+     */
+	public Background getBackground(){
+		return this.background;
+	}
+	
+	/**
+     * Setter of the property <tt>background</tt>.
+     * @param newValue  The background to set.
+     * @uml.property  name="background"
+     */
+	public void setBackground(Background background) {
+        this.background = background;
+	}
+	
+	/**
+     * Getter of the property <tt>bigFont</tt>.
+     * @return  Returns the bigFont.
+     * @uml.property  name="bigFont"
+     */
+	public SystemFont getBigFont(){
+		return this.bigFont;
+	}
+	
+	/**
+     * Setter of the property <tt>bigFont</tt>.
+     * @param newValue  The bigFont to set.
+     * @uml.property  name="bigFont"
+     */
+	public void setBigFont(SystemFont bigFont){
+		this.bigFont=bigFont;
+	}
+	
+	/**
+     * Getter of the property <tt>mFont</tt>.
+     * @return  Returns the mFont.
+     * @uml.property  name="mFont"
+     */
+	public  SystemFont getMFont(){
+		return this.mFont;
+	}
+	
+	/**
+     * Setter of the property <tt>mFont</tt>.
+     * @param newValue  The mFont to set.
+     * @uml.property  name="mFont"
+     */
+	public  void setMFont(SystemFont mFont){
+		this.mFont=mFont;
+	}
+	
+	/**
+     * Getter of the property <tt>playFieldHighScores</tt>.
+     * @return  Returns the playFieldHighScores.
+     * @uml.property  name="playFieldHighScores"
+     */
+	 public  PlayField getPfHighScores() {
+         return this.playFieldHighScores;
+	 }
+
+	 /**
+	 * Setter of the property <tt>playFieldHighScores</tt>.
+	 * @param newValue  The playFieldHighScores to set.
+	 * @uml.property  name="playFieldHighScores"
+	 */
+	 public  void setPfHighScores(PlayField playFieldHighScores) {
+         this.playFieldHighScores = playFieldHighScores;
+ }
+
+	/**
 	 * @param elapsedTime tiempo de refresco
 	 */
 	@Override

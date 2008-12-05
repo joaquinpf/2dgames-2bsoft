@@ -960,4 +960,275 @@ public class Level extends GameObject {
 	public void setRemainingTimeLevel(int xRemainingTimeLevel) {
 		this.mRemainingTimeLevel = xRemainingTimeLevel;
 	}
+	
+	/**
+     * Getter of the property <tt>bigFont</tt>.
+     * @return  Returns the bigFont.
+     * @uml.property  name="bigFont"
+     */
+	public SystemFont getBigFont(){
+		return this.bigFont;
+	}
+	
+	/**
+     * Setter of the property <tt>bigFont</tt>.
+     * @param newValue  The bigFont to set.
+     * @uml.property  name="bigFont"
+     */
+	public void setBigFont(SystemFont bigFont){
+		this.bigFont=bigFont;
+	}
+	
+	/**
+     * Getter of the property <tt>mFont</tt>.
+     * @return  Returns the mFont.
+     * @uml.property  name="mFont"
+     */
+	public SystemFont getMFont(){
+		return this.mFont;
+	}
+	
+	/**
+     * Setter of the property <tt>mFont</tt>.
+     * @param newValue  The mFont to set.
+     * @uml.property  name="mFont"
+     */
+	public void setMFont(SystemFont mFont){
+		this.mFont=mFont;
+	}
+	
+	/**
+     * Getter of the property <tt>timerClock</tt>.
+     * @return  Returns the timerClock.
+     * @uml.property  name="timerClock"
+     */
+	public Timer getTimerClock(){
+		return this.timerClock;
+	}
+	
+	/**
+     * Setter of the property <tt>timerClock</tt>.
+     * @param newValue  The timerClock to set.
+     * @uml.property  name="timerClock"
+     */
+	public void setTimerClock(Timer timerClock){
+		this.timerClock=timerClock;
+	}
+	
+	/**
+     * Getter of the property <tt>timerSecondCard</tt>.
+     * @return  Returns the timerSecondCard.
+     * @uml.property  name="timerSecondCard"
+     */
+	public Timer getTimerSecondCard(){
+		return this.timerSecondCard;
+	}
+	
+	/**
+     * Setter of the property <tt>timerSecondCard</tt>.
+     * @param newValue  The timerSecondCard to set.
+     * @uml.property  name="timerSecondCard"
+     */
+	public void setTimerSecondCard(Timer timerSecondCard){
+		this.timerSecondCard=timerSecondCard;
+	}
+	
+	/**
+     * Getter of the property <tt>timerStartLevel</tt>.
+     * @return  Returns the timerStartLevel.
+     * @uml.property  name="timerStartLevel"
+     */
+	public Timer getTimerStartLevel(){
+		return this.timerStartLevel;
+	}
+	
+	/**
+     * Setter of the property <tt>timerStartLevel</tt>.
+     * @param newValue  The timerStartLevel to set.
+     * @uml.property  name="timerStartLevel"
+     */
+	public void setTimerStartLevel(Timer timerStartLevel){
+		this.timerStartLevel=timerStartLevel;
+	}
+	
+	/**
+     * Getter of the property <tt>mWaitCards</tt>.
+     * @return  Returns the mWaitCards.
+     * @uml.property  name="mWaitCards"
+     */
+	public boolean getMWaitCards(){
+		return this.mWaitCards;
+	}
+	
+	/**
+     * Setter of the property <tt>mWaitCards</tt>.
+     * @param newValue  The mWaitCards to set.
+     * @uml.property  name="mWaitCards"
+     */
+	public void setMWaitCards(boolean mWaitCards ){
+		this.mWaitCards=mWaitCards;
+	}
+	
+	/**
+     * Getter of the property <tt>mInitializedNivel</tt>.
+     * @return  Returns the mInitializedNivel.
+     * @uml.property  name="mInitializedNivel"
+     */
+	public boolean getMInitializedNivel(){
+		return this.mInitializedNivel;
+	}
+	
+	/**
+     * Setter of the property <tt>mInitializedNivel</tt>.
+     * @param newValue  The mInitializedNivel to set.
+     * @uml.property  name="mInitializedNivel"
+     */
+	public void setMInitializedNivel(boolean mInitializedNivel){
+		this.mInitializedNivel=mInitializedNivel;
+	}
+	
+	/**
+     * Getter of the property <tt>clock</tt>.
+     * @return  Returns the clock.
+     * @uml.property  name="clock"
+     */
+	public AnimatedSprite getClock(){
+		return this.clock;
+	}
+	
+	/**
+     * Setter of the property <tt>clock</tt>.
+     * @param newValue  The clock to set.
+     * @uml.property  name="clock"
+     */
+	public void setClock(AnimatedSprite clock){
+		this.clock=clock;
+	}
+	
+	/**
+     * Getter of the property <tt>buttonExit</tt>.
+     * @return  Returns the buttonExit.
+     * @uml.property  name="buttonExit"
+     */
+	public Sprite getButtonExit(){
+		return this.buttonExit;
+	}
+	
+	/**
+     * Setter of the property <tt>buttonExit</tt>.
+     * @param newValue  The buttonExit to set.
+     * @uml.property  name="buttonExit"
+     */
+	public void setButtonExit(Sprite buttonExit){
+		this.buttonExit=buttonExit;
+	}
+	
+	/**
+     * Getter of the property <tt>mGroupCards</tt>.
+     * @return  Returns the mGroupCards.
+     * @uml.property  name="mGroupCards"
+     */
+	public SpriteGroup	getMGroupCards(){
+		return this.mGroupCards;
+	}
+	
+	/**
+     * Setter of the property <tt>mGroupCards</tt>.
+     * @param newValue  The mGroupCards to set.
+     * @uml.property  name="mGroupCards"
+     */
+	public void setMGroupCards(SpriteGroup mGroupCards){
+		this.mGroupCards=mGroupCards;
+	}
+	
+	/**
+     * Getter of the property <tt>mCards</tt>.
+     * @return  Returns the mCards.
+     * @uml.property  name="mCards"
+     */
+	public Card [][] getMCards(){
+		return this.mCards;
+	}
+	
+	/**
+     * Setter of the property <tt>mCards</tt>.
+     * @param newValue  The mCards to set.
+     * @uml.property  name="mCards"
+     */
+	public void setMCards(Card [][]mCards){
+		this.mCards=mCards;
+	}
+	
+	/**
+     * Getter of the property <tt>heightCard</tt>.
+     * @return  Returns the heightCard.
+     * @uml.property  name="heightCard"
+     */
+	public int getHeightCard(){
+		return this.heightCard;
+	}
+	
+	/**
+     * Setter of the property <tt>heightCard</tt>.
+     * @param newValue  The heightCard to set.
+     * @uml.property  name="heightCard"
+     */
+	public void setHeightCard( int heightCard){
+		this.heightCard=heightCard;
+	}
+	
+	/**
+     * Getter of the property <tt>widthCard</tt>.
+     * @return  Returns the widthCard.
+     * @uml.property  name="widthCard"
+     */
+	public int getWidthCard(){
+		return this.widthCard;
+	}
+	
+	/**
+     * Setter of the property <tt>widthCard</tt>.
+     * @param newValue  The widthCard to set.
+     * @uml.property  name="widthCard"
+     */
+	public void setWidthCard(int widthCard){
+		this.widthCard=widthCard;
+	}
+	
+	/**
+     * Getter of the property <tt>row</tt>.
+     * @return  Returns the row.
+     * @uml.property  name="row"
+     */
+	public int getRow(){
+		return this.row;
+	}
+	
+	/**
+     * Setter of the property <tt>row</tt>.
+     * @param newValue  The row to set.
+     * @uml.property  name="row"
+     */
+	public void setRow(int row){
+		this.row=row;
+	}
+	
+	/**
+     * Getter of the property <tt>col</tt>.
+     * @return  Returns the col.
+     * @uml.property  name="col"
+     */
+	public int getCol(){
+		return this.col;
+	}
+	
+	/**
+     * Setter of the property <tt>col</tt>.
+     * @param newValue  The col to set.
+     * @uml.property  name="col"
+     */
+	public void setCol(int col){
+		this.col=col;
+	}
+	
 }
