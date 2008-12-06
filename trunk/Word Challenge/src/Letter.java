@@ -46,6 +46,15 @@ public class Letter extends Sprite {
 	}
 
 	/**
+	 * Setter of the property <tt>value</tt>
+	 * 
+	 * @param value
+	 */
+	public final void setValue(char value) {
+		this.value=value;
+	}
+
+	/**
 	 * Getter de lapropiedad isVisible.
 	 * 
 	 * @return isVisible state

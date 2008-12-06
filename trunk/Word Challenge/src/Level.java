@@ -78,19 +78,20 @@ public class Level extends GameObject implements Observer {
 	private static final int BIGDISTANCE_X_LETTERS = 5;
 
 	/**
-	 * Coordenada en el eje X (en pixeles) de la primera de las seis letras
-	 * desordenadas.
+	 * Coordenada en el eje X (en pixeles) de la primera de las letras chiquitas
+	 * sin descubrir.
 	 */
 	private static final int SMALLLETTER_POS_X = 210;
 
 	/**
-	 * Coordenada en el eje Y (en pixeles) de la primera de las seis letras
-	 * desordenadas.
+	 * Coordenada en el eje Y (en pixeles) de la primera de las letras chiquitas
+	 * sin descubrir.
 	 */
 	private static final int SMALLLETTER_POS_Y = 235;
 
 	/**
-	 * Separcion horizontal (en pixeles) que hay entre 2 letras desordendas.
+	 * Separcion horizontal (en pixeles) que hay entre 2 letras chiquitas 
+	 * sin descubrir.
 	 */
 	private static final int SMALLDISTANCE_X_LETTERS = 10;
 
@@ -1014,6 +1015,575 @@ public class Level extends GameObject implements Observer {
 	 */
 	public final boolean isFinished() {
 		return mFinished;
+	}
+	/**
+	 * Devuelve el ancho de una palabra de longitud máxima, 
+	 * en el panel de palabras a adivinar.
+	 * 
+	 * @return int widthWord
+	 */
+	public int getMWidthWord() {
+		return mWidthWord;
+	}
+
+	/**
+	 * Método para setear el ancho de una palabra de longitud máxima.
+	 * 
+	 * @param widthWord
+	 */
+	public void setMWidthWord(int widthWord) {
+		mWidthWord = widthWord;
+	}
+
+	/**
+	 * Devuelve la altura de una palabra, en el panel de palabras a adivinar.  
+	 * 
+	 * @return  int heightWord
+	 */
+	public int getMHeightWord() {
+		return mHeightWord;
+	}
+
+	/**
+	 * Método para setear la altura de una palabra.
+	 * 
+	 * @param heightWord
+	 */
+	public void setMHeightWord(int heightWord) {
+		mHeightWord = heightWord;
+	}
+
+	/**
+	 * Devuelve el timer local para un delay antes de empezar el nivel.
+	 * 
+	 * @return timer timerStartLevel
+	 */
+	public Timer getMTimerStartLevel() {
+		return mTimerStartLevel;
+	}
+
+	/**
+	 * Método para setear el timer local para un delay antes de empezar el
+	 * nivel.
+	 * 
+	 * @param timerStartLevel
+	 */
+	public void setMTimerStartLevel(Timer timerStartLevel) {
+		mTimerStartLevel = timerStartLevel;
+	}
+	
+	/**
+	 * Devuelve el timer que representa un delay después de hacer click sobre
+	 * un botón o al elegir un Letter de los seleccionables.
+	 * 
+	 * @return timer timerSelected 
+	 */
+	public Timer getMTimerSelected() {
+		return mTimerSelected;
+	}
+
+	/**
+	 * Método para setear el timer que representa un delay después de hacer
+	 * click sobre un botón o al elegir un Letter de los seleccionables.
+	 * 
+	 * @param timerSelected
+	 */
+	public void setMTimerSelected(Timer timerSelected) {
+		mTimerSelected = timerSelected;
+	}
+
+	/**
+	 * Devuelve una instancia privada del Clock que permite llevar la cuenta de
+	 * los segundos que faltan cumplirse para terminar el nivel.  
+	 * 
+	 * @return Clock usado  
+	 */
+	public Clock getMClock() {
+		return mClock;
+	}
+
+	/**
+	 * Método para setear una instancia privada del Clock que permite llevar la
+	 * cuenta de los segundos que faltan cumplirse para terminar el nivel.
+	 * 
+	 * @param clock 
+	 */
+	public void setMClock(Clock clock) {
+		mClock = clock;
+	}
+	
+	/**
+	 * Getter de la variable spClock  
+	 * 
+	 * @return AnimatedSprite
+	 */
+	public AnimatedSprite getSpClock() {
+		return spClock;
+	}
+
+	/**
+	 * Setter de la variable spClock
+	 * 
+	 * @param spClock
+	 */
+	public void setSpClock(AnimatedSprite spClock) {
+		this.spClock = spClock;
+	}
+	
+	/**
+	 * Devuelve si el nivel esta inicializado o no  
+	 * 
+	 * @return boolean initializedLevel
+	 */
+	public boolean isMInitializedLevel() {
+		return mInitializedLevel;
+	}
+
+	/**
+	 * Método para setear si el nivel está inicializado
+	 * 
+	 * @param initializedLevel
+	 */
+	public void setMInitializedLevel(boolean initializedLevel) {
+		mInitializedLevel = initializedLevel;
+	}
+	
+	/**
+	 * Devuelve si se puede hacer click o no.  
+	 * 
+	 * @return boolean waitSelect
+	 */
+	public boolean isMWaitSelect() {
+		return mWaitSelect;
+	}
+
+	/**
+	 * Método para setear si se puede hacer click
+	 * 
+	 * @param waitSelect
+	 */
+	public void setMWaitSelect(boolean waitSelect) {
+		mWaitSelect = waitSelect;
+	}
+	
+	/**
+	 * Getter de la variable finishing  
+	 * 
+	 * @return boolean finishing
+	 */
+	public boolean isMFinishing() {
+		return mFinishing;
+	}
+
+	/**
+	 * Setter de la variable finishing
+	 * 
+	 * @param finishing
+	 */
+	public void setMFinishing(boolean finishing) {
+		mFinishing = finishing;
+	}
+
+	/**
+	 * Devuelve si el nivel finalizó porque no hay mas tiempo restante.   
+	 * 
+	 * @return 	boolean finished 
+	 */
+	public boolean isMFinished() {
+		return mFinished;
+	}
+
+	/**
+	 * Método para setear si el nivel finalizó
+	 * 
+	 * @param finished
+	 */
+	public void setMFinished(boolean finished) {
+		mFinished = finished;
+	}
+	
+	/**
+	 * Devuelve el PlayField del nivel, en el se organizan todos los objetos 
+	 * que deben renderizarse.   
+	 * 
+	 * @return  PlayField usado
+	 */
+	public PlayField getMPlayField() {
+		return mPlayField;
+	}
+
+	/**
+	 * Método para setear el PlayField del nivel, en el se organizan todos los
+	 * objetos que deben renderizarse.
+	 * 
+	 * @param playField
+	 */
+	public void setMPlayField(PlayField playField) {
+		mPlayField = playField;
+	}
+
+	/**
+	 * Devuelve la variable que representa al botón de salida 
+	 * 
+	 * @return Sprite buttonExit
+	 */
+	public Sprite getButtonExit() {
+		return buttonExit;
+	}
+
+	/**
+	 * Método para setear la variable que representa al botón de salida.
+	 * 
+	 * @param buttonExit
+	 */
+	public void setButtonExit(Sprite buttonExit) {
+		this.buttonExit = buttonExit;
+	}
+
+	/**
+	 * Devuelve la variable que contiene las letras que pueden elegirse
+	 * 
+	 * @return SpriteGroup groupBigLetters
+	 */
+	public SpriteGroup getMGroupBigLetters() {
+		return mGroupBigLetters;
+	}
+
+	/**
+	 * Método para setear la variable que contiene las letras que pueden 
+	 * elegirse
+	 * 
+	 * @param groupBigLetters
+	 */
+	public void setMGroupBigLetters(SpriteGroup groupBigLetters) {
+		mGroupBigLetters = groupBigLetters;
+	}
+
+	/**
+	 * Devuelve la variable que contiene las letras que se eligieron.
+	 * 
+	 * @return SpriteGroup groupSmallLetters
+	 */
+	public SpriteGroup getMGroupSmallLetters() {
+		return mGroupSmallLetters;
+	}
+
+	/**
+	 * Método para setear la variable que contiene las letras que se eligieron.
+	 * 
+	 * @param groupSmallLetters
+	 */
+	public void setMGroupSmallLetters(SpriteGroup groupSmallLetters) {
+		mGroupSmallLetters = groupSmallLetters;
+	}
+	
+	/**
+	 * Devuelve la variable que contiene los botones.
+	 * 
+	 * @return SpriteGroup groupButtons
+	 */
+	public SpriteGroup getMGroupButtons() {
+		return mGroupButtons;
+	}
+
+	/**
+	 * Método para setear la variable que contiene los botones.
+	 * 
+	 * @param groupButtons
+	 */
+	public void setMGroupButtons(SpriteGroup groupButtons) {
+		mGroupButtons = groupButtons;
+	}
+
+	/**
+	 * Devuelve la fuente que se utiliza para mostrar los datos del nivel 
+	 * en la pantalla,puntos y tiempo restante.
+	 * 
+	 * @return SystemFont fontInfoLevel
+	 */
+	public SystemFont getMFontInfoLevel() {
+		return mFontInfoLevel;
+	}
+
+	/**
+	 * Método para setear la fuente que se utiliza para mostrar los datos del 
+	 * nivel en la pantalla, puntos y tiempo restante.
+	 * 
+	 * @param fontInfoLevel
+	 */
+	public void setMFontInfoLevel(SystemFont fontInfoLevel) {
+		mFontInfoLevel = fontInfoLevel;
+	}
+
+	/**
+	 * Devuelve la fuente que utiliza para mostrar las letras que seleccionó 
+	 * el jugador.
+	 * 
+	 * @return SystemFont fontClock
+	 */
+	public SystemFont getMFontClock() {
+		return mFontClock;
+	}
+
+	/**
+	 * Método para setear la fuente que se utiliza para mostrar las letras que 
+	 * seleccionó el jugador.
+	 * 
+	 * @param fontClock
+	 */
+	public void setMFontClock(SystemFont fontClock) {
+		mFontClock = fontClock;
+	}
+
+	/**
+	 * Devuelve la variable que contiene las palabras que pueden formarse con 
+	 * las seis letras actuales.
+	 * 
+	 * @return SystemFont fontClock
+	 */
+	public ArrayList<Word> getMPossibleWords() {
+		return mPossibleWords;
+	}
+
+	/**
+	 * Método para setear la variable que contiene las palabras que puede 
+	 * formar el jugador con las seis letras actuales.
+	 * 
+	 * @param possibleWords 
+	 */
+	public void setMPossibleWords(ArrayList<Word> possibleWords) {
+		mPossibleWords = possibleWords;
+	}
+
+	/**
+	 * Devuelve la palabra formada por la sucesiva selección de caracteres.
+	 * 
+	 * @return String buildWord
+	 */
+	public String getMBuildWord() {
+		return mBuildWord;
+	}
+
+	/**
+	 * Método para setear la variable que contiene la palabra formada por la 
+	 * sucesiva selección de carcteres.
+	 * 
+	 * @param buildWord
+	 */
+	public void setMBuildWord(String buildWord) {
+		mBuildWord = buildWord;
+	}
+
+	/**
+	 * Devuelve los puntos obtenidos con las seis letras.
+	 * 
+	 * @return int pointsCurrentLetters
+	 */
+	public int getMPointsCurrentLetters() {
+		return mPointsCurrentLetters;
+	}
+
+	/**
+	 * Método para setear los puntos obtenidos con las seis letras.
+	 * 
+	 * @param pointsCurrentLetters
+	 */
+	public void setMPointsCurrentLetters(int pointsCurrentLetters) {
+		mPointsCurrentLetters = pointsCurrentLetters;
+	}
+
+	/**
+	 * Devuelve la variable que representa al botón que permite obtener seis 
+	 * nuevos caracteres.
+	 * 
+	 * @return Button buttonNewLetters
+	 */
+	public Button getMButtonNewLetters() {
+		return mButtonNewLetters;
+	}
+
+	/**
+	 * Método para setear la variable que representa al botón que permite 
+	 * obtener seis nuevos caracteres.
+	 * 
+	 * @param buttonNewLetters
+	 */
+	public void setMButtonNewLetters(Button buttonNewLetters) {
+		mButtonNewLetters = buttonNewLetters;
+	}
+
+	/**
+	 * Devuelve la variable que representa al botón OK.
+	 * 
+	 * @return Button buttonOk
+	 */
+	public Button getMButtonOk() {
+		return mButtonOk;
+	}
+
+	/**
+	 * Método para setear la variable que representa al botón OK.
+	 * 
+	 * @param buttonOk
+	 */
+	public void setMButtonOk(Button buttonOk) {
+		mButtonOk = buttonOk;
+	}
+
+	/**
+	 * Devuelve la variable que representa al botón BACK.
+	 * 
+	 * @return Button buttonBack
+	 */
+	public Button getMButtonBack() {
+		return mButtonBack;
+	}
+
+	/**
+	 * Método para setear la variable que representa al botón BACK.
+	 * 
+	 * @param buttonBack
+	 */
+	public void setMButtonBack(Button buttonBack) {
+		mButtonBack = buttonBack;
+	}
+
+	/**
+	 * Devuelve la variable que representa al botón RANDOMIZE.
+	 * 
+	 * @return Button buttonRandomize
+	 */
+	public Button getMButtonRandomize() {
+		return mButtonRandomize;
+	}
+
+	/**
+	 * Método para setear la variable que representa al botón RANDOMIZE.
+	 * 
+	 * @param buttonRandomize
+	 */
+	public void setMButtonRandomize(Button buttonRandomize) {
+		mButtonRandomize = buttonRandomize;
+	}
+
+	/**
+	 * Devuelve el número de letras a ordenar en el nivel.
+	 * 
+	 * @return int max_letters
+	 */
+	public static int getMAX_LETTERS() {
+		return MAX_LETTERS;
+	}
+
+	/**
+	 * Devuelve la coordenada en el eje X de la primera de las seis letras
+	 * desordenadas.
+	 * 
+	 * @return int coordenada X
+	 */
+	public static int getBIGLETTER_POS_X() {
+		return BIGLETTER_POS_X;
+	}
+
+	/**
+	 * Devuelve la coordenada en el eje Y de la primera de las seis letras 
+	 * desordenadas.
+	 * 
+	 * @return int coordenada Y
+	 */
+	public static int getBIGLETTER_POS_Y() {
+		return BIGLETTER_POS_Y;
+	}
+
+	/**
+	 * Devuelve la separación horizontal que hay entre 2 letras desordenadas.
+	 * 
+	 * @return int separación horizontal
+	 */
+	public static int getBIGDISTANCE_X_LETTERS() {
+		return BIGDISTANCE_X_LETTERS;
+	}
+
+
+	/**
+	 * Devuelve la coordenada en el eje X de la primera de las letras chiquitas
+	 * sin descubrir.
+	 * 
+	 * @return int coordenada X
+	 */
+	public static int getSMALLLETTER_POS_X() {
+		return SMALLLETTER_POS_X;
+	}
+
+
+	/**
+	 * Devuelve la coordenada en el eje Y de la primera de las letras chiquitas 
+	 * sin descubrir.
+	 * 
+	 * @return int coordenada Y
+	 */
+	public static int getSMALLLETTER_POS_Y() {
+		return SMALLLETTER_POS_Y;
+	}
+
+	/**
+	 * Devuelve la separación horizontal que hay entre 2 letras chiquitas sin
+	 * descubrir.
+	 * 
+	 * @return int separación horizontal
+	 */
+	public static int getSMALLDISTANCE_X_LETTERS() {
+		return SMALLDISTANCE_X_LETTERS;
+	}
+
+	/**
+	 * Devuelve la cantidad de palabras que se pueden colocar en el panel en
+	 * sentido vertical.
+	 * 
+	 * @return int cantidad palabras
+	 */
+	public static int getROWS_POSSIBLES_WORDS() {
+		return ROWS_POSSIBLES_WORDS;
+	}
+
+	/**
+	 * Devuelve la separación horizontal entre palabras en el panel de
+	 * palabras a adivinar.
+	 * 
+	 * @return int separación horizontal
+	 */
+	public static int getSEPARATION_HORIZONTAL_WORD() {
+		return SEPARATION_HORIZONTAL_WORD;
+	}
+
+	/**
+	 * Devuelve la separación vertical entre palabras en el panel de
+	 * palabras a adivinar.
+	 * 
+	 * @return int separación vertical
+	 */
+	public static int getSEPARATION_VERTICAL_WORD() {
+		return SEPARATION_VERTICAL_WORD;
+	}
+
+	/**
+	 * Devuelve la posición inicial en el eje vertical de la primer palabra
+	 * en el panel de palabras a adivinar.
+	 * 
+	 * @return int posición inicial 
+	 */
+	public static int getPOS_START_ROW_WORD() {
+		return POS_START_ROW_WORD;
+	}
+
+	/**
+	 * Devuelve la posición inicial en el eje horizontal de la primer palabra 
+	 * en el panel de palabras a adivinar.
+	 * 
+	 * @return int posición inicial
+	 */
+	public static int getPOS_START_COL_WORD() {
+		return POS_START_COL_WORD;
 	}
 
 }

@@ -112,5 +112,41 @@ public class Score {
 	 */
 	public final int getTime(final int xLengthWord) {
 		return matches.get(new Integer(xLengthWord)).get(BONUS_TIME);
-	} 
+	}
+
+	/**
+	 * Devuelve las reglas de puntaje.
+	 * 
+	 * @return Hashtable<Integer, ArrayList<Integer>> matches
+	 */
+	public Hashtable<Integer, ArrayList<Integer>> getMatches() {
+		return matches;
+	}
+
+	/**
+	 * Setea las reglas de puntaje.
+	 *  
+	 * @param  matches
+	 */
+	public void setMatches(Hashtable<Integer, ArrayList<Integer>> matches) {
+		this.matches = matches;
+	}
+
+	/**
+	 * Getter de la variable POINTS
+	 * 
+	 * @return int points
+	 */
+	public static int getPOINTS() {
+		return POINTS;
+	}
+
+	/**
+	 * Getter de la variable BONUS_TIME
+	 * 
+	 * @return int bomus_time
+	 */
+	public static int getBONUS_TIME() {
+		return BONUS_TIME;
+	}
 }

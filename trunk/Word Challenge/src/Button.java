@@ -40,7 +40,7 @@ public class Button extends Sprite {
 	private BufferedImage mImageClick = null;
 	
 	/**
-	 * Imagen del botón cuando se está mostrando.
+	 * Imagen del botón cuando está deshabilitado.
 	 */
 	private BufferedImage mImageDisabled = null;
 
@@ -58,6 +58,107 @@ public class Button extends Sprite {
 	 * Propiedad usada para habilitar o no el botón.
 	 */
 	private boolean mEnabled = true;
+
+	
+
+	/**
+	 * Devuelve la variable que contiene la imagen del botón cuando se 
+	 * está mostrando.
+	 * 
+	 * @return BufferedImage imageUp
+	 */
+	public BufferedImage getMImageUp() {
+		return mImageUp;
+	}
+
+
+	/**
+	 * Método para setear la variable que contiene la imagen del botón 
+	 * cuando se está mostrando.
+	 * 
+	 * @param imageUp
+	 */
+	public void setMImageUp(BufferedImage imageUp) {
+		mImageUp = imageUp;
+	}
+
+	/**
+	 * Devuelve la variable que contiene la imagen del botón cuando se hace 
+	 * click sobre él.
+	 * 
+	 * @return BufferedImage imageClick
+	 */
+	public BufferedImage getMImageClick() {
+		return mImageClick;
+	}
+
+	/**
+	 * Método para setear la variable que contiene la imagen del botón cuando
+	 * se hace click sobre él.
+	 * 
+	 * @param imageClick
+	 */
+	public void setMImageClick(BufferedImage imageClick) {
+		mImageClick = imageClick;
+	}
+
+	/**
+	 * Devuelve la variable que contiene la imagen del botón cuando el mismo
+	 * esta deshabilitado.
+	 * 
+	 * @return BufferedImage imageDisabled
+	 */
+	public BufferedImage getMImageDisabled() {
+		return mImageDisabled;
+	}
+
+	/**
+	 * Método para setear la variable que contiene la imagen del botón cuando 
+	 * está deshabilitado.
+	 * 
+	 * @param imageDisabled
+	 */
+	public void setMImageDisabled(BufferedImage imageDisabled) {
+		mImageDisabled = imageDisabled;
+	}
+
+	/**
+	 * Devuelve el comando que ejecuta el botón cuando se hace click sobre él.
+	 * 
+	 * @return AbstractCommandLevel command
+	 */
+	public AbstractCommandLevel getMCommand() {
+		return mCommand;
+	}
+
+	/**
+	 * Método para setear el comando que ejecuta el botón cuando se hace click
+	 * sobre él.
+	 * 
+	 * @param command
+	 */
+	public void setMCommand(AbstractCommandLevel command) {
+		mCommand = command;
+	}
+
+	/**
+	 * Devuelve el timer usado para mostrar la imagen cuando se hace click.
+	 * 
+	 * @return Timer usado
+	 */
+	public Timer getMTimerClick() {
+		return mTimerClick;
+	}
+
+	/**
+	 * Método para setear el timer usado para mostrar la imagen cuando se 
+	 * hace click.
+	 * 
+	 * @param timerClick
+	 */
+	public void setMTimerClick(Timer timerClick) {
+		mTimerClick = timerClick;
+	}
 
 	/**
 	 * Indica si está habilitado o no el botón.
