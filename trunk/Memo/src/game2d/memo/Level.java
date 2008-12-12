@@ -787,13 +787,10 @@ public class Level extends GameObject {
 		finish();
 		
 	}
-	/**
-	 * Verifica si las dos cartas seleccionadas forman un par igual.
-	 * Si son iguales incremento la cantidad de aciertos en uno,
-	 * en caso contrario incremento la cantidad de desaciertos.
-	 */
-	private void checkCards() {
-		
+	
+	
+	private boolean checkCardsLogic() {
+		boolean equals = false;
 		// Si las dos cartas son iguales.
 		if (firstCard.compareTo(secondCard) == 0) {
 			
@@ -822,8 +819,33 @@ public class Level extends GameObject {
 			
 			mSuccess++;
 			((Memo)parent).addPoints(Level.pointsPerPair);
-			
-			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(this.bsIO.getURL("resources/images/tick.png"), 6, 1,Transparency.TRANSLUCENT),300,150);
+			equals = true;
+							
+		} else {
+			// Incremento el nro de desaciertos de pares de cartas descubiertos.
+			firstCard.turnCard();
+			secondCard.turnCard();
+			mFails++;
+			equals = false;
+		}
+		firstCard = null;				
+		secondCard = null;
+		return equals;
+	}
+	
+	/**
+	 * Verifica si las dos cartas seleccionadas forman un par igual.
+	 * Si son iguales incremento la cantidad de aciertos en uno,
+	 * en caso contrario incremento la cantidad de desaciertos.
+	 */
+	private void checkCards() {
+		
+		// Si las dos cartas son iguales.
+		if (checkCardsLogic()) {
+
+			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(
+					this.bsIO.getURL("resources/images/tick.png"), 6, 1,
+					Transparency.TRANSLUCENT),300,150);
 			winSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 			winSprite.getAnimationTimer().setDelay(100);
 			winSprite.setAnimate(true);
@@ -831,11 +853,6 @@ public class Level extends GameObject {
 			playSound("resources/sounds/winCard.wav");
 			
 		} else {
-			// Incremento el nro de desaciertos de pares de cartas descubiertos.
-			firstCard.turnCard();
-			secondCard.turnCard();
-			mFails++;
-
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
 					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
 					Transparency.TRANSLUCENT),300,150);
@@ -845,9 +862,6 @@ public class Level extends GameObject {
 			playfield.add(failSprite);
 			playSound("resources/sounds/flip.wav");
 		}
-		
-		firstCard = null;				
-		secondCard = null;	
 	}
 
 
