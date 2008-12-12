@@ -106,7 +106,7 @@ public class WordChallenge extends GameEngine {
 	public final GameObject getGame(final int gameID) {
 		switch (gameID) {
 		case OPTION_MENU: {
-			clock.setTotalTime(config.getTime());
+			clock = new Clock(config.getTime());
 			this.setScore(0);
 			this.setCorrectWords(0);
 			this.setFailWords(0);
