@@ -723,14 +723,14 @@ public class Level extends GameObject implements Observer {
 					GameFont.CENTER, 10, 40, 100);
 		}
 	}
-
+	
 	/**
-	 * Verifica si la palabra formada existe en la lista de mPossibleWords.
+	 * Verifica si la palabra selecionada es valida.
+	 * @return
 	 */
-	public final void checkWord() {
-
+	public final boolean isValidWord() {
 		boolean esta = false;
-		for (int i = 0; i < mPossibleWords.size() && !false; i++) {
+		for (int i = 0; i < mPossibleWords.size() && !esta; i++) {
 			Word vWord = mPossibleWords.get(i);
 			
 			// Si la palabra todavia no fue descubierta y existe.
@@ -745,6 +745,17 @@ public class Level extends GameObject implements Observer {
 			}
 		}
 		mBuildWord = "";
+		return esta;
+	}
+	
+	
+	/**
+	 * Verifica si la palabra formada existe en la lista de mPossibleWords.
+	 */
+	public final void checkWord() {
+
+		boolean esta = isValidWord();
+		
 		for (int j = 0; j < MAX_LETTERS; j++) {
 			((Letter) mGroupSmallLetters.getSprites()[j]).setVisible(true);
 			((Letter) mGroupBigLetters.getSprites()[j]).setVisible(false);
@@ -758,9 +769,16 @@ public class Level extends GameObject implements Observer {
 			winSprite.setAnimate(true);
 			this.checkFinalLevel();
 			mPlayField.add(winSprite);
+			
 			playSound("resources/sounds/wincard.wav");
 			
-			((WordChallenge)parent).incrementCorrectWords();
+			// Incremento la cantidad de palabras acertadas
+			((WordChallenge) parent).incrementCorrectWords();
+			
+			// Habilito el boton de nueva palabra, si tengo
+			// los puntos necesarios.
+			mButtonNewLetters.setEnabled((mPointsCurrentLetters >= mScore
+					.getPointsNewLetters()));
 		} else {
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
 					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
@@ -771,7 +789,8 @@ public class Level extends GameObject implements Observer {
 			mPlayField.add(failSprite);
 			playSound("resources/sounds/flip.wav");
 			
-			((WordChallenge)parent).incrementFailWords();
+			// Incremento la cantidad de palabras incorrectas			
+			((WordChallenge) parent).incrementFailWords();
 		}
 	}
 
@@ -787,8 +806,9 @@ public class Level extends GameObject implements Observer {
 				esta = false;
 			}
 		}
-		if (esta)
+		if (esta) {
 			levelFinishing();
+		}
 	}
 
 	/**
@@ -893,9 +913,7 @@ public class Level extends GameObject implements Observer {
 		// Sumo los puntos al acumulativo de puntos por palabra.
 		mPointsCurrentLetters += xPoints;
 
-		// Habilito el boton de nueva palabra, si tengo los puntos necesarios.
-		mButtonNewLetters.setEnabled((mPointsCurrentLetters >= mScore
-				.getPointsNewLetters()));
+		
 	}
 
 	/**

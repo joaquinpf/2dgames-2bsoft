@@ -101,11 +101,7 @@ public class LanguageMenu extends GameObject {
 	private void manejoMouse() {
 		if (mouseInMenu()) {
 			if (click()) {
-				String lengSelected = idiomas.get(option).get("name");
-				Dictionary d = parent.getConfig().getDicctionary(lengSelected);
-				parent.setKapeluz(d);
-				parent.setSelectedLanguage(lengSelected);
-				parent.nextGameID = WordChallenge.OPTION_MENU;
+				selectIdiom();
 				finish();
 			}
 			for (int i = cantOpciones; i > 0; i--) {
@@ -119,16 +115,23 @@ public class LanguageMenu extends GameObject {
 	}
 
 	/**
+	 * Metodo que selecciona el idioma.
+	 */
+	public final void selectIdiom() {
+		String lengSelected = idiomas.get(option).get("name");
+		Dictionary d = parent.getConfig().getDicctionary(lengSelected);
+		parent.setKapeluz(d);
+		parent.setSelectedLanguage(lengSelected);
+		parent.nextGameID = WordChallenge.OPTION_MENU;
+	}
+
+	/**
 	 * método que administra los eventos lanzados por teclado.
 	 */
 	private void manejoTeclado() {
 		switch (bsInput.getKeyPressed()) {
 		case KeyEvent.VK_ENTER:
-			String lengSelected = idiomas.get(option).get("name");
-			Dictionary d = parent.getConfig().getDicctionary(lengSelected);
-			parent.setKapeluz(d);
-			parent.setSelectedLanguage(lengSelected);
-			parent.nextGameID = WordChallenge.OPTION_MENU;
+			selectIdiom();
 			finish();
 			break;
 		case KeyEvent.VK_UP:
