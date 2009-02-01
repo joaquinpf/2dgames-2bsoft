@@ -1,6 +1,7 @@
 package ar.edu.unicen.exa.game2d.bigballs;
 
 import java.awt.Dimension;
+import java.util.List;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
@@ -12,8 +13,18 @@ import com.golden.gamedev.GameObject;
  * 
  * @author Damian Achaga
  */
-public class BigBalls extends GameEngine {
+public class BigBalls extends GameEngine  implements I2DGame {
 		
+ 	/**
+ 	 * Identificador del juego Big Balls.
+ 	 */
+	private String id2DGame = null;
+ 	
+ 	/**
+ 	 * Instancia que permite cargar el juego 2d.
+ 	 */
+ 	private GameLoader game = null;
+	
 	/**Nivel actual en juego.
 	 */
 	private int currentLevel = 1;
@@ -60,6 +71,11 @@ public class BigBalls extends GameEngine {
 	public BigBalls() {
 		super();
 		this.distribute = true;
+		
+		game = new GameLoader();
+		game.setup(this, new Dimension(800, 600),
+				   GameLoader.ScreenMode.Dialog);
+		
 	}
 	
 	/**
@@ -183,5 +199,74 @@ public class BigBalls extends GameEngine {
 	 */		
 	public final void setLevelGenerator(LevelGenerator newlevelGenerator) {
 		levelGenerator = newlevelGenerator;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#execute()
+	 */
+	@Override
+	public void execute() {
+		game.start();
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getID()
+	 */
+	@Override
+	public String getID() {
+		return id2DGame;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getScore()
+	 */
+	@Override
+	public D2GameScore getScore() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getStats()
+	 */
+	@Override
+	public List<PlayerStat> getStats() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#isPlaying()
+	 */
+	@Override
+	public boolean isPlaying() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setId(java.lang.String)
+	 */
+	@Override
+	public void setId(String xId) {
+		id2DGame = xId;
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setStartStage(int)
+	 */
+	@Override
+	public void setStartStage(int xStage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setTimeToPlay(float)
+	 */
+	@Override
+	public void setTimeToPlay(float xTime) {
+		// TODO Auto-generated method stub
+		
 	}	
 }
