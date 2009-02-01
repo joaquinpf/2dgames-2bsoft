@@ -1,5 +1,6 @@
 package ar.edu.unicen.exa.game2d.memo;
 import java.awt.Dimension;
+import java.util.List;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
@@ -10,8 +11,18 @@ import com.golden.gamedev.GameObject;
  * Clase Principal.
  * @author pdeluca
  */
-public class Memo extends GameEngine {
+public class Memo extends GameEngine implements I2DGame {
 
+ 	/**
+ 	 * Identificador del juego Memo.
+ 	 */
+	private String id2DGame = null;
+ 	
+ 	/**
+ 	 * Instancia que permite cargar el juego 2d.
+ 	 */
+ 	private GameLoader game = null;
+	
 	private LevelGenerator levelGenerator = new LevelGenerator("resources/configGame.xml");
 
 	/**
@@ -36,6 +47,11 @@ public class Memo extends GameEngine {
 
 	public Memo() {
 		super();
+		
+		game = new GameLoader();		
+		game.setup(this, new Dimension(800, 600),
+				GameLoader.ScreenMode.Dialog, false);
+		
 		this.distribute=true;
 	}
 	/**
@@ -126,6 +142,44 @@ public class Memo extends GameEngine {
 		this.levelGenerator=levelGenerator;
 	}
 	
+	@Override
+	public void execute() {
+		game.start();				
+	}
+	@Override
+	public String getID() {
+		return id2DGame;
+	}
+	@Override
+	public D2GameScore getScore() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PlayerStat> getStats() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean isPlaying() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void setId(String xId) {
+		id2DGame = xId; 			
+	}
+	@Override
+	public void setStartStage(int xStage) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setTimeToPlay(float xTime) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Metodo principal.
 	 * @param args 
@@ -136,5 +190,4 @@ public class Memo extends GameEngine {
 				GameLoader.ScreenMode.Dialog, false);
 		game.start();
     }
-
 }
