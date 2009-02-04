@@ -2,6 +2,7 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
@@ -12,8 +13,14 @@ import com.golden.gamedev.GameObject;
  * 
  * @author Joaquín Pérez Fuentes
  */
-public class WordChallenge extends GameEngine {
+public class WordChallenge extends GameEngine implements I2DGame{
 
+	
+	/**
+ 	 * Identificador del juego WordChallenge.
+ 	 */
+	private String id2DGame = null;
+ 
 	/**
 	 * Constante que representa la opcion de ir al menu.
 	 */
@@ -62,9 +69,9 @@ public class WordChallenge extends GameEngine {
 	private Clock clock;
 
 	/**
-	 * @uml.property name="score"
+	 * @uml.property name="globalScore"
 	 */
-	private int score = 0;
+	private int globalScore = 0;
 
 	/**
 	 * @uml.property name="clock"
@@ -83,6 +90,11 @@ public class WordChallenge extends GameEngine {
 	private int failWords = 0;
 	
 	/**
+ 	 * Instancia que permite cargar el juego 2d.
+ 	 */
+ 	private GameLoader game = null;
+	
+	/**
 	 * Constructor de la aplicación.
 	 */
 	public WordChallenge() {
@@ -92,6 +104,10 @@ public class WordChallenge extends GameEngine {
 		clock = new Clock(config.getTime());
 		scoringTable = config.getScore();
 		this.distribute = true;
+		
+		game = new GameLoader();
+		game.setup(this, new Dimension(800, 600),
+				   GameLoader.ScreenMode.Dialog);
 	}
 
 	/**
@@ -108,7 +124,7 @@ public class WordChallenge extends GameEngine {
 		switch (gameID) {
 		case OPTION_MENU: {
 			clock = new Clock(config.getTime());
-			this.setScore(0);
+			this.setGlobalScore(0);
 			this.setCorrectWords(0);
 			this.setFailWords(0);
 			return new Menu(this);
@@ -217,8 +233,8 @@ public class WordChallenge extends GameEngine {
 	 * 
 	 * @return score puntaje hasta el momento
 	 */
-	public final int getScore() {
-		return score;
+	public final int getGlobalScore() {
+		return this.globalScore;
 	}
 
 	/**
@@ -228,8 +244,8 @@ public class WordChallenge extends GameEngine {
 	 *            The score to set.
 	 * @uml.property name="score"
 	 */
-	public final void setScore(final int newScore) {
-		score = newScore;
+	public final void setGlobalScore(final int newScore) {
+		this.globalScore = newScore;
 	}
 
 	/**
@@ -239,7 +255,7 @@ public class WordChallenge extends GameEngine {
 	 *            El puntaje que se desea sumar
 	 */
 	public final void addPoints(final int points) {
-		this.score += points;
+		this.globalScore += points;
 	}
 
 	/** 
@@ -299,20 +315,6 @@ public class WordChallenge extends GameEngine {
 	 */
 	public final ArrayList<Hashtable<String, String>> getLanguages() {
 		return config.getLanguages();
-	}
-
-	/**
-	 * Método main que inicia el juego.
-	 * 
-	 * @param args
-	 *            el argumento del metodo main.
-	 */
-	public static void main(final String[] args) {
-
-		GameLoader game = new GameLoader();
-		game.setup(new WordChallenge(), new Dimension(800, 600),
-				GameLoader.ScreenMode.Window);
-		game.start();
 	}
 
 	/**
@@ -377,5 +379,57 @@ public class WordChallenge extends GameEngine {
 	 */
 	public static int getOPTION_EXIT() {
 		return OPTION_EXIT;
+	}
+	
+	@Override
+	public List<PlayerStat> getStats(){
+		return null;
+	}
+	
+	@Override
+	public D2GameScore getScore(){
+		return null;
+	}
+	
+	@Override
+	public void setStartStage(int stage) {
+	}
+
+	@Override
+	public void setTimeToPlay(float time) {
+	}
+	
+	@Override
+	public boolean isPlaying(){
+		return false;
+	}
+	
+	@Override
+	public void execute(){
+		game.start();
+	}
+	
+	@Override
+	public String getID(){
+		return this.id2DGame;
+	}
+	
+	@Override
+	public void setId(String id){
+		this.id2DGame = id;
+	}
+	
+	/**
+	 * Método main que inicia el juego.
+	 * 
+	 * @param args
+	 *            el argumento del metodo main.
+	 */
+	public static void main(final String[] args) {
+
+		GameLoader game = new GameLoader();
+		game.setup(new WordChallenge(), new Dimension(800, 600),
+				GameLoader.ScreenMode.Window);
+		game.start();
 	}
 }
