@@ -388,7 +388,11 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	
 	@Override
 	public D2GameScore getScore(){
-		return null;
+		D2GameScore d2GameScore = new D2GameScore();
+		d2GameScore.setId2DGame(this.id2DGame);
+		d2GameScore.setScore(this.getGlobalScore());
+		d2GameScore.setIdPlayer("");
+		return d2GameScore;
 	}
 	
 	@Override
