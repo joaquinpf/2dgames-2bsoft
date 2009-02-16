@@ -270,7 +270,7 @@ public class Level extends GameObject implements Observer {
 	 * @param balls SpriteGroup a desordenar
 	 * @return ArrayList desordenado de sprites
 	 */
-	private ArrayList<Ball> shuffle(final SpriteGroup balls) {
+	public ArrayList<Ball> shuffle(final SpriteGroup balls) {
 		ArrayList<Ball> shuffledBalls = new ArrayList<Ball>();
 		for (int i = 0; i < balls.getSize(); i++) {
 			shuffledBalls.add((Ball) balls.getSprites()[i]);
@@ -506,14 +506,8 @@ public class Level extends GameObject implements Observer {
 				800, 600);
 	}
 	
-	/**
-	 * Termina el nivel habiendo perdido.
-	 * Decrementa una vida y basandose en las restantes, setea el proximo 
-	 * estado como OPTION_MENU u OPTION_PLAY si le queda al menos una.
-	 */
-	public final void loseLevel() {
-		this.clock.stop();
-		this.clockSprite.setAnimate(false);
+	public final void loseLevelLogic()
+	{
 		this.engine.decreaseLives();
 		if (this.engine.getLives() == 0) {
 			//Si no le quedan vidas, se vuelve al menu
@@ -522,6 +516,18 @@ public class Level extends GameObject implements Observer {
 			//Si le quedan vidas, sigue jugando
 			this.engine.nextGameID = BigBalls.OPTION_PLAY;
 		}
+	}
+	/**
+	 * Termina el nivel habiendo perdido.
+	 * Decrementa una vida y basandose en las restantes, setea el proximo 
+	 * estado como OPTION_MENU u OPTION_PLAY si le queda al menos una.
+	 */
+	public final void loseLevel() {
+		
+		loseLevelLogic();
+		this.clock.stop();
+		this.clockSprite.setAnimate(false);
+		
 		generateLoseAnimation();
 		timerEndLevel.setActive(true);
 	}

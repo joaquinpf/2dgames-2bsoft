@@ -118,6 +118,13 @@ public class Ball extends Sprite {
 		this.value = newValue;
 		this.description = text;
 	}
+	/*
+	 * Constructor para Testing!
+	 */
+	public Ball(final int newValue, final double sizePercentage) {
+		super();
+		this.value = newValue;
+	}
 	
 	/**
 	 * Rota una imagen de acuerdo al angulo dado.
