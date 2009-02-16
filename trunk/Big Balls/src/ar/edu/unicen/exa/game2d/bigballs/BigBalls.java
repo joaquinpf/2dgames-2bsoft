@@ -107,6 +107,12 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		}
 	}
 	
+	/*
+	 * Metodo para Testing
+	 */
+	public int getNextGameID() { 
+		return nextGameID; 
+	}
 	/** 
 	 * Getter of the property <tt>lives</tt>.
 	 * @return  Returns the lives.
