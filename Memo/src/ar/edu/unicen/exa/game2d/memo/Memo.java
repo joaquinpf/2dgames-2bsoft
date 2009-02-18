@@ -59,9 +59,14 @@ public class Memo extends GameEngine implements I2DGame {
 	 * @param gameID opcion elegida en el menu
 	 */
 	public final GameObject getGame(final int gameID) {
+		
 		switch (gameID) {
 			case MENU_MENU: 
 				{
+					if (globalScore > bestGlobalScore) {
+						bestGlobalScore = globalScore;
+					}
+					this.setGlobalScore(0);
 					this.currentLevel = 1;
 					return new Menu(this); 
 				}
@@ -83,7 +88,7 @@ public class Memo extends GameEngine implements I2DGame {
 	/**
 	 * @uml.property  name="globalScore"
 	 */
-	private int globalScore;
+	private int globalScore = 0;
 
 	/**
 	 * Getter of the property <tt>globalScore</tt>
@@ -102,7 +107,30 @@ public class Memo extends GameEngine implements I2DGame {
 	public void setGlobalScore(int globalScore) {
 		this.globalScore = globalScore;
 	}
+	
+	/**
+	 * Puntaje más alto logrado por el jugador en sucesivas partidas.
+	 */
+	private int bestGlobalScore; 
 
+	/**
+	 *  Retorna el mejor puntaje logrado por el jugador.
+	 * 
+	 * @return the bestGlobalScore
+	 */
+	public int getBestGlobalScore() {
+		return bestGlobalScore;
+	}
+	
+	/**
+	 * Setea el puntaje mas alto logrado por el jugador.
+	 * 
+	 * @param xBestGlobalScore the bestGlobalScore to set
+	 */
+	public void setBestGlobalScore(int xBestGlobalScore) {
+		bestGlobalScore = xBestGlobalScore;
+	}
+	
 	/**
 	 * Suma los puntos obtenidos al puntaje global
 	 * @uml.property  name="globalScore"
@@ -152,8 +180,11 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 	@Override
 	public D2GameScore getScore() {
-		// TODO Auto-generated method stub
-		return null;
+		D2GameScore d2GameScore = new D2GameScore();
+		d2GameScore.setId2DGame(this.id2DGame);
+		d2GameScore.setScore(this.getBestGlobalScore());
+		d2GameScore.setIdPlayer("");
+		return d2GameScore;
 	}
 	@Override
 	public List<PlayerStat> getStats() {
