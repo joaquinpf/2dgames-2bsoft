@@ -66,6 +66,11 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	private int score = 0;
 	
 	/**
+	 * Puntaje más alto logrado por el usuario en sucesivas partidas.
+	 */
+	private int bestGlobalScore = 0;
+	
+	/**
 	 * Constructor de la clase.
 	 */
 	public BigBalls() {
@@ -89,6 +94,9 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		switch (gameID) {
 			case OPTION_MENU: 
 			{
+				if (score > bestGlobalScore) {
+					bestGlobalScore = score;
+				}
 				this.setCurrentLevel(1);
 				this.setLives(3);
 				this.setGlobalScore(0);
@@ -155,6 +163,20 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		score = globalScore;
 	}
 		
+	/**
+	 * @return the bestGlobalScore
+	 */
+	public int getBestGlobalScore() {
+		return bestGlobalScore;
+	}
+
+	/**
+	 * @param xBestGlobalScore the bestGlobalScore to set
+	 */
+	public void setBestGlobalScore(int xBestGlobalScore) {
+		bestGlobalScore = xBestGlobalScore;
+	}
+
 	/**
 	 * Suma el puntaje pasado en points al puntaje global.
 	 * @param points El puntaje que se desea sumar
@@ -228,8 +250,11 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 */
 	@Override
 	public D2GameScore getScore() {
-		// TODO Auto-generated method stub
-		return null;
+		D2GameScore d2GameScore = new D2GameScore();
+		d2GameScore.setId2DGame(this.id2DGame);
+		d2GameScore.setScore(this.getBestGlobalScore());
+		d2GameScore.setIdPlayer("");
+		return d2GameScore;
 	}
 
 	/* (non-Javadoc)
