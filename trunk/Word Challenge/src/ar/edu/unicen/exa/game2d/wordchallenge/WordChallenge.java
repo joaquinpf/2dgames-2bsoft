@@ -107,7 +107,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		
 		game = new GameLoader();
 		game.setup(this, new Dimension(800, 600),
-				   GameLoader.ScreenMode.Dialog);
+				   GameLoader.ScreenMode.Dialog,false);
 	}
 
 	/**
@@ -431,9 +431,8 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	 */
 	public static void main(final String[] args) {
 
-		GameLoader game = new GameLoader();
-		game.setup(new WordChallenge(), new Dimension(800, 600),
-				GameLoader.ScreenMode.Window);
-		game.start();
+		WordChallenge wc = new WordChallenge();
+		wc.execute();
+		System.out.println("asdasdas");
 	}
 }

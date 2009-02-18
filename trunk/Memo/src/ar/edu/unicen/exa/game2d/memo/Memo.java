@@ -216,9 +216,7 @@ public class Memo extends GameEngine implements I2DGame {
 	 * @param args 
 	 */
 	public static void main(final String[] args) {
-		GameLoader game = new GameLoader();
-		game.setup(new Memo(), new Dimension(800, 600),
-				GameLoader.ScreenMode.Dialog, false);
-		game.start();
+		Memo memo = new Memo();
+		memo.execute();
     }
 }
