@@ -79,7 +79,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		
 		game = new GameLoader();
 		game.setup(this, new Dimension(800, 600),
-				   GameLoader.ScreenMode.Dialog);
+				   GameLoader.ScreenMode.Dialog, false);
 		
 	}
 	
@@ -205,10 +205,9 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 */
 	public static void main(final String[] args) {
 
-		GameLoader game = new GameLoader();
-		game.setup(new BigBalls(), new Dimension(800, 600),
-				   GameLoader.ScreenMode.Window);
-		game.start();
+		BigBalls b=new BigBalls();
+		b.execute();
+		
     }
 
 	/**
