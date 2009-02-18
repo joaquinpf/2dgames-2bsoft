@@ -644,6 +644,7 @@ public class Level extends GameObject implements Observer {
 	 */
 	private void goToMenu() {
 		this.parent.nextGameID = WordChallenge.OPTION_MENU;
+		System.out.println("Score: " + ((I2DGame)this.parent).getScore().score);
 		finish();
 	}
 	
@@ -708,7 +709,7 @@ public class Level extends GameObject implements Observer {
 		mFontInfoLevel.drawString(g, "Puntaje", GameFont.CENTER, 70, -5, 300);
 		mFontInfoLevel.setColor(new Color(142, 239, 123));
 		mFontInfoLevel.drawString(g, String
-				.valueOf(((WordChallenge) this.parent).getScore()),
+				.valueOf(((WordChallenge) this.parent).getGlobalScore()),
 				GameFont.CENTER, 70, 45, 300);
 		
 		mFontInfoLevel.setColor(new Color(123,164,239));
