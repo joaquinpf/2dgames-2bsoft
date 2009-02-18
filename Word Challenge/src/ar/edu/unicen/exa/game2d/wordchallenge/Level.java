@@ -644,7 +644,6 @@ public class Level extends GameObject implements Observer {
 	 */
 	private void goToMenu() {
 		this.parent.nextGameID = WordChallenge.OPTION_MENU;
-		System.out.println("Score: " + ((I2DGame)this.parent).getScore().score);
 		finish();
 	}
 	
