@@ -450,15 +450,15 @@ public class Level extends GameObject {
 		
 		setMaskColor(Color.BLACK); // Makes sprite background transparent.
 		bigFont = new SystemFont(FontUtil.createTrueTypeFont(
-			this.bsIO.getURL("resources/images/ravie.ttf"), Font.PLAIN, 40));
+			this.bsIO.getURL("../memo/resources/images/ravie.ttf"), Font.PLAIN, 40));
 		
 		mFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("resources/images/ravie.ttf"), Font.PLAIN, 24));
+				this.bsIO.getURL("../memo/resources/images/ravie.ttf"), Font.PLAIN, 24));
 			
 
 		playfield = new PlayField(mBackground);
 		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO.getURL(
-				"resources/images/ingamesalir.png"), Transparency.TRANSLUCENT), 762, 0);
+				"../memo/resources/images/ingamesalir.png"), Transparency.TRANSLUCENT), 762, 0);
 
 		playfield.addGroup(mGroupCards);
 		playfield.add(buttonExit);
@@ -491,7 +491,7 @@ public class Level extends GameObject {
 		
 		
 		clock = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL(
-				"resources/images/clock.png"), 12, 1,
+				"../memo/resources/images/clock.png"), 12, 1,
 				Transparency.TRANSLUCENT));
 		clock.setLoopAnim(true);
 		clock.getAnimationTimer().setDelay(200);
@@ -727,7 +727,7 @@ public class Level extends GameObject {
 
 							firstCard = vSelectedCard;
 							firstCard.turnCard();
-							playSound("resources/sounds/flip.wav");
+							playSound("../memo/resources/sounds/flip.wav");
 
 						} else {
 							
@@ -738,7 +738,7 @@ public class Level extends GameObject {
 							{
 								secondCard = vSelectedCard;
 								secondCard.turnCard();
-								playSound("resources/sounds/flip.wav");
+								playSound("../memo/resources/sounds/flip.wav");
 								timerSecondCard.setActive(true);
 								mWaitCards = true;
 							}
@@ -844,23 +844,23 @@ public class Level extends GameObject {
 		if (checkCardsLogic()) {
 
 			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(
-					this.bsIO.getURL("resources/images/tick.png"), 6, 1,
+					this.bsIO.getURL("../memo/resources/images/tick.png"), 6, 1,
 					Transparency.TRANSLUCENT),300,150);
 			winSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 			winSprite.getAnimationTimer().setDelay(100);
 			winSprite.setAnimate(true);
 			playfield.add(winSprite);
-			playSound("resources/sounds/winCard.wav");
+			playSound("../memo/resources/sounds/winCard.wav");
 			
 		} else {
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
-					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
+					this.bsIO.getURL("../memo/resources/images/fail.png"), 6, 1,
 					Transparency.TRANSLUCENT),300,150);
 			failSprite.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 			failSprite.getAnimationTimer().setDelay(100);
 			failSprite.setAnimate(true);
 			playfield.add(failSprite);
-			playSound("resources/sounds/flip.wav");
+			playSound("../memo/resources/sounds/flip.wav");
 		}
 	}
 

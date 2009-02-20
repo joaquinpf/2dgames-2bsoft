@@ -99,7 +99,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	 */
 	public WordChallenge() {
 		super();
-		config = new Configurator("resources/config.xml");
+		config = new Configurator("../Word Challenge/resources/config.xml");
 		kapeluz = config.getDicctionary(selectedLanguage);
 		clock = new Clock(config.getTime());
 		scoringTable = config.getScore();
@@ -433,6 +433,5 @@ public class WordChallenge extends GameEngine implements I2DGame{
 
 		WordChallenge wc = new WordChallenge();
 		wc.execute();
-		System.out.println("asdasdas");
 	}
 }

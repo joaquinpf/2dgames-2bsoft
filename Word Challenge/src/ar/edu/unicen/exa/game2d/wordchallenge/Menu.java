@@ -25,7 +25,7 @@ public class Menu extends GameObject {
 	 * 
 	 * @uml.property name="ttfFont"
 	 */
-	private String ttfFont = "resources/images/wcfont.ttf";
+	private String ttfFont = "../Word Challenge/resources/images/wcfont.ttf";
 
 	/**
 	 * Tamaño de la fuente de la pelota.
@@ -193,14 +193,14 @@ public class Menu extends GameObject {
 		posYmenu = getHeight() / 2 - 30;
 		posXpointer = posXmenu - 360;
 		posYpointer = posYmenu - 90;
-		background = new ImageBackground(getImage("resources/images/menu.png"));
+		background = new ImageBackground(getImage("../Word Challenge/resources/images/menu.png"));
 
 		pointer = new Sprite(ImageUtil.getImage(this.bsIO
 				.getURL("resources/images/pointer.png"),
 				Transparency.TRANSLUCENT));
 		pointer.setLocation(posXpointer, posYpointer);
 
-		fontManager.getFont(getImages("resources/images/fontmenu.png", 8, 12));
+		fontManager.getFont(getImages("../Word Challenge/resources/images/fontmenu.png", 8, 12));
 
 		pfMenu.add(pointer);
 		pfMenu.setBackground(background);
@@ -226,12 +226,12 @@ public class Menu extends GameObject {
 	final void drawText(final Graphics2D g, final String text, final int line,
 			final boolean selected) {
 		if (selected) {
-			g.drawImage(ImageUtil.getImage(this.bsIO.getURL("resources/images/"
+			g.drawImage(ImageUtil.getImage(this.bsIO.getURL("../Word Challenge/resources/images/"
 					+ text + ".png"), Transparency.TRANSLUCENT), posXmenu,
 					posYmenu + line - 36, null);
 
 		} else {
-			g.drawImage(ImageUtil.getImage(this.bsIO.getURL("resources/images/"
+			g.drawImage(ImageUtil.getImage(this.bsIO.getURL("../Word Challenge/resources/images/"
 					+ text + "ns.png"), Transparency.TRANSLUCENT), posXmenu,
 					posYmenu + line - 36, null);
 		}
