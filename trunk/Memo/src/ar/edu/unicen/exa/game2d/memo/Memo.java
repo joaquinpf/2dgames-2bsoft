@@ -23,7 +23,7 @@ public class Memo extends GameEngine implements I2DGame {
  	 */
  	private GameLoader game = null;
 	
-	private LevelGenerator levelGenerator = new LevelGenerator("resources/configGame.xml");
+	private LevelGenerator levelGenerator = new LevelGenerator("../memo/resources/configGame.xml");
 
 	/**
 	 * Opcion menu.

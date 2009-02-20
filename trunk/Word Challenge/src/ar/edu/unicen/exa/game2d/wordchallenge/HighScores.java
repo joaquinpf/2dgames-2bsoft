@@ -46,10 +46,10 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		background = new ImageBackground(
-				getImage("resources/images/menupuntuaciones.png"), 800, 600);
-		font = fontManager.getFont(getImages("resources/images/fontmenu.png",
+				getImage("../Word Challenge/resources/images/menupuntuaciones.png"), 800, 600);
+		font = fontManager.getFont(getImages("../Word Challenge/resources/images/fontmenu.png",
 				8, 12));
-		// titleHighScores = getImage("resources/images/titlePuntajes1.gif");
+		// titleHighScores = getImage("../Word Challenge/resources/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 
