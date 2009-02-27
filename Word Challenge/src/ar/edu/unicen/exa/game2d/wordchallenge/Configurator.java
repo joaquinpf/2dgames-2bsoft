@@ -238,7 +238,7 @@ public class Configurator {
 				text = null;
 				// repeat until all lines is read
 				while ((text = reader.readLine()) != null) {
-					wordList.add(text);
+					wordList.add(text.toLowerCase());
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
