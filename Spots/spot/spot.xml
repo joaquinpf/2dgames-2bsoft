@@ -1,11 +1,11 @@
 <InformationSpot>
       <name>Prueba Information Spot</name>
-      <width>520</width>
-      <height>500</height>
-      <xhtmlPath>spot/info.xhtml</xhtmlPath>
+      <builder>ar.edu.unicen.exa.spots.XhtmlSpotBuilder</builder>
+      <width>800</width>
+      <height>600</height>
+      <backgroundPath>spot/info.xhtml</backgroundPath>
       <buttons>
-            <button text="Aceptar" positionx="100" positiony="440" width="100" height="25" reference="ar.edu.unicen.exa.spots.test.ActionAceptar"/>
-			<button text="Cancelar" positionx="250" positiony="440" width="100" height="25" reference="ar.edu.unicen.exa.spots.test.ActionCancelar"/>
+            <button text="TEST" image="spot/button.png" positionx="250" positiony="440" width="100" height="25" reference="ar.edu.unicen.exa.spots.tests.ActionAceptar"/>
       </buttons>
 </InformationSpot>
 
