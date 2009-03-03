@@ -25,6 +25,10 @@ public class HighScores extends GameObject {
 	 * Fondo de la pantalla.
 	 */
 	private Background background;
+	/**
+	 * Tabla de Ranking
+	 */
+	private Ranking ranking;
 	
 	/**
 	 * Pantalla definida donde se graficara.
@@ -45,8 +49,9 @@ public class HighScores extends GameObject {
 	 * Constructor.
 	 * @param parent instancia de GameEngine.
 	 */
-	public HighScores(final GameEngine parent) {
+	public HighScores(final GameEngine parent, Ranking ranking) {
 		super(parent);
+		this.ranking = ranking;
 	}
 	
 	/**
@@ -55,12 +60,12 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		bigFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("../memo/resources/images/ravie.ttf"), Font.PLAIN, 36));
+				this.bsIO.getURL("./resources/images/ravie.ttf"), Font.PLAIN, 36));
 		mFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("../memo/resources/images/ravie.ttf"), Font.PLAIN, 24));
+				this.bsIO.getURL("./resources/images/ravie.ttf"), Font.PLAIN, 24));
 
 		background = new ImageBackground(
-				getImage("../memo/resources/images/menuPuntuacion.png"), 800, 600);
+				getImage("./resources/images/menuPuntuacion.png"), 800, 600);
 		playFieldHighScores.setBackground(background);
 	}
 	
@@ -69,18 +74,23 @@ public class HighScores extends GameObject {
 	 * @param g2D Instancia de Graphics2D
 	 */
 	private void drawHighScores(final Graphics2D g2D) {
-		int lineHeight = 40;
+		int lineHeight = 0;
 		mFont.setColor(new Color(142, 239, 123));
-		mFont.drawString(g2D, "Nombre", GameFont.CENTER,0,
-				160 + lineHeight, 600);
-		mFont.drawString(g2D, "Puntuacion", GameFont.CENTER, 600,
-				160 + lineHeight, 200);
-		mFont.drawString(g2D, "Nombre", GameFont.CENTER,0,
-				160 + lineHeight * 2, 600);
-		mFont.drawString(g2D, "Puntuacion", GameFont.CENTER, 600,
-				160 + lineHeight * 2, 200);
+		if (this.ranking != null) {
+			for (int i = 0; i < this.ranking.size() && i < 10; i++){
+				lineHeight += 40;
+				String name = this.ranking.getIdPlayers()[i];
+				String score = String.valueOf(this.ranking.getScores()[i]);
+	
+				mFont.drawString(g2D, name, GameFont.CENTER,0,
+						120 + lineHeight, 550);
+				mFont.drawString(g2D, score, GameFont.CENTER, 550,
+						120 + lineHeight, 250);
+			}
+		}
 	}
 	
+
 	/**
 	 * 
 	 * @param g2D Instancia de Graphics2D
@@ -93,8 +103,8 @@ public class HighScores extends GameObject {
 		g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        RenderingHints.VALUE_ANTIALIAS_ON);
 		bigFont.setColor(Color.WHITE);
-		bigFont.drawString(g2D, "Nombre", GameFont.CENTER,0,150, 600);
-		bigFont.drawString(g2D, "Puntos", GameFont.CENTER, 600, 150, 200);
+		bigFont.drawString(g2D, "Nombre", GameFont.CENTER, 0, 110, 550);
+		bigFont.drawString(g2D, "Puntos", GameFont.CENTER, 550, 110, 250);
 		drawHighScores(g2D);
 		
 		mFont.setColor(new Color(239, 231, 123));

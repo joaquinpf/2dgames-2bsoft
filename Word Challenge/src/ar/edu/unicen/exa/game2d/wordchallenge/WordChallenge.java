@@ -20,6 +20,16 @@ public class WordChallenge extends GameEngine implements I2DGame{
  	 * Identificador del juego WordChallenge.
  	 */
 	private String id2DGame = null;
+	
+	/**
+ 	 * Identificador del jugador.
+ 	 */
+	private String playerId = null;
+	
+	/**
+ 	 * Tabla de Ranking.
+ 	 */
+	private Ranking ranking = null;
  
 	/**
 	 * Constante que representa la opcion de ir al menu.
@@ -99,7 +109,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	 */
 	public WordChallenge() {
 		super();
-		config = new Configurator("../Word Challenge/resources/config.xml");
+		config = new Configurator("./resources/config.xml");
 		kapeluz = config.getDicctionary(selectedLanguage);
 		clock = new Clock(config.getTime());
 		scoringTable = config.getScore();
@@ -137,7 +147,9 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		case OPTION_IDIOMAS:
 			return new LanguageMenu(this);
 		case OPTION_SCORES:
-			return new HighScores(this);
+		{
+			return new HighScores(this,this.ranking);
+		}
 		default:
 			return null;
 		}
@@ -391,7 +403,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getGlobalScore());
-		d2GameScore.setIdPlayer("");
+		d2GameScore.setIdPlayer(this.playerId);
 		return d2GameScore;
 	}
 	
@@ -421,6 +433,22 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	@Override
 	public void setId(String id){
 		this.id2DGame = id;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
+	 */
+	@Override
+	public void setPlayerId(String playerId) {
+		this.playerId = playerId;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
+	 */
+	@Override
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 	
 	/**

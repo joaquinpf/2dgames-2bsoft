@@ -76,13 +76,13 @@ public class Menu extends GameObject {
 	 * Sonido de movimiento en el menu.
 	 */
 	private static final String MENU_MOVE_SOUND = 
-		"../big balls/resources/sounds/menumove.wav";
+		"./resources/sounds/menumove.wav";
 	
 	/**
 	 * Sonido de seleccion en el menu.
 	 */
 	private static final String MENU_SELECT_SOUND = 
-		"../big balls/resources/sounds/menuselect.wav";
+		"./resources/sounds/menuselect.wav";
 	
 //////////////////////////////////////////////////////////////////	
 
@@ -204,11 +204,11 @@ public class Menu extends GameObject {
 		
 		//Fondo
 		background = new ImageBackground(
-				getImage("../big balls/resources/images/menu.png"), 800, 600);
+				getImage("./resources/images/menu.png"), 800, 600);
 		
 		//El puntero a utilizar
 		BufferedImage b = ImageUtil.getImage(
-				bsIO.getURL("../big balls/resources/images/pointerv2.png"),
+				bsIO.getURL("./resources/images/pointerv2.png"),
 				Transparency.TRANSLUCENT);
 		pointer = new Sprite(b);
 		pfMenu.add(pointer);
@@ -230,11 +230,11 @@ public class Menu extends GameObject {
 	final void drawText(final Graphics2D g, final String text, final int line,
 					    final boolean selected) {
 		if (selected) {
-			g.drawImage(getImage("../big balls/resources/images/" + text  + ".png"),
+			g.drawImage(getImage("./resources/images/" + text  + ".png"),
 					posXmenu, posYmenu + line - 36, null);
 			
 		} else {
-			g.drawImage(getImage("../big balls/resources/images/" + text  + "ns.png"),
+			g.drawImage(getImage("./resources/images/" + text  + "ns.png"),
 					posXmenu, posYmenu + line - 36, null);
 		}
 	}
