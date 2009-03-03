@@ -23,6 +23,8 @@ public class HighScores extends GameObject {
 	 */
 	private PlayField pfHighScores = new PlayField();
 	
+	private Ranking ranking;
+	
 	/**
 	 * Background de la pantalla.
 	 */
@@ -46,10 +48,10 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		background = new ImageBackground(
-				getImage("../big balls/resources/images/menupuntuaciones.png"), 800, 600);
-		font = fontManager.getFont(getImages("../big balls/resources/images/font.png",
+				getImage("./resources/images/menupuntuaciones.png"), 800, 600);
+		font = fontManager.getFont(getImages("./resources/images/font.png",
 								   8, 12));
-		//titleHighScores = getImage("../big balls/resources/images/titlePuntajes1.gif");
+		//titleHighScores = getImage("./resources/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 	
@@ -61,10 +63,10 @@ public class HighScores extends GameObject {
 	 */
 	private String lineaPunteada(final int longPalabras) {
 		String line = new String();
-		if (longPalabras >= 400) {
+		if (longPalabras >= 500) {
 			return " ";
 		}
-		for (int i = 400; i > longPalabras; i = i - 10) {
+		for (int i = 500; i > longPalabras; i = i - 10) {
 			line = line + ".";
 		}
 		return line;
@@ -76,14 +78,18 @@ public class HighScores extends GameObject {
 	 */
 	private void listarPuntos(final Graphics2D g) {
 		int line = 0;
-		//for (array, archivo ,xml o no se que va a tener los puntajes){
-			//line = line + 10;
-			int longitud = font.getWidth("nombre")  
-			                   + font.getWidth("puntos"); 
-			
-			font.drawString(g, "Nombre" + lineaPunteada(longitud) + "puntos",
-					        getWidth() / 2 - 260, getHeight() / 2 - 100 + line);
-		//}
+		if (this.ranking != null) {
+			for (int i=0;i<this.ranking.size() && i<15;i++){
+				line = line + 20;
+				String name = this.ranking.getIdPlayers()[i];
+				String score = String.valueOf(this.ranking.getScores()[i]);
+				int longitud = font.getWidth(name)  
+				                   + font.getWidth(score); 
+				
+				font.drawString(g, name + lineaPunteada(longitud) + score,
+						        getWidth() / 2 - 350, getHeight() / 2 - 150 + line);
+			}
+		}
 	}
 	/**
 	 * Dibuja la escena. Override de GTGE.
@@ -116,8 +122,9 @@ public class HighScores extends GameObject {
 	/**
 	 * @param parent objeto que maneja la trancicion hacia la pantalla de menu.
 	 */
-	public HighScores(final GameEngine parent) {
+	public HighScores(final GameEngine parent, Ranking ranking) {
 		super(parent);
+		this.ranking = ranking;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -151,6 +158,10 @@ public class HighScores extends GameObject {
 
 	public void setTitleHighScores(BufferedImage titleHighScores) {
 		this.titleHighScores = titleHighScores;
+	}
+	
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 }

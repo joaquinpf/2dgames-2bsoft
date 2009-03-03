@@ -6,6 +6,7 @@ import java.util.List;
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
+//import common.datatypes.*;
 
 
 /** 
@@ -19,6 +20,16 @@ public class BigBalls extends GameEngine  implements I2DGame {
  	 * Identificador del juego Big Balls.
  	 */
 	private String id2DGame = null;
+	
+	/**
+ 	 * Identificador del jugador.
+ 	 */
+	private String playerId = null;
+	
+	/**
+ 	 * Tabla de Ranking.
+ 	 */
+	private Ranking ranking = null;
  	
  	/**
  	 * Instancia que permite cargar el juego 2d.
@@ -58,7 +69,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 * Instancia del levelGenerator apuntando al archivo de configuracion.
 	 */	
 	private LevelGenerator levelGenerator = 
-		new LevelGenerator("../big balls/resources/config.xml");
+		new LevelGenerator("./resources/config.xml");
 	
 	/**
 	 * Puntaje obtenido por el usuario.
@@ -110,7 +121,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
 					return this.getGame(OPTION_MENU);
 				}
 			}
-			case OPTION_SCORES: return new HighScores(this);
+			case OPTION_SCORES:				
+				return new HighScores(this,this.ranking);
 			default: return null;
 		}
 	}
@@ -252,7 +264,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
-		d2GameScore.setIdPlayer("");
+		d2GameScore.setIdPlayer(this.playerId);
 		return d2GameScore;
 	}
 
@@ -298,5 +310,21 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public void setTimeToPlay(float xTime) {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+	
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
+	 */
+	@Override
+	public void setPlayerId(String playerId) {
+		this.playerId = playerId;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
+	 */
+	@Override
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
+	}
 }

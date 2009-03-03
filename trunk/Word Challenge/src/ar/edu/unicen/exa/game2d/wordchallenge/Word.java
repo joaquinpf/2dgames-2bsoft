@@ -81,9 +81,9 @@ public class Word extends SpriteGroup {
 		MiniLetter vLetter;
 		BaseIO vBsIO = new BaseIO(this.getClass(), BaseIO.CLASS_URL);
 		
-		URL vUrl1 = vBsIO.getURL("../Word Challenge/resources/images/"
+		URL vUrl1 = vBsIO.getURL("./resources/images/"
 				+ "mini.png");
-		URL vUrl2 = vBsIO.getURL("../Word Challenge/resources/images/"
+		URL vUrl2 = vBsIO.getURL("./resources/images/"
 				+ "minioculta.png");
 		
 

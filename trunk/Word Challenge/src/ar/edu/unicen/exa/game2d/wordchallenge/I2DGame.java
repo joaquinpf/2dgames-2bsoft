@@ -20,6 +20,8 @@ public interface I2DGame {
 	void execute();
 	String getID();
 	void setId(String id);
+	void setPlayerId(String PlayerId);
+	void setRanking(Ranking ranking);
 	
 	
 }

@@ -17,13 +17,23 @@ public class Memo extends GameEngine implements I2DGame {
  	 * Identificador del juego Memo.
  	 */
 	private String id2DGame = null;
+	
+	/**
+ 	 * Identificador del jugador.
+ 	 */
+	private String playerId = null;
+	
+	/**
+ 	 * Tabla de Ranking.
+ 	 */
+	private Ranking ranking = null;
  	
  	/**
  	 * Instancia que permite cargar el juego 2d.
  	 */
  	private GameLoader game = null;
 	
-	private LevelGenerator levelGenerator = new LevelGenerator("../memo/resources/configGame.xml");
+	private LevelGenerator levelGenerator = new LevelGenerator("./resources/configGame.xml");
 
 	/**
 	 * Opcion menu.
@@ -62,25 +72,23 @@ public class Memo extends GameEngine implements I2DGame {
 		
 		switch (gameID) {
 			case MENU_MENU: 
-				{
-					if (globalScore > bestGlobalScore) {
-						bestGlobalScore = globalScore;
-					}
-					this.setGlobalScore(0);
-					this.currentLevel = 1;
-					return new Menu(this); 
+				if (globalScore > bestGlobalScore) {
+					bestGlobalScore = globalScore;
 				}
+				this.setGlobalScore(0);
+				this.currentLevel = 1;
+				return new Menu(this);
 			case MENU_PLAY:
-				{
-					Level aux= levelGenerator.generarLevel(this,this.currentLevel);
-					this.currentLevel++;
-					if (aux == null)
-					{
-						return this.getGame(MENU_HIGHSCORES);
-					}
-					else return aux;
+				Level aux = levelGenerator.generarLevel(this, 
+						this.currentLevel);
+				this.currentLevel++;
+				if (aux == null) {
+					return this.getGame(MENU_HIGHSCORES);
+				} else {
+					return aux;
 				}
-			case MENU_HIGHSCORES: return new HighScores(this);
+			case MENU_HIGHSCORES: 
+				return new HighScores(this, this.ranking);
 			default: return null;
 		}
 	}
@@ -183,7 +191,7 @@ public class Memo extends GameEngine implements I2DGame {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
-		d2GameScore.setIdPlayer("");
+		d2GameScore.setIdPlayer(this.playerId);
 		return d2GameScore;
 	}
 	@Override
@@ -211,6 +219,22 @@ public class Memo extends GameEngine implements I2DGame {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
+	 */
+	@Override
+	public void setPlayerId(String playerId) {
+		this.playerId = playerId;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
+	 */
+	@Override
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
+	}
+	
 	/**
 	 * Metodo principal.
 	 * @param args 

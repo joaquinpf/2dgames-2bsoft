@@ -3,6 +3,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Background;
@@ -22,6 +23,11 @@ public class HighScores extends GameObject {
 	 * Playfield de la pantalla.
 	 */
 	private PlayField pfHighScores = new PlayField();
+	
+	/**
+	 * Tabla de Ranking
+	 */
+	private Ranking ranking;
 
 	/**
 	 * Background de la pantalla.
@@ -46,10 +52,10 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		background = new ImageBackground(
-				getImage("../Word Challenge/resources/images/menupuntuaciones.png"), 800, 600);
-		font = fontManager.getFont(getImages("../Word Challenge/resources/images/fontmenu.png",
+				getImage("./resources/images/menupuntuaciones.png"), 800, 600);
+		font = fontManager.getFont(getImages("./resources/images/fontmenu.png",
 				8, 12));
-		// titleHighScores = getImage("../Word Challenge/resources/images/titlePuntajes1.gif");
+		// titleHighScores = getImage("./resources/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 
@@ -81,13 +87,17 @@ public class HighScores extends GameObject {
 	 */
 	private void listarPuntos(final Graphics2D g) {
 		int line = 0;
-		// for (array, archivo ,xml o no se que va a tener los puntajes){
-		// line = line + 10;
-		int longitud = font.getWidth("nombre") + font.getWidth("puntos");
-
-		font.drawString(g, "Nombre" + lineaPunteada(longitud) + "puntos",
-				getWidth() / 2 - 260, getHeight() / 2 - 100 + line);
-		// }
+		if (this.ranking!=null) {
+			for (int i=0;i<this.ranking.size() && i<10;i++){
+				line = line + 40;
+				String name = this.ranking.getIdPlayers()[i];
+				String score = String.valueOf(this.ranking.getScores()[i]);
+				int longitud = font.getWidth(name) + font.getWidth(score);
+		
+				font.drawString(g, name + lineaPunteada(longitud) + score,
+						getWidth() / 2 - 260, getHeight() / 2 - 200 + line);
+			}
+		}
 	}
 
 	/**
@@ -124,8 +134,9 @@ public class HighScores extends GameObject {
 	 * @param parent
 	 *            objeto que maneja la trancicion hacia la pantalla de menu.
 	 */
-	public HighScores(final GameEngine parent) {
+	public HighScores(final GameEngine parent, Ranking ranking) {
 		super(parent);
+		this.ranking = ranking; 
 		// TODO Auto-generated constructor stub
 	}
 
