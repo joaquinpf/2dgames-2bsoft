@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
@@ -79,6 +80,11 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	private Clock clock;
 
 	/**
+	 * Puntaje más alto logrado por el jugador en sucesivas partidas.
+	 */
+	private int bestGlobalScore = 0; 
+
+	/**
 	 * @uml.property name="globalScore"
 	 */
 	private int globalScore = 0;
@@ -134,6 +140,9 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		switch (gameID) {
 		case OPTION_MENU: {
 			clock = new Clock(config.getTime());
+			if (this.globalScore > bestGlobalScore) {
+				this.setBestGlobalScore(this.globalScore);
+			}
 			this.setGlobalScore(0);
 			this.setCorrectWords(0);
 			this.setFailWords(0);
@@ -240,6 +249,24 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		this.clock = newClock;
 	}
 
+	/**
+	 *  Retorna el mejor puntaje logrado por el jugador.
+	 * 
+	 * @return the bestGlobalScore
+	 */
+	public int getBestGlobalScore() {
+		return bestGlobalScore;
+	}
+	
+	/**
+	 * Setea el puntaje mas alto logrado por el jugador.
+	 * 
+	 * @param xBestGlobalScore the bestGlobalScore to set
+	 */
+	public void setBestGlobalScore(int xBestGlobalScore) {
+		bestGlobalScore = xBestGlobalScore;
+	}
+	
 	/**
 	 * Obtiene el puntaje.
 	 * 
@@ -399,12 +426,14 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	}
 	
 	@Override
-	public D2GameScore getScore(){
+	public List<D2GameScore> getScore(){
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
-		d2GameScore.setScore(this.getGlobalScore());
+		d2GameScore.setScore(this.getBestGlobalScore());
 		d2GameScore.setIdPlayer(this.playerId);
-		return d2GameScore;
+		List<D2GameScore> list = new ArrayList<D2GameScore>();
+		list.add(d2GameScore);
+		return list;
 	}
 	
 	@Override
@@ -426,7 +455,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	}
 	
 	@Override
-	public String getID(){
+	public String getId(){
 		return this.id2DGame;
 	}
 	
