@@ -1,5 +1,6 @@
 package ar.edu.unicen.exa.game2d.memo;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.gamedev.GameEngine;
@@ -183,16 +184,18 @@ public class Memo extends GameEngine implements I2DGame {
 		game.start();				
 	}
 	@Override
-	public String getID() {
+	public String getId() {
 		return id2DGame;
 	}
 	@Override
-	public D2GameScore getScore() {
+	public List<D2GameScore> getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
 		d2GameScore.setIdPlayer(this.playerId);
-		return d2GameScore;
+		List<D2GameScore> list = new ArrayList<D2GameScore>();
+		list.add(d2GameScore);
+		return list;
 	}
 	@Override
 	public List<PlayerStat> getStats() {

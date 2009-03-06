@@ -1,6 +1,7 @@
 package ar.edu.unicen.exa.game2d.bigballs;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.gamedev.GameEngine;
@@ -46,7 +47,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public static final int  OPTION_MENU = 0;
 	
 	/**
-	 * Constante que representa la opción de jugar y pasar niveles.
+	 * Constante que representa la opciï¿½n de jugar y pasar niveles.
 	 */
 	public static final int OPTION_PLAY = 1;
 	
@@ -56,7 +57,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public static final int OPTION_SCORES = 2;
 	
 	/**
-	 * Contante que representa la opción de salir del juego.
+	 * Contante que representa la opciï¿½n de salir del juego.
 	 */
 	public static final int OPTION_EXIT = 3;
 	
@@ -77,7 +78,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	private int score = 0;
 	
 	/**
-	 * Puntaje más alto logrado por el usuario en sucesivas partidas.
+	 * Puntaje mï¿½s alto logrado por el usuario en sucesivas partidas.
 	 */
 	private int bestGlobalScore = 0;
 	
@@ -95,7 +96,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 	
 	/**
-	 * Dependiendo del Id recibido enviará a las diferentes
+	 * Dependiendo del Id recibido enviarï¿½ a las diferentes
 	 *  pantallas del juego o a los diferentes niveles.
 	 *  @param gameID id que identifica la pantalla a mostrar.
 	 *  @return el objeto que representa la pantalla correcta.
@@ -127,6 +128,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		}
 	}
 	
+		
 	/*
 	 * Metodo para Testing
 	 */
@@ -212,13 +214,30 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 
 	/**
-	 * Método main que inicia el juego.
+	 * Mï¿½todo main que inicia el juego.
 	 * @param args el argumento del metodo main.
 	 */
 	public static void main(final String[] args) {
 
-		BigBalls b=new BigBalls();
-		b.execute();
+		Class c = null;
+		try {
+			c = Class.forName("ar.edu.unicen.exa.game2d.bigballs.BigBalls");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		I2DGame i = null;
+		try {
+			i = (I2DGame)c.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		i.execute();
+		
 		
     }
 
@@ -252,7 +271,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getID()
 	 */
 	@Override
-	public String getID() {
+	public String getId() {
 		return id2DGame;
 	}
 
@@ -260,12 +279,14 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getScore()
 	 */
 	@Override
-	public D2GameScore getScore() {
+	public List<D2GameScore> getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
 		d2GameScore.setIdPlayer(this.playerId);
-		return d2GameScore;
+		List<D2GameScore> list = new ArrayList<D2GameScore>();
+		list.add(d2GameScore);
+		return list;
 	}
 
 	/* (non-Javadoc)
