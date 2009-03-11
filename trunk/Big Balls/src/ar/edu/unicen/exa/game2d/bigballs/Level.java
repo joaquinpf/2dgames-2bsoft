@@ -141,7 +141,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Ruta a la imagen del agujero.
 	 */
-	private String holeImage = "./resources/images/agujerov3.png";
+	private String holeImage = "./resources/bigballs/images/agujerov3.png";
 	
 	/**
 	 * Sprite para el icono salir.
@@ -179,7 +179,7 @@ public class Level extends GameObject implements Observer {
 	 * @param arg arg 
 	 */
 	public final void update(final Observable o, final Object arg) {
-		playSound("./resources/sounds/clocktick.wav");
+		playSound("./resources/bigballs/sounds/clocktick.wav");
 		if (this.clock.getRemainingTime() == 0) {
 			//Pierde el nivel
 			this.loseLevel();
@@ -207,7 +207,7 @@ public class Level extends GameObject implements Observer {
 		
 		//Genera la mascara para colisiones contra el borde.
 		Background collMask = 
-			new ImageBackground(getImage("./resources/images/collmask.png"), 
+			new ImageBackground(getImage("./resources/bigballs/images/collmask.png"), 
 				800, 441);
 		
 		//Manejo de colisiones
@@ -230,7 +230,7 @@ public class Level extends GameObject implements Observer {
 		
 		//Fuente a utilizar
 		font = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("./resources/images/MaroonedOnMarsBB.ttf"), Font.BOLD, 40f));
+				this.bsIO.getURL("./resources/bigballs/images/MaroonedOnMarsBB.ttf"), Font.BOLD, 40f));
 
 		//Setea la posicion de las pelotas
 		setPositionBalls();
@@ -240,13 +240,13 @@ public class Level extends GameObject implements Observer {
 		
 		//Boton salir
 		salir = new Sprite(ImageUtil.getImage(
-				bsIO.getURL("./resources/images/ingamesalir.png"), 
+				bsIO.getURL("./resources/bigballs/images/ingamesalir.png"), 
 				Transparency.TRANSLUCENT));
 		salir.setLocation(750, 5);
 		playfield.add(salir);
 		
 		//Inicializacion del reloj
-		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("./resources/images/clock.png"), 7, 1, Transparency.TRANSLUCENT));
+		clockSprite = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL("./resources/bigballs/images/clock.png"), 7, 1, Transparency.TRANSLUCENT));
 		clockSprite.getAnimationTimer().setDelay(142);
 		clockSprite.setLoopAnim(true);
 		clockSprite.setLocation(425, 470);
@@ -422,7 +422,7 @@ public class Level extends GameObject implements Observer {
 				if (ballsel.getValue() == this.orderedBalls.elementAt(pos)
 						.getValue()) {
 					ballsel.setActive(false);
-					playSound("./resources/sounds/winball.wav");
+					playSound("./resources/bigballs/sounds/winball.wav");
 					fillHole(ballsel);
 					this.pos++;
 					if (this.pos == this.orderedBalls.size()) {
@@ -551,10 +551,10 @@ public class Level extends GameObject implements Observer {
 	 */
 	public final void generateWinAnimation() {
 		Sprite overlay = new Sprite(ImageUtil.getImage(
-				this.bsIO.getURL("./resources/images/overlay.png"),
+				this.bsIO.getURL("./resources/bigballs/images/overlay.png"),
 				Transparency.TRANSLUCENT));
 		AdvanceSprite win = new AdvanceSprite(ImageUtil.getImages(
-				this.bsIO.getURL("./resources/images/tick.png"), 6, 1,
+				this.bsIO.getURL("./resources/bigballs/images/tick.png"), 6, 1,
 				Transparency.TRANSLUCENT));
 		win.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		win.getAnimationTimer().setDelay(100);
@@ -570,10 +570,10 @@ public class Level extends GameObject implements Observer {
 	 */
 	public final void generateLoseAnimation() {
 		Sprite overlay = new Sprite(ImageUtil.getImage(
-				this.bsIO.getURL("./resources/images/overlay.png"),
+				this.bsIO.getURL("./resources/bigballs/images/overlay.png"),
 				Transparency.TRANSLUCENT));
 		AdvanceSprite lose = new AdvanceSprite(ImageUtil.getImages(
-				this.bsIO.getURL("./resources/images/fail.png"), 6, 1,
+				this.bsIO.getURL("./resources/bigballs/images/fail.png"), 6, 1,
 				Transparency.TRANSLUCENT));
 		lose.setAnimationFrame(new int[]{0, 1, 2, 3, 4, 5});
 		lose.getAnimationTimer().setDelay(100);

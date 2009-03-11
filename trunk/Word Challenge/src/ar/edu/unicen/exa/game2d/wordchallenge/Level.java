@@ -313,22 +313,22 @@ public class Level extends GameObject implements Observer {
 
 		// Obtiene el Font que se usará para mostrar información.
 		mFontInfoLevel = new SystemFont(FontUtil.createTrueTypeFont(this.bsIO
-				.getURL("./resources/images/MaroonedOnMarsBB.ttf"), Font.BOLD,
+				.getURL("./resources/wordchallenge/images/MaroonedOnMarsBB.ttf"), Font.BOLD,
 				80f));
 
 		mFontClock = new SystemFont(FontUtil.createTrueTypeFont(this.bsIO
-				.getURL("./resources/images/MaroonedOnMarsBB.ttf"), Font.BOLD,
+				.getURL("./resources/wordchallenge/images/MaroonedOnMarsBB.ttf"), Font.BOLD,
 				40f));
 		mFontClock.setColor(Color.WHITE);
 
 		// Crea el background del nivel.
 		mBackground = new ImageBackground(
-				getImage("./resources/images/background.jpg"));
+				getImage("./resources/wordchallenge/images/background.jpg"));
 
 		mPlayField = new PlayField(mBackground);
 
 		spClock = new AnimatedSprite(ImageUtil.getImages(this.bsIO
-				.getURL("./resources/images/clock.png"), 7, 1,
+				.getURL("./resources/wordchallenge/images/clock.png"), 7, 1,
 				Transparency.TRANSLUCENT));
 		spClock.setLoopAnim(true);
 		spClock.getAnimationTimer().setDelay(200);
@@ -340,9 +340,9 @@ public class Level extends GameObject implements Observer {
 		// Agrega el botón que aleatoriza las letras.
 		mButtonRandomize = new Button(new CommandRandomizeLetters(this),
 				ImageUtil.getImage(this.bsIO
-						.getURL("./resources/images/shuffle.png"),
+						.getURL("./resources/wordchallenge/images/shuffle.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-						.getURL("./resources/images/shuffle.png"),
+						.getURL("./resources/wordchallenge/images/shuffle.png"),
 						Transparency.TRANSLUCENT), 620, 235);
 
 		mButtonRandomize.setFixedposition(true);
@@ -351,11 +351,11 @@ public class Level extends GameObject implements Observer {
 		// Agrega el botón que permite obtener otras seis letras.
 		mButtonNewLetters = new Button(new CommandGetSixLetters(this),
 				ImageUtil.getImage(this.bsIO
-						.getURL("./resources/images/newword.png"),
+						.getURL("./resources/wordchallenge/images/newword.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-						.getURL("./resources/images/newword.png"),
+						.getURL("./resources/wordchallenge/images/newword.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-						.getURL("./resources/images/newwordDisable.png"),
+						.getURL("./resources/wordchallenge/images/newwordDisable.png"),
 						Transparency.TRANSLUCENT), 40, 235);
 
 		mButtonNewLetters.setFixedposition(true);
@@ -364,9 +364,9 @@ public class Level extends GameObject implements Observer {
 		// Agrega el botón que permite borrar la última letra
 		// elegida.
 		mButtonBack = new Button(new CommandDelLastLetter(this), ImageUtil
-				.getImage(this.bsIO.getURL("./resources/images/backspace.png"),
+				.getImage(this.bsIO.getURL("./resources/wordchallenge/images/backspace.png"),
 						Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-				.getURL("./resources/images/backspace.png"),
+				.getURL("./resources/wordchallenge/images/backspace.png"),
 				Transparency.TRANSLUCENT), 690, 115);
 
 		mButtonBack.setFixedposition(true);
@@ -375,9 +375,9 @@ public class Level extends GameObject implements Observer {
 		// Agrega el botón que permite chequear si la palabra
 		// hasta el momento construída es correcta.
 		mButtonOk = new Button(new CommandCheckWord(this), ImageUtil.getImage(
-				this.bsIO.getURL("./resources/images/ok.png"),
+				this.bsIO.getURL("./resources/wordchallenge/images/ok.png"),
 				Transparency.TRANSLUCENT), ImageUtil.getImage(this.bsIO
-				.getURL("./resources/images/ok.png"), Transparency.TRANSLUCENT),
+				.getURL("./resources/wordchallenge/images/ok.png"), Transparency.TRANSLUCENT),
 				690, 160);
 
 		mButtonOk.setFixedposition(true);
@@ -388,7 +388,7 @@ public class Level extends GameObject implements Observer {
 		mPlayField.addGroup(mGroupButtons);		
 
 		buttonExit = new Sprite(ImageUtil.getImage(this.bsIO
-				.getURL("./resources/images/ingamesalir.png"),
+				.getURL("./resources/wordchallenge/images/ingamesalir.png"),
 				Transparency.TRANSLUCENT), 742, 12);
 		mPlayField.add(buttonExit);
 		
@@ -418,22 +418,22 @@ public class Level extends GameObject implements Observer {
 	private void createSixLetters(String vSixLetters) {
 
 		BufferedImage bigBright = ImageUtil.getImage(this.bsIO
-				.getURL("./resources/images/letrabright.png"),
+				.getURL("./resources/wordchallenge/images/letrabright.png"),
 				Transparency.TRANSLUCENT);
 		BufferedImage smallBright = ImageUtil.getImage(this.bsIO
-				.getURL("./resources/images/letramediabright.png"),
+				.getURL("./resources/wordchallenge/images/letramediabright.png"),
 				Transparency.TRANSLUCENT);
 		for (int i = 0; i < MAX_LETTERS; i++) {
 
 			Letter vLetter = new Letter(ImageUtil.getImage(this.bsIO
-					.getURL("./resources/images/letra.png"),
+					.getURL("./resources/wordchallenge/images/letra.png"),
 					Transparency.TRANSLUCENT),
 					bigBright, vSixLetters.charAt(i), 88);
 			vLetter.setVisible(false);
 			mGroupBigLetters.add(vLetter);
 
 			Letter smallLetter = new Letter(ImageUtil.getImage(this.bsIO
-					.getURL("./resources/images/letramedia.png"),
+					.getURL("./resources/wordchallenge/images/letramedia.png"),
 					Transparency.TRANSLUCENT),
 					smallBright, vSixLetters.charAt(i), 44);
 
@@ -628,7 +628,7 @@ public class Level extends GameObject implements Observer {
 		this.spClock.setAnimate(false);
 		this.mClock.stop();
 		Sprite overlay = new Sprite(ImageUtil.getImage(
-				this.bsIO.getURL("./resources/images/overlay.png"),
+				this.bsIO.getURL("./resources/wordchallenge/images/overlay.png"),
 				Transparency.TRANSLUCENT));
 		
 		mPlayField.add(overlay);
@@ -763,7 +763,7 @@ public class Level extends GameObject implements Observer {
 		}
 		if (esta) {
 			VolatileSprite winSprite = new VolatileSprite(ImageUtil.getImages(
-					this.bsIO.getURL("./resources/images/tick.png"), 6, 1,
+					this.bsIO.getURL("./resources/wordchallenge/images/tick.png"), 6, 1,
 					Transparency.TRANSLUCENT), 300, 150);
 			winSprite.setAnimationFrame(new int[] { 0, 1, 2, 3, 4, 5 });
 			winSprite.getAnimationTimer().setDelay(100);
@@ -771,7 +771,7 @@ public class Level extends GameObject implements Observer {
 			this.checkFinalLevel();
 			mPlayField.add(winSprite);
 			
-			playSound("./resources/sounds/wincard.wav");
+			playSound("./resources/wordchallenge/sounds/wincard.wav");
 			
 			// Incremento la cantidad de palabras acertadas
 			((WordChallenge) parent).incrementCorrectWords();
@@ -782,13 +782,13 @@ public class Level extends GameObject implements Observer {
 					.getPointsNewLetters()));
 		} else {
 			VolatileSprite failSprite = new VolatileSprite(ImageUtil.getImages(
-					this.bsIO.getURL("resources/images/fail.png"), 6, 1,
+					this.bsIO.getURL("resources/wordchallenge/images/fail.png"), 6, 1,
 					Transparency.TRANSLUCENT), 300, 150);
 			failSprite.setAnimationFrame(new int[] { 0, 1, 2, 3, 4, 5 });
 			failSprite.getAnimationTimer().setDelay(100);
 			failSprite.setAnimate(true);
 			mPlayField.add(failSprite);
-			playSound("./resources/sounds/flip.wav");
+			playSound("./resources/wordchallenge/sounds/flip.wav");
 			
 			// Incremento la cantidad de palabras incorrectas			
 			((WordChallenge) parent).incrementFailWords();

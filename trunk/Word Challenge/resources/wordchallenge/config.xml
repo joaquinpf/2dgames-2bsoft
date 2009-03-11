@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE game SYSTEM "config.dtd">
+<game>
+	<name>Word Challenge</name>
+	<config>
+		<starttime>210</starttime>
+		<background>./resources/wordchallenge/images/background.png</background>
+		<pointsNewLetters>100</pointsNewLetters>
+		<matches>
+			<match amount="3" points="20" bonusTime="0"/>
+			<match amount="4" points="25" bonusTime="4"/>
+			<match amount="5" points="50" bonusTime="7"/>
+			<match amount="6" points="100" bonusTime="10"/>
+		</matches>
+		<languages>
+			<language name="spanish" dictionary="./resources/wordchallenge/dic/spanish-words.dic" flag="./resources/wordchallenge/images/spanish.png" 
+			sprite="./resources/wordchallenge/images/spanishlangns.png" selsprite="./resources/wordchallenge/images/spanishlang.png"/>
+			<language name="english" dictionary="./resources/wordchallenge/dic/english-words.dic" flag="./resources/wordchallenge/images/english.png" 
+			sprite="./resources/wordchallenge/images/englishlangns.png" selsprite="./resources/wordchallenge/images/englishlang.png"/>
+			<language name="italian" dictionary="./resources/wordchallenge/dic/italian-words.dic" flag="./resources/wordchallenge/images/italian.png" 
+			sprite="./resources/wordchallenge/images/italianlangns.png" selsprite="./resources/wordchallenge/images/italianlang.png"/>
+		</languages>
+	</config>
+</game>

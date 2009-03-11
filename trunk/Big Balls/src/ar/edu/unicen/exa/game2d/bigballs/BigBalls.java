@@ -70,7 +70,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 * Instancia del levelGenerator apuntando al archivo de configuracion.
 	 */	
 	private LevelGenerator levelGenerator = 
-		new LevelGenerator("./resources/config.xml");
+		new LevelGenerator("./resources/bigballs/config.xml");
 	
 	/**
 	 * Puntaje obtenido por el usuario.

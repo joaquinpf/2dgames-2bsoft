@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE game SYSTEM "config.dtd">
+<game>
+	<name>Big Balls of Fire Reincarnation</name>
+	<config>
+		<levels count="10">
+			<level id="1" time="20" points="50" balls="3" min="0" max="20" background="./resources/bigballs/images/background.png"/>
+			<level id="2" time="20" points="50" balls="4" min="-10" max="20" background="./resources/bigballs/images/background.png"/>
+			<level id="3" time="20" points="50" balls="5" min="0" max="40" background="./resources/bigballs/images/background.png"/>
+			<level id="4" time="20" points="50" balls="5" min="-10" max="50" background="./resources/bigballs/images/background.png"/>
+			<level id="5" time="20" points="50" balls="6" min="-20" max="70" background="./resources/bigballs/images/background.png"/>
+			<level id="6" time="20" points="50" balls="6" min="-20" max="80" background="./resources/bigballs/images/background.png"/>
+			<level id="7" time="20" points="50" balls="7" min="-30" max="80" background="./resources/bigballs/images/background.png"/>
+			<level id="8" time="20" points="50" balls="7" min="-30" max="90" background="./resources/bigballs/images/background.png"/>
+			<level id="9" time="20" points="50" balls="8" min="-70" max="120" background="./resources/bigballs/images/background.png"/>
+			<level id="10" time="20" points="50" balls="8" min="-70" max="160" background="./resources/bigballs/images/background.png"/>
+		</levels>
+		<balls>
+			<ball image="./resources/bigballs/images/ball1.png"/>
+			<ball image="./resources/bigballs/images/ball2.png"/>
+			<ball image="./resources/bigballs/images/ball3.png"/>
+			<ball image="./resources/bigballs/images/ball4.png"/>
+			<ball image="./resources/bigballs/images/ball5.png"/>
+			<ball image="./resources/bigballs/images/ball6.png"/>
+			<ball image="./resources/bigballs/images/ball7.png"/>
+		</balls>
+	</config>
+</game>
