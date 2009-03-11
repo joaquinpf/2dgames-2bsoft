@@ -71,10 +71,10 @@ public class LevelGenerator {
 	private BufferedImage[] getImages(GameEngine gameEnginge, String imagefile) {
 		BufferedImage[] images = new BufferedImage[5];
 		images[0] = ImageUtil.getImage(gameEnginge.bsIO
-				.getURL("./resources/images/card_back.png"),
+				.getURL("./resources/memo/images/card_back.png"),
 				Transparency.TRANSLUCENT);
 		BufferedImage[] aux = ImageUtil.getImages(gameEnginge.bsIO
-				.getURL("./resources/images/card_flip.png"), 3, 1,
+				.getURL("./resources/memo/images/card_flip.png"), 3, 1,
 				Transparency.TRANSLUCENT);
 		images[1] = aux[0];
 		images[2] = aux[1];

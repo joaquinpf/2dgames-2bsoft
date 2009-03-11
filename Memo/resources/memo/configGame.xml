@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE game SYSTEM "configGame.DTD">
+<game>
+  <name> Memo </name>
+  <config>
+      <levels count="24">
+			<level ID="1" time="20" pairs="2" background="./resources/memo/images/background.jpg"/>
+			<level ID="2" time="60" pairs="3" background="./resources/memo/images/background.jpg"/>
+			<level ID="3" time="60" pairs="4" background="./resources/memo/images/background.jpg"/>
+			<level ID="4" time="60" pairs="5" background="./resources/memo/images/background.jpg"/>
+			<level ID="5" time="80" pairs="6" background="./resources/memo/images/background.jpg"/>
+			<level ID="6" time="80" pairs="7" background="./resources/memo/images/background.jpg"/>
+			<level ID="7" time="80" pairs="8" background="./resources/memo/images/background.jpg"/>
+			<level ID="8" time="100" pairs="9" background="./resources/memo/images/background.jpg"/>
+			<level ID="9" time="100" pairs="10" background="./resources/memo/images/background.jpg"/>
+			<level ID="10" time="100" pairs="11" background="./resources/memo/images/background.jpg"/>
+			<level ID="11" time="100" pairs="12" background="./resources/memo/images/background.jpg"/>
+			<level ID="12" time="100" pairs="12" background="./resources/memo/images/background.jpg"/>
+			<level ID="13" time="100" pairs="14" background="./resources/memo/images/background.jpg"/>
+			<level ID="14" time="100" pairs="15" background="./resources/memo/images/background.jpg"/>
+			<level ID="15" time="100" pairs="16" background="./resources/memo/images/background.jpg"/>
+			<level ID="16" time="100" pairs="18" background="./resources/memo/images/background.jpg"/>
+			<level ID="17" time="100" pairs="18" background="./resources/memo/images/background.jpg"/>
+			<level ID="18" time="100" pairs="20" background="./resources/memo/images/background.jpg"/>
+			<level ID="19" time="100" pairs="20" background="./resources/memo/images/background.jpg"/>
+			<level ID="20" time="100" pairs="22" background="./resources/memo/images/background.jpg"/>
+			<level ID="21" time="100" pairs="22" background="./resources/memo/images/background.jpg"/>
+			<level ID="22" time="100" pairs="25" background="./resources/memo/images/background.jpg"/>
+			<level ID="23" time="100" pairs="25" background="./resources/memo/images/background.jpg"/>
+			<level ID="24" time="100" pairs="25" background="./resources/memo/images/background.jpg"/>
+		</levels>
+		<cards count="15">
+			<card value="1" image="./resources/memo/images/card_atom.png"/>
+			<card value="2" image="./resources/memo/images/card_x.png"/>
+			<card value="3" image="./resources/memo/images/card_bomb.png"/>
+			<card value="4" image="./resources/memo/images/card_candle.png"/>
+			<card value="5" image="./resources/memo/images/card_cd.png"/>
+			<card value="6" image="./resources/memo/images/card_circulo.png"/>
+			<card value="7" image="./resources/memo/images/card_cross.png"/>
+			<card value="8" image="./resources/memo/images/card_crusade.png"/>
+			<card value="9" image="./resources/memo/images/card_danger.png"/>
+			<card value="10" image="./resources/memo/images/card_diamonds.png"/>
+			<card value="11" image="./resources/memo/images/card_dog.png"/>
+			<card value="12" image="./resources/memo/images/card_drop.png"/>
+			<card value="13" image="./resources/memo/images/card_flip.png"/>
+			<card value="14" image="./resources/memo/images/card_flower.png"/>
+			<card value="15" image="./resources/memo/images/card_hand.png"/>
+			<card value="16" image="./resources/memo/images/card_ii.png"/>
+			<card value="17" image="./resources/memo/images/card_infinite.png"/>
+			<card value="18" image="./resources/memo/images/card_keyb.png"/>
+			<card value="19" image="./resources/memo/images/card_mouse.png"/>
+			<card value="20" image="./resources/memo/images/card_network.png"/>
+			<card value="21" image="./resources/memo/images/card_pencil.png"/>
+			<card value="22" image="./resources/memo/images/card_pokerface.png"/>
+			<card value="23" image="./resources/memo/images/card_rabbit.png"/>
+			<card value="24" image="./resources/memo/images/card_radia.png"/>
+			<card value="25" image="./resources/memo/images/card_shing.png"/>
+			<card value="26" image="./resources/memo/images/card_singlestar.png"/>
+			<card value="27" image="./resources/memo/images/card_smile.png"/>
+			<card value="28" image="./resources/memo/images/card_snow.png"/>
+			<card value="29" image="./resources/memo/images/card_soll.png"/>
+			<card value="30" image="./resources/memo/images/card_time.png"/>
+			<card value="31" image="./resources/memo/images/card_turkey.png"/>
+			<card value="32" image="./resources/memo/images/card_wheel.png"/>
+		</cards>
+	</config>
+</game>

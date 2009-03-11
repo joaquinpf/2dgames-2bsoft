@@ -26,7 +26,7 @@ public class LanguageMenu extends GameObject {
 	 * 
 	 * @uml.property name="ttfFont"
 	 */
-	private String ttfFont = "./resources/images/wcfont.ttf";
+	private String ttfFont = "./resources/wordchallenge/images/wcfont.ttf";
 
 	/**
 	 * Tamaño de la fuente de la pelota.
@@ -184,8 +184,8 @@ public class LanguageMenu extends GameObject {
 		posXmenu = getWidth() / 2 - 65;
 		posYmenu = getHeight() / 2 - 50;
 		background = new ImageBackground(
-				getImage("./resources/images/menuidiomas.png"));
-		font = fontManager.getFont(getImages("./resources/images/fontmenu.png",
+				getImage("./resources/wordchallenge/images/menuidiomas.png"));
+		font = fontManager.getFont(getImages("./resources/wordchallenge/images/fontmenu.png",
 				8, 12));
 		cantOpciones = idiomas.size();
 		pfMenu.setBackground(background);

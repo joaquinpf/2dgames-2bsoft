@@ -60,12 +60,12 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		bigFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("./resources/images/ravie.ttf"), Font.PLAIN, 36));
+				this.bsIO.getURL("./resources/memo/images/ravie.ttf"), Font.PLAIN, 36));
 		mFont = new SystemFont(FontUtil.createTrueTypeFont(
-				this.bsIO.getURL("./resources/images/ravie.ttf"), Font.PLAIN, 24));
+				this.bsIO.getURL("./resources/memo/images/ravie.ttf"), Font.PLAIN, 24));
 
 		background = new ImageBackground(
-				getImage("./resources/images/menuPuntuacion.png"), 800, 600);
+				getImage("./resources/memo/images/menuPuntuacion.png"), 800, 600);
 		playFieldHighScores.setBackground(background);
 	}
 	

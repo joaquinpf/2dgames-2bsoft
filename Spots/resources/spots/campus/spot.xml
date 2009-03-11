@@ -1,0 +1,20 @@
+<InformationSpot>
+      <name>Campus Universitario</name>
+      <builder>ar.edu.unicen.exa.spots.ImageSpotBuilder</builder>
+      <width>800</width>
+      <height>600</height>
+      <backgroundPath>resources/spots/campus/campus.png</backgroundPath>
+      <buttons>
+            <button image="./resources/spots/common/button.png" positionx="595" positiony="505" width="140" height="41" reference="ar.edu.unicen.exa.spots.common.ActionCloseListener"/>
+      </buttons>
+</InformationSpot>
+
+
+
+
+
+
+
+
+
+

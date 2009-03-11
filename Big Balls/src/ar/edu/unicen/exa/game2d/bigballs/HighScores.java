@@ -48,10 +48,10 @@ public class HighScores extends GameObject {
 	@Override
 	public final void initResources() {
 		background = new ImageBackground(
-				getImage("./resources/images/menupuntuaciones.png"), 800, 600);
-		font = fontManager.getFont(getImages("./resources/images/font.png",
+				getImage("./resources/bigballs/images/menupuntuaciones.png"), 800, 600);
+		font = fontManager.getFont(getImages("./resources/bigballs/images/font.png",
 								   8, 12));
-		//titleHighScores = getImage("./resources/images/titlePuntajes1.gif");
+		//titleHighScores = getImage("./resources/bigballs/images/titlePuntajes1.gif");
 		pfHighScores.setBackground(background);
 	}
 	
