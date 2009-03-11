@@ -22,7 +22,7 @@ public interface I2DGame {
 	 * @return Una lista con todos los Score obteneidos durante jugadas
 	 *         sucesivas.
 	 */
-	public List<D2GameScore> getScore();
+	public D2GameScore getScore();
 	
 	/**
 	 * Setea el Stage en el que se comenzara a jugar el minijuego.

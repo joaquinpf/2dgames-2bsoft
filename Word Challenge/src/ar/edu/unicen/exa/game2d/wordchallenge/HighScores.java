@@ -10,7 +10,7 @@ import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.background.ImageBackground;
-
+//import common.datatypes.Ranking;
 /**
  * Pantalla de puntajes del juego.
  * 

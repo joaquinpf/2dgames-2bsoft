@@ -6,7 +6,7 @@ import java.util.List;
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.GameObject;
-
+//import common.datatypes.*;
 
 /**
  * Clase Principal.
@@ -188,14 +188,12 @@ public class Memo extends GameEngine implements I2DGame {
 		return id2DGame;
 	}
 	@Override
-	public List<D2GameScore> getScore() {
+	public D2GameScore getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
 		d2GameScore.setIdPlayer(this.playerId);
-		List<D2GameScore> list = new ArrayList<D2GameScore>();
-		list.add(d2GameScore);
-		return list;
+		return d2GameScore;
 	}
 	@Override
 	public List<PlayerStat> getStats() {
