@@ -1,28 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="WordChallenge" size="1276,2055" id="" metadata="uml2-1.0" initialized="true" scrolledX="24" scrolledY="1231" tag="1000" key="32303037303533312D3130303020576F7264204368616C6C656E67652F4B6972657461">
-  <children xsi:type="editmodel:ClassEditModel" name="Configurator" location="629,1379" size="122,121" id="/Configurator" runTimeClassModel="getTime(),getDicctionary(Ljava.lang.String;),Configurator(Ljava.lang.String;),getLenguages()">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="WordChallenge" size="2971,6748" id="ar.edu.unicen.exa.game2d.wordchallenge" metadata="uml2-1.0" initialized="true" scrolledY="4397" tag="1000" key="32303037303533312D3130303020576F7264204368616C6C656E67652F41646D696E6973747261646F72">
+  <children xsi:type="editmodel:ClassEditModel" name="AdvanceImageUtil" location="2046,5999" size="158,67" id="ar.edu.unicen.exa.game2d.wordchallenge/AdvanceImageUtil" runTimeClassModel="drawString(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;IC)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="99,72">
-      <children xsi:type="editmodel:MethodEditModel" name="Configurator" id="/Configurator#Configurator(Ljava.lang.String;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getDicctionary" id="/Configurator#getDicctionary(Ljava.lang.String;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getLenguages" id="/Configurator#getLenguages()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getTime" id="/Configurator#getTime()"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="84,18">
+      <children xsi:type="editmodel:MethodEditModel" name="drawString" id="ar.edu.unicen.exa.game2d.wordchallenge/AdvanceImageUtil#drawString(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;IC)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:IndicationEditModel" autoLocated="true" source="//@children.0" target="//@children.13" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="60,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="26,24"/>
-    </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="GameEngine" location="49,1292" size="170,279" id="com.golden.gamedev/GameEngine" runTimeClassModel="refresh(),currentGameID,initResources(),nextGameID,getGame(I),getCurrentGame(),currentGame,update(J),GameEngine(),render(Ljava.awt.Graphics2D;),nextGame,getCurrentGameID()">
+  <children xsi:type="editmodel:ClassEditModel" name="Clock" location="1711,5999" size="127,175" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock" runTimeClassModel="stop(),isFinished(),Clock(I),start(),remainingTime,addMoreTime(I),totalTime">
+    <children xsi:type="editmodel:CompartmentEditModel" size="104,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="remainingTime" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#remainingTime"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="totalTime" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#totalTime"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,90">
+      <children xsi:type="editmodel:MethodEditModel" name="Clock" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#Clock(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addMoreTime" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#addMoreTime(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isFinished" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#isFinished()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="start" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#start()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stop" id="ar.edu.unicen.exa.game2d.wordchallenge/Clock#stop()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Configurator" location="1372,5999" size="122,211" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator" runTimeClassModel="getTime(),setDom(Lorg.w3c.dom.Document;),getScore(),getDicctionary(Ljava.lang.String;),getDom(),Configurator(Ljava.lang.String;),getLanguages(),setDocEle(Lorg.w3c.dom.Element;),getDocEle()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,162">
+      <children xsi:type="editmodel:MethodEditModel" name="Configurator" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#Configurator(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDicctionary" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getDicctionary(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDocEle" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getDocEle()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDom" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getDom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguages" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getLanguages()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScore" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTime" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#getTime()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDocEle" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#setDocEle(Lorg.w3c.dom.Element;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDom" id="ar.edu.unicen.exa.game2d.wordchallenge/Configurator#setDom(Lorg.w3c.dom.Document;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="D2GameScore" location="959,5999" size="170,265" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore" runTimeClassModel="getIdPlayer(),getScore(),getReachedStage(),getStartedStage(),setIdPlayer(Ljava.lang.String;),setId2DGame(Ljava.lang.String;),setStartedStage(I),getId2DGame(),setScore(I),setReachedStage(I),getPointsPerIdPlayerStat(),setPointsPerIdPlayerStat(Ljava.util.Hashtable;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="147,216">
+      <children xsi:type="editmodel:MethodEditModel" name="getId2DGame" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getId2DGame()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdPlayer" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getIdPlayer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPointsPerIdPlayerStat" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getPointsPerIdPlayerStat()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getReachedStage" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getReachedStage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScore" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getStartedStage" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#getStartedStage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId2DGame" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setId2DGame(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setIdPlayer" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setIdPlayer(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPointsPerIdPlayerStat" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setPointsPerIdPlayerStat(Ljava.util.Hashtable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setReachedStage" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setReachedStage(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setScore" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setScore(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setStartedStage" id="ar.edu.unicen.exa.game2d.wordchallenge/D2GameScore#setStartedStage(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Dictionary" location="334,5999" size="250,319" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary" runTimeClassModel="setUnusedSixLetteredWord(Ljava.util.ArrayList;),addWord(Ljava.lang.String;),getSixLetters(),unusedSixLetteredWord,getSixLetteredWord(),setWords(Ljava.util.HashSet;),getWords(),getSMALLEST_WORD(),setSMALLEST_WORD(I),setLONGEST_WORD(I),getLONGEST_WORD(),Dictionary(Ljava.util.HashSet;),getPossibleWords(Ljava.lang.String;),setSixLetteredWord(Ljava.util.ArrayList;),getUnusedSixLetteredWord()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="227,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="unusedSixLetteredWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#unusedSixLetteredWord"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="163,252">
+      <children xsi:type="editmodel:MethodEditModel" name="Dictionary" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#Dictionary(Ljava.util.HashSet;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#addWord(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLONGEST_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getLONGEST_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPossibleWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getPossibleWords(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSMALLEST_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getSMALLEST_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSixLetteredWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getSixLetteredWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSixLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getSixLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUnusedSixLetteredWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getUnusedSixLetteredWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#getWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLONGEST_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#setLONGEST_WORD(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSMALLEST_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#setSMALLEST_WORD(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSixLetteredWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#setSixLetteredWord(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUnusedSixLetteredWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#setUnusedSixLetteredWord(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Dictionary#setWords(Ljava.util.HashSet;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="HighScores" location="1179,5999" size="143,265" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores" runTimeClassModel="setTitleHighScores(Ljava.awt.image.BufferedImage;),initResources(),getFont(),setBackground(Lcom.golden.gamedev.object.Background;),setPfHighScores(Lcom.golden.gamedev.object.PlayField;),HighScores(Lcom.golden.gamedev.GameEngine;Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;),update(J),getTitleHighScores(),setFont(Lcom.golden.gamedev.object.GameFont;),getBackground(),render(Ljava.awt.Graphics2D;),getPfHighScores()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,216">
+      <children xsi:type="editmodel:MethodEditModel" name="HighScores" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#HighScores(Lcom.golden.gamedev.GameEngine;Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#getBackground()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFont" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#getFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPfHighScores" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#getPfHighScores()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTitleHighScores" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#getTitleHighScores()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#initResources()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="render" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#setBackground(Lcom.golden.gamedev.object.Background;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFont" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#setFont(Lcom.golden.gamedev.object.GameFont;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPfHighScores" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#setPfHighScores(Lcom.golden.gamedev.object.PlayField;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTitleHighScores" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#setTitleHighScores(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/HighScores#update(J)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Ranking" location="1544,5999" size="117,193" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking" runTimeClassModel="getScores(),Ranking(ILjava.lang.String;),setId2DGame(Ljava.lang.String;),getId2DGame(),size(),getIdPlayers(),setRanking([Ljava.lang.String;[I),putRanking(ILjava.lang.String;I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,144">
+      <children xsi:type="editmodel:MethodEditModel" name="Ranking" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#Ranking(ILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId2DGame" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#getId2DGame()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdPlayers" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#getIdPlayers()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScores" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#getScores()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="putRanking" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#putRanking(ILjava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId2DGame" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#setId2DGame(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRanking" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#setRanking([Ljava.lang.String;[I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="size" id="ar.edu.unicen.exa.game2d.wordchallenge/Ranking#size()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Score" location="634,5999" size="275,247" id="ar.edu.unicen.exa.game2d.wordchallenge/Score" runTimeClassModel="setMatches(Ljava.util.Hashtable;),getMatches(),getTime(I),addPoints(III),getBONUS_TIME(),matches,setPointsNewLetters(I),getPoints(I),getPointsNewLetters(),Score(),getPOINTS()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="252,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="matches" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#matches"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="131,180">
+      <children xsi:type="editmodel:MethodEditModel" name="Score" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#Score()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPoints" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#addPoints(III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBONUS_TIME" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getBONUS_TIME()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMatches" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getMatches()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPOINTS" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getPOINTS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPoints" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getPoints(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPointsNewLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getPointsNewLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTime" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#getTime(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMatches" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#setMatches(Ljava.util.Hashtable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPointsNewLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Score#setPointsNewLetters(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Word" location="1888,5999" size="108,175" id="ar.edu.unicen.exa.game2d.wordchallenge/Word" runTimeClassModel="Word(Ljava.lang.String;),getWord(),isVisible(),lengthWord(),setVisible(Z),setPosition(II),setWord(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,126">
+      <children xsi:type="editmodel:MethodEditModel" name="Word" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#Word(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#getWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#isVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lengthWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#lengthWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosition" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#setPosition(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#setVisible(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Word#setWord(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.24/@sourceConnections.1" name="GameEngine" location="1633,2975" size="170,297" id="com.golden.gamedev/GameEngine">
     <children xsi:type="editmodel:CompartmentEditModel" size="147,72">
       <children xsi:type="editmodel:AttributeEditModel" name="currentGame" id="com.golden.gamedev/GameEngine#currentGame"/>
       <children xsi:type="editmodel:AttributeEditModel" name="currentGameID" id="com.golden.gamedev/GameEngine#currentGameID"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nextGame" id="com.golden.gamedev/GameEngine#nextGame"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nextGameID" id="com.golden.gamedev/GameEngine#nextGameID"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="118,144">
+    <children xsi:type="editmodel:CompartmentEditModel" size="118,162">
       <children xsi:type="editmodel:MethodEditModel" name="GameEngine" id="com.golden.gamedev/GameEngine#GameEngine()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getCurrentGame" id="com.golden.gamedev/GameEngine#getCurrentGame()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getCurrentGameID" id="com.golden.gamedev/GameEngine#getCurrentGameID()"/>
@@ -30,102 +163,138 @@
       <children xsi:type="editmodel:MethodEditModel" name="initResources" id="com.golden.gamedev/GameEngine#initResources()"/>
       <children xsi:type="editmodel:MethodEditModel" name="refresh" id="com.golden.gamedev/GameEngine#refresh()"/>
       <children xsi:type="editmodel:MethodEditModel" name="render" id="com.golden.gamedev/GameEngine#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="startGameLoop" id="com.golden.gamedev/GameEngine#startGameLoop()"/>
       <children xsi:type="editmodel:MethodEditModel" name="update" id="com.golden.gamedev/GameEngine#update(J)"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="WordChallenge" location="55,1620" size="165,103" id="/WordChallenge" runTimeClassModel="selectedLanguage,getGame(I),config">
-    <children xsi:type="editmodel:CompartmentEditModel" size="142,36">
-      <children xsi:type="editmodel:AttributeEditModel" name="config" id="/WordChallenge#config"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="selectedLanguage" id="/WordChallenge#selectedLanguage"/>
+  <children xsi:type="editmodel:ClassEditModel" name="Level" location="1125,3985" size="243,1964" id="ar.edu.unicen.exa.game2d.wordchallenge/Level" runTimeClassModel="getROWS_POSSIBLES_WORDS(),setMButtonOk(Lar.edu.unicen.exa.game2d.wordchallenge.Button;),getClock(),getMWidthWord(),getMGroupBigLetters(),getSEPARATION_VERTICAL_WORD(),setMPlayField(Lcom.golden.gamedev.object.PlayField;),mGroupSmallLetters,getMClock(),setMHeightWord(I),setMFontClock(Lcom.golden.gamedev.object.font.SystemFont;),getSMALLDISTANCE_X_LETTERS(),getMTimerStartLevel(),buttonExit,mFinishing,mFontClock,setMPossibleWords(Ljava.util.ArrayList;),setMPointsCurrentLetters(I),randomLettersOrder(),isMInitializedLevel(),checkWord(),levelFinishing(),getMFontClock(),setMGroupBigLetters(Lcom.golden.gamedev.object.SpriteGroup;),getMPointsCurrentLetters(),getMPlayField(),ar.edu.unicen.exa.game2d.wordchallenge.Level.MyComparator,getMGroupSmallLetters(),mFinished,getMButtonOk(),render(Ljava.awt.Graphics2D;),getSpClock(),setMWaitSelect(Z),setMFinished(Z),mInitializedLevel,setMWidthWord(I),setMFinishing(Z),getPOS_START_COL_WORD(),getMFontInfoLevel(),mFontInfoLevel,spClock,getSMALLLETTER_POS_Y(),setClock(Lar.edu.unicen.exa.game2d.wordchallenge.Clock;),setButtonExit(Lcom.golden.gamedev.object.Sprite;),update(Ljava.util.Observable;Ljava.lang.Object;),getMGroupButtons(),mHeightWord,getBackground(),mButtonOk,setMGroupButtons(Lcom.golden.gamedev.object.SpriteGroup;),isMWaitSelect(),isFinished(),setMTimerSelected(Lcom.golden.gamedev.object.Timer;),getBIGLETTER_POS_Y(),update(J),mGroupButtons,setMClock(Lar.edu.unicen.exa.game2d.wordchallenge.Clock;),setMButtonNewLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Button;),getPOS_START_ROW_WORD(),setMButtonRandomize(Lar.edu.unicen.exa.game2d.wordchallenge.Button;),getMButtonNewLetters(),getMBuildWord(),isMFinished(),getDictionary(),getMHeightWord(),mWaitSelect,setSpClock(Lcom.golden.gamedev.object.AnimatedSprite;),setScore(Lar.edu.unicen.exa.game2d.wordchallenge.Score;),mPointsCurrentLetters,mPossibleWords,mGroupBigLetters,setDictionary(Lar.edu.unicen.exa.game2d.wordchallenge.Dictionary;),getSEPARATION_HORIZONTAL_WORD(),initResources(),setBackground(Lcom.golden.gamedev.object.Background;),setLettersOrder(Ljava.util.ArrayList;),getMButtonBack(),setMInitializedLevel(Z),setMButtonBack(Lar.edu.unicen.exa.game2d.wordchallenge.Button;),deleteLastLetter(),isValidWord(),Level(Lcom.golden.gamedev.GameEngine;Lar.edu.unicen.exa.game2d.wordchallenge.Clock;Lar.edu.unicen.exa.game2d.wordchallenge.Dictionary;),setMGroupSmallLetters(Lcom.golden.gamedev.object.SpriteGroup;),setMFontInfoLevel(Lcom.golden.gamedev.object.font.SystemFont;),getScore(),setMTimerStartLevel(Lcom.golden.gamedev.object.Timer;),mTimerSelected,getMPossibleWords(),mBuildWord,isMFinishing(),mButtonNewLetters,mButtonBack,getMButtonRandomize(),mTimerStartLevel,getButtonExit(),getBIGDISTANCE_X_LETTERS(),getMAX_LETTERS(),mWidthWord,setMBuildWord(Ljava.lang.String;),getSMALLLETTER_POS_X(),mButtonRandomize,getBIGLETTER_POS_X(),getMTimerSelected()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="188,396">
+      <children xsi:type="editmodel:AttributeEditModel" name="buttonExit" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#buttonExit"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mBuildWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mBuildWord"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mButtonBack" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mButtonBack"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mButtonNewLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mButtonNewLetters"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mButtonOk" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mButtonOk"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mButtonRandomize" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mButtonRandomize"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mFinished" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mFinished"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mFinishing" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mFinishing"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mFontClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mFontClock"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mFontInfoLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mFontInfoLevel"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mGroupBigLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mGroupBigLetters"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mGroupButtons" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mGroupButtons"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mGroupSmallLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mGroupSmallLetters"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mHeightWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mHeightWord"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mInitializedLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mInitializedLevel"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mPointsCurrentLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mPointsCurrentLetters"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mPossibleWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mPossibleWords"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mTimerSelected" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mTimerSelected"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mTimerStartLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mTimerStartLevel"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mWaitSelect" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mWaitSelect"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mWidthWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#mWidthWord"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="spClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#spClock"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="73,18">
-      <children xsi:type="editmodel:MethodEditModel" name="getGame" id="/WordChallenge#getGame(I)"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="220,1440">
+      <children xsi:type="editmodel:MethodEditModel" name="Level" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#Level(Lcom.golden.gamedev.GameEngine;Lar.edu.unicen.exa.game2d.wordchallenge.Clock;Lar.edu.unicen.exa.game2d.wordchallenge.Dictionary;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="checkWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#checkWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteLastLetter" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#deleteLastLetter()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBIGDISTANCE_X_LETTERS" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getBIGDISTANCE_X_LETTERS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBIGLETTER_POS_X" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getBIGLETTER_POS_X()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBIGLETTER_POS_Y" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getBIGLETTER_POS_Y()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getBackground()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getButtonExit" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getButtonExit()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getClock()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDictionary" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getDictionary()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMAX_LETTERS" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMAX_LETTERS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMBuildWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMBuildWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMButtonBack" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMButtonBack()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMButtonNewLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMButtonNewLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMButtonOk" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMButtonOk()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMButtonRandomize" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMButtonRandomize()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMClock()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMFontClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMFontClock()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMFontInfoLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMFontInfoLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMGroupBigLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMGroupBigLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMGroupButtons" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMGroupButtons()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMGroupSmallLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMGroupSmallLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMHeightWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMHeightWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMPlayField" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMPlayField()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMPointsCurrentLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMPointsCurrentLetters()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMPossibleWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMPossibleWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMTimerSelected" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMTimerSelected()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMTimerStartLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMTimerStartLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMWidthWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getMWidthWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPOS_START_COL_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getPOS_START_COL_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPOS_START_ROW_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getPOS_START_ROW_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getROWS_POSSIBLES_WORDS" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getROWS_POSSIBLES_WORDS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSEPARATION_HORIZONTAL_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSEPARATION_HORIZONTAL_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSEPARATION_VERTICAL_WORD" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSEPARATION_VERTICAL_WORD()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSMALLDISTANCE_X_LETTERS" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSMALLDISTANCE_X_LETTERS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSMALLLETTER_POS_X" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSMALLLETTER_POS_X()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSMALLLETTER_POS_Y" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSMALLLETTER_POS_Y()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScore" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#getSpClock()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#initResources()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isFinished" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isFinished()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isMFinished" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isMFinished()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isMFinishing" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isMFinishing()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isMInitializedLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isMInitializedLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isMWaitSelect" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isMWaitSelect()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isValidWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#isValidWord()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="levelFinishing" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#levelFinishing()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="randomLettersOrder" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#randomLettersOrder()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="render" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setBackground(Lcom.golden.gamedev.object.Background;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setButtonExit" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setButtonExit(Lcom.golden.gamedev.object.Sprite;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setClock(Lar.edu.unicen.exa.game2d.wordchallenge.Clock;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDictionary" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setDictionary(Lar.edu.unicen.exa.game2d.wordchallenge.Dictionary;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLettersOrder" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setLettersOrder(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMBuildWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMBuildWord(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMButtonBack" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMButtonBack(Lar.edu.unicen.exa.game2d.wordchallenge.Button;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMButtonNewLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMButtonNewLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Button;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMButtonOk" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMButtonOk(Lar.edu.unicen.exa.game2d.wordchallenge.Button;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMButtonRandomize" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMButtonRandomize(Lar.edu.unicen.exa.game2d.wordchallenge.Button;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMClock(Lar.edu.unicen.exa.game2d.wordchallenge.Clock;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMFinished" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMFinished(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMFinishing" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMFinishing(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMFontClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMFontClock(Lcom.golden.gamedev.object.font.SystemFont;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMFontInfoLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMFontInfoLevel(Lcom.golden.gamedev.object.font.SystemFont;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMGroupBigLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMGroupBigLetters(Lcom.golden.gamedev.object.SpriteGroup;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMGroupButtons" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMGroupButtons(Lcom.golden.gamedev.object.SpriteGroup;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMGroupSmallLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMGroupSmallLetters(Lcom.golden.gamedev.object.SpriteGroup;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMHeightWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMHeightWord(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMInitializedLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMInitializedLevel(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMPlayField" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMPlayField(Lcom.golden.gamedev.object.PlayField;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMPointsCurrentLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMPointsCurrentLetters(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMPossibleWords" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMPossibleWords(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMTimerSelected" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMTimerSelected(Lcom.golden.gamedev.object.Timer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMTimerStartLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMTimerStartLevel(Lcom.golden.gamedev.object.Timer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMWaitSelect" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMWaitSelect(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMWidthWord" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setMWidthWord(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setScore" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setScore(Lar.edu.unicen.exa.game2d.wordchallenge.Score;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSpClock" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#setSpClock(Lcom.golden.gamedev.object.AnimatedSprite;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#update(Ljava.util.Observable;Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/Level#update(J)"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="com.golden.gamedev/GameEngine&lt;-/WordChallenge" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="104,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="120,278"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Dictionary@kapeluz+/WordChallenge@wordChallenge" source="//@children.2" target="//@children.10" targetEnd="//@children.2/@sourceConnections.1/@children.1" label="//@children.2/@sourceConnections.1/@children.2" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="wordChallenge" location="82,103" id="/Dictionary@kapeluz+/WordChallenge@wordChallenge|/WordChallenge#wordChallenge" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="kapeluz" location="110,0" id="/Dictionary@kapeluz+/WordChallenge@wordChallenge|/Dictionary#kapeluz" multiplicityLabel="//@children.2/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.1/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - kapeluz" location="144,1838" size="47,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="112,1838" size="18,14" anchorKind="LastPart"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,69">
+      <children xsi:type="editmodel:ClassEditModel" name="MyComparator" size="135,67" id="ar.edu.unicen.exa.game2d.wordchallenge/Level$MyComparator" runTimeClassModel="compare(Ljava.lang.String;Ljava.lang.String;)">
+        <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+        <children xsi:type="editmodel:CompartmentEditModel" size="72,18">
+          <children xsi:type="editmodel:MethodEditModel" name="compare" id="ar.edu.unicen.exa.game2d.wordchallenge/Level$MyComparator#compare(Ljava.lang.String;Ljava.lang.String;)"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
       </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Clock@clock+/WordChallenge@wordChallenge" source="//@children.2" target="//@children.9" targetEnd="//@children.2/@sourceConnections.2/@children.1" label="//@children.2/@sourceConnections.2/@children.2" sourceEnd="//@children.2/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="wordChallenge" location="165,96" id="/Clock@clock+/WordChallenge@wordChallenge|/WordChallenge#wordChallenge" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="clock" location="0,7" id="/Clock@clock+/WordChallenge@wordChallenge|/Clock#clock" multiplicityLabel="//@children.2/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.2/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - clock" location="482,1695" size="35,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="499,1723" size="18,14" anchorKind="LastPart"/>
-      </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
-    </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Menu" location="420,1020" size="119,121" id="/Menu" runTimeClassModel="initResources(),update(J),Menu(Lcom.golden.gamedev.GameEngine;),render(Ljava.awt.Graphics2D;)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="96,72">
-      <children xsi:type="editmodel:MethodEditModel" name="Menu" id="/Menu#Menu(Lcom.golden.gamedev.GameEngine;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/Menu#initResources()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="render" id="/Menu#render(Ljava.awt.Graphics2D;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/Menu#update(J)"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="com.golden.gamedev/GameObject&lt;-/Menu" source="//@children.3" target="//@children.7/@sourceConnections.0" targetEnd="//@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.3/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="59,0" anchorKind="FixedAtEdge" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="-2,1" anchorKind="FixedAtEdge"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/Level-Standard::Derive->com.golden.gamedev/GameObject" source="//@children.10" target="//@children.11" targetEnd="//@children.10/@sourceConnections.0/@children.2" label="//@children.10/@sourceConnections.0/@children.0" sourceEnd="//@children.10/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,268" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="200,658"/>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.5/@sourceConnections.0" name="Observer" location="76,50" size="99,95" id="java.util/Observer" runTimeClassModel="update(Ljava.util.Observable;Ljava.lang.Object;)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="63,18">
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="java.util/Observer#update(Ljava.util.Observable;Ljava.lang.Object;)"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Level" location="49,1020" size="228,247" id="/Level" runTimeClassModel="update(Ljava.util.Observable;Ljava.lang.Object;),initResources(),selectedLetters,isFinished(),words,update(J),render(Ljava.awt.Graphics2D;),randomLettersOrder(),letters,playfield,Level(Lcom.golden.gamedev.GameEngine;Ljava.lang.String;Ljava.util.ArrayList;)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="205,72">
-      <children xsi:type="editmodel:AttributeEditModel" name="playfield" id="/Level#playfield"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="words" id="/Level#words"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="letters" id="/Level#letters"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="selectedLetters" id="/Level#selectedLetters"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="128,126">
-      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/Level#initResources()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="isFinished" id="/Level#isFinished()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="randomLettersOrder" id="/Level#randomLettersOrder()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="render" id="/Level#render(Ljava.awt.Graphics2D;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/Level#update(J)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/Level#update(Ljava.util.Observable;Ljava.lang.Object;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="Level" id="/Level#Level(Lcom.golden.gamedev.GameEngine;Ljava.lang.String;Ljava.util.ArrayList;)"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="java.util/Observer&lt;-/Level" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="76,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="49,95"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="com.golden.gamedev/GameObject&lt;-/Level" source="//@children.5" target="//@children.7/@sourceConnections.0" targetEnd="//@children.5/@sourceConnections.1/@children.1" sourceEnd="//@children.5/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="75,0" anchorKind="FixedAtEdge" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="0,320"/>
-    </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Clock@clock+/Level@level" source="//@children.5" target="//@children.9" targetEnd="//@children.5/@sourceConnections.2/@children.1" label="//@children.5/@sourceConnections.2/@children.2" sourceEnd="//@children.5/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="level" location="218,247" id="/Clock@clock+/Level@level|/Level#level" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="clock" location="0,10" id="/Clock@clock+/Level@level|/Clock#clock" multiplicityLabel="//@children.5/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.2/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - clock" location="482,1726" size="35,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="499,1698" size="18,14" anchorKind="LastPart"/>
-      </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
-    </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0 //@children.14/@sourceConnections.0" name="GameObject" location="204,-1" size="200,963" id="com.golden.gamedev/GameObject" runTimeClassModel="update(J),GameObject(Lcom.golden.gamedev.GameEngine;),setFPS(I),hideCursor(),getHeight(),bsTimer,takeScreenShot(Ljava.io.File;),playSound(Ljava.lang.String;),click(),bsMusic,getMouseX(),getImages(Ljava.lang.String;IILjava.lang.String;I),bsIO,bsSound,showCursor(),getImages(Ljava.lang.String;II),parent,takeScreenShot(),getCurrentFPS(),getImages(Ljava.lang.String;IIII),getMouseY(),finish(),finish,initResources(),checkPosMouse(IIII),getImages(Ljava.lang.String;IIZ),checkPosMouse(Lcom.golden.gamedev.object.SpriteGroup;Z),keyPressed(I),fontManager,checkPosMouse(Lcom.golden.gamedev.object.Sprite;Z),getFPS(),initialized,render(Ljava.awt.Graphics2D;),getImages(Ljava.lang.String;IIZII),grabEngines(),getRandom(II),keyDown(I),getWidth(),bsInput,setMaskColor(Ljava.awt.Color;),playMusic(Ljava.lang.String;),drawFPS(Ljava.awt.Graphics2D;II),start(),getImage(Ljava.lang.String;Z),rightClick(),getImage(Ljava.lang.String;),bsLoader,bsGraphics,getImages(Ljava.lang.String;IIZLjava.lang.String;I),checkPosMouse(Lcom.golden.gamedev.object.PlayField;Z)">
-    <children xsi:type="editmodel:CompartmentEditModel" size="177,198">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.10/@sourceConnections.0 //@children.13/@sourceConnections.0 //@children.12/@sourceConnections.0" name="GameObject" location="634,3595" size="200,927" id="com.golden.gamedev/GameObject">
+    <children xsi:type="editmodel:CompartmentEditModel" size="177,180">
       <children xsi:type="editmodel:AttributeEditModel" name="bsGraphics" id="com.golden.gamedev/GameObject#bsGraphics"/>
       <children xsi:type="editmodel:AttributeEditModel" name="bsIO" id="com.golden.gamedev/GameObject#bsIO"/>
       <children xsi:type="editmodel:AttributeEditModel" name="bsInput" id="com.golden.gamedev/GameObject#bsInput"/>
@@ -135,32 +304,32 @@
       <children xsi:type="editmodel:AttributeEditModel" name="bsTimer" id="com.golden.gamedev/GameObject#bsTimer"/>
       <children xsi:type="editmodel:AttributeEditModel" name="finish" id="com.golden.gamedev/GameObject#finish"/>
       <children xsi:type="editmodel:AttributeEditModel" name="fontManager" id="com.golden.gamedev/GameObject#fontManager"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="initialized" id="com.golden.gamedev/GameObject#initialized"/>
       <children xsi:type="editmodel:AttributeEditModel" name="parent" id="com.golden.gamedev/GameObject#parent"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="109,702">
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,684">
       <children xsi:type="editmodel:MethodEditModel" name="GameObject" id="com.golden.gamedev/GameObject#GameObject(Lcom.golden.gamedev.GameEngine;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(Lcom.golden.gamedev.object.Sprite;Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(Lcom.golden.gamedev.object.PlayField;Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(Lcom.golden.gamedev.object.SpriteGroup;Z)"/>
       <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(IIII)"/>
       <children xsi:type="editmodel:MethodEditModel" name="click" id="com.golden.gamedev/GameObject#click()"/>
       <children xsi:type="editmodel:MethodEditModel" name="drawFPS" id="com.golden.gamedev/GameObject#drawFPS(Ljava.awt.Graphics2D;II)"/>
       <children xsi:type="editmodel:MethodEditModel" name="finish" id="com.golden.gamedev/GameObject#finish()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getCurrentFPS" id="com.golden.gamedev/GameObject#getCurrentFPS()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getFPS" location="7,383" id="com.golden.gamedev/GameObject#getFPS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFPS" id="com.golden.gamedev/GameObject#getFPS()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getHeight" id="com.golden.gamedev/GameObject#getHeight()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImage" id="com.golden.gamedev/GameObject#getImage(Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImage" id="com.golden.gamedev/GameObject#getImage(Ljava.lang.String;Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IIZ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;II)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IILjava.lang.String;I)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IIZII)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IIZLjava.lang.String;I)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IIZ)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;IIII)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getImages" id="com.golden.gamedev/GameObject#getImages(Ljava.lang.String;II)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getMouseX" id="com.golden.gamedev/GameObject#getMouseX()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getMouseY" id="com.golden.gamedev/GameObject#getMouseY()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getRandom" id="com.golden.gamedev/GameObject#getRandom(II)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getWidth" id="com.golden.gamedev/GameObject#getWidth()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="grabEngines" id="com.golden.gamedev/GameObject#grabEngines()"/>
       <children xsi:type="editmodel:MethodEditModel" name="hideCursor" id="com.golden.gamedev/GameObject#hideCursor()"/>
       <children xsi:type="editmodel:MethodEditModel" name="initResources" id="com.golden.gamedev/GameObject#initResources()"/>
       <children xsi:type="editmodel:MethodEditModel" name="keyDown" id="com.golden.gamedev/GameObject#keyDown(I)"/>
@@ -173,98 +342,129 @@
       <children xsi:type="editmodel:MethodEditModel" name="setMaskColor" id="com.golden.gamedev/GameObject#setMaskColor(Ljava.awt.Color;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="showCursor" id="com.golden.gamedev/GameObject#showCursor()"/>
       <children xsi:type="editmodel:MethodEditModel" name="start" id="com.golden.gamedev/GameObject#start()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="takeScreenShot" id="com.golden.gamedev/GameObject#takeScreenShot(Ljava.io.File;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="takeScreenShot" id="com.golden.gamedev/GameObject#takeScreenShot()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="takeScreenShot" id="com.golden.gamedev/GameObject#takeScreenShot(Ljava.io.File;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="update" id="com.golden.gamedev/GameObject#update(J)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(Lcom.golden.gamedev.object.PlayField;Z)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="checkPosMouse" id="com.golden.gamedev/GameObject#checkPosMouse(Lcom.golden.gamedev.object.SpriteGroup;Z)"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="HighScores" location="285,1020" size="119,121" id="/HighScores" runTimeClassModel="initResources(),HighScores(Lcom.golden.gamedev.GameEngine;),update(J),render(Ljava.awt.Graphics2D;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Menu" location="726,2975" size="166,571" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu" runTimeClassModel="setFontSize(I),update(J),Menu(Lcom.golden.gamedev.GameEngine;),render(Ljava.awt.Graphics2D;),setPosYpointer(I),setOption(I),drawText(Ljava.awt.Graphics2D;Ljava.lang.String;IZ),setPosYmenu(I),getFontSize(),getPosYpointer(),setPointer(Lcom.golden.gamedev.object.Sprite;),getPfMenu(),setPosXpointer(I),setTtfFont(Ljava.lang.String;),setFont(Lcom.golden.gamedev.object.GameFont;),setPfMenu(Lcom.golden.gamedev.object.PlayField;),getPosYmenu(),getANCHO_LINE_MENU(),initResources(),getPointer(),getFont(),setANCHO_LINE_MENU(I),setBackground(Lcom.golden.gamedev.object.Background;),getOption(),setPosXmenu(I),getBackground(),getPosXmenu(),getPosXpointer(),getTtfFont()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="96,72">
-      <children xsi:type="editmodel:MethodEditModel" name="HighScores" id="/HighScores#HighScores(Lcom.golden.gamedev.GameEngine;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/HighScores#initResources()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="render" id="/HighScores#render(Ljava.awt.Graphics2D;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/HighScores#update(J)"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="143,522">
+      <children xsi:type="editmodel:MethodEditModel" name="Menu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#Menu(Lcom.golden.gamedev.GameEngine;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="drawText" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#drawText(Ljava.awt.Graphics2D;Ljava.lang.String;IZ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getANCHO_LINE_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getANCHO_LINE_MENU()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getBackground()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFont" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFontSize" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getFontSize()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOption" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getOption()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPfMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPfMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPointer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosXmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPosXmenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosXpointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPosXpointer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosYmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPosYmenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosYpointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getPosYpointer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTtfFont" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#getTtfFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#initResources()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="render" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setANCHO_LINE_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setANCHO_LINE_MENU(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setBackground(Lcom.golden.gamedev.object.Background;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFont" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setFont(Lcom.golden.gamedev.object.GameFont;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFontSize" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setFontSize(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setOption" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setOption(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPfMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPfMenu(Lcom.golden.gamedev.object.PlayField;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPointer(Lcom.golden.gamedev.object.Sprite;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosXmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPosXmenu(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosXpointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPosXpointer(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosYmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPosYmenu(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosYpointer" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setPosYpointer(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTtfFont" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#setTtfFont(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu#update(J)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.3/@sourceConnections.0" id="com.golden.gamedev/GameObject&lt;-/HighScores" source="//@children.7" target="//@children.6" targetEnd="//@children.7/@sourceConnections.0/@children.1" sourceEnd="//@children.7/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="59,0" anchorKind="FixedAtEdge" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="100,962" anchorKind="FixedAtEdge"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/Menu-Standard::Derive->com.golden.gamedev/GameObject" source="//@children.12" target="//@children.11" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="53,571" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="145,0"/>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.9/@sourceConnections.0" name="Observable" location="270,1270" size="134,279" id="java.util/Observable" runTimeClassModel="hasChanged(),countObservers(),obs,Observable(),setChanged(),notifyObservers(),deleteObservers(),addObserver(Ljava.util.Observer;),deleteObserver(Ljava.util.Observer;),clearChanged(),notifyObservers(Ljava.lang.Object;),changed">
-    <children xsi:type="editmodel:CompartmentEditModel" size="105,36">
-      <children xsi:type="editmodel:AttributeEditModel" name="changed" id="java.util/Observable#changed"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="obs" id="java.util/Observable#obs"/>
+  <children xsi:type="editmodel:ClassEditModel" name="LanguageMenu" location="50,3825" size="260,661" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu" runTimeClassModel="setFontSize(I),getTitleMenu(),update(J),getCantOpciones(),render(Ljava.awt.Graphics2D;),setOption(I),idiomas,setIdiomas(Ljava.util.ArrayList;),setPosYmenu(I),getFontSize(),option,setCantOpciones(I),setParent(Lar.edu.unicen.exa.game2d.wordchallenge.WordChallenge;),getPfMenu(),getIdiomas(),setTtfFont(Ljava.lang.String;),setPfMenu(Lcom.golden.gamedev.object.PlayField;),setFont(Lcom.golden.gamedev.object.GameFont;),getPosYmenu(),getANCHO_LINE_MENU(),drawLine(Ljava.awt.Graphics2D;IZLjava.lang.String;Ljava.lang.String;Ljava.lang.String;),initResources(),setTitleMenu(Ljava.awt.image.BufferedImage;),getFont(),setANCHO_LINE_MENU(I),setBackground(Lcom.golden.gamedev.object.Background;),getOption(),setPosXmenu(I),getParent(),getPosXmenu(),getBackground(),selectIdiom(),LanguageMenu(Lcom.golden.gamedev.GameEngine;),getTtfFont()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="237,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="idiomas" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#idiomas"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="option" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#option"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="111,180">
-      <children xsi:type="editmodel:MethodEditModel" name="Observable" id="java.util/Observable#Observable()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="addObserver" id="java.util/Observable#addObserver(Ljava.util.Observer;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="clearChanged" id="java.util/Observable#clearChanged()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="countObservers" id="java.util/Observable#countObservers()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="deleteObserver" id="java.util/Observable#deleteObserver(Ljava.util.Observer;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="deleteObservers" id="java.util/Observable#deleteObservers()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="hasChanged" id="java.util/Observable#hasChanged()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="notifyObservers" id="java.util/Observable#notifyObservers()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="notifyObservers" id="java.util/Observable#notifyObservers(Ljava.lang.Object;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="setChanged" id="java.util/Observable#setChanged()"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="143,576">
+      <children xsi:type="editmodel:MethodEditModel" name="LanguageMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#LanguageMenu(Lcom.golden.gamedev.GameEngine;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="drawLine" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#drawLine(Ljava.awt.Graphics2D;IZLjava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getANCHO_LINE_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getANCHO_LINE_MENU()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getBackground()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCantOpciones" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getCantOpciones()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFont" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFontSize" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getFontSize()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdiomas" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getIdiomas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOption" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getOption()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getParent" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getParent()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPfMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getPfMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosXmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getPosXmenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPosYmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getPosYmenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTitleMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getTitleMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTtfFont" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#getTtfFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#initResources()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="render" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#render(Ljava.awt.Graphics2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="selectIdiom" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#selectIdiom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setANCHO_LINE_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setANCHO_LINE_MENU(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBackground" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setBackground(Lcom.golden.gamedev.object.Background;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCantOpciones" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setCantOpciones(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFont" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setFont(Lcom.golden.gamedev.object.GameFont;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFontSize" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setFontSize(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setIdiomas" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setIdiomas(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setOption" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setOption(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setParent" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setParent(Lar.edu.unicen.exa.game2d.wordchallenge.WordChallenge;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPfMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setPfMenu(Lcom.golden.gamedev.object.PlayField;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosXmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setPosXmenu(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPosYmenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setPosYmenu(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTitleMenu" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setTitleMenu(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTtfFont" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#setTtfFont(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu#update(J)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.2 //@children.5/@sourceConnections.2" name="Clock" location="524,1709" size="127,175" id="/Clock" runTimeClassModel="isFinished(),stop(),run(),timer,start(),remainingTime,totalTime">
-    <children xsi:type="editmodel:CompartmentEditModel" size="104,54">
-      <children xsi:type="editmodel:AttributeEditModel" name="remainingTime" id="/Clock#remainingTime"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="totalTime" id="/Clock#totalTime"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="timer" id="/Clock#timer"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="78,72">
-      <children xsi:type="editmodel:MethodEditModel" name="isFinished" id="/Clock#isFinished()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="run" id="/Clock#run()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="start" id="/Clock#start()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="stop" id="/Clock#stop()"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="java.util/Observable&lt;-/Clock" source="//@children.9" target="//@children.8" targetEnd="//@children.9/@sourceConnections.0/@children.1" sourceEnd="//@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="7,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="134,243"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/LanguageMenu-Standard::Derive->com.golden.gamedev/GameObject" source="//@children.13" target="//@children.11" targetEnd="//@children.13/@sourceConnections.0/@children.2" label="//@children.13/@sourceConnections.0/@children.0" sourceEnd="//@children.13/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="260,330" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,560"/>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1" name="Dictionary" location="27,1859" size="213,175" id="/Dictionary" runTimeClassModel="addWord(Ljava.lang.String;),Dictionary(Ljava.util.HashSet;),getSixLetters(),words,getPossibleWords(Ljava.lang.String;),getPossibleWords(Ljava.lang.String;Ljava.lang.String;),sixLetteredWord">
-    <children xsi:type="editmodel:CompartmentEditModel" size="190,36">
-      <children xsi:type="editmodel:AttributeEditModel" name="sixLetteredWord" id="/Dictionary#sixLetteredWord"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="words" id="/Dictionary#words"/>
+  <children xsi:type="editmodel:ClassEditModel" name="MiniLetter" location="1146,2642" size="188,283" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter" runTimeClassModel="visible,isVisible(),setLetterNoVisible(Ljava.awt.image.BufferedImage;),getLetterVisible(),setValue(C),getLetterNoVisible(),setLetterVisible(Ljava.awt.image.BufferedImage;),getValue(),letterVisible,letterNoVisible,value,setVisible(Z),MiniLetter(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;C)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="165,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="letterNoVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#letterNoVisible"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="letterVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#letterVisible"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="value" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#value"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="visible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#visible"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="117,90">
-      <children xsi:type="editmodel:MethodEditModel" name="getSixLetters" id="/Dictionary#getSixLetters()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getPossibleWords" id="/Dictionary#getPossibleWords(Ljava.lang.String;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getPossibleWords" id="/Dictionary#getPossibleWords(Ljava.lang.String;Ljava.lang.String;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="Dictionary" id="/Dictionary#Dictionary(Ljava.util.HashSet;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="addWord" id="/Dictionary#addWord(Ljava.lang.String;)"/>
-    </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Letter" location="1093,1842" size="104,67" id="/Letter" runTimeClassModel="value,turnVisible()">
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="81,18">
-      <children xsi:type="editmodel:MethodEditModel" name="turnVisible" id="/Letter#turnVisible()"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="118,162">
+      <children xsi:type="editmodel:MethodEditModel" name="MiniLetter" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#MiniLetter(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLetterNoVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#getLetterNoVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLetterVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#getLetterVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#getValue()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#isVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLetterNoVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#setLetterNoVisible(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLetterVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#setLetterVisible(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#setValue(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter#setVisible(Z)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="com.golden.gamedev.object/Sprite&lt;-/Letter" source="//@children.11" target="//@children.12" targetEnd="//@children.11/@sourceConnections.0/@children.1" sourceEnd="//@children.11/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="52,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="110,1665"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/MiniLetter-Standard::Derive->com.golden.gamedev.object/Sprite" source="//@children.14" target="//@children.15" targetEnd="//@children.14/@sourceConnections.0/@children.2" label="//@children.14/@sourceConnections.0/@children.0" sourceEnd="//@children.14/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="125,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,1265"/>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.11/@sourceConnections.0" name="Sprite" location="1035,30" size="221,1665" id="com.golden.gamedev.object/Sprite" runTimeClassModel="setActive(Z),moveTo(JDDD),horizontalSpeed,getCenterY(),horizontalvelocity,update(J),moveY(D),bounce,getVerticalVelocity(),setLocation(DD),setImmutable(Z),setHorizontalSpeed(D),getHeight(),height,setX(D),setFixedposition(Z),verticalSpeed,serialVersionUID,setY(D),addHorizontalSpeed(JDD),getHorizontalSpeed(),getDistance(Lcom.golden.gamedev.object.Sprite;),setOnground(Z),width,Sprite(Ljava.awt.image.BufferedImage;),getID(),image,getOldY(),defaultCollisionShape,addVerticalSpeed(JDD),setBounce(D),Sprite(DD),isImmutable(),setBackground(Lcom.golden.gamedev.object.Background;),isOnScreen(),setDataID(Ljava.lang.Object;),isActive(),setID(I),fixedposition,active,getImage(),oldY,oldX,isOnScreen(IIII),setVerticalSpeed(D),dataID,moveX(D),getFixedposition(),getHorizontalVelocity(),correctWind(D),render(Ljava.awt.Graphics2D;),onground,forceX(D),getOldX(),id,setVerticalVelocity(D),getVerticalSpeed(),forceY(D),correctGravity(D),setSpeed(DD),render(Ljava.awt.Graphics2D;II),move(DD),Sprite(),immutable,screenY,getWidth(),screenX,getOnground(),Sprite(Ljava.awt.image.BufferedImage;DD),setImage(Ljava.awt.image.BufferedImage;),setHorizontalVelocity(D),layer,setMovement(DD),getDataID(),getScreenY(),getX(),getBounce(),getLayer(),verticalvelocity,getDefaultCollisionShape(),background,setLayer(I),getY(),getScreenX(),getBackground(),updateMovement(J),y,getCenterX(),x">
-    <children xsi:type="editmodel:CompartmentEditModel" size="198,432">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.17/@sourceConnections.0 //@children.14/@sourceConnections.0 //@children.16/@sourceConnections.0" name="Sprite" location="1349,1026" size="221,1539" id="com.golden.gamedev.object/Sprite">
+    <children xsi:type="editmodel:CompartmentEditModel" size="198,324">
       <children xsi:type="editmodel:AttributeEditModel" name="active" id="com.golden.gamedev.object/Sprite#active"/>
       <children xsi:type="editmodel:AttributeEditModel" name="background" id="com.golden.gamedev.object/Sprite#background"/>
       <children xsi:type="editmodel:AttributeEditModel" name="bounce" id="com.golden.gamedev.object/Sprite#bounce"/>
@@ -273,27 +473,21 @@
       <children xsi:type="editmodel:AttributeEditModel" name="fixedposition" id="com.golden.gamedev.object/Sprite#fixedposition"/>
       <children xsi:type="editmodel:AttributeEditModel" name="height" id="com.golden.gamedev.object/Sprite#height"/>
       <children xsi:type="editmodel:AttributeEditModel" name="horizontalSpeed" id="com.golden.gamedev.object/Sprite#horizontalSpeed"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="horizontalvelocity" id="com.golden.gamedev.object/Sprite#horizontalvelocity"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="id" id="com.golden.gamedev.object/Sprite#id"/>
       <children xsi:type="editmodel:AttributeEditModel" name="image" id="com.golden.gamedev.object/Sprite#image"/>
       <children xsi:type="editmodel:AttributeEditModel" name="immutable" id="com.golden.gamedev.object/Sprite#immutable"/>
       <children xsi:type="editmodel:AttributeEditModel" name="layer" id="com.golden.gamedev.object/Sprite#layer"/>
       <children xsi:type="editmodel:AttributeEditModel" name="oldX" id="com.golden.gamedev.object/Sprite#oldX"/>
       <children xsi:type="editmodel:AttributeEditModel" name="oldY" id="com.golden.gamedev.object/Sprite#oldY"/>
       <children xsi:type="editmodel:AttributeEditModel" name="onground" id="com.golden.gamedev.object/Sprite#onground"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="screenX" id="com.golden.gamedev.object/Sprite#screenX"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="screenY" id="com.golden.gamedev.object/Sprite#screenY"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="serialVersionUID" id="com.golden.gamedev.object/Sprite#serialVersionUID"/>
       <children xsi:type="editmodel:AttributeEditModel" name="verticalSpeed" id="com.golden.gamedev.object/Sprite#verticalSpeed"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="verticalvelocity" id="com.golden.gamedev.object/Sprite#verticalvelocity"/>
       <children xsi:type="editmodel:AttributeEditModel" name="width" id="com.golden.gamedev.object/Sprite#width"/>
       <children xsi:type="editmodel:AttributeEditModel" name="x" id="com.golden.gamedev.object/Sprite#x"/>
       <children xsi:type="editmodel:AttributeEditModel" name="y" id="com.golden.gamedev.object/Sprite#y"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="149,1170">
+    <children xsi:type="editmodel:CompartmentEditModel" size="149,1152">
+      <children xsi:type="editmodel:MethodEditModel" name="Sprite" id="com.golden.gamedev.object/Sprite#Sprite(Ljava.awt.image.BufferedImage;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="Sprite" id="com.golden.gamedev.object/Sprite#Sprite()"/>
       <children xsi:type="editmodel:MethodEditModel" name="Sprite" id="com.golden.gamedev.object/Sprite#Sprite(Ljava.awt.image.BufferedImage;DD)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="Sprite" id="com.golden.gamedev.object/Sprite#Sprite(Ljava.awt.image.BufferedImage;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="Sprite" id="com.golden.gamedev.object/Sprite#Sprite(DD)"/>
       <children xsi:type="editmodel:MethodEditModel" name="addHorizontalSpeed" id="com.golden.gamedev.object/Sprite#addHorizontalSpeed(JDD)"/>
       <children xsi:type="editmodel:MethodEditModel" name="addVerticalSpeed" id="com.golden.gamedev.object/Sprite#addVerticalSpeed(JDD)"/>
@@ -355,31 +549,253 @@
       <children xsi:type="editmodel:MethodEditModel" name="setX" id="com.golden.gamedev.object/Sprite#setX(D)"/>
       <children xsi:type="editmodel:MethodEditModel" name="setY" id="com.golden.gamedev.object/Sprite#setY(D)"/>
       <children xsi:type="editmodel:MethodEditModel" name="update" id="com.golden.gamedev.object/Sprite#update(J)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="updateMovement" id="com.golden.gamedev.object/Sprite#updateMovement(J)"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:NotepadEditModel" targetConnections="//@children.0/@sourceConnections.0" location="663,1270" size="53,24" fontInfo="Arial-8-0" note="JDOM"/>
-  <children xsi:type="editmodel:ClassEditModel" name="LanguajeMenu" location="550,1021" size="137,130" id="/LanguajeMenu" runTimeClassModel="initResources(),LanguajeMenu(Lcom.golden.gamedev.GameEngine;),update(J),render(Ljava.awt.Graphics2D;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Letter" location="2851,403" size="100,121" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter" runTimeClassModel="isVisible(),Letter(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;CI),setVisible(Z),setValue(C)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="100,72">
-      <children xsi:type="editmodel:MethodEditModel" name="LanguajeMenu" id="/LanguajeMenu#LanguajeMenu(Lcom.golden.gamedev.GameEngine;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="initResources" id="/LanguajeMenu#initResources()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="render" id="/LanguajeMenu#render(Ljava.awt.Graphics2D;)"/>
-      <children xsi:type="editmodel:MethodEditModel" name="update" id="/LanguajeMenu#update(J)"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="77,72">
+      <children xsi:type="editmodel:MethodEditModel" name="Letter" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter#Letter(Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;CI)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter#isVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter#setValue(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVisible" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter#setVisible(Z)"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="com.golden.gamedev/GameObject&lt;-/LanguajeMenu" source="//@children.14" target="//@children.6" targetEnd="//@children.14/@sourceConnections.0/@children.1" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
-      <children xsi:type="editmodel:AssociationEndEditModel" location="34,0" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" location="200,674"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/Letter-Standard::Derive->com.golden.gamedev.object/Sprite" source="//@children.16" target="//@children.15" targetEnd="//@children.16/@sourceConnections.0/@children.2" label="//@children.16/@sourceConnections.0/@children.0" sourceEnd="//@children.16/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,106" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="221,666"/>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eUML2" autoName="false"/>
+  <children xsi:type="editmodel:ClassEditModel" name="Button" location="50,50" size="218,427" id="ar.edu.unicen.exa.game2d.wordchallenge/Button" runTimeClassModel="setMImageClick(Ljava.awt.image.BufferedImage;),mImageClick,getMCommand(),setMCommand(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;),update(J),mImageUp,getMImageUp(),setEnabled(Z),getMTimerClick(),getMImageClick(),mImageDisabled,Button(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;DD),isEnabled(),getMImageDisabled(),Button(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;DD),setMImageDisabled(Ljava.awt.image.BufferedImage;),click(),setMImageUp(Ljava.awt.image.BufferedImage;),mTimerClick,mCommand,setMTimerClick(Lcom.golden.gamedev.object.Timer;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="195,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="mCommand" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#mCommand"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mImageClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#mImageClick"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mImageDisabled" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#mImageDisabled"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mImageUp" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#mImageUp"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mTimerClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#mTimerClick"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="122,288">
+      <children xsi:type="editmodel:MethodEditModel" name="Button" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#Button(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;DD)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Button" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#Button(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;Ljava.awt.image.BufferedImage;DD)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="click" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#click()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMCommand" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#getMCommand()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMImageClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#getMImageClick()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMImageDisabled" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#getMImageDisabled()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMImageUp" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#getMImageUp()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMTimerClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#getMTimerClick()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isEnabled" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#isEnabled()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEnabled" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setEnabled(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMCommand" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setMCommand(Lar.edu.unicen.exa.game2d.wordchallenge.AbstractCommandLevel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMImageClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setMImageClick(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMImageDisabled" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setMImageDisabled(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMImageUp" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setMImageUp(Ljava.awt.image.BufferedImage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMTimerClick" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#setMTimerClick(Lcom.golden.gamedev.object.Timer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update" id="ar.edu.unicen.exa.game2d.wordchallenge/Button#update(J)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/Button-Standard::Derive->com.golden.gamedev.object/Sprite" source="//@children.17" target="//@children.15" targetEnd="//@children.17/@sourceConnections.0/@children.2" label="//@children.17/@sourceConnections.0/@children.0" sourceEnd="//@children.17/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="218,341" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,639"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CommandDelLastLetter" location="1853,3092" size="191,85" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandDelLastLetter" runTimeClassModel="CommandDelLastLetter(Lar.edu.unicen.exa.game2d.wordchallenge.Level;),execute()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="141,36">
+      <children xsi:type="editmodel:MethodEditModel" name="CommandDelLastLetter" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandDelLastLetter#CommandDelLastLetter(Lar.edu.unicen.exa.game2d.wordchallenge.Level;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandDelLastLetter#execute()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel&lt;-ar.edu.unicen.exa.game2d.wordchallenge/CommandDelLastLetter" source="//@children.18" target="//@children.22/@sourceConnections.0" targetEnd="//@children.18/@sourceConnections.0/@children.1" sourceEnd="//@children.18/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="95,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CommandCheckWord" location="2297,3092" size="180,85" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandCheckWord" runTimeClassModel="CommandCheckWord(Lar.edu.unicen.exa.game2d.wordchallenge.Level;),execute()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="133,36">
+      <children xsi:type="editmodel:MethodEditModel" name="CommandCheckWord" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandCheckWord#CommandCheckWord(Lar.edu.unicen.exa.game2d.wordchallenge.Level;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandCheckWord#execute()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel&lt;-ar.edu.unicen.exa.game2d.wordchallenge/CommandCheckWord" source="//@children.19" target="//@children.22/@sourceConnections.0" targetEnd="//@children.19/@sourceConnections.0/@children.1" sourceEnd="//@children.19/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CommandRandomizeLetters" location="2507,3092" size="222,85" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandRandomizeLetters" runTimeClassModel="CommandRandomizeLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Level;),execute()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,36">
+      <children xsi:type="editmodel:MethodEditModel" name="CommandRandomizeLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandRandomizeLetters#CommandRandomizeLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Level;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandRandomizeLetters#execute()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel&lt;-ar.edu.unicen.exa.game2d.wordchallenge/CommandRandomizeLetters" source="//@children.20" target="//@children.22/@sourceConnections.0" targetEnd="//@children.20/@sourceConnections.0/@children.1" sourceEnd="//@children.20/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="111,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.22/@sourceConnections.0" name="AbstractCommandLevel" location="2184,2975" size="193,67" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel" runTimeClassModel="execute()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="69,18">
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel#execute()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CommandGetSixLetters" location="2074,3092" size="193,85" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandGetSixLetters" runTimeClassModel="CommandGetSixLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Level;),execute()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="143,36">
+      <children xsi:type="editmodel:MethodEditModel" name="CommandGetSixLetters" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandGetSixLetters#CommandGetSixLetters(Lar.edu.unicen.exa.game2d.wordchallenge.Level;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/CommandGetSixLetters#execute()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.19/@sourceConnections.0 //@children.18/@sourceConnections.0 //@children.20/@sourceConnections.0" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/AbstractCommandLevel&lt;-ar.edu.unicen.exa.game2d.wordchallenge/CommandGetSixLetters" source="//@children.22" target="//@children.21" targetEnd="//@children.22/@sourceConnections.0/@children.1" sourceEnd="//@children.22/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="96,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="96,67" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.24/@sourceConnections.0" name="I2DGame" location="1441,2975" size="122,243" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame" runTimeClassModel="isPlaying(),getScore(),setPlayerId(Ljava.lang.String;),getId(),getStats(),setTimeToPlay(F),setStartStage(I),execute(),setRanking(Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;),setId(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,180">
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#execute()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScore" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#getScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getStats" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#getStats()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isPlaying" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#isPlaying()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPlayerId" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#setPlayerId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRanking" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#setRanking(Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setStartStage" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#setStartStage(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimeToPlay" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame#setTimeToPlay(F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="WordChallenge" location="1418,3268" size="168,733" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge" runTimeClassModel="main([Ljava.lang.String;),oPTION_PLAY,oPTION_MENU,setBestGlobalScore(I),score,incrementFailWords(),oPTION_SCORES,getCorrectWords(),execute(),isPlaying(),getScore(),bestGlobalScore,getOPTION_MENU(),setPlayerId(Ljava.lang.String;),setTimeToPlay(F),setStartStage(I),oPTION_EXIT,WordChallenge(),getOPTION_EXIT(),getBestGlobalScore(),getOPTION_SCORES(),addPoints(I),getOPTION_PLAY(),getStats(),getGlobalScore(),incrementCorrectWords(),getLanguages(),setId(Ljava.lang.String;),oPTION_IDIOMAS,setRanking(Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;),getFailWords(),getGame(I),getId(),playerId,getOPTION_IDIOMAS(),getScoringTable(),setScoringTable(Lar.edu.unicen.exa.game2d.wordchallenge.Score;),ranking">
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,162">
+      <children xsi:type="editmodel:AttributeEditModel" name="bestGlobalScore" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#bestGlobalScore"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPTION_EXIT" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#oPTION_EXIT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPTION_IDIOMAS" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#oPTION_IDIOMAS"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPTION_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#oPTION_MENU"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPTION_PLAY" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#oPTION_PLAY"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPTION_SCORES" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#oPTION_SCORES"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="playerId" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#playerId"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ranking" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#ranking"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="score" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#score"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,522">
+      <children xsi:type="editmodel:MethodEditModel" name="WordChallenge" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#WordChallenge()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPoints" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#addPoints(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="execute" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#execute()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBestGlobalScore" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getBestGlobalScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCorrectWords" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getCorrectWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFailWords" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getFailWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getGame" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getGame(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getGlobalScore" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getGlobalScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguages" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getLanguages()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOPTION_EXIT" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getOPTION_EXIT()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOPTION_IDIOMAS" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getOPTION_IDIOMAS()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOPTION_MENU" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getOPTION_MENU()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOPTION_PLAY" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getOPTION_PLAY()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOPTION_SCORES" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getOPTION_SCORES()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScore" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getScore()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getScoringTable" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getScoringTable()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getStats" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#getStats()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incrementCorrectWords" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#incrementCorrectWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incrementFailWords" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#incrementFailWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isPlaying" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#isPlaying()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBestGlobalScore" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setBestGlobalScore(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPlayerId" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setPlayerId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRanking" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setRanking(Lar.edu.unicen.exa.game2d.wordchallenge.Ranking;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setScoringTable" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setScoringTable(Lar.edu.unicen.exa.game2d.wordchallenge.Score;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setStartStage" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setStartStage(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimeToPlay" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge#setTimeToPlay(F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/I2DGame&lt;-ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge" source="//@children.24" target="//@children.23" targetEnd="//@children.24/@sourceConnections.0/@children.1" sourceEnd="//@children.24/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="61,243"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/WordChallenge-Standard::Derive->com.golden.gamedev/GameEngine" source="//@children.24" target="//@children.9" targetEnd="//@children.24/@sourceConnections.1/@children.2" label="//@children.24/@sourceConnections.1/@children.0" sourceEnd="//@children.24/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="43,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="168,1" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="22,294"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PlayerStat" location="50,6463" size="234,265" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat" runTimeClassModel="pS_CALCULUS,setLevels([F),pS_MEMORY,pS_VISUAL,pS_GENERAL_KNOWLEDGE,levels,pS_ANALYTIC,getNextLevelValueRequierd(),getLevels(),pS_PYSC_MOT_COORDINATION,getCurrentLevel(),pS_LINGUISTICS">
+    <children xsi:type="editmodel:CompartmentEditModel" size="211,144">
+      <children xsi:type="editmodel:AttributeEditModel" name="levels" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#levels"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_ANALYTIC" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_ANALYTIC"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_CALCULUS" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_CALCULUS"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_GENERAL_KNOWLEDGE" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_GENERAL_KNOWLEDGE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_LINGUISTICS" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_LINGUISTICS"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_MEMORY" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_MEMORY"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_PYSC_MOT_COORDINATION" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_PYSC_MOT_COORDINATION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pS_VISUAL" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#pS_VISUAL"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getCurrentLevel" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#getCurrentLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLevels" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#getLevels()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNextLevelValueRequierd" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#getNextLevelValueRequierd()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLevels" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat#setLevels([F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty&lt;-ar.edu.unicen.exa.game2d.wordchallenge/PlayerStat" source="//@children.25" target="//@children.26" targetEnd="//@children.25/@sourceConnections.0/@children.1" sourceEnd="//@children.25/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="117,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="89,193"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.25/@sourceConnections.0" name="PlayerProperty" location="78,6220" size="178,193" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty" runTimeClassModel="getValue(),decValue(F),pP_MONEY,getId(),setValue(F),incValue(F),setId(Ljava.lang.String;),pP_GLOBAL_SCORE">
+    <children xsi:type="editmodel:CompartmentEditModel" size="155,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="pP_GLOBAL_SCORE" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#pP_GLOBAL_SCORE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pP_MONEY" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#pP_MONEY"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="76,108">
+      <children xsi:type="editmodel:MethodEditModel" name="decValue" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#decValue(F)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#getValue()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incValue" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#incValue(F)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" id="ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty#setValue(F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty&lt;-ar.edu.unicen.exa.game2d.wordchallenge/PlayerProperty" source="//@children.26" target="//@children.27" targetEnd="//@children.26/@sourceConnections.0/@children.1" sourceEnd="//@children.26/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="70,171"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.26/@sourceConnections.0" name="IPlayerProperty" location="96,5999" size="141,171" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty" runTimeClassModel="getValue(),decValue(F),getId(),setValue(F),incValue(F),setId(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="76,108">
+      <children xsi:type="editmodel:MethodEditModel" name="decValue" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#decValue(F)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#getValue()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incValue" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#incValue(F)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" id="ar.edu.unicen.exa.game2d.wordchallenge/IPlayerProperty#setValue(F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=3;Product=eUML2" autoName="false"/>
   <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
     <leftRuler/>
     <topRuler/>
   </boardSetting>
-  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
 </editmodel:ClassDiagramEditModel>
