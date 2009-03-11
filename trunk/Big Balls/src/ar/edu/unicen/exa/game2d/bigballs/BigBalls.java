@@ -279,14 +279,12 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getScore()
 	 */
 	@Override
-	public List<D2GameScore> getScore() {
+	public D2GameScore getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
 		d2GameScore.setIdPlayer(this.playerId);
-		List<D2GameScore> list = new ArrayList<D2GameScore>();
-		list.add(d2GameScore);
-		return list;
+		return d2GameScore;
 	}
 
 	/* (non-Javadoc)

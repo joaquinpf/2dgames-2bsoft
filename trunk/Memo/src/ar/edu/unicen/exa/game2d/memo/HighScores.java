@@ -13,6 +13,7 @@ import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.background.ImageBackground;
 import com.golden.gamedev.object.font.SystemFont;
 import com.golden.gamedev.util.FontUtil;
+//import common.datatypes.Ranking;
 
 /**
  * 
