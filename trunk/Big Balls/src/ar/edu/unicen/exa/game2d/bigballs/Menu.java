@@ -269,7 +269,7 @@ public class Menu extends GameObject {
 		
 	/**
 	 * 
-	 * @param parent objeto que maneja la trancicion hacia las 
+	 * @param parent objeto que maneja la transicion hacia las 
 	 *               difenrentes pantallas segun la opcion elegida.
 	 */
 	public Menu(final GameEngine parent) {
@@ -277,74 +277,150 @@ public class Menu extends GameObject {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * retorna el tamanio de fuente actual
+	 * @return valor de la fontSize
+	 */
 	public int getFontSize() {
 		return fontSize;
 	}
 
+	/**
+	 * setea un nuevo tamanio de fuente
+	 * @param fontSize nuevo tamanio de fuente a setear
+	 */
 	public void setFontSize(int fontSize) {
 		this.fontSize = fontSize;
 	}
 
+	/**
+	 * retorna el background de la pantallal
+	 * @return valor de la variable background
+	 */
 	public Background getBackground() {
 		return background;
 	}
 
+	/**
+	 * setea un nuevo background de pantalla
+	 * @param background nuevo background a setear
+	 */
 	public void setBackground(Background background) {
 		this.background = background;
 	}
 
+	/**
+	 * retorna Sprite que representa el puntero que seniala las opciones
+	 * @return valor de la variable pointer
+	 */
 	public Sprite getPointer() {
 		return pointer;
 	}
 
+	/**
+	 * setea un nuevo Sprite para el puntero
+	 * @param pointer nuevo Sprite para setear
+	 */
 	public void setPointer(Sprite pointer) {
 		this.pointer = pointer;
 	}
 
+	/**
+	 * retorna el PlayField del menu
+	 * @return valor de la variable pfMenu
+	 */
 	public PlayField getPfMenu() {
 		return pfMenu;
 	}
 
+	/**
+	 * setea un nuevo Playfield para el menu
+	 * @param pfMenu nuevo Playfield a setear
+	 */
 	public void setPfMenu(PlayField pfMenu) {
 		this.pfMenu = pfMenu;
 	}
 
+	/**
+	 * retorna el numero de opcion seleccionada
+	 * @return valor de la variable option
+	 */
 	public int getOption() {
 		return option;
 	}
 
+	/**
+	 * setea un nuevo numero de opcion
+	 * @param option nuevo tnumero de opcion a setear
+	 */
 	public void setOption(int option) {
 		this.option = option;
 	}
 
+	/**
+	 * retorna la posicion del menu en el eje horizontal
+	 * @return valor de la variable posXmenu
+	 */
 	public int getPosXmenu() {
 		return posXmenu;
 	}
 
+	/**
+	 * setea una nueva posicion del menu en el eje horizontal
+	 * @param posXmenu la nueva posicion del menu en el eje 
+	 * 		  horizontal a setear
+	 */
 	public void setPosXmenu(int posXmenu) {
 		this.posXmenu = posXmenu;
 	}
 
+	/**
+	 * retorna la posicion del menu en el eje vertical
+	 * @return valor de la variable posYmenu
+	 */
 	public int getPosYmenu() {
 		return posYmenu;
 	}
 
+	/**
+	 * setea una nueva posicion del menu en el eje vertical
+	 * @param posYmenu la nueva posicion del menu en el eje 
+	 * 		  vertical a setear
+	 */
 	public void setPosYmenu(int posYmenu) {
 		this.posYmenu = posYmenu;
 	}
 
+	/**
+	 * retorna la posiscion del puntero del mouse en el eje horizontal
+	 * @return valor de la variable posXpointer
+	 */
 	public int getPosXpointer() {
 		return posXpointer;
 	}
 
+	/**
+	 * setea una nueva posicion del puntero del mouse en el eje horizontal
+	 * @param posXpointer la nueva posicion del puntero del mouse en el eje 
+	 * 		  horizontal a setear
+	 */
 	public void setPosXpointer(int posXpointer) {
 		this.posXpointer = posXpointer;
 	}
 
+	/**
+	 * retorna la posiscion del puntero del mouse en el eje vertical
+	 * @return valor de la variable posYpointer
+	 */
 	public int getPosYpointer() {
 		return posYpointer;
 	}
 
+	/**
+	 * setea una nueva posicion del puntero del mouse en el eje vertical
+	 * @param posYpointer la nueva posicion del puntero del mouse en el eje
+	 * 		  vertical a setear
+	 */
 	public void setPosYpointer(int posYpointer) {
 		this.posYpointer = posYpointer;
 	}
