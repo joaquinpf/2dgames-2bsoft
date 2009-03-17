@@ -24,6 +24,9 @@ public class HighScores extends GameObject {
 	 */
 	private PlayField pfHighScores = new PlayField();
 	
+	/**
+	 * Contiene el Ranking del juego para mostrar
+	 */
 	private Ranking ranking;
 	
 	/**
@@ -32,12 +35,12 @@ public class HighScores extends GameObject {
 	private Background background;
 	
 	/**
-	 * manegador de la fuente que se utilizar� para mostrar los puntajes.
+	 * manegador de la fuente que se utilizara para mostrar los puntajes.
 	 */
 	private GameFont font;
 	
 	/**
-	 * Imagen que contiene el t�tulo de la pantalla.
+	 * Imagen que contiene el titulo de la pantalla.
 	 */
 	private BufferedImage titleHighScores;
 	
@@ -57,9 +60,9 @@ public class HighScores extends GameObject {
 	}
 	
 	/**
-	 * este m�todo construye un String de linea punteada 
+	 * este metodo construye un String de linea punteada 
 	 * con la longitud necesaria para mostrar los puntajes.
-	 * @param longPalabras longitud de las palabras que se mostrar�n.
+	 * @param longPalabras longitud de las palabras que se mostraran.
 	 * @return String con la linea punteada de longitud correcta.
 	 */
 	private String lineaPunteada(final int longPalabras) {
@@ -73,7 +76,7 @@ public class HighScores extends GameObject {
 		return line;
 	}
 	/**
-	 * este m�todo muestar en la pantalla la lista de puntajes del juego.
+	 * este metodo muestra en la pantalla la lista de puntajes del juego.
 	 * @param g parametro necesario para que 
 	 *          el manejador de fuente dibuje el texto
 	 */
@@ -121,6 +124,7 @@ public class HighScores extends GameObject {
 
 		
 	/**
+	 * Metodo Constructor de la clase
 	 * @param parent objeto que maneja la trancicion hacia la pantalla de menu.
 	 */
 	public HighScores(final GameEngine parent, Ranking ranking) {
@@ -128,39 +132,75 @@ public class HighScores extends GameObject {
 		this.ranking = ranking;
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * retorna el Playfield de la pantalla
+	 * @return el valor de la variable pfHighScores
+	 */
 	public PlayField getPfHighScores() {
 		return pfHighScores;
 	}
 
+	/**
+	 * setea un nuevo Playfield de pantalla
+	 * @param pfHighScores el nuevo Playfield que se debe setear
+	 */
 	public void setPfHighScores(PlayField pfHighScores) {
 		this.pfHighScores = pfHighScores;
 	}
-
+	
+	/**
+	 * retorna el Background de la pantalla
+	 * @return el valor de la variable background
+	 */
 	public Background getBackground() {
 		return background;
 	}
-
+	
+	/**
+	 * setea un nuevo Background de pantalla
+	 * @param background el nuevo Background que se debe setear
+	 */
 	public void setBackground(Background background) {
 		this.background = background;
 	}
 
+	/**
+	 * retorna el manegador de la fuente
+	 * @return el valor de la variable font
+	 */
 	public GameFont getFont() {
 		return font;
 	}
-
+	
+	/**
+	 * setea un nuevo manegador de la fuente
+	 * @param font el nuevo manegador de la fuente que se debe setear
+	 */
 	public void setFont(GameFont font) {
 		this.font = font;
 	}
 
+	/**
+	 * retorna la Imagen que contiene el titulo
+	 * @return el valor de la variable titleHighScores
+	 */
 	public BufferedImage getTitleHighScores() {
 		return titleHighScores;
 	}
-
+	
+	/**
+	 * setea una nueva Imagen que contenga el titulo
+	 * @param titleHighScores la nueva imagen que contien el titulo
+	 */
 	public void setTitleHighScores(BufferedImage titleHighScores) {
 		this.titleHighScores = titleHighScores;
 	}
 	
+	/**
+	 * setea el ranking que va a mostrarse
+	 * @param ranking el ranking a setear
+	 */
 	public void setRanking(Ranking ranking) {
 		this.ranking = ranking;
 	}
