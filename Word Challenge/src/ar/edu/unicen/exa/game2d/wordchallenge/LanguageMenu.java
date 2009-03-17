@@ -88,8 +88,8 @@ public class LanguageMenu extends GameObject {
 	 * indica si el puntero del mouse esta sobre las opciones o en otro lugar
 	 * libre de la pantalla.
 	 * 
-	 * @return true si el puntero esta sobre las opciones, false en caso
-	 *         contrario.
+	 * @return true si el puntero esta sobre las opciones
+	 * 		   false en caso contrario.
 	 */
 	private boolean mouseInMenu() {
 		return checkPosMouse(posXmenu, posYmenu - fontSize, posXmenu + 193,
