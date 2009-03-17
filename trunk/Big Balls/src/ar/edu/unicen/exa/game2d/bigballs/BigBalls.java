@@ -11,7 +11,7 @@ import com.golden.gamedev.GameObject;
 
 
 /** 
- * Esta clase maneja las transiciones entre los estados del juego.
+ * Esta clase maneja las transiciones entre los diferentes estados del juego.
  * 
  * @author Damian Achaga
  */
@@ -37,7 +37,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
  	 */
  	private GameLoader game = null;
 	
-	/**Nivel actual en juego.
+	/**
+	 * Nivel actual en el juego.
 	 */
 	private int currentLevel = 1;
 	
@@ -47,7 +48,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public static final int  OPTION_MENU = 0;
 	
 	/**
-	 * Constante que representa la opciï¿½n de jugar y pasar niveles.
+	 * Constante que representa la opcion de jugar y pasar  los difernetes niveles.
 	 */
 	public static final int OPTION_PLAY = 1;
 	
@@ -57,7 +58,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public static final int OPTION_SCORES = 2;
 	
 	/**
-	 * Contante que representa la opciï¿½n de salir del juego.
+	 * Contante que representa la opcion de salir del juego.
 	 */
 	public static final int OPTION_EXIT = 3;
 	
@@ -78,7 +79,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	private int score = 0;
 	
 	/**
-	 * Puntaje mï¿½s alto logrado por el usuario en sucesivas partidas.
+	 * Puntaje mas alto logrado por el usuario en sucesivas partidas.
 	 */
 	private int bestGlobalScore = 0;
 	
@@ -96,7 +97,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 	
 	/**
-	 * Dependiendo del Id recibido enviarï¿½ a las diferentes
+	 * Dependiendo del Id recibido enviara a las diferentes
 	 *  pantallas del juego o a los diferentes niveles.
 	 *  @param gameID id que identifica la pantalla a mostrar.
 	 *  @return el objeto que representa la pantalla correcta.
@@ -137,7 +138,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 	/** 
 	 * Getter of the property <tt>lives</tt>.
-	 * @return  Returns the lives.
+	 * @return  lives Las vidas actuales del jugador.
 	 * @uml.property  name="lives"
 	 */
 	public final int getLives() {
@@ -146,7 +147,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 
 	/** 
 	 * Setter of the property <tt>lives</tt>.
-	 * @param newlives  The lives to set.
+	 * @param newlives  La cantidad de vidas que se setarán.
 	 * @uml.property  name="lives"
 	 */
 	public final void setLives(final int newlives) {
@@ -170,7 +171,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 
 	/** 
 	 * Setter of the property <tt>GlobalScore</tt>.
-	 * @param globalScore  The globalScore to set.
+	 * @param globalScore  El nuevo puntaje global que debe setearse.
 	 * @uml.property  name="globalScore"
 	 */
 	public final void setGlobalScore(final int globalScore) {
@@ -178,14 +179,16 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 		
 	/**
-	 * @return the bestGlobalScore
+	 * retorna el mejor puntaje global hasta el momento
+	 * @return el valor de la variable bestGlobalScore 
 	 */
 	public int getBestGlobalScore() {
 		return bestGlobalScore;
 	}
 
 	/**
-	 * @param xBestGlobalScore the bestGlobalScore to set
+	 * setea un nuevo mejor puntaje global
+	 * @param xBestGlobalScore el puntaje a setear
 	 */
 	public void setBestGlobalScore(int xBestGlobalScore) {
 		bestGlobalScore = xBestGlobalScore;
@@ -214,7 +217,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 
 	/**
-	 * Mï¿½todo main que inicia el juego.
+	 * Metodo main que inicia el juego.
 	 * @param args el argumento del metodo main.
 	 */
 	public static void main(final String[] args) {
@@ -243,7 +246,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 
 	/**
 	 * Getter of the property <tt>levelGenerator</tt>.
-	 * @return  Returns the levelGenerator
+	 * @return  Returns la instancia del LevelGenerator
 	 * @uml.property  name="levelGenerator"
 	 */		
 	public final LevelGenerator getLevelGenerator() {
@@ -252,7 +255,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	
 	/**
 	 * Setter of <tt>levelGenerator</tt>
-	 * @param newLevelGenerator new level generator
+	 * @param newLevelGenerator nuevo LevelGenerator que e debe setear
 	 * @uml.property  name="levelGenerator"
 	 */		
 	public final void setLevelGenerator(LevelGenerator newlevelGenerator) {
