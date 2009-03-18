@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import com.golden.gamedev.object.Sprite;
 
 /**
- * 
+ * Clase que represeenta una letra en la UI
  */
 
 public class Letter extends Sprite {
