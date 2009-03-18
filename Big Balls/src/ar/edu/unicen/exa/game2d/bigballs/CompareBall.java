@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 /**
  * Me provee soporte para realizar la comparacion para el posterior
- * prdenamiento.
+ * ordenamiento.
  * 
  * @author Mariano Camarzana
  */
