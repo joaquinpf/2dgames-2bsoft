@@ -10,6 +10,7 @@ import com.golden.gamedev.GameObject;
 
 /**
  * Clase Principal.
+ * Maneja las transiciones entre los estados del juego.
  * @author pdeluca
  */
 public class Memo extends GameEngine implements I2DGame {

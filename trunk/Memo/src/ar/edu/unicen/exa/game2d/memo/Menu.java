@@ -14,6 +14,7 @@ import com.golden.gamedev.object.font.SystemFont;
 import com.golden.gamedev.util.FontUtil;
 
 /**
+ * Clase encargada de mostrar el menu del juego y permitir su navegacion.
  * 
  * @author Carlos Mirabella
  */
@@ -152,6 +153,7 @@ public class Menu extends GameObject {
 	}
 	
 	/**
+	 * Inicializador de la clase. 
 	 * @see com.golden.gamedev.GameObject#initResources()
 	 */
 	@Override
@@ -308,8 +310,8 @@ public class Menu extends GameObject {
 	
 	/**
 	 * 
-	 * @param parent objeto que maneja la trancicion hacia las 
-	 *               difenrentes pantallas segun la opcion elegida.
+	 * @param parent objeto que maneja la transicion hacia las 
+	 *               diferentes pantallas segun la opcion elegida.
 	 */
 	public Menu(final GameEngine parent) {
 		super(parent);

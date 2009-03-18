@@ -16,7 +16,7 @@ import com.golden.gamedev.util.FontUtil;
 //import common.datatypes.Ranking;
 
 /**
- * 
+ * Clase encargada de mostrar el ranking de puntajes obtenidos por los jugadores. 
  * @author Carlos Mirabella
  *
  */
