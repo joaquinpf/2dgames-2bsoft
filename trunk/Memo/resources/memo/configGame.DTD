@@ -1,3 +1,5 @@
+<!--Este archivo define cual es el correcto armado del archivo de configuración "ConfigGame.xml" -->
+
 <!ELEMENT game (name?,config?)?>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT config (levels?,cards?)>

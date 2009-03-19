@@ -1,3 +1,9 @@
+<!-- En este archivo se define la configuración de los niveles del juego. Cuantos niveles existen, 
+el tiempo para resolver cada uno, los pares de cartas que entran en juego y path del backgound del juego.
+También se define la cantidad de cartas y el path donde encontrar la imagen que representa 
+cada una.
+--> 
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE game SYSTEM "configGame.DTD">
 <game>

@@ -123,7 +123,7 @@ public class WordChallenge extends GameEngine implements I2DGame {
 		this.distribute = true;
 		
 		game = new GameLoader();
-		game.setup(this, new Dimension(800, 600),
+		game.setup(this, new Dimension(800,600),
 				   GameLoader.ScreenMode.Dialog, false);
 	}
 
@@ -333,16 +333,17 @@ public class WordChallenge extends GameEngine implements I2DGame {
 	}
 	
 	/**
-	 * Incrementa en uno la cantidad de Palabras correctas
-	 * ingresadas por el usuario.
-	 */
+	 * Incrementa en uno la cantidad de Palabras correctas ingresadas por el 
+	 * usuario.
+	 * 
+	*/
 	public final void incrementCorrectWords() {
 		this.correctWords++;
 	}
 	
 	/**
-	 * Incrementa en uno la cantidad de Palabras Incorrectas
-	 * ingresadas por el usuario.
+	 * Incrementa en uno la cantidad de Palabras Incorrectas ingresadas por el 
+	 * usuario.
 	 * 
 	 */
 	public final void incrementFailWords() {
@@ -423,21 +424,18 @@ public class WordChallenge extends GameEngine implements I2DGame {
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame. No implementado.
-	 * Retorna una lista de stats del jugador.
-	 * @return null.
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#getStats()
+	 * @return lista de stats al terminar el juego 
 	 */
-	@Override
-	public List<PlayerStat> getStats() {
+	public final List<PlayerStat> getStats() {
 		return null;
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame.
-	 * @return d2GameScore
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#getScore()
+	 * @return puntaje obtenido en la última partida
 	 */
-	@Override
-	public D2GameScore getScore() {
+	public final D2GameScore getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
@@ -446,80 +444,67 @@ public class WordChallenge extends GameEngine implements I2DGame {
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame. No implementado.
-	 * @param stage    
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame
+	 * #setStartStage(int stage)
+	 * @param stage - estado en el que comienza el juego
 	 */
-	@Override
 	public void setStartStage(int stage) {
 	}
 
 	/**
-	 * Metodo perteneciente a la interface I2DGame. No implementado.
-	 * @param time  
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame
+	 * #setTimeToPlay(float time)
+	 * @param time - tiempo límite para jugar en casa estado
 	 */
-	@Override
 	public void setTimeToPlay(float time) {
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame. No implementado.
-	 * @return false.
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#isPlaying()
+	 * @return TRUE si se esta jugando, FALSE en caso contrario
 	 */
-	@Override
-	public boolean isPlaying() {
+	public final  boolean isPlaying() {
 		return false;
 	}
 	
 	/**
-	 * Ejecuta el Juego Word Challenge.
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#execute()
 	 */
-	@Override
-	public void execute() {
+	public final void execute() {
 		game.start();
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame. Retorna el identificador
-	 * del juego Word Challenge.
-	 * 
-	 * @return  id2DGame
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#getId()
+	 * @return identificador del juego
 	 */
-	@Override
-	public String getId() {
+	public final String getId() {
 		return this.id2DGame;
 	}
 	
 	/**
-	 * Metodo perteneciente a la interface I2DGame. Setea el identificador
-	 * del juego Word Challenge.
-	 * @param id  
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame#setId(String id)
+	 * @param id - identificador del juego
 	 */
-	@Override
-	public void setId(String id) {
+	public final void setId(String id) {
 		this.id2DGame = id;
 	}
 	
 	/**
-	 * Setea el identificador del jugador.
-	 * @param playerId
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame
+	 * #setPlayerId(String playerId)
+	 * @param playerId - identificador del jugador
 	 */
-	/* (non-Javadoc)
-	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
-	 */
-	@Override
-	public void setPlayerId(String playerId) {
+	public final void setPlayerId(String playerId) {
 		this.playerId = playerId;
 	}
 	
 	/**
-	 * Setea la Tabla de Ranking.
-	 * @param ranking  retorna una instancia de la clase ranking.
+	 * @see ar.edu.unicen.exa.game2d.WordChallenge.I2DGame
+	 * #setRanking(Ranking ranking)
+	 * @param ranking - ranking del juego
 	 */
-	/* (non-Javadoc)
-	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
-	 */
-	@Override
-	public void setRanking(Ranking ranking) {
+	public final void setRanking(Ranking ranking) {
 		this.ranking = ranking;
 	}
 	

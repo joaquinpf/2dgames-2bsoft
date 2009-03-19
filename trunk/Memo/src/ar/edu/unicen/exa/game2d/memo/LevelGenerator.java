@@ -29,7 +29,7 @@ public class LevelGenerator {
 	private String configRoute = "";
 
 	/**
-	 * Getter of the property <tt>configRoute</tt>
+	 * Getter of the property <tt>configRoute</tt>.
 	 * 
 	 * @return Returns the configRoute.
 	 * @uml.property name="configRoute"
@@ -39,7 +39,7 @@ public class LevelGenerator {
 	}
 
 	/**
-	 * Setter of the property <tt>configRoute</tt>
+	 * Setter of the property <tt>configRoute</tt>.
 	 * 
 	 * @param configRoute
 	 *            The configRoute to set.
@@ -50,7 +50,7 @@ public class LevelGenerator {
 	}
 
 	/**
-	 * Constructor de la clase
+	 * Constructor de la clase.
 	 */
 	public LevelGenerator(String _route) {
 		this.configRoute = _route;
@@ -64,6 +64,9 @@ public class LevelGenerator {
 	}
 
 	/**
+	 * Este método retorna la parte de atrás de la carta (para todas las cartas
+	 * es igual)y la secuencia de imágenes que dan la idea del movimiento 
+	 * cuando la carta gira.
 	 * @param bsLoader
 	 * @param imagefile
 	 * @return BufferedImage[]
