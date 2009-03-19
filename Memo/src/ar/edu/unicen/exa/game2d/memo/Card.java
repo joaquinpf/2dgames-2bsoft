@@ -6,7 +6,9 @@ import com.golden.gamedev.object.sprite.AdvanceSprite;
  * @author Carlos Mirabella
  *
  */
-
+/**
+ * Esta clase modela el funcionamiento de la carta
+ */
 public class Card extends AdvanceSprite implements Comparable<Card> {
 
 	public static final int LEFT = 1, RIGHT = 0;
@@ -19,10 +21,14 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
+	 * Valor que contiene la carta
 	 * @uml.property  name="value"
 	 */
 	private String value = "";
 
+	/**
+	 * Constructor de la carta
+	 */
 	public Card(){
 		setDirection(RIGHT);
 		setLoopAnim(false);
@@ -59,7 +65,8 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 	}
 
 	/**
-	 * @uml.property  name="turned"
+	 * Coloca la carta boca abajo
+	  * @uml.property  name="turned"
 	 */
 	private boolean turned = true;
 
@@ -96,6 +103,9 @@ public class Card extends AdvanceSprite implements Comparable<Card> {
 		}
 	}
 
+	/**
+	 * Animacion de la carta
+	 */
 	protected void animationChanged(int oldStat, int oldDir, int status,
 			int direction) {
 		setAnimationFrame(animation[direction]);
