@@ -1,7 +1,6 @@
 package ar.edu.unicen.exa.game2d.bigballs;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.gamedev.GameEngine;
@@ -48,7 +47,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public static final int  OPTION_MENU = 0;
 	
 	/**
-	 * Constante que representa la opcion de jugar y pasar  los difernetes niveles.
+	 * Constante que representa la opcion de jugar y pasar
+	 * los diferentes niveles.
 	 */
 	public static final int OPTION_PLAY = 1;
 	
@@ -124,11 +124,10 @@ public class BigBalls extends GameEngine  implements I2DGame {
 				}
 			}
 			case OPTION_SCORES:				
-				return new HighScores(this,this.ranking);
+				return new HighScores(this, this.ranking);
 			default: return null;
 		}
 	}
-	
 		
 	/*
 	 * Metodo para Testing
@@ -136,7 +135,10 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	public int getNextGameID() { 
 		return nextGameID; 
 	}
+	
 	/** 
+	 * Retorna la cantidad de vidas que tiene el usuario.
+	 * 
 	 * Getter of the property <tt>lives</tt>.
 	 * @return  lives Las vidas actuales del jugador.
 	 * @uml.property  name="lives"
@@ -146,6 +148,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 
 	/** 
+	 * Setea la cantidad de vidas que tiene el usuario.
+	 * 
 	 * Setter of the property <tt>lives</tt>.
 	 * @param newlives  La cantidad de vidas que se setarán.
 	 * @uml.property  name="lives"
@@ -170,6 +174,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 
 	/** 
+	 * Setea el Puntaje obtenido por el usuario.
+	 * 
 	 * Setter of the property <tt>GlobalScore</tt>.
 	 * @param globalScore  El nuevo puntaje global que debe setearse.
 	 * @uml.property  name="globalScore"
@@ -179,7 +185,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 		
 	/**
-	 * retorna el mejor puntaje global hasta el momento
+	 * Retorna el mejor puntaje global hasta el momento.
 	 * @return el valor de la variable bestGlobalScore 
 	 */
 	public int getBestGlobalScore() {
@@ -187,7 +193,7 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 
 	/**
-	 * setea un nuevo mejor puntaje global
+	 * Setea un nuevo mejor puntaje global.
 	 * @param xBestGlobalScore el puntaje a setear
 	 */
 	public void setBestGlobalScore(int xBestGlobalScore) {
@@ -202,14 +208,16 @@ public class BigBalls extends GameEngine  implements I2DGame {
 		this.score = this.score + points;
 	}
 	
-	/**Devuelve el nivel de juego en el que se encuentra actualmente.
+	/**
+	 * Devuelve el nivel de juego en el que se encuentra actualmente.
 	 * @return  Retorna el nivel de juego actual.
 	 */
 	public final int getCurrentLevel() {
 		return currentLevel;
 	}
 
-	/**Setea el nivel de juego actual.
+	/**
+	 * Setea el nivel de juego actual.
 	 * @param currentLev  Valor del nivel de juego a setear.
 	 */
 	public final void setCurrentLevel(final int currentLev) {
@@ -254,8 +262,8 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	}
 	
 	/**
-	 * Setter of <tt>levelGenerator</tt>
-	 * @param newLevelGenerator nuevo LevelGenerator que e debe setear
+	 * Setter of <tt>levelGenerator</tt>.
+	 * @param newlevelGenerator  nuevo LevelGenerator que se debe setear
 	 * @uml.property  name="levelGenerator"
 	 */		
 	public final void setLevelGenerator(LevelGenerator newlevelGenerator) {
@@ -265,6 +273,9 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#execute()
 	 */
+	/**
+	 * Ejecuta el juego Big Balls.
+	 */
 	@Override
 	public void execute() {
 		game.start();
@@ -273,6 +284,11 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getID()
 	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Retorna el identificador
+	 * del juego Big Balls.
+	 * @return  id2DGame
+	 */
 	@Override
 	public String getId() {
 		return id2DGame;
@@ -280,6 +296,10 @@ public class BigBalls extends GameEngine  implements I2DGame {
 
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getScore()
+	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame.
+	 * @return d2GameScore 
 	 */
 	@Override
 	public D2GameScore getScore() {
@@ -293,6 +313,11 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#getStats()
 	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * Retorna una lista de stats del jugador.
+	 * @return null.
+	 */
 	@Override
 	public List<PlayerStat> getStats() {
 		// TODO Auto-generated method stub
@@ -301,6 +326,10 @@ public class BigBalls extends GameEngine  implements I2DGame {
 
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#isPlaying()
+	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @return false.
 	 */
 	@Override
 	public boolean isPlaying() {
@@ -311,6 +340,11 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setId(java.lang.String)
 	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Setea el identificador
+	 * del juego Big Balls.
+	 * @param xId
+	 */
 	@Override
 	public void setId(String xId) {
 		id2DGame = xId;
@@ -319,23 +353,31 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setStartStage(int)
 	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param xStage  nro. de nivel del juego.
+	 */
 	@Override
 	public void setStartStage(int xStage) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setTimeToPlay(float)
 	 */
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param xTime  tiempo para jugar.
+	 */
 	@Override
 	public void setTimeToPlay(float xTime) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
+	 */
+	/**
+	 * Setea el identificador del jugador.
+	 * @param playerId
 	 */
 	@Override
 	public void setPlayerId(String playerId) {
@@ -344,6 +386,10 @@ public class BigBalls extends GameEngine  implements I2DGame {
 	
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
+	 */
+	/**
+	 * Setea la Tabla de Ranking.
+	 * @param ranking  retorna una instancia de la clase ranking.
 	 */
 	@Override
 	public void setRanking(Ranking ranking) {
