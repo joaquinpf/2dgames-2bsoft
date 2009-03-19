@@ -90,7 +90,7 @@ public class Clock extends Observable {
 	private String totalTime = "";
 
 	/**
-	 * Getter of the property <tt>totalTime</tt>
+	 * Getter of the property <tt>totalTime</tt>.
 	 * @return  Returns the totalTime.
 	 * @uml.property  name="totalTime"
 	 */
@@ -99,7 +99,7 @@ public class Clock extends Observable {
 	}
 
 	/**
-	 * Setter of the property <tt>totalTime</tt>
+	 * Setter of the property <tt>totalTime</tt>.
 	 * @param totalTime  The totalTime to set.
 	 * @uml.property  name="totalTime"
 	 */

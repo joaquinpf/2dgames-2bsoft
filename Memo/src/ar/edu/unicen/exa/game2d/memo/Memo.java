@@ -1,6 +1,5 @@
 package ar.edu.unicen.exa.game2d.memo;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.gamedev.GameEngine;
@@ -35,7 +34,11 @@ public class Memo extends GameEngine implements I2DGame {
  	 */
  	private GameLoader game = null;
 	
-	private LevelGenerator levelGenerator = new LevelGenerator("./resources/memo/configGame.xml");
+ 	/**
+ 	 * Administra los niveles del juego.
+ 	 */
+ 	private LevelGenerator levelGenerator = new LevelGenerator(
+ 			"./resources/memo/configGame.xml");
 
 	/**
 	 * Opcion menu.
@@ -57,6 +60,9 @@ public class Memo extends GameEngine implements I2DGame {
 	 */
 	public static final int MENU_EXIT = 3;
 
+	/**
+	 * Constructor del Memo.
+	 */
 	public Memo() {
 		super();
 		
@@ -64,11 +70,12 @@ public class Memo extends GameEngine implements I2DGame {
 		game.setup(this, new Dimension(800, 600),
 				GameLoader.ScreenMode.Dialog, false);
 		
-		this.distribute=true;
+		this.distribute = true;
 	}
 	/**
 	 * De acuerdo a la opcion elegida, mostrar lo que corresponda. 
-	 * @param gameID opcion elegida en el menu
+	 * @param gameID opcion elegida en el menu.
+	 * @return segun la opcion elegida retorna un Menu, Level o HighScores.
 	 */
 	public final GameObject getGame(final int gameID) {
 		
@@ -96,12 +103,16 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 	
 	/**
+	 * Puntaje obtenido por el jugador.
+	 *  
 	 * @uml.property  name="globalScore"
 	 */
 	private int globalScore = 0;
 
 	/**
-	 * Getter of the property <tt>globalScore</tt>
+	 * Retorna el puntaje obtenido por el jugador.
+	 * 
+	 * Getter of the property <tt>globalScore</tt>.
 	 * @return  Returns the globalScore.
 	 * @uml.property  name="globalScore"
 	 */
@@ -110,7 +121,9 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 
 	/**
-	 * Setter of the property <tt>globalScore</tt>
+	 * Setea el puntaje obtenido por el jugador.
+	 * 
+	 * Setter of the property <tt>globalScore</tt>.
 	 * @param globalScore  The globalScore to set.
 	 * @uml.property  name="globalScore"
 	 */
@@ -142,7 +155,7 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 	
 	/**
-	 * Suma los puntos obtenidos al puntaje global
+	 * Suma los puntos obtenidos al puntaje global.
 	 * @uml.property  name="globalScore"
 	 */
 	public void addPoints(int points){
@@ -150,12 +163,16 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 	
 	/**
+	 * Nivel del juego alcanzado por el jugador.
+	 * 
 	 * @uml.property  name="currentLevel"
 	 */
 	private int currentLevel = 1;
 
 	/**
-	 * Getter of the property <tt>currentLevel</tt>
+	 * Retorna el Nivel del juego alcanzado por el jugador.
+	 * 
+	 * Getter of the property <tt>currentLevel</tt>.
 	 * @return  Returns the currentLevel.
 	 * @uml.property  name="currentLevel"
 	 */
@@ -164,7 +181,9 @@ public class Memo extends GameEngine implements I2DGame {
 	}
 
 	/**
-	 * Setter of the property <tt>currentLevel</tt>
+	 * Setea el Nivel del juego alcanzado por el jugador.
+	 * 
+	 * Setter of the property <tt>currentLevel</tt>.
 	 * @param currentLevel  The currentLevel to set.
 	 * @uml.property  name="currentLevel"
 	 */
@@ -172,22 +191,49 @@ public class Memo extends GameEngine implements I2DGame {
 		this.currentLevel = currentLevel;
 	}
 	
-	public LevelGenerator getLevelGenerator(){
+	/**
+	 * Retorna el levelGenerator encargado de administrar
+	 * los niveles del juego.
+	 *  
+	 * @return  el levelGenerator.
+	 */
+	public LevelGenerator getLevelGenerator() {
 		return this.levelGenerator;
 	}
 	
-	public void setLevelGenerator(LevelGenerator levelGenerator){
-		this.levelGenerator=levelGenerator;
+	/**
+	 * Setea el levelGenerator encargado de administrar
+	 * los niveles del juego.
+	 *  
+	 * @param levelGenerator
+	 */
+	public void setLevelGenerator(LevelGenerator levelGenerator) {
+		this.levelGenerator = levelGenerator;
 	}
 	
+	/**
+	 * Ejecuta el Juego Memo.
+	 */
 	@Override
 	public void execute() {
 		game.start();				
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Retorna el identificador
+	 * del juego Memo.
+	 * 
+	 * @return  id2DGame
+	 */
 	@Override
 	public String getId() {
 		return id2DGame;
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame.
+	 * @return d2GameScore 
+	 */
 	@Override
 	public D2GameScore getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
@@ -196,32 +242,57 @@ public class Memo extends GameEngine implements I2DGame {
 		d2GameScore.setIdPlayer(this.playerId);
 		return d2GameScore;
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * Retorna una lista de stats del jugador.
+	 * @return null.
+	 */
 	@Override
 	public List<PlayerStat> getStats() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @return false.
+	 */
 	@Override
 	public boolean isPlaying() {
-		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Setea el identificador
+	 * del juego Memo.
+	 * @param xId
+	 */
 	@Override
 	public void setId(String xId) {
 		id2DGame = xId; 			
 	}
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param xStage
+	 */
 	@Override
 	public void setStartStage(int xStage) {
-		// TODO Auto-generated method stub
-		
 	}
+	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param xTime
+	 */
 	@Override
 	public void setTimeToPlay(float xTime) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * Setea el identificador del jugador.
+	 * @param playerId
+	 */
+	/*
+	 * (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
 	 */
 	@Override
@@ -229,7 +300,12 @@ public class Memo extends GameEngine implements I2DGame {
 		this.playerId = playerId;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * Setea la Tabla de Ranking.
+	 * @param ranking  retorna una instancia de la clase ranking.
+	 */
+	/*
+	 * (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
 	 */
 	@Override

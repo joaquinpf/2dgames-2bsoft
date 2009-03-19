@@ -35,6 +35,7 @@ import com.golden.gamedev.util.ImageUtil;
 import com.golden.gamedev.util.Utility;
 
 /**
+ * Maneja un nivel del juego.
  * 
  * @author Luis Soldavini, Pablo Melchior y Carlos Mirabella
  * @version 2.0
@@ -48,7 +49,7 @@ public class Level extends GameObject {
 	private static int pointsPerPair = 20;
 	
 	/**
-	*  Cantidad de puntos que puede obtener el jugaror por terminar el nivel.
+	*  Cantidad de puntos que puede obtener el jugador por terminar el nivel.
 	*/
 	private static int pointsPerLevel = 100;
 	
@@ -462,6 +463,7 @@ public class Level extends GameObject {
 
 		playfield.addGroup(mGroupCards);
 		playfield.add(buttonExit);
+		
 		// Seteo la cantidad de cartas que posee el nivel.
 		this.tableSize = mGroupCards.getSize();
 		
@@ -490,6 +492,7 @@ public class Level extends GameObject {
 		this.remainingCards = this.tableSize;
 		
 		
+		// Reloj del juego.
 		clock = new AnimatedSprite(ImageUtil.getImages(this.bsIO.getURL(
 				"./resources/memo/images/clock.png"), 12, 1,
 				Transparency.TRANSLUCENT));
@@ -614,13 +617,13 @@ public class Level extends GameObject {
 		// Si la carta se ubica en la posicion (0, 0) del tablero
 		if ((xPositionTable.x == 0) && (xPositionTable.y == 0)) {
 			
-			vPositionScreen.setLocation(positionScreenY,positionScreenX);
+			vPositionScreen.setLocation(positionScreenY, positionScreenX);
 			
 		} else {
 			
-			vPositionScreen.setLocation(positionScreenY + (xPositionTable.y * width)
-					,positionScreenX
-					+ (xPositionTable.x * heigh));
+			vPositionScreen.setLocation(positionScreenY
+					+ (xPositionTable.y * width),
+					positionScreenX + (xPositionTable.x * heigh));
 		}
 		
 		return vPositionScreen;
@@ -645,14 +648,15 @@ public class Level extends GameObject {
 		
 		
 		bigFont.setColor(new Color(239, 231, 123));
-		bigFont.drawString(g,"Nivel", GameFont.CENTER, 125, 0, 100); 
-		bigFont.drawString(g,String.valueOf(this.getLevelNumber()), GameFont.CENTER, 125, 50, 100);
+		bigFont.drawString(g, "Nivel", GameFont.CENTER, 125, 0, 100); 
+		bigFont.drawString(g, String.valueOf(this.getLevelNumber()),
+				GameFont.CENTER, 125, 50, 100);
 		
  		
 		bigFont.setColor(new Color(142, 239, 123));
 		bigFont.drawString(g, "Puntos", GameFont.CENTER, 545, 0, 240);
 		bigFont.drawString(g, String.valueOf(((Memo) parent).getGlobalScore())
-				,GameFont.CENTER, 545, 50, 240);
+				, GameFont.CENTER, 545, 50, 240);
 
  		mFont.drawString(g, "Faltan " 
  				+ String.valueOf(this.getRemainingCards()
@@ -668,7 +672,9 @@ public class Level extends GameObject {
 	
 	/**
 	 * Metodo Hook del GTGE definido en GameObject como abstracto.
-	 * Actualiza todas las variables y estructuras del Nivel. 
+	 * Actualiza todas las variables y estructuras del Nivel.
+	 * 
+	 *  @param elapsedTime  Tiempo transcurrido desde el ultimo update.
 	 */
 	@Override
 	public void update(long elapsedTime) {
@@ -700,10 +706,11 @@ public class Level extends GameObject {
 			// Reinicio el clock para que nuevamente cuente 1 seg.
 			timerClock.refresh();
 		}
-		if (click())
-		{
-			if (checkPosMouse(buttonExit, true))
+		
+		if (click()) {
+			if (checkPosMouse(buttonExit, true)) {
 				finishLevel();
+			}
 		}
 		// Si está inicializado el nivel.
 		if (mInitializedNivel) {
@@ -774,11 +781,20 @@ public class Level extends GameObject {
 	}
 	
 	
+	/**
+	 * Finaliza el nivel y le indica al GameEngine Memo que es lo proximo que
+	 * debe ejecutarse. En este caso, retorna al Menu del juego.  
+	 */
 	private void finishLevel() {
 		parent.nextGameID = Memo.MENU_MENU;
 		finish();
 	}
 
+	
+	/**
+	 * Suma los puntos del nivel finalizado y le indica al GameEngine Memo
+	 * que debe cargar el proximo nivel.
+	 */
 	private void winLevel() {
 		((Memo) parent).addPoints(Level.pointsPerLevel 
 				- this.mFails + this.mSuccess + this.mRemainingTimeLevel);
@@ -789,6 +805,12 @@ public class Level extends GameObject {
 	}
 	
 	
+	/**
+	 * Verificacion logica de si las dos cartas seleccionadas
+	 * forman un par igual.
+	 * 
+	 * @return  TRUE si las dos cartas son iguales. FALSE en caso contrario. 
+	 */
 	private boolean checkCardsLogic() {
 		boolean equals = false;
 		// Si las dos cartas son iguales.
@@ -818,7 +840,7 @@ public class Level extends GameObject {
 			// Incremento el nro de aciertos de pares de cartas descubiertos.
 			
 			mSuccess++;
-			((Memo)parent).addPoints(Level.pointsPerPair);
+			((Memo) parent).addPoints(Level.pointsPerPair);
 			equals = true;
 							
 		} else {
@@ -949,7 +971,7 @@ public class Level extends GameObject {
 	/**
 	 * Setea el nro de desaciertos de pares de cartas.
 	 * 
-	 * @param fails  el mFails a setear.
+	 * @param xFails  el mFails a setear.
 	 */
 	public void setFails(int xFails) {
 		mFails = xFails;
@@ -975,382 +997,516 @@ public class Level extends GameObject {
 		this.mRemainingTimeLevel = xRemainingTimeLevel;
 	}
 	
+	
 	/**
+	 * Retorna la fuente utilizada para mostrar los mensajes
+	 * (Nro. de nivel y Puntos) por pantalla.
+	 * 
      * Getter of the property <tt>bigFont</tt>.
      * @return  Returns the bigFont.
      * @uml.property  name="bigFont"
      */
-	public SystemFont getBigFont(){
+	public SystemFont getBigFont() {
 		return this.bigFont;
 	}
 	
-	/**
-     * Setter of the property <tt>bigFont</tt>.
-     * @param newValue  The bigFont to set.
-     * @uml.property  name="bigFont"
-     */
-	public void setBigFont(SystemFont bigFont){
-		this.bigFont=bigFont;
-	}
 	
 	/**
+     * Setea la fuente utilizada para mostrar los mensajes
+	 * (Nro. de nivel y Puntos) por pantalla.
+	 * 
+     * Setter of the property <tt>bigFont</tt>.
+     * @param bigFont  The bigFont to set.
+     * @uml.property  name="bigFont"
+     */
+	public void setBigFont(SystemFont bigFont) {
+		this.bigFont = bigFont;
+	}
+	
+	
+	/**
+     * Retorna la fuente utilizada para mostrar los mensajes
+	 * (Aciertos, Errores y Cartas faltantes por descubrir) por pantalla.
+     * 
      * Getter of the property <tt>mFont</tt>.
      * @return  Returns the mFont.
      * @uml.property  name="mFont"
      */
-	public SystemFont getMFont(){
+	public SystemFont getMFont() {
 		return this.mFont;
 	}
 	
-	/**
-     * Setter of the property <tt>mFont</tt>.
-     * @param newValue  The mFont to set.
-     * @uml.property  name="mFont"
-     */
-	public void setMFont(SystemFont mFont){
-		this.mFont=mFont;
-	}
 	
 	/**
+     * Setea la fuente utilizada para mostrar los mensajes
+	 * (Aciertos, Errores y Cartas faltantes por descubrir) por pantalla.
+     * 
+     * Setter of the property <tt>mFont</tt>.
+     * @param mFont  The mFont to set.
+     * @uml.property  name="mFont"
+     */
+	public void setMFont(SystemFont mFont) {
+		this.mFont = mFont;
+	}
+	
+	
+	/**
+     * Retorna el clock utilizado en el nivel.
+     * 
      * Getter of the property <tt>timerClock</tt>.
      * @return  Returns the timerClock.
      * @uml.property  name="timerClock"
      */
-	public Timer getTimerClock(){
+	public Timer getTimerClock() {
 		return this.timerClock;
 	}
 	
+	
 	/**
+     * Setea el clock utilizado en el nivel.
+     * 
      * Setter of the property <tt>timerClock</tt>.
-     * @param newValue  The timerClock to set.
+     * @param timerClock  The timerClock to set.
      * @uml.property  name="timerClock"
      */
 	public void setTimerClock(Timer timerClock){
-		this.timerClock=timerClock;
+		this.timerClock = timerClock;
 	}
 	
+	
 	/**
+	 * Retorna el Timer para mostrar las dos cartas destapadas en pantalla.
+	 * 
      * Getter of the property <tt>timerSecondCard</tt>.
      * @return  Returns the timerSecondCard.
      * @uml.property  name="timerSecondCard"
      */
-	public Timer getTimerSecondCard(){
+	public Timer getTimerSecondCard() {
 		return this.timerSecondCard;
 	}
 	
-	/**
-     * Setter of the property <tt>timerSecondCard</tt>.
-     * @param newValue  The timerSecondCard to set.
-     * @uml.property  name="timerSecondCard"
-     */
-	public void setTimerSecondCard(Timer timerSecondCard){
-		this.timerSecondCard=timerSecondCard;
-	}
 	
 	/**
+	 * Setea el Timer para mostrar las dos cartas destapadas en pantalla.
+	 * 
+     * Setter of the property <tt>timerSecondCard</tt>.
+     * @param timerSecondCard  The timerSecondCard to set.
+     * @uml.property  name="timerSecondCard"
+     */
+	public void setTimerSecondCard(Timer timerSecondCard) {
+		this.timerSecondCard = timerSecondCard;
+	}
+	
+	
+	/**
+	 * Retorna el Timer local para un delay antes de empezar el nivel.
+	 * 
      * Getter of the property <tt>timerStartLevel</tt>.
      * @return  Returns the timerStartLevel.
      * @uml.property  name="timerStartLevel"
      */
-	public Timer getTimerStartLevel(){
+	public Timer getTimerStartLevel() {
 		return this.timerStartLevel;
 	}
 	
 	/**
+	 * Setea el Timer local para un delay antes de empezar el nivel.
+	 * 
      * Setter of the property <tt>timerStartLevel</tt>.
-     * @param newValue  The timerStartLevel to set.
+     * @param timerStartLevel  The timerStartLevel to set.
      * @uml.property  name="timerStartLevel"
      */
-	public void setTimerStartLevel(Timer timerStartLevel){
-		this.timerStartLevel=timerStartLevel;
+	public void setTimerStartLevel(Timer timerStartLevel) {
+		this.timerStartLevel = timerStartLevel;
 	}
 	
 	/**
+	 * Retorna el Timer para que el jugador pueda ver las dos
+	 * cartas descubiertas.
+	 * 
      * Getter of the property <tt>mWaitCards</tt>.
      * @return  Returns the mWaitCards.
      * @uml.property  name="mWaitCards"
      */
-	public boolean getMWaitCards(){
+	public boolean getMWaitCards() {
 		return this.mWaitCards;
 	}
 	
-	/**
-     * Setter of the property <tt>mWaitCards</tt>.
-     * @param newValue  The mWaitCards to set.
-     * @uml.property  name="mWaitCards"
-     */
-	public void setMWaitCards(boolean mWaitCards ){
-		this.mWaitCards=mWaitCards;
-	}
 	
 	/**
+     * Setea el Timer para que el jugador pueda ver las dos
+	 * cartas descubiertas.
+	 * 
+	 * Setter of the property <tt>mWaitCards</tt>.
+     * @param mWaitCards  The mWaitCards to set.
+     * @uml.property  name="mWaitCards"
+     */
+	public void setMWaitCards(boolean mWaitCards) {
+		this.mWaitCards = mWaitCards;
+	}
+	
+	
+	/**
+	 * Retorna el estado del nivel: TRUE si el nivel ya está inicializado.
+	 * FALSE en caso contrario.
+	 * 
      * Getter of the property <tt>mInitializedNivel</tt>.
      * @return  Returns the mInitializedNivel.
      * @uml.property  name="mInitializedNivel"
      */
-	public boolean getMInitializedNivel(){
+	public boolean getMInitializedNivel() {
 		return this.mInitializedNivel;
 	}
 	
-	/**
-     * Setter of the property <tt>mInitializedNivel</tt>.
-     * @param newValue  The mInitializedNivel to set.
-     * @uml.property  name="mInitializedNivel"
-     */
-	public void setMInitializedNivel(boolean mInitializedNivel){
-		this.mInitializedNivel=mInitializedNivel;
-	}
 	
 	/**
+	 * Setea el estado del nivel: TRUE si el nivel está inicializado.
+	 * FALSE en caso contrario.
+	 * 
+     * Setter of the property <tt>mInitializedNivel</tt>.
+     * @param mInitializedNivel  The mInitializedNivel to set.
+     * @uml.property  name="mInitializedNivel"
+     */
+	public void setMInitializedNivel(boolean mInitializedNivel) {
+		this.mInitializedNivel = mInitializedNivel;
+	}
+	
+	
+	/**
+	 * Retorna el Sprite que representa al clock del nivel.
+	 * 
      * Getter of the property <tt>clock</tt>.
      * @return  Returns the clock.
      * @uml.property  name="clock"
      */
-	public AnimatedSprite getClock(){
+	public AnimatedSprite getClock() {
 		return this.clock;
 	}
 	
-	/**
-     * Setter of the property <tt>clock</tt>.
-     * @param newValue  The clock to set.
-     * @uml.property  name="clock"
-     */
-	public void setClock(AnimatedSprite clock){
-		this.clock=clock;
-	}
 	
 	/**
+	 * Setea el Sprite que representa al clock del nivel.
+	 * 
+     * Setter of the property <tt>clock</tt>.
+     * @param clock  The clock to set.
+     * @uml.property  name="clock"
+     */
+	public void setClock(AnimatedSprite clock) {
+		this.clock = clock;
+	}
+	
+	
+	/**
+     * Retorna el Sprite que representa al boton de salida.
+     * 
      * Getter of the property <tt>buttonExit</tt>.
      * @return  Returns the buttonExit.
      * @uml.property  name="buttonExit"
      */
-	public Sprite getButtonExit(){
+	public Sprite getButtonExit() {
 		return this.buttonExit;
 	}
 	
-	/**
-     * Setter of the property <tt>buttonExit</tt>.
-     * @param newValue  The buttonExit to set.
-     * @uml.property  name="buttonExit"
-     */
-	public void setButtonExit(Sprite buttonExit){
-		this.buttonExit=buttonExit;
-	}
 	
 	/**
+	 * Setea el Sprite que representa al boton de salida.
+	 * 
+     * Setter of the property <tt>buttonExit</tt>.
+     * @param buttonExit  The buttonExit to set.
+     * @uml.property  name="buttonExit"
+     */
+	public void setButtonExit(Sprite buttonExit) {
+		this.buttonExit = buttonExit;
+	}
+	
+	
+	/**
+	 * Retorna el SpriteGroup que contiene todas las cartas del nivel.
+	 * 
      * Getter of the property <tt>mGroupCards</tt>.
      * @return  Returns the mGroupCards.
      * @uml.property  name="mGroupCards"
      */
-	public SpriteGroup	getMGroupCards(){
+	public SpriteGroup	getMGroupCards() {
 		return this.mGroupCards;
 	}
 	
-	/**
-     * Setter of the property <tt>mGroupCards</tt>.
-     * @param newValue  The mGroupCards to set.
-     * @uml.property  name="mGroupCards"
-     */
-	public void setMGroupCards(SpriteGroup mGroupCards){
-		this.mGroupCards=mGroupCards;
-	}
 	
 	/**
+	 * Setea el SpriteGroup que contiene todas las cartas del nivel.
+	 * 
+     * Setter of the property <tt>mGroupCards</tt>.
+     * @param mGroupCards  The mGroupCards to set.
+     * @uml.property  name="mGroupCards"
+     */
+	public void setMGroupCards(SpriteGroup mGroupCards) {
+		this.mGroupCards = mGroupCards;
+	}
+	
+	
+	/**
+	 * Retorna el Tablero (matriz) que posee las cartas del nivel.
+	 * 
      * Getter of the property <tt>mCards</tt>.
      * @return  Returns the mCards.
      * @uml.property  name="mCards"
      */
-	public Card [][] getMCards(){
+	public Card [][] getMCards() {
 		return this.mCards;
 	}
 	
-	/**
-     * Setter of the property <tt>mCards</tt>.
-     * @param newValue  The mCards to set.
-     * @uml.property  name="mCards"
-     */
-	public void setMCards(Card [][]mCards){
-		this.mCards=mCards;
-	}
 	
 	/**
+	 * Setea el Tablero (matriz) que posee las cartas del nivel.
+	 * 
+     * Setter of the property <tt>mCards</tt>.
+     * @param mCards  The mCards to set.
+     * @uml.property  name="mCards"
+     */
+	public void setMCards(Card [][] mCards) {
+		this.mCards = mCards;
+	}
+	
+	
+	/**
+	 * Retorna la altura (en pixeles) de una carta.
+	 * 
      * Getter of the property <tt>heightCard</tt>.
      * @return  Returns the heightCard.
      * @uml.property  name="heightCard"
      */
-	public int getHeightCard(){
+	public int getHeightCard() {
 		return this.heightCard;
 	}
 	
-	/**
-     * Setter of the property <tt>heightCard</tt>.
-     * @param newValue  The heightCard to set.
-     * @uml.property  name="heightCard"
-     */
-	public void setHeightCard( int heightCard){
-		this.heightCard=heightCard;
-	}
 	
 	/**
+	 * Setea la altura (en pixeles) de una carta.
+	 * 
+     * Setter of the property <tt>heightCard</tt>.
+     * @param heightCard  The heightCard to set.
+     * @uml.property  name="heightCard"
+     */
+	public void setHeightCard(int heightCard) {
+		this.heightCard = heightCard;
+	}
+	
+	
+	/**
+	 * Retorna el ancho (en pixeles) de una carta.
+	 * 
      * Getter of the property <tt>widthCard</tt>.
      * @return  Returns the widthCard.
      * @uml.property  name="widthCard"
      */
-	public int getWidthCard(){
+	public int getWidthCard() {
 		return this.widthCard;
 	}
 	
-	/**
-     * Setter of the property <tt>widthCard</tt>.
-     * @param newValue  The widthCard to set.
-     * @uml.property  name="widthCard"
-     */
-	public void setWidthCard(int widthCard){
-		this.widthCard=widthCard;
-	}
 	
 	/**
+	 * Setea el ancho (en pixeles) de una carta.
+	 * 
+     * Setter of the property <tt>widthCard</tt>.
+     * @param widthCard  The widthCard to set.
+     * @uml.property  name="widthCard"
+     */
+	public void setWidthCard(int widthCard) {
+		this.widthCard = widthCard;
+	}
+	
+	
+	/**
+	 * Retorna Nro de filas que posee el tablero de cartas.
+	 * 
      * Getter of the property <tt>row</tt>.
      * @return  Returns the row.
      * @uml.property  name="row"
      */
-	public int getRow(){
+	public int getRow() {
 		return this.row;
 	}
 	
-	/**
-     * Setter of the property <tt>row</tt>.
-     * @param newValue  The row to set.
-     * @uml.property  name="row"
-     */
-	public void setRow(int row){
-		this.row=row;
-	}
 	
 	/**
+	 * Setea el Nro de filas que posee el tablero de cartas.
+	 * 
+     * Setter of the property <tt>row</tt>.
+     * @param row  The row to set.
+     * @uml.property  name="row"
+     */
+	public void setRow(int row) {
+		this.row = row;
+	}
+	
+	
+	/**
+	 * Retorna el Nro de columnas que posee el tablero de cartas.
+	 * 
      * Getter of the property <tt>col</tt>.
      * @return  Returns the col.
      * @uml.property  name="col"
      */
-	public int getCol(){
+	public int getCol() {
 		return this.col;
 	}
 	
+	
 	/**
+	 * Setea el Nro de columnas que posee el tablero de cartas.
+	 * 
      * Setter of the property <tt>col</tt>.
-     * @param newValue  The col to set.
+     * @param col  The col to set.
      * @uml.property  name="col"
      */
-	public void setCol(int col){
-		this.col=col;
+	public void setCol(int col) {
+		this.col = col;
 	}
+	
 
 	/**
+	 * Retorna los puntos que se suman al descubrir un par de cartas.
+	 * 
      * Getter of the property <tt>pointsPerPair</tt>.
      * @return  Returns the pointsPerPair.
      * @uml.property  name="pointsPerPair"
      */
-	public static int getPointsPerPair(){
+	public static int getPointsPerPair() {
 		return pointsPerPair;
 	}
 	
+	
 	/**
+	 * Setea los puntos que se suman al descubrir un par de cartas.
+	 * 
      * Setter of the property <tt>pointsPerPair</tt>.
-     * @param newValue  The pointsPerPair to set.
+     * @param xpointsPerPair  The pointsPerPair to set.
      * @uml.property  name="pointsPerPair"
      */
-	public static void setPointsPerPair(int xpointsPerPair){
-		pointsPerPair=xpointsPerPair;
+	public static void setPointsPerPair(int xpointsPerPair) {
+		pointsPerPair = xpointsPerPair;
 	}
+	
 
 	/**
+     * Retorna la cantidad de puntos que puede obtener el jugador
+     * por terminar el nivel.
+     * 
      * Getter of the property <tt>pointsPerLevel</tt>.
      * @return  Returns the pointsPerLevel.
      * @uml.property  name="pointsPerLevel"
      */
-	public static int getPointsPerLevel(){
+	public static int getPointsPerLevel() {
 		return pointsPerLevel;
 	}
 	
+	
 	/**
+	 * Setea la cantidad de puntos que puede obtener el jugador
+	 * por terminar el nivel.
+     * 
      * Setter of the property <tt>pointsPerLevel</tt>.
-     * @param newValue  The pointsPerLevel to set.
+     * @param xpointsPerLevel  The pointsPerLevel to set.
      * @uml.property  name="pointsPerLevel"
      */
-	public static void setPointsPerLevel(int xpointsPerLevel){
-		pointsPerLevel=xpointsPerLevel;
+	public static void setPointsPerLevel(int xpointsPerLevel) {
+		pointsPerLevel = xpointsPerLevel;
 	}
+	
 
 	/**
+     * Retorna la coordenada X de la primer carta en la pantalla.
+     * 
      * Getter of the property <tt>positionScreenX</tt>.
      * @return  Returns the positionScreenX.
      * @uml.property  name="positionScreenX"
      */
-	public static int getPositionScreenX(){
+	public static int getPositionScreenX() {
 		return positionScreenX;
 	}
+	
 
 	/**
+	 * Setea la coordenada X de la primer carta en la pantalla.
+	 * 
      * Setter of the property <tt>positionScreenX</tt>.
-     * @param newValue  The positionScreenX to set.
+     * @param xpositionScreenX  The positionScreenX to set.
      * @uml.property  name="positionScreenX"
      */
-	public static void setPositionScreenX(int xpositionScreenX){
-		positionScreenX=xpositionScreenX;
+	public static void setPositionScreenX(int xpositionScreenX) {
+		positionScreenX = xpositionScreenX;
 	}
+	
 
 	/**
+     * Retorna la coordenada Y de la primer carta en la pantalla.
+     * 
      * Getter of the property <tt>positionScreenY</tt>.
      * @return  Returns the positionScreenY.
      * @uml.property  name="positionScreenY"
      */
-	public static int getPositionScreenY(){
+	public static int getPositionScreenY() {
 		return positionScreenY;
 	}
 	
+	
 	/**
+	 * Setea la coordenada Y de la primer carta en la pantalla.
+     * 
      * Setter of the property <tt>positionScreenY</tt>.
-     * @param newValue  The positionScreenY to set.
+     * @param xpositionScreenY  The positionScreenY to set.
      * @uml.property  name="positionScreenY"
      */
-	public static void setPositionScreenY(int xpositionScreenY){
-		positionScreenY=xpositionScreenY;
+	public static void setPositionScreenY(int xpositionScreenY) {
+		positionScreenY = xpositionScreenY;
 	}
+	
 
 	/**
+     * Retorna la separacion (en pixeles) que hay entre dos filas de cartas.
+     * 
      * Getter of the property <tt>separationRow</tt>.
      * @return  Returns the separationRow.
      * @uml.property  name="separationRow"
      */
-	public static int getSeparationRow(){
+	public static int getSeparationRow() {
 		return separationRow;
 	}
 	
+	
 	/**
+	 * Setea la separacion (en pixeles) que hay entre dos filas de cartas.
+     * 
      * Setter of the property <tt>separationRow</tt>.
-     * @param newValue  The separationRow to set.
+     * @param xseparationRow  The separationRow to set.
      * @uml.property  name="separationRow"
      */
-	public static void setSeparationRow(int xseparationRow){
-		separationRow=xseparationRow;
+	public static void setSeparationRow(int xseparationRow) {
+		separationRow = xseparationRow;
 	}
+	
 
 	/**
+	 * Retorna la separacion (en pixeles) que hay entre dos columnas de cartas.
+	 * 
      * Getter of the property <tt>separationCol</tt>.
      * @return  Returns the separationCol.
      * @uml.property  name="separationCol"
      */
-	public static int getSeparationCol(){
+	public static int getSeparationCol() {
 		return separationCol;
 	}
 	
+	
 	/**
+	 * Setea la separacion (en pixeles) que hay entre dos columnas de cartas.
+	 * 
      * Setter of the property <tt>separationCol</tt>.
-     * @param newValue  The separationCol to set.
+     * @param xseparationCol  The separationCol to set.
      * @uml.property  name="separationCol"
      */
-	public static void setSeparationCol(int xseparationCol){
-		separationCol=xseparationCol;
+	public static void setSeparationCol(int xseparationCol) {
+		separationCol = xseparationCol;
 	}
 
 }
