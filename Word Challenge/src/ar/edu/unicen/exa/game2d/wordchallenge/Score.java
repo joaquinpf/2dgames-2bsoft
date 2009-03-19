@@ -36,12 +36,12 @@ public class Score {
 	private Hashtable<Integer, ArrayList<Integer>> matches;
 	
 	/**
-	 * 
+	 * Puntos.
 	 */
 	private static final int POINTS = 0;
 	
 	/**
-	 * 
+	 * Tiempo extra.
 	 */
 	private static final int BONUS_TIME = 1;
 	
@@ -59,7 +59,7 @@ public class Score {
 	}
 		
 	/**
-	 * Agrega una tupla "cantidad de letras, puntaje, tiempo extra"
+	 * Agrega una tupla "cantidad de letras, puntaje, tiempo extra".
 	 * @param amount cantidad de letras para este puntaje
 	 * @param points puntaje para esta cantidad de letras
 	 * @param bonusTime el tiempo que se agrega por acierto de esta
@@ -118,7 +118,7 @@ public class Score {
 	/**
 	 * Devuelve las reglas de puntaje.
 	 * 
-	 * @return Hashtable<Integer, ArrayList<Integer>> matches
+	 * @return matches  reglas de puntaje.
 	 */
 	public Hashtable<Integer, ArrayList<Integer>> getMatches() {
 		return matches;
@@ -127,14 +127,14 @@ public class Score {
 	/**
 	 * Setea las reglas de puntaje.
 	 *  
-	 * @param  matches
+	 * @param matches  reglas de puntaje.
 	 */
 	public void setMatches(Hashtable<Integer, ArrayList<Integer>> matches) {
 		this.matches = matches;
 	}
 
 	/**
-	 * Getter de la variable POINTS
+	 * Getter de la variable POINTS.
 	 * 
 	 * @return int points
 	 */
@@ -143,9 +143,9 @@ public class Score {
 	}
 
 	/**
-	 * Getter de la variable BONUS_TIME
+	 * Getter de la variable BONUS_TIME.
 	 * 
-	 * @return int bomus_time
+	 * @return int BONUS_TIME  tiempo extra.
 	 */
 	public static int getBONUS_TIME() {
 		return BONUS_TIME;

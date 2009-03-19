@@ -21,7 +21,7 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 public class CommandRandomizeLetters extends AbstractCommandLevel {
 
 	/**
-	 * Constructor del nivel.
+	 * Constructor de la clase.
 	 * 
 	 * @param level  Nivel donde se está ejecutando
 	 */
@@ -34,6 +34,10 @@ public class CommandRandomizeLetters extends AbstractCommandLevel {
 	 * (non-Javadoc)
 	 * 
 	 * @see AbstractCommandLevel#execute()
+	 */
+	/**
+	 * Ejecuta la accion del Nivel randomLettersOrder() para aleatorizar las
+	 * letras que pueden ser seleccionadas.
 	 */
 	public final void execute() {
 		this.getLevel().randomLettersOrder();

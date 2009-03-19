@@ -21,9 +21,9 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 public class CommandDelLastLetter extends AbstractCommandLevel {
 
 	/**
-	 * Constructor del nivel.
+	 * Constructor de la clase.
 	 * 
-	 * @param level Nivel donde se está ejecutando
+	 * @param level Nivel donde se está ejecutando el comando.
 	 */
 	public CommandDelLastLetter(final Level level) {
 		super();
@@ -33,6 +33,9 @@ public class CommandDelLastLetter extends AbstractCommandLevel {
 	/*
 	 * (non-Javadoc)
 	 * @see Level.AbstractCommandLevel#execute()
+	 */
+	/**
+	 * Ejecuta la accion del Level de borrar la ultima letra seleccionada.
 	 */
 	public void execute() {
 		getLevel().deleteLastLetter();

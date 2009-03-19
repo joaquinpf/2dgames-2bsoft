@@ -57,7 +57,7 @@ public class Level extends GameObject implements Observer {
 	// **********************************************************************
 
 	/**
-	 * Nro de letras a ordenar en el nivel.
+	 * Nro. de letras a ordenar en el nivel.
 	 */
 	private static final int MAX_LETTERS = 6;
 
@@ -74,7 +74,7 @@ public class Level extends GameObject implements Observer {
 	private static final int BIGLETTER_POS_Y = 127;
 
 	/**
-	 * Separcion horizontal (en pixeles) que hay entre 2 letras desordendas.
+	 * Separacion horizontal (en pixeles) que hay entre 2 letras desordendas.
 	 */
 	private static final int BIGDISTANCE_X_LETTERS = 5;
 
@@ -91,7 +91,7 @@ public class Level extends GameObject implements Observer {
 	private static final int SMALLLETTER_POS_Y = 235;
 
 	/**
-	 * Separcion horizontal (en pixeles) que hay entre 2 letras chiquitas 
+	 * Separacion horizontal (en pixeles) que hay entre 2 letras chiquitas 
 	 * sin descubrir.
 	 */
 	private static final int SMALLDISTANCE_X_LETTERS = 10;
@@ -164,6 +164,9 @@ public class Level extends GameObject implements Observer {
 	 */
 	private Clock mClock;
 
+	/**
+	 * Sprite animado que muestra el clock del juego.
+	 */
 	private AnimatedSprite spClock;
 
 	// **********************************************************************
@@ -180,7 +183,11 @@ public class Level extends GameObject implements Observer {
 	 */
 	private boolean mWaitSelect = false;
 
+	/**
+	 * Variable booleana que indica si un nivel ha finalizado.
+	 */
 	private boolean mFinishing = false;
+	
 	/**
 	 * Indica si el nivel finalizó porque no hay mas tiempo restante.
 	 */
@@ -274,10 +281,21 @@ public class Level extends GameObject implements Observer {
 	 */
 	private Button mButtonNewLetters = null;
 	
+	/**
+	 * Botón que permite chequear si la palabra construída es correcta.
+	 * Representa al botón OK.
+	 */
 	private Button mButtonOk = null;
 	
+	/**
+	 * Botón que permite borrar la última letra elegida.
+	 * Representa al botón BACK.
+	 */
 	private Button mButtonBack = null;
 	
+	/**
+	 * Botón que aleatoriza las letras. Representa al botón RANDOMIZE.
+	 */
 	private Button mButtonRandomize = null;
 
 	// ************************************************************************
@@ -287,7 +305,9 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Constructor de la clase Level.
 	 * 
-	 * @param parent
+	 * @param parent  instancia del Word Challenge.
+	 * @param clock   clock del juego.
+	 * @param dictio  diccionario q contiene las palabras.
 	 */
 	public Level(final GameEngine parent, final Clock clock,
 			final Dictionary dictio) {
@@ -414,6 +434,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Crea seis objetos Letters y les setea su imagen y posicion en el
 	 * escenario.
+	 * @param vSixLetters  contiene las 6 letras seleccionables.
 	 */
 	private void createSixLetters(String vSixLetters) {
 
@@ -456,6 +477,9 @@ public class Level extends GameObject implements Observer {
 	 * letras que la componen, de mayor a menor. 4) Por cada palabra, crea un
 	 * objeto Word y lo posiciona en la pantalla. Luego lo agrega a la lista
 	 * mPossibleWords.
+	 * 
+	 * @param vPossibleWords  Lista de palabras obtenidas del diccionario que
+	 * se pueden formar a partir de las 6 letras. 
 	 */
 	public final void setLettersOrder(ArrayList<String> vPossibleWords) {
 
@@ -622,6 +646,9 @@ public class Level extends GameObject implements Observer {
 		
 	}
 
+	/**
+	 * Descubre todas las palabras para que estas se visualicen en pantalla.
+	 */
 	public void levelFinishing() {
 		mInitializedLevel = false;
 		mFinishing = true;
@@ -656,6 +683,9 @@ public class Level extends GameObject implements Observer {
 		finish();
 	}
 
+	/**
+	 * Metodo privado que permite manejar el nivel del juego usando las teclas.
+	 */
 	private void manejoTeclado() {
 		if (bsInput.getKeyPressed() != BaseInput.NO_KEY) {
 			if (bsInput.getKeyPressed() >= KeyEvent.VK_A 
@@ -711,13 +741,13 @@ public class Level extends GameObject implements Observer {
 				.valueOf(((WordChallenge) this.parent).getGlobalScore()),
 				GameFont.CENTER, 70, 45, 300);
 		
-		mFontInfoLevel.setColor(new Color(123,164,239));
-		mFontInfoLevel.drawString(g, "Correctas: " +
-				String
-				.valueOf(((WordChallenge)parent).getCorrectWords()), GameFont.CENTER, 400, -5, 200);
-		mFontInfoLevel.drawString(g, "Incorrectas: "+
-				String
-				.valueOf(((WordChallenge)parent).getFailWords()), GameFont.CENTER, 400, 45, 200);
+		mFontInfoLevel.setColor(new Color(123, 164, 239));
+		mFontInfoLevel.drawString(g, "Correctas: "
+				+ String.valueOf(((WordChallenge) parent).getCorrectWords())
+				, GameFont.CENTER, 400, -5, 200);
+		mFontInfoLevel.drawString(g, "Incorrectas: "
+				+ String.valueOf(((WordChallenge) parent).getFailWords())
+				, GameFont.CENTER, 400, 45, 200);
 
 		if (!mFinishing) {
 			mFontClock.drawString(g, String.valueOf(mClock.getRemainingTime()),
@@ -727,7 +757,8 @@ public class Level extends GameObject implements Observer {
 	
 	/**
 	 * Verifica si la palabra selecionada es valida.
-	 * @return
+	 * @return  TRUE si la palabra existe y no estaba descubierta.
+	 * FALSE en caso contrario.
 	 */
 	public final boolean isValidWord() {
 		boolean esta = false;
@@ -946,9 +977,16 @@ public class Level extends GameObject implements Observer {
 	 * 
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
+	/**
+	 * Descubre las palabras no acertadas si el tiempo del clock llegó a 0
+	 * y el nivel no ha finalizado.
+	 * @param o  
+	 * @param arg  
+	 */
 	public void update(Observable o, Object arg) {
-		if (mClock.isFinished() && !mFinishing)
+		if (mClock.isFinished() && !mFinishing) {
 			levelFinishing();
+		}
 	}
 
 	/**
@@ -1001,7 +1039,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Método para setearle el Clock al nivel.
 	 * 
-	 * @param Clock
+	 * @param clock
 	 *            Clock que va a utilizar el nivel
 	 */
 	public final void setClock(final Clock clock) {
@@ -1048,7 +1086,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Método para setear el ancho de una palabra de longitud máxima.
 	 * 
-	 * @param widthWord
+	 * @param widthWord   widthWord.
 	 */
 	public void setMWidthWord(int widthWord) {
 		mWidthWord = widthWord;
@@ -1066,7 +1104,7 @@ public class Level extends GameObject implements Observer {
 	/**
 	 * Método para setear la altura de una palabra.
 	 * 
-	 * @param heightWord
+	 * @param heightWord    
 	 */
 	public void setMHeightWord(int heightWord) {
 		mHeightWord = heightWord;
@@ -1132,7 +1170,7 @@ public class Level extends GameObject implements Observer {
 	}
 	
 	/**
-	 * Getter de la variable spClock  
+	 * Getter de la variable spClock. 
 	 * 
 	 * @return AnimatedSprite
 	 */
@@ -1141,7 +1179,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Setter de la variable spClock
+	 * Setter de la variable spClock.
 	 * 
 	 * @param spClock
 	 */
@@ -1150,7 +1188,7 @@ public class Level extends GameObject implements Observer {
 	}
 	
 	/**
-	 * Devuelve si el nivel esta inicializado o no  
+	 * Devuelve si el nivel esta inicializado o no.  
 	 * 
 	 * @return boolean initializedLevel
 	 */
@@ -1159,7 +1197,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Método para setear si el nivel está inicializado
+	 * Método para setear si el nivel está inicializado.
 	 * 
 	 * @param initializedLevel
 	 */
@@ -1177,7 +1215,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Método para setear si se puede hacer click
+	 * Método para setear si se puede hacer click.
 	 * 
 	 * @param waitSelect
 	 */
@@ -1186,7 +1224,7 @@ public class Level extends GameObject implements Observer {
 	}
 	
 	/**
-	 * Getter de la variable finishing  
+	 * Getter de la variable finishing.  
 	 * 
 	 * @return boolean finishing
 	 */
@@ -1195,7 +1233,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Setter de la variable finishing
+	 * Setter de la variable finishing.
 	 * 
 	 * @param finishing
 	 */
@@ -1213,7 +1251,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Método para setear si el nivel finalizó
+	 * Método para setear si el nivel finalizó.
 	 * 
 	 * @param finished
 	 */
@@ -1242,7 +1280,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Devuelve la variable que representa al botón de salida 
+	 * Devuelve la variable que representa al botón de salida. 
 	 * 
 	 * @return Sprite buttonExit
 	 */
@@ -1260,7 +1298,7 @@ public class Level extends GameObject implements Observer {
 	}
 
 	/**
-	 * Devuelve la variable que contiene las letras que pueden elegirse
+	 * Devuelve la variable que contiene las letras que pueden elegirse.
 	 * 
 	 * @return SpriteGroup groupBigLetters
 	 */
@@ -1270,7 +1308,7 @@ public class Level extends GameObject implements Observer {
 
 	/**
 	 * Método para setear la variable que contiene las letras que pueden 
-	 * elegirse
+	 * elegirse.
 	 * 
 	 * @param groupBigLetters
 	 */
@@ -1328,7 +1366,8 @@ public class Level extends GameObject implements Observer {
 	 * Método para setear la fuente que se utiliza para mostrar los datos del 
 	 * nivel en la pantalla, puntos y tiempo restante.
 	 * 
-	 * @param fontInfoLevel
+	 * @param fontInfoLevel  fuente para mostrar los datos del nivel
+	 * en pantalla. 
 	 */
 	public void setMFontInfoLevel(SystemFont fontInfoLevel) {
 		mFontInfoLevel = fontInfoLevel;

@@ -77,7 +77,7 @@ public class Button extends Sprite {
 	 * Método para setear la variable que contiene la imagen del botón 
 	 * cuando se está mostrando.
 	 * 
-	 * @param imageUp
+	 * @param imageUp  imagen del boton.
 	 */
 	public void setMImageUp(BufferedImage imageUp) {
 		mImageUp = imageUp;
@@ -87,7 +87,7 @@ public class Button extends Sprite {
 	 * Devuelve la variable que contiene la imagen del botón cuando se hace 
 	 * click sobre él.
 	 * 
-	 * @return BufferedImage imageClick
+	 * @return BufferedImage imageClick  contiene la imagen del boton clikeado.
 	 */
 	public BufferedImage getMImageClick() {
 		return mImageClick;
@@ -97,7 +97,7 @@ public class Button extends Sprite {
 	 * Método para setear la variable que contiene la imagen del botón cuando
 	 * se hace click sobre él.
 	 * 
-	 * @param imageClick
+	 * @param imageClick  contiene la imagen del boton clikeado.
 	 */
 	public void setMImageClick(BufferedImage imageClick) {
 		mImageClick = imageClick;
@@ -107,7 +107,7 @@ public class Button extends Sprite {
 	 * Devuelve la variable que contiene la imagen del botón cuando el mismo
 	 * esta deshabilitado.
 	 * 
-	 * @return BufferedImage imageDisabled
+	 * @return BufferedImage imageDisabled  imagen del boton desahabilitado.
 	 */
 	public BufferedImage getMImageDisabled() {
 		return mImageDisabled;
@@ -117,7 +117,7 @@ public class Button extends Sprite {
 	 * Método para setear la variable que contiene la imagen del botón cuando 
 	 * está deshabilitado.
 	 * 
-	 * @param imageDisabled
+	 * @param imageDisabled  imagen del boton desahabilitado.
 	 */
 	public void setMImageDisabled(BufferedImage imageDisabled) {
 		mImageDisabled = imageDisabled;
@@ -126,7 +126,7 @@ public class Button extends Sprite {
 	/**
 	 * Devuelve el comando que ejecuta el botón cuando se hace click sobre él.
 	 * 
-	 * @return AbstractCommandLevel command
+	 * @return AbstractCommandLevel command que ejecuta el boton.
 	 */
 	public AbstractCommandLevel getMCommand() {
 		return mCommand;
@@ -136,7 +136,7 @@ public class Button extends Sprite {
 	 * Método para setear el comando que ejecuta el botón cuando se hace click
 	 * sobre él.
 	 * 
-	 * @param command
+	 * @param command  comando a ejecutarse.
 	 */
 	public void setMCommand(AbstractCommandLevel command) {
 		mCommand = command;
@@ -155,7 +155,7 @@ public class Button extends Sprite {
 	 * Método para setear el timer usado para mostrar la imagen cuando se 
 	 * hace click.
 	 * 
-	 * @param timerClick
+	 * @param timerClick  Timer usado
 	 */
 	public void setMTimerClick(Timer timerClick) {
 		mTimerClick = timerClick;
