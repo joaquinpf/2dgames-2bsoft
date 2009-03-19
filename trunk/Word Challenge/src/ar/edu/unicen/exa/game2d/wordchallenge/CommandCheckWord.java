@@ -11,7 +11,7 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 */
 
 /**
- * Comando utilizado por la interfaz para verificar si la palabra que construída
+ * Comando utilizado por la interfaz para verificar si la palabra construída
  * es una palabra correcta según el diccionario utilizado.
  * 
  * @author Luis Soldavini y Pablo Melchior
@@ -21,7 +21,7 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 public class CommandCheckWord extends AbstractCommandLevel {
 
 	/**
-	 * Constructor del nivel.
+	 * Constructor del CommandCheckWord.
 	 * 
 	 * @param xLevel  Nivel donde se está ejecutando.
 	 */
@@ -34,6 +34,10 @@ public class CommandCheckWord extends AbstractCommandLevel {
 	 * (non-Javadoc)
 	 * 
 	 * @see Level.AbstractCommandLevel#execute()
+	 */
+	/**
+	 * Ejecuta la verificacion para comprobar si existe
+	 * la palabra en el diccionario.
 	 */
 	public void execute() {
 		getLevel().checkWord();

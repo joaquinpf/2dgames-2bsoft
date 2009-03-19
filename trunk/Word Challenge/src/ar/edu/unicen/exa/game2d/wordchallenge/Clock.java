@@ -39,6 +39,10 @@ public class Clock extends Observable {
 	 */
 	private int totalTime;
 	
+	/**
+	 * Constructor de la clase.
+	 * @param time  tiempo
+	 */
 	public Clock(int time) {
 		this.setTotalTime(time);
 	}
@@ -93,11 +97,9 @@ public class Clock extends Observable {
 	}
 
 	// TotalTime no sabemos para que sirve.
-	
-	
 
 	/**
-	 * Getter of the property <tt>totalTime</tt>
+	 * Getter of the property <tt>totalTime</tt>.
 	 * @return  Returns the totalTime.
 	 * @uml.property  name="totalTime"
 	 */
@@ -106,14 +108,13 @@ public class Clock extends Observable {
 	}
 
 	/**
-	 * Setter of the property <tt>totalTime</tt>
+	 * Setter of the property <tt>totalTime</tt>.
 	 * @param totalTime  The totalTime to set.
 	 * @uml.property  name="totalTime"
 	 */
 	public void setTotalTime(int totalTime) {
 		this.totalTime = totalTime;
 		this.remainingTime = totalTime;
-		
 	}
 
 
@@ -144,10 +145,9 @@ public class Clock extends Observable {
 
 	/**
 	 * Agrega mas tiempo.
-	 * @param time Tiempo en segundos paraa adicionar.
+	 * @param time  Tiempo en segundos paraa adicionar.
 	 */
-	public void addMoreTime(int time)
-	{
+	public void addMoreTime(int time) {
 		this.remainingTime += time;
 	}
 }

@@ -48,7 +48,7 @@ public abstract class AbstractCommandLevel {
 	/**
 	 * Devuelve el Nivel del juego.
 	 * 
-	 * @return level donde se está ejecutando.
+	 * @return level  donde se está ejecutando.
 	 */
 	protected Level getLevel() {
 		return mLevel;

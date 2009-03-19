@@ -20,9 +20,9 @@ package ar.edu.unicen.exa.game2d.wordchallenge;
 public class CommandGetSixLetters extends AbstractCommandLevel {
 
 	/**
-	 * Constructor del nivel.
+	 * Constructor de la clase.
 	 * 
-	 * @param level  Nivel donde se está ejecutando.
+	 * @param level  Nivel donde se está ejecutando el comando.
 	 */
 	public CommandGetSixLetters(final Level level) {
 		super();
@@ -33,6 +33,10 @@ public class CommandGetSixLetters extends AbstractCommandLevel {
 	 * (non-Javadoc)
 	 * 
 	 * @see Level.AbstractCommandLevel#execute()
+	 */
+	/**
+	 * Ejecuta el metodo levelFinishing() de la clase Level del
+	 * Word Challenge para descubrir todas las palabras. 
 	 */
 	public void execute() {
 		this.getLevel().levelFinishing();

@@ -15,7 +15,7 @@ import com.golden.gamedev.GameObject;
  * 
  * @author Joaquín Pérez Fuentes
  */
-public class WordChallenge extends GameEngine implements I2DGame{
+public class WordChallenge extends GameEngine implements I2DGame {
 
 	
 	/**
@@ -124,7 +124,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		
 		game = new GameLoader();
 		game.setup(this, new Dimension(800, 600),
-				   GameLoader.ScreenMode.Dialog,false);
+				   GameLoader.ScreenMode.Dialog, false);
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class WordChallenge extends GameEngine implements I2DGame{
 			return new LanguageMenu(this);
 		case OPTION_SCORES:
 		{
-			return new HighScores(this,this.ranking);
+			return new HighScores(this, this.ranking);
 		}
 		default:
 			return null;
@@ -332,22 +332,23 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		failWords = newFailWords;
 	}
 	
-	
 	/**
-	 * Incrementa en uno la cantidad de Palabras correctas ingresadas por el usuario.
-	 * 
-	*/
+	 * Incrementa en uno la cantidad de Palabras correctas
+	 * ingresadas por el usuario.
+	 */
 	public final void incrementCorrectWords() {
 		this.correctWords++;
 	}
 	
 	/**
-	 * Incrementa en uno la cantidad de Palabras Incorrectas ingresadas por el usuario.
+	 * Incrementa en uno la cantidad de Palabras Incorrectas
+	 * ingresadas por el usuario.
 	 * 
-	*/
+	 */
 	public final void incrementFailWords() {
 		this.failWords++;
 	}
+	
 	/**
 	 * Obtiene los lenguajes disponibles.
 	 * 
@@ -368,14 +369,14 @@ public class WordChallenge extends GameEngine implements I2DGame{
 	/**
 	 * Retorna la variable scoringTable.
 	 * 
-	 * @param scoringTable
+	 * @param scoringTable  
 	 */
 	public final void setScoringTable(final Score scoringTable) {
 		this.scoringTable = scoringTable;
 	}
 
 	/**
-	 * Retorna una constante que representa la opcion de ir al menu
+	 * Retorna una constante que representa la opcion de ir al menu.
 	 * 
 	 * @return OPTION_MENU
 	 */
@@ -421,13 +422,22 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		return OPTION_EXIT;
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * Retorna una lista de stats del jugador.
+	 * @return null.
+	 */
 	@Override
-	public List<PlayerStat> getStats(){
+	public List<PlayerStat> getStats() {
 		return null;
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame.
+	 * @return d2GameScore
+	 */
 	@Override
-	public D2GameScore getScore(){
+	public D2GameScore getScore() {
 		D2GameScore d2GameScore = new D2GameScore();
 		d2GameScore.setId2DGame(this.id2DGame);
 		d2GameScore.setScore(this.getBestGlobalScore());
@@ -435,34 +445,64 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		return d2GameScore;
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param stage    
+	 */
 	@Override
 	public void setStartStage(int stage) {
 	}
 
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @param time  
+	 */
 	@Override
 	public void setTimeToPlay(float time) {
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. No implementado.
+	 * @return false.
+	 */
 	@Override
-	public boolean isPlaying(){
+	public boolean isPlaying() {
 		return false;
 	}
 	
+	/**
+	 * Ejecuta el Juego Word Challenge.
+	 */
 	@Override
-	public void execute(){
+	public void execute() {
 		game.start();
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Retorna el identificador
+	 * del juego Word Challenge.
+	 * 
+	 * @return  id2DGame
+	 */
 	@Override
-	public String getId(){
+	public String getId() {
 		return this.id2DGame;
 	}
 	
+	/**
+	 * Metodo perteneciente a la interface I2DGame. Setea el identificador
+	 * del juego Word Challenge.
+	 * @param id  
+	 */
 	@Override
-	public void setId(String id){
+	public void setId(String id) {
 		this.id2DGame = id;
 	}
 	
+	/**
+	 * Setea el identificador del jugador.
+	 * @param playerId
+	 */
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setPlayerId(String playerId)
 	 */
@@ -471,6 +511,10 @@ public class WordChallenge extends GameEngine implements I2DGame{
 		this.playerId = playerId;
 	}
 	
+	/**
+	 * Setea la Tabla de Ranking.
+	 * @param ranking  retorna una instancia de la clase ranking.
+	 */
 	/* (non-Javadoc)
 	 * @see ar.edu.unicen.exa.game2d.bigballs.I2DGame#setRanking(Ranking ranking)
 	 */

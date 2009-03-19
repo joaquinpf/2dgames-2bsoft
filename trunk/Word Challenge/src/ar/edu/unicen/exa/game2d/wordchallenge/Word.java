@@ -75,8 +75,6 @@ public class Word extends SpriteGroup {
 	 */
 	public final void setPosition(final int x, final int y) {
 
-		// TODO cambiar el path y resize de la imagen del Letter.
-
 		double posX;
 		MiniLetter vLetter;
 		BaseIO vBsIO = new BaseIO(this.getClass(), BaseIO.CLASS_URL);
@@ -150,5 +148,4 @@ public class Word extends SpriteGroup {
 	public final int lengthWord() {
 		return mWord.length();
 	}
-
 }
