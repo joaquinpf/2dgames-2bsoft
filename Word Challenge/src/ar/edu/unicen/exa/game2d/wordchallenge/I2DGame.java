@@ -72,14 +72,14 @@ public interface I2DGame {
 	/**
 	 * Setea el identificador del player que jugara el minijuego.
 	 * 
-	 * @param id El identificador del player que jugara el minijuego.
+	 * @param playerId El identificador del player que jugara el minijuego.
 	 */
-	void setPlayerId(String PlayerId);
+	void setPlayerId(String playerId);
 	
 	/**
 	 * Setea el Ranking del minijuego.
 	 * 
-	 * @param id El Ranking del minijuego.
+	 * @param ranking El Ranking del minijuego.
 	 */
 	void setRanking(Ranking ranking);
 	
