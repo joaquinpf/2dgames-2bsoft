@@ -1,4 +1,3 @@
-package ar.edu.unicen.exa.game2d.bigballs;
  /**Classname LevelGenerator.
  *
  * Version information 1.0
@@ -19,12 +18,10 @@ import java.util.Random;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.util.ImageUtil;
 
@@ -32,7 +29,7 @@ import com.golden.gamedev.util.ImageUtil;
  * Las configuraciones de los diferentes niveles se leen de un archivo XML
  * pasado como parametro al constructor de la clase.
  * 
- * @author Marcos Steimbach y Joaquï¿½n Pï¿½rez Fuentes
+ * @author Marcos Steimbach y Joaquín Pérez Fuentes
  */
 public class LevelGenerator {
 	/**Ruta del archivo de configuracion. 
@@ -52,7 +49,7 @@ public class LevelGenerator {
 	private Random random = new Random();
 	
 	/**Constructor de la clase.
-	 * @param route Especifica la direccion del archivo de configuracion a ser
+	 * @param Strring route Especifica la direccion del archivo de configuracion a ser
 	 * utilizado.
 	 */
 
@@ -63,30 +60,30 @@ public class LevelGenerator {
 
 	/**Retorna el proximo nivel e incrementa en uno currentLevel.
 	 * En caso de haber sido el ultimo nivel del juego retorna null.
-	 * @param parent The parent gameengine
-	 * @param level El nro de nivel a construir
-	 * @return  Level Retorna el proximo nivel del juego.
+	 * @param GameEngine parent. The parent gameengine
+	 * @param int level. El nro de nivel a construir
+	 * @return  Level. Retorna el proximo nivel del juego.
 	 */
 	public final Level generateLevel(final GameEngine parent, final int level) {
 		return getLevel(level, parent);
 	}
 
 	/**Retorna la ruta del archivo de configuracion.
-	 * @return  Retorna la ruta de configuracion.
+	 * @return  String. Retorna la ruta de configuracion.
 	 */
 	public final String getConfigRoute() {
 		return configRoute;
 	}
 
 	/**Setea la ruta de configuracion de los niveles del juego.
-	 * @param confRoute  La ruta de configuracion a setear.
+	 * @param String confRoute. La ruta de configuracion a setear.
 	 */
 	public final void setConfigRoute(final String confRoute) {
 		this.configRoute = confRoute;
 	}
-	
+
 	/**Parsea y retorna el documento de configuracion xml pasado como parametro.
-	 * @param route Es la ruta de configuracion de los niveles del juego.
+	 * @param String route. Es la ruta de configuracion de los niveles del juego.
 	 * @return Document Retorna el documento xml parseado.
 	 */
 	private Document openDocument(final String route) {
@@ -111,12 +108,12 @@ public class LevelGenerator {
 	}
 	
 	/**Crea una lista con la cantidad de pelotas solicitada.
-	 * @param nlBall NodeList conteniendo la informacion de configuracion de
+	 * @param NodeList nlBall. Contiene la informacion de configuracion de
 	 * cada pelota.
-	 * @param cant Cantidad de pelotas a generar y agregar a la lista.
-	 * @param min Valor minimo posible para el valor de la pelota generada.
-	 * @param max Valor maximo posible para el valor de la pelota generada.
-	 * @return List Retorna una lista con la cantidad de pelotas
+	 * @param int cant. Cantidad de pelotas a generar y agregar a la lista.
+	 * @param int min. Valor minimo posible para el valor de la pelota generada.
+	 * @param int max. Valor maximo posible para el valor de la pelota generada.
+	 * @return List<Ball> Retorna una lista con la cantidad de pelotas
 	 * especificadas en el parametro cant.
 	 */
     @SuppressWarnings("deprecation")
@@ -188,9 +185,9 @@ public class LevelGenerator {
 	
     /**Construye los diferentes niveles del juego especificado en el documento
      * de configuracion.
-     * @param level Numero de nivel a retornar.
-     * @param parent El GameEngine padre del Level a construir
-     * @return List Retorna una lista con los niveles ya configurados.
+     * @param int level. Numero de nivel a retornar.
+     * @param GameEngine parent. El GameEngine padre del Level a construir
+     * @return Level. Retorna el nivel pedido ya configurado.
      */
 	private Level getLevel(final int level, final GameEngine parent) {
         Element elementLevel;
@@ -245,36 +242,12 @@ public class LevelGenerator {
 	/**Realiza la llamada al metodo que parsea el documento xml de
 	 *configuracion y asigna la lista de niveles ya configurados a la
 	 *variable de clase listLevels.
-	 * @param route Especifica la direccion del archivo de configuracion a ser
+	 * @param String route. Especifica la direccion del archivo de configuracion a ser
 	 * utilizado.
 	 */
 	private void loadLevels(final String route) {
 		dom = openDocument(route);
 		docEle = dom.getDocumentElement();
-	}
-
-	public Document getDom() {
-		return dom;
-	}
-
-	public void setDom(Document dom) {
-		this.dom = dom;
-	}
-
-	public Element getDocEle() {
-		return docEle;
-	}
-
-	public void setDocEle(Element docEle) {
-		this.docEle = docEle;
-	}
-
-	public Random getRandom() {
-		return random;
-	}
-
-	public void setRandom(Random random) {
-		this.random = random;
 	}
 
 }
