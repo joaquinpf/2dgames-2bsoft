@@ -1,4 +1,5 @@
- /**Classname LevelGenerator.
+package ar.edu.unicen.exa.game2d.bigballs; 
+/**Classname LevelGenerator.
  *
  * Version information 1.0
  * 
