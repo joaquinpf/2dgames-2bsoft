@@ -1,3 +1,4 @@
+package ar.edu.unicen.exa.game2d.wordchallenge;
 /**Classname Configurator.
  *
  * Version information 1.0
